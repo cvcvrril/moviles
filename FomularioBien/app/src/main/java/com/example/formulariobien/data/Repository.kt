@@ -1,22 +1,19 @@
 package com.example.formulariobien.data
 
-import com.example.formulariobien.domain.modelo.Persona
+import com.example.formulariobien.domain.modelo.Peliculas
 
 object Repository {
 
-    private val personas = mutableListOf<Persona>()
+    private val peliculas = mutableListOf<Peliculas>()
 
     init {
-        personas.add(Persona("Juan"))
+        peliculas.add(Peliculas("Litte Miss Sunshine"))
     }
 
-    private val mapPersonas = mutableMapOf<String, Persona>()
+    private val mapPeliculas = mutableMapOf<String, Peliculas>()
 
-    fun addPersona(persona: Persona) =
-        personas.add(persona)
+    fun addPelicula(peliculas: Peliculas) =
+        peliculas.add(peliculas)
 
-    fun getPersonas(): List<Persona>{
-        return personas
-    }
 
 }
