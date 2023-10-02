@@ -1,6 +1,6 @@
-package com.example.formulario.data
+package com.example.formulariobien.data
 
-import com.example.formulario.domain.modelo.Persona
+import com.example.formulariobien.domain.modelo.Persona
 
 class Repository {
 
