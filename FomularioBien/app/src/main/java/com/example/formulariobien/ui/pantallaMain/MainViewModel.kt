@@ -10,7 +10,6 @@ import com.example.formulariobien.utils.StringProvider
 import java.lang.IllegalArgumentException
 
 class MainViewModel(
-    private val stringProvider: StringProvider,
     private val addPeliculasUseCase: AddPeliculasUseCase,
 ) : ViewModel() {
 
@@ -35,13 +34,12 @@ class MainViewModel(
 }
 
 class MainViewModelFactory(
-    private val stringProvider: StringProvider,
     private val addPeliculasUseCase: AddPeliculasUseCase,
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
             return MainViewModel(
-                stringProvider,
                 addPeliculasUseCase
             ) as T
         }

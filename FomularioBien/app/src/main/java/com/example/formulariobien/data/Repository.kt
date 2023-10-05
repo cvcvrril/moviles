@@ -12,9 +12,10 @@ object Repository {
 
     private val mapPeliculas = mutableMapOf<String, Pelicula>()
 
-    fun addPelicula(pelicula: Pelicula){
-        peliculas.add(pelicula)
-    }
+    fun addPelicula(pelicula: Pelicula) =
+       peliculas.add(pelicula)
+
+
 
 
 }
