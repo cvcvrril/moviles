@@ -9,7 +9,7 @@ import com.example.formulariobien.utils.StringProvider
 
 class MainViewModel(
     private val stringProvider: StringProvider,
-    private val addPeliculasUseCase: AddPeliculasUseCase
+    private val addPeliculasUseCase: AddPeliculasUseCase,
 ) : ViewModel(){
 
     private val _uiState = MutableLiveData<MainState>()
@@ -19,8 +19,9 @@ class MainViewModel(
         if (!addPeliculasUseCase(pelicula)){
             _uiState.value = MainState(
                 pelicula = _uiState.value.let { pelicula },
-                error = "name",
-            )
+                //error = stringProvider.getString(R.string.name),
+                error = "error"
+                )
             _uiState.value = _uiState
                 .value?.copy(error = Constantes.ERROR)
         }

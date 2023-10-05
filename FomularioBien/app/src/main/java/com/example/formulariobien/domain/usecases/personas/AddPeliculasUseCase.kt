@@ -8,6 +8,4 @@ class AddPeliculasUseCase {
     operator fun invoke(pelicula: Pelicula) =
         Repository.addPelicula(pelicula)
 
-
-
 }
