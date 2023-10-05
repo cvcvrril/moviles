@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private val viewModel: MainViewModel by viewModels{
-        MainViewModel.MainViewModelFactory(
+        MainViewModelFactory(
             StringProvider.instance(this),
             AddPeliculasUseCase()
         )
