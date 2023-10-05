@@ -21,7 +21,6 @@ class MainViewModel(
         if (!addPeliculasUseCase(pelicula)){
             _uiState.value = MainState(
                 pelicula = _uiState.value.let { pelicula },
-                //error = stringProvider.getString(R.string.name),
                 error = "error"
                 )
             _uiState.value = _uiState
