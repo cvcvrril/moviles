@@ -5,7 +5,7 @@ import com.example.formulariobien.domain.modelo.Pelicula
 
 class AddPeliculasUseCase {
 
-    operator fun invoke(pelicula: Pelicula) =
+    operator fun invoke(pelicula: Pelicula): Unit =
         Repository.addPelicula(pelicula)
 
 }

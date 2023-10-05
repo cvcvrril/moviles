@@ -2,6 +2,8 @@ package com.example.formulariobien.ui.pantallaMain
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import com.example.formulariobien.databinding.ActivityMainBinding
 import com.example.formulariobien.domain.usecases.personas.AddPeliculasUseCase
 import com.example.formulariobien.utils.StringProvider
 
@@ -9,8 +11,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private val viewModel: MainViewModerl by viewModels{
-        MainViewModelFactory(
+    private val viewModel: MainViewModel by viewModels{
+        MainViewModel.MainViewModelFactory(
             StringProvider.instance(this),
             AddPeliculasUseCase()
         )
@@ -26,7 +28,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observarViewModel(){
-        viewModel.uiState.observe(this@MainActivity)
+        viewModel.uiState.observe(this@MainActivity){ state ->
+            state.error?.let { error->
+                Toast.makeText(this@MainActivity, error, Toast.LENGTH_LONG).show()
+                viewModel.errorMostrado()
+            }
+            if (state.error == null)
+                binding.editTextTextPersonName.setText(state.pelicula.titulo)
+
+        }
     }
 
     private fun eventos(){
