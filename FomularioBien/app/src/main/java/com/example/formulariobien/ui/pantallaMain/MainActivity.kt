@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.example.formulariobien.data.Repository
 import com.example.formulariobien.databinding.ActivityMainBinding
 import com.example.formulariobien.domain.modelo.Pelicula
 import com.example.formulariobien.domain.usecases.personas.AddPeliculasUseCase
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun eventos(){
         with(binding){
-            button.setOnClickListener{
+            addButton.setOnClickListener{
                 viewModel.addPelicula(Pelicula(editMovieText.text.toString()))
             }
         }
