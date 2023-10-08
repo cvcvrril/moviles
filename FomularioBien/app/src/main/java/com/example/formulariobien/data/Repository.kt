@@ -21,7 +21,8 @@ object Repository {
     fun addPelicula(pelicula: Pelicula) =
        peliculas.add(pelicula)
 
-
-
+    fun getPelicula(): List<Pelicula>{
+        return peliculas
+    }
 
 }

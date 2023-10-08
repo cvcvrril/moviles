@@ -4,11 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
-import com.example.formulariobien.data.Repository
 import com.example.formulariobien.databinding.ActivityMainBinding
 import com.example.formulariobien.domain.modelo.Pelicula
-import com.example.formulariobien.domain.usecases.personas.AddPeliculasUseCase
-import com.example.formulariobien.utils.StringProvider
+import com.example.formulariobien.domain.usecases.peliculas.AddPeliculasUseCase
 
 class MainActivity : AppCompatActivity() {
 
