@@ -5,8 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.formulariobien.domain.modelo.Pelicula
-import com.example.formulariobien.domain.usecases.personas.AddPeliculasUseCase
-import com.example.formulariobien.utils.StringProvider
+import com.example.formulariobien.domain.usecases.peliculas.AddPeliculasUseCase
 import java.lang.IllegalArgumentException
 
 class MainViewModel(
