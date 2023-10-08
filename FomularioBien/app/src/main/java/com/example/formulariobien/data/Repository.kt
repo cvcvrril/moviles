@@ -12,7 +12,7 @@ object Repository {
         peliculas.add(Pelicula("Easy A"))
         peliculas.add(Pelicula("Nope"))
         peliculas.add(Pelicula("The Silence Of The Lambs"))
-        peliculas.add(Pelicula("The cook, el ladrón, his wife and her lover"))
+        peliculas.add(Pelicula("The cook, the thief, his wife and her lover"))
         peliculas.add(Pelicula("The Hunt"))
     }
 
