@@ -14,10 +14,12 @@ class MainViewModel(
     private val getPeliculaUseCase: GetPeliculaUseCase
 ) : ViewModel() {
 
+    val id:Int = 5
+
     private val _uiState = MutableLiveData<MainState>(MainState())
     val uiState: LiveData<MainState> get() = _uiState
     init {
-        getPelicula(0)
+        getPelicula(id)
     }
 
     /*Añadir película*/

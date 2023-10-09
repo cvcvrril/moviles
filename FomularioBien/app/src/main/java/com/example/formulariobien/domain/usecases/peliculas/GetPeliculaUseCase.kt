@@ -6,6 +6,6 @@ import com.example.formulariobien.domain.modelo.Pelicula
 class GetPeliculaUseCase {
     operator fun invoke( i: Int): Pelicula? {
         val peliculas = Repository.getPelicula()
-        return peliculas.firstOrNull()
+        return peliculas.get(i)
     }
 }
