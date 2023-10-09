@@ -16,6 +16,9 @@ class MainViewModel(
 
     private val _uiState = MutableLiveData<MainState>()
     val uiState: LiveData<MainState> get() = _uiState
+    init {
+        getPelicula(0)
+    }
 
     /*Añadir película*/
     fun addPelicula(pelicula: Pelicula) {

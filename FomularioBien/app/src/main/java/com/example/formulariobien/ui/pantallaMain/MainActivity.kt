@@ -26,10 +26,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater).apply {
             setContentView(root)
         }
-        Log.d("MainActivity", "ViewModel: $viewModel")
-        viewModel.getPelicula(0)
-        eventos()
+        //Log.d("MainActivity", "ViewModel: $viewModel")
         observarViewModel()
+        eventos()
     }
 
     private fun observarViewModel() {
@@ -39,7 +38,12 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, error, Toast.LENGTH_LONG).show()
                     viewModel.errorMostrado()
                 }
-                binding.editMovieText.setText(state.pelicula.titulo)
+                if (state.error== null) {
+                    with(binding) {
+                        var peli = viewModel.uiState.value?.pelicula
+                        editMovieText.setText(peli?.titulo)
+                    }
+                }
 
             }
         }
@@ -51,7 +55,5 @@ class MainActivity : AppCompatActivity() {
                 viewModel.addPelicula(Pelicula(editMovieText.text.toString()))
             }
         }
-
     }
-
 }
