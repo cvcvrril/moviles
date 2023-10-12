@@ -14,22 +14,9 @@
         android:text="@string/agregar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.849" />
-
-    <Button
-        android:id="@+id/updateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/editar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.104"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.848" />
+        app:layout_constraintVertical_bias="0.862" />
 
     <Button
         android:id="@+id/deleteButton"
@@ -38,29 +25,66 @@
         android:text="@string/eliminar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.909"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.849" />
+        app:layout_constraintVertical_bias="0.862" />
+
+    <Button
+        android:id="@+id/avanzarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.945" />
+
+    <Button
+        android:id="@+id/retrocederButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.228"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.945" />
+
+    <Button
+        android:id="@+id/updateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/editar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.86" />
 
     <EditText
         android:id="@+id/editDirectorText"
-        android:layout_width="277dp"
-        android:layout_height="54dp"
+        android:layout_width="172dp"
+        android:layout_height="48dp"
         android:ems="10"
         android:hint="Director"
         android:inputType="text"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.121" />
+        app:layout_constraintVertical_bias="0.127" />
 
     <EditText
         android:id="@+id/editMovieText"
-        android:layout_width="256dp"
-        android:layout_height="68dp"
+        android:layout_width="255dp"
+        android:layout_height="40dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/titulo"
@@ -68,25 +92,24 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029" />
+        app:layout_constraintVertical_bias="0.049" />
 
     <EditText
         android:id="@+id/editDateText"
-        android:layout_width="233dp"
-        android:layout_height="59dp"
+        android:layout_width="160dp"
+        android:layout_height="44dp"
         android:ems="10"
         android:hint="Fecha de estreno"
         android:inputType="date"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.884"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.196" />
+        app:layout_constraintVertical_bias="0.132" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -94,69 +117,165 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.737" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.745"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.932" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.932" />
+        app:layout_constraintVertical_bias="0.762" />
 
     <RadioGroup
-        android:layout_width="160dp"
-        android:layout_height="219dp"
+        android:id="@+id/radioGroup"
+        android:layout_width="161dp"
+        android:layout_height="233dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.528">
+        app:layout_constraintVertical_bias="0.522">
 
         <RadioButton
             android:id="@+id/radioButton5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:layout_width="160dp"
+            android:layout_height="36dp"
+            android:text="Para todos los públicos" />
 
         <RadioButton
             android:id="@+id/radioButton4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:layout_width="160dp"
+            android:layout_height="33dp"
+            android:text="No recomendado para -7" />
 
         <RadioButton
             android:id="@+id/radioButton3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:layout_width="160dp"
+            android:layout_height="36dp"
+            android:text="No recomendado para -12" />
 
         <RadioButton
             android:id="@+id/radioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:layout_width="158dp"
+            android:layout_height="37dp"
+            android:text="No recomendado para -16" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="160dp"
+            android:layout_height="38dp"
+            android:text="No recomendado para -18" />
     </RadioGroup>
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="153dp"
+        android:layout_height="132dp"
+        android:ems="10"
+        android:hint="Cast"
+        android:inputType="text"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.28" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Géneros"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.756"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.433" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clasificación"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.311" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="127dp"
+        android:layout_height="38dp"
+        android:text="Tragedia"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.548" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="127dp"
+        android:layout_height="42dp"
+        android:text="Comedia"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.49" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="127dp"
+        android:layout_height="38dp"
+        android:text="Romance"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.603" />
+
+    <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="125dp"
+        android:layout_height="37dp"
+        android:text="Terror"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.884"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.657" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="171dp"
+        android:layout_height="26dp"
+        android:max="10"
+        android:progress="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.255" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Presupuesto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.209" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
