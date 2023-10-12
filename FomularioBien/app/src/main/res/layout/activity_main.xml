@@ -164,21 +164,6 @@
             android:text="No recomendado para -18" />
     </RadioGroup>
 
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="153dp"
-        android:layout_height="132dp"
-        android:ems="10"
-        android:hint="Cast"
-        android:inputType="text"
-        android:textAlignment="textStart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.883"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.28" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -260,10 +245,10 @@
         android:progress="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.255" />
+        app:layout_constraintVertical_bias="0.258" />
 
     <TextView
         android:id="@+id/textView4"
@@ -276,6 +261,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.209" />
+
+    <EditText
+        android:id="@+id/editCastText"
+        android:layout_width="192dp"
+        android:layout_height="143dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.253" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

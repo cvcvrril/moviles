@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
                         editMovieText.setText(peli?.titulo)
                         editDirectorText.setText(peli?.director)
                         editDateText.setText(LocalDate.parse(peli?.fecha.toString()).toString())
+                        editCastText.setText(peli?.cast)
                     }
                 }
 
