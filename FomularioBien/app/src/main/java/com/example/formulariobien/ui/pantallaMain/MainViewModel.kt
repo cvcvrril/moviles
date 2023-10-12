@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.formulariobien.data.Repository
 import com.example.formulariobien.domain.modelo.Pelicula
 import com.example.formulariobien.domain.usecases.peliculas.AddPeliculasUseCase
 import com.example.formulariobien.domain.usecases.peliculas.GetPeliculaUseCase
@@ -14,12 +15,13 @@ class MainViewModel(
     private val getPeliculaUseCase: GetPeliculaUseCase
 ) : ViewModel() {
 
-    val id:Int = 5
+
+    private var indiceActual = 0;
 
     private val _uiState = MutableLiveData<MainState>(MainState())
     val uiState: LiveData<MainState> get() = _uiState
     init {
-        getPelicula(id)
+        getPelicula(indiceActual)
     }
 
     /*Añadir película*/
@@ -43,6 +45,24 @@ class MainViewModel(
     /*Mostrar error*/
     fun errorMostrado() {
         _uiState.value = _uiState.value?.copy(error = null)
+    }
+
+    fun avanzarPelicula(){
+        if (indiceActual < Repository.getPelicula().size - 1) {
+            indiceActual++
+            getPelicula(indiceActual)
+        } else {
+            _uiState.value = _uiState.value?.copy(error = "¡Has llegado al final de la lista!")
+        }
+    }
+
+    fun retrocederPelicula(){
+        if (indiceActual > 0) {
+            indiceActual--
+            getPelicula(indiceActual)
+        } else {
+            _uiState.value = _uiState.value?.copy(error = "¡Has llegado al principio de la lista!")
+        }
     }
 
 }

@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater).apply {
             setContentView(root)
         }
-        //Log.d("MainActivity", "ViewModel: $viewModel")
         observarViewModel()
         eventos()
     }
@@ -38,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, error, Toast.LENGTH_LONG).show()
                     viewModel.errorMostrado()
                 }
-                if (state.error== null) {
+                if (state.error == null) {
                     with(binding) {
                         val peli = viewModel.uiState.value?.pelicula
                         editMovieText.setText(peli?.titulo)
@@ -54,7 +53,20 @@ class MainActivity : AppCompatActivity() {
     private fun eventos() {
         with(binding) {
             addButton.setOnClickListener {
-                viewModel.addPelicula(Pelicula(editMovieText.text.toString(), editDirectorText.text.toString(), LocalDate.parse(editDateText.text.toString())))
+                viewModel.addPelicula(
+                    Pelicula(
+                        editMovieText.text.toString(),
+                        editDirectorText.text.toString(),
+                        LocalDate.parse(editDateText.text.toString())
+                    )
+                )
+            }
+            avanzarButton.setOnClickListener {
+                viewModel.avanzarPelicula()
+            }
+
+            retrocederButton.setOnClickListener {
+                viewModel.retrocederPelicula()
             }
         }
     }
