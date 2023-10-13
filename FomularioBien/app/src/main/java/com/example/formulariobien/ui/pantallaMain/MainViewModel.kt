@@ -70,14 +70,40 @@ class MainViewModel(
     }
 
     fun eliminarPelicula(){
+        val pelicula = getPeliculaUseCase(indiceActual)
+        if (pelicula != null) {
+            if (deletePeliculaUseCase(indiceActual)) {
+                _uiState.value = _uiState.value?.copy(error = null)
+                _uiState.value = _uiState.value?.copy(pelicula = pelicula)
+                // Actualizar el índice actual si la eliminación fue exitosa
+                if (indiceActual > 0) {
+                    indiceActual--
+                }
+            } else {
+                _uiState.value = _uiState.value?.copy(error = "Error al eliminar la película")
+            }
+        } else {
+            _uiState.value = _uiState.value?.copy(error = "No hay película para eliminar")
+        }
 
     }
 
-    fun actualizarPelicula(){
-
+    fun actualizarPelicula(nuevaPelicula: Pelicula){
+        val peliculaActual = getPeliculaUseCase(indiceActual)
+        if (peliculaActual != null) {
+            if (updatePeliculaUseCase(indiceActual, nuevaPelicula)) {
+                _uiState.value = _uiState.value?.copy(error = null)
+                _uiState.value = _uiState.value?.copy(pelicula = nuevaPelicula)
+            } else {
+                _uiState.value = _uiState.value?.copy(error = "Error al actualizar la película")
+            }
+        } else {
+            _uiState.value = _uiState.value?.copy(error = "No hay película para actualizar")
+        }
+    }
     }
 
-}
+
 
 class MainViewModelFactory(
     private val addPeliculasUseCase: AddPeliculasUseCase,

@@ -93,8 +93,19 @@ class MainActivity : AppCompatActivity() {
             }
 
             updateButton.setOnClickListener{
-                viewModel.actualizarPelicula()
+                val nuevaPelicula = Pelicula(
+                    editMovieText.text.toString(),
+                    editDirectorText.text.toString(),
+                    LocalDate.parse(editDateText.text.toString()),
+                    editCastText.text.toString(),
+                    recaudadoSeekBar.value
+                    
+
+                    // Agrega el resto de las propiedades aquí
+                )
+
+                viewModel.actualizarPelicula(nuevaPelicula)
+            }
             }
         }
     }
-}
