@@ -16,8 +16,9 @@ object Repository {
                 LocalDate.of(2006, 10, 20),
                 "Steve Carrell, Paul Dano, Greg Kinnear, Bryan Cranston, Toni Collette",
                 4.5f,
-                8,
-                true, false, false, false
+                101.00f,
+                true, false, false, true,
+                "No recomendado para -7"
             )
         )
         peliculas.add(
@@ -26,7 +27,10 @@ object Repository {
                 "Wong Kar-wai",
                 LocalDate.of(2001, 2, 10),
                 "Maggie Cheung, Tony Leung Chui-wai, Ping Lam Siu, Joe Cheung, Rebecca Pan",
-                5f
+                5f,
+                14.00f,
+                false, false, true, true,
+                "No recomendado para -7"
             )
         )
         peliculas.add(
@@ -35,7 +39,10 @@ object Repository {
                 "Will Gluck",
                 LocalDate.of(2010, 10, 29),
                 "Emma Stone, Pen Badgley, Amanda Bynes, Dan Byrd, Thomas Haden",
-                3.5f
+                3.5f,
+                75.00f,
+                true, false, false, false,
+                "No recomendado para -16"
             )
         )
         peliculas.add(
@@ -44,7 +51,10 @@ object Repository {
                 "Jordan Peele",
                 LocalDate.of(2022, 7, 22),
                 "Daniel Kaluuya, Keke Palmer, Brandon Perea, Michael Wincott, Steven Yeun",
-                4.6f
+                4.6f,
+                172.30f,
+                false, true, false, false,
+                "No recomendado para -12"
             )
         )
         peliculas.add(
@@ -53,7 +63,10 @@ object Repository {
                 "Jonathan Demme",
                 LocalDate.of(1991, 9, 6),
                 "Anthony Hopkins, Jodie Foster, Scott Glenn, Ted Levine, Anthony Heald",
-                5f
+                5f,
+                272.70f,
+                false, true, false, true,
+                "No recomendado para -18"
             )
         )
         peliculas.add(
@@ -62,7 +75,10 @@ object Repository {
                 "Peter Greenaway",
                 LocalDate.of(1989, 10, 13),
                 "Richard Bohringer, Michael Gambon, Helen Mirren, Alan Howard, Tim Roth",
-                2.2f
+                2.2f,
+                7.70f,
+                false, false, false, true,
+                "No recomendado para -18"
             )
         )
         peliculas.add(
@@ -70,8 +86,11 @@ object Repository {
                 "The Hunt",
                 "Thomas Vinterberg",
                 LocalDate.of(2012, 4, 19),
-                "[REDACTED], Thomas Bo Larsen, Annika Wedderkopp, Lasse Fogelstøm",
-                4.3f
+                "Mads Mikkelsen, Thomas Bo Larsen, Annika Wedderkopp, Lasse Fogelstøm",
+                4.3f,
+                18.30f,
+                false, false, false, true,
+                "No recomendado para -12"
             )
         )
     }
@@ -85,4 +104,32 @@ object Repository {
         return peliculas
     }
 
+    fun getPeliculaByIndex(index: Int): Pelicula? {
+        return if (index >= 0 && index < peliculas.size) {
+            peliculas[index]
+        } else {
+            null
+        }
+    }
+
+    fun updatePelicula(index: Int, updatedPelicula: Pelicula): Boolean {
+        val pelicula = getPeliculaByIndex(index)
+        return if (pelicula != null) {
+            peliculas[index] = updatedPelicula
+            true
+        } else {
+            false
+        }
+    }
+
+    fun deletePelicula(index: Int): Boolean {
+        val pelicula = getPeliculaByIndex(index)
+        return if (pelicula != null) {
+            peliculas.removeAt(index)
+            true
+        } else {
+            false
+        }
+
+    }
 }

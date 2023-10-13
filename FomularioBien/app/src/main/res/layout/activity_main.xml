@@ -134,31 +134,31 @@
         app:layout_constraintVertical_bias="0.522">
 
         <RadioButton
-            android:id="@+id/radioButton5"
+            android:id="@+id/radioTodos"
             android:layout_width="160dp"
             android:layout_height="36dp"
             android:text="Para todos los públicos" />
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/radioNo7"
             android:layout_width="160dp"
             android:layout_height="33dp"
             android:text="No recomendado para -7" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/radioNo12"
             android:layout_width="160dp"
             android:layout_height="36dp"
             android:text="No recomendado para -12" />
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/radioNo16"
             android:layout_width="158dp"
             android:layout_height="37dp"
             android:text="No recomendado para -16" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/radioNo18"
             android:layout_width="160dp"
             android:layout_height="38dp"
             android:text="No recomendado para -18" />
@@ -236,25 +236,25 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.657" />
 
-    <SeekBar
-        android:id="@+id/seekBar"
+    <com.google.android.material.slider.Slider
+        android:id="@+id/recaudadoSeekBar"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="171dp"
         android:layout_height="26dp"
-        android:max="10"
-        android:progress="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.258" />
+        app:layout_constraintVertical_bias="0.258"
+        android:valueFrom="0.0"
+        android:valueTo="300.0"  />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Presupuesto"
+        android:text="Recaudado"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.102"

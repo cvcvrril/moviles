@@ -7,12 +7,16 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.formulariobien.data.Repository
 import com.example.formulariobien.domain.modelo.Pelicula
 import com.example.formulariobien.domain.usecases.peliculas.AddPeliculasUseCase
+import com.example.formulariobien.domain.usecases.peliculas.DeletePeliculaUseCase
 import com.example.formulariobien.domain.usecases.peliculas.GetPeliculaUseCase
+import com.example.formulariobien.domain.usecases.peliculas.UpdatePeliculasUseCase
 import java.lang.IllegalArgumentException
 
 class MainViewModel(
     private val addPeliculasUseCase: AddPeliculasUseCase,
-    private val getPeliculaUseCase: GetPeliculaUseCase
+    private val getPeliculaUseCase: GetPeliculaUseCase,
+    private val deletePeliculaUseCase: DeletePeliculaUseCase,
+    private val updatePeliculaUseCase: UpdatePeliculasUseCase
 ) : ViewModel() {
 
 
@@ -65,18 +69,30 @@ class MainViewModel(
         }
     }
 
+    fun eliminarPelicula(){
+
+    }
+
+    fun actualizarPelicula(){
+
+    }
+
 }
 
 class MainViewModelFactory(
     private val addPeliculasUseCase: AddPeliculasUseCase,
-    private val getPeliculaUseCase: GetPeliculaUseCase
+    private val getPeliculaUseCase: GetPeliculaUseCase,
+    private val deletePeliculaUseCase: DeletePeliculaUseCase,
+    private val updatePeliculaUseCase: UpdatePeliculasUseCase
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
             return MainViewModel(
                 addPeliculasUseCase,
-                getPeliculaUseCase
+                getPeliculaUseCase,
+                deletePeliculaUseCase,
+                updatePeliculaUseCase
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
