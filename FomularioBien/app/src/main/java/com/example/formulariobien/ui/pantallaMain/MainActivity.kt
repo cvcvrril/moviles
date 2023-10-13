@@ -88,24 +88,33 @@ class MainActivity : AppCompatActivity() {
                 viewModel.retrocederPelicula()
             }
 
-            deleteButton.setOnClickListener{
+            deleteButton.setOnClickListener {
                 viewModel.eliminarPelicula()
             }
 
-            updateButton.setOnClickListener{
+            updateButton.setOnClickListener {
                 val nuevaPelicula = Pelicula(
                     editMovieText.text.toString(),
                     editDirectorText.text.toString(),
                     LocalDate.parse(editDateText.text.toString()),
                     editCastText.text.toString(),
-                    recaudadoSeekBar.value
-
-
-                    // Agrega el resto de las propiedades aquí
+                    recaudadoSeekBar.value,
+                    estrellasRatingBar.rating,
+                    checkBox.isChecked,
+                    checkBox4.isChecked,
+                    checkBox3.isChecked,
+                    checkBox2.isChecked,
+                    when {
+                        radioTodos.isChecked -> "Para todos los públicos"
+                        radioNo7.isChecked -> "No recomendado para -7"
+                        radioNo12.isChecked -> "No recomendado para -12"
+                        radioNo16.isChecked -> "No recomendado para -16"
+                        radioNo18.isChecked -> "No recomendado para -18"
+                        else -> ""
+                    }
                 )
-
                 viewModel.actualizarPelicula(nuevaPelicula)
-            }
             }
         }
     }
+}

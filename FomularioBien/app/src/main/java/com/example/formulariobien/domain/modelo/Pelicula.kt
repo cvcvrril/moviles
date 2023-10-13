@@ -5,7 +5,7 @@ import java.time.LocalDate
 data class Pelicula(
     val titulo: String? = "",
     val director: String? = "",
-    val fecha: LocalDate?,
+    val fecha: LocalDate? = null,
     val cast: String? = "",
     var estrellas: Float = 0.00f,
     val recaudado: Float = 0.00f,       //va en millones

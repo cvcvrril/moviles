@@ -73,9 +73,7 @@ class MainViewModel(
         val pelicula = getPeliculaUseCase(indiceActual)
         if (pelicula != null) {
             if (deletePeliculaUseCase(indiceActual)) {
-                _uiState.value = _uiState.value?.copy(error = null)
-                _uiState.value = _uiState.value?.copy(pelicula = pelicula)
-                // Actualizar el índice actual si la eliminación fue exitosa
+                _uiState.value = _uiState.value?.copy(error = null, pelicula = pelicula)
                 if (indiceActual > 0) {
                     indiceActual--
                 }
