@@ -112,7 +112,7 @@
         app:layout_constraintVertical_bias="0.132" />
 
     <RatingBar
-        android:id="@+id/ratingBar"
+        android:id="@+id/estrellasRatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -44,6 +44,12 @@ class MainActivity : AppCompatActivity() {
                         editDirectorText.setText(peli?.director)
                         editDateText.setText(LocalDate.parse(peli?.fecha.toString()).toString())
                         editCastText.setText(peli?.cast)
+                        estrellasRatingBar.rating = peli?.estrellas?.toFloat() ?: 0.0f
+                        checkBox.isChecked = peli?.generoComedia == true
+                        checkBox2.isChecked = peli?.generoTragedia == true
+                        checkBox3.isChecked = peli?.generoRomance == true
+                        checkBox4.isChecked = peli?.generoTerror == true
+                        
                     }
                 }
 
