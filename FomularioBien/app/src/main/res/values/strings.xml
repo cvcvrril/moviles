@@ -4,4 +4,21 @@
     <string name="eliminar">Eliminar</string>
     <string name="editar">Editar</string>
     <string name="titulo">Titulo</string>
+    <string name="romance">Romance</string>
+    <string name="terror">Terror</string>
+    <string name="avanzar">Avanzar</string>
+    <string name="retroceder">Retroceder</string>
+    <string name="director">Director</string>
+    <string name="fecha_de_estreno">Fecha de estreno</string>
+    <string name="cast">\n</string>
+    <string name="recaudado">Recaudado</string>
+    <string name="comedia">Comedia</string>
+    <string name="tragedia">Tragedia</string>
+    <string name="clasificaci_n">Clasificación</string>
+    <string name="g_neros">Géneros</string>
+    <string name="no_recomendado_para_16">No recomendado para -16</string>
+    <string name="no_recomendado_para_18">No recomendado para -18</string>
+    <string name="no_recomendado_para_12">No recomendado para -12</string>
+    <string name="no_recomendado_para_7">No recomendado para -7</string>
+    <string name="para_todos_los_p_blicos">Para todos los públicos</string>
 </resources>

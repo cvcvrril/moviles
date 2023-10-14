@@ -34,7 +34,7 @@
         android:id="@+id/avanzarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Avanzar"
+        android:text="@string/avanzar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.75"
@@ -46,7 +46,7 @@
         android:id="@+id/retrocederButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Retroceder"
+        android:text="@string/retroceder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.228"
@@ -71,7 +71,7 @@
         android:layout_width="172dp"
         android:layout_height="48dp"
         android:ems="10"
-        android:hint="Director"
+        android:hint="@string/director"
         android:inputType="text"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -79,7 +79,8 @@
         app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.127" />
+        app:layout_constraintVertical_bias="0.127"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editMovieText"
@@ -101,7 +102,7 @@
         android:layout_width="160dp"
         android:layout_height="44dp"
         android:ems="10"
-        android:hint="Fecha de estreno"
+        android:hint="@string/fecha_de_estreno"
         android:inputType="date"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -109,7 +110,8 @@
         app:layout_constraintHorizontal_bias="0.884"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.132" />
+        app:layout_constraintVertical_bias="0.132"
+        android:autofillHints="" />
 
     <RatingBar
         android:id="@+id/estrellasRatingBar"
@@ -137,38 +139,38 @@
             android:id="@+id/radioTodos"
             android:layout_width="160dp"
             android:layout_height="36dp"
-            android:text="Para todos los públicos" />
+            android:text="@string/para_todos_los_p_blicos" />
 
         <RadioButton
             android:id="@+id/radioNo7"
             android:layout_width="160dp"
             android:layout_height="33dp"
-            android:text="No recomendado para -7" />
+            android:text="@string/no_recomendado_para_7" />
 
         <RadioButton
             android:id="@+id/radioNo12"
             android:layout_width="160dp"
             android:layout_height="36dp"
-            android:text="No recomendado para -12" />
+            android:text="@string/no_recomendado_para_12" />
 
         <RadioButton
             android:id="@+id/radioNo16"
             android:layout_width="158dp"
             android:layout_height="37dp"
-            android:text="No recomendado para -16" />
+            android:text="@string/no_recomendado_para_16" />
 
         <RadioButton
             android:id="@+id/radioNo18"
             android:layout_width="160dp"
             android:layout_height="38dp"
-            android:text="No recomendado para -18" />
+            android:text="@string/no_recomendado_para_18" />
     </RadioGroup>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Géneros"
+        android:text="@string/g_neros"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.756"
@@ -180,7 +182,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Clasificación"
+        android:text="@string/clasificaci_n"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.102"
@@ -192,7 +194,7 @@
         android:id="@+id/checkBox2"
         android:layout_width="127dp"
         android:layout_height="38dp"
-        android:text="Tragedia"
+        android:text="@string/tragedia"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.894"
@@ -204,7 +206,7 @@
         android:id="@+id/checkBox"
         android:layout_width="127dp"
         android:layout_height="42dp"
-        android:text="Comedia"
+        android:text="@string/comedia"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.89"
@@ -216,7 +218,7 @@
         android:id="@+id/checkBox3"
         android:layout_width="127dp"
         android:layout_height="38dp"
-        android:text="Romance"
+        android:text="@string/romance"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.894"
@@ -228,7 +230,7 @@
         android:id="@+id/checkBox4"
         android:layout_width="125dp"
         android:layout_height="37dp"
-        android:text="Terror"
+        android:text="@string/terror"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.884"
@@ -241,20 +243,20 @@
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="171dp"
         android:layout_height="26dp"
+        android:valueFrom="0.0"
+        android:valueTo="300.0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.258"
-        android:valueFrom="0.0"
-        android:valueTo="300.0"  />
+        app:layout_constraintVertical_bias="0.253" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recaudado"
+        android:text="@string/recaudado"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.102"
@@ -268,13 +270,15 @@
         android:layout_height="143dp"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="@string/cast"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.253" />
+        app:layout_constraintVertical_bias="0.253"
+        android:autofillHints="" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
