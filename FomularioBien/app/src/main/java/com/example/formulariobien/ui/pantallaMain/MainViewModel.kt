@@ -12,6 +12,7 @@ import com.example.formulariobien.domain.usecases.peliculas.GetPeliculaUseCase
 import com.example.formulariobien.domain.usecases.peliculas.UpdatePeliculasUseCase
 import java.lang.IllegalArgumentException
 
+
 class MainViewModel(
     private val addPeliculasUseCase: AddPeliculasUseCase,
     private val getPeliculaUseCase: GetPeliculaUseCase,
@@ -24,6 +25,7 @@ class MainViewModel(
 
     private val _uiState = MutableLiveData<MainState>(MainState())
     val uiState: LiveData<MainState> get() = _uiState
+
     init {
         getPelicula(indiceActual)
     }
@@ -37,13 +39,13 @@ class MainViewModel(
     }
 
     /*Sacar película (id)*/
-    fun getPelicula(id:Int){
+    fun getPelicula(id: Int) {
         val pelicula = getPeliculaUseCase(id)
-        if (pelicula!=null){
+        if (pelicula != null) {
             _uiState.value = _uiState.value?.copy(pelicula = pelicula)
 
         } else
-            _uiState.value = _uiState.value?.copy(error = "No hay peliculas disponibles")
+            _uiState.value = _uiState.value?.copy(error = Constantes.NO_HAY_PELICULAS_DISPONIBLES)
     }
 
     /*Mostrar error*/
@@ -51,27 +53,27 @@ class MainViewModel(
         _uiState.value = _uiState.value?.copy(error = null)
     }
 
-    fun avanzarPelicula(){
+    fun avanzarPelicula() {
         if (indiceActual < Repository.getPelicula().size - 1) {
             indiceActual++
             getPelicula(indiceActual)
             _uiState.value = _uiState.value?.copy(error = null, indiceActual = indiceActual)
         } else {
-            _uiState.value = _uiState.value?.copy(error = "¡Has llegado al final de la lista!")
+            _uiState.value = _uiState.value?.copy(error = Constantes.FINAL_LISTA)
         }
     }
 
-    fun retrocederPelicula(){
+    fun retrocederPelicula() {
         if (indiceActual > 0) {
             indiceActual--
             getPelicula(indiceActual)
             _uiState.value = _uiState.value?.copy(error = null, indiceActual = indiceActual)
         } else {
-            _uiState.value = _uiState.value?.copy(error = "¡Has llegado al principio de la lista!")
+            _uiState.value = _uiState.value?.copy(error = Constantes.PRINCIPIO_LISTA)
         }
     }
 
-    fun eliminarPelicula(){
+    fun eliminarPelicula() {
         val pelicula = getPeliculaUseCase(indiceActual)
         if (pelicula != null) {
             if (deletePeliculaUseCase(indiceActual)) {
@@ -80,28 +82,29 @@ class MainViewModel(
                     indiceActual--
                 }
             } else {
-                _uiState.value = _uiState.value?.copy(error = "Error al eliminar la película")
+                _uiState.value = _uiState.value?.copy(error = Constantes.ERROR_ELIMINAR)
             }
         } else {
-            _uiState.value = _uiState.value?.copy(error = "No hay película para eliminar")
+            _uiState.value = _uiState.value?.copy(error = Constantes.NO_PELIS_ELIMINAR)
         }
 
     }
 
-    fun actualizarPelicula(nuevaPelicula: Pelicula){
+    fun actualizarPelicula(nuevaPelicula: Pelicula) {
         val peliculaActual = getPeliculaUseCase(indiceActual)
         if (peliculaActual != null) {
             if (updatePeliculaUseCase(indiceActual, nuevaPelicula)) {
                 _uiState.value = _uiState.value?.copy(error = null)
                 _uiState.value = _uiState.value?.copy(pelicula = nuevaPelicula)
             } else {
-                _uiState.value = _uiState.value?.copy(error = "Error al actualizar la película")
+                _uiState.value = _uiState.value?.copy(error = Constantes.ERROR_ACTUALIZAR)
             }
         } else {
-            _uiState.value = _uiState.value?.copy(error = "No hay película para actualizar")
+            _uiState.value = _uiState.value?.copy(error = Constantes.NO_PELIS_ACTUALIZAR)
         }
     }
-    }
+}
+
 
 
 
@@ -121,7 +124,7 @@ class MainViewModelFactory(
                 updatePeliculaUseCase
             ) as T
         }
-        throw IllegalArgumentException("Unknown ViewModel class")
+        throw IllegalArgumentException(Constantes.UNKNOWN)
     }
 
 }

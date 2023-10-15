@@ -13,6 +13,9 @@ import com.example.formulariobien.domain.usecases.peliculas.GetPeliculaUseCase
 import com.example.formulariobien.domain.usecases.peliculas.UpdatePeliculasUseCase
 import java.time.LocalDate
 
+
+
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -54,11 +57,11 @@ class MainActivity : AppCompatActivity() {
                         editCastText.setText(peli?.cast)
                         recaudadoSeekBar.value = peli?.recaudado?.toFloat() ?: 0.0f
                         when (peli?.clasificacionEdad) {
-                            "Para todos los públicos" -> radioTodos.isChecked = true
-                            "No recomendado para -7" -> radioNo7.isChecked = true
-                            "No recomendado para -12" -> radioNo12.isChecked = true
-                            "No recomendado para -16" -> radioNo16.isChecked = true
-                            "No recomendado para -18" -> radioNo18.isChecked = true
+                            Constantes.PARA_TODOS -> radioTodos.isChecked = true
+                            Constantes.NO_7 -> radioNo7.isChecked = true
+                            Constantes.NO_12 -> radioNo12.isChecked = true
+                            Constantes.NO_16 -> radioNo16.isChecked = true
+                            Constantes.NO_18 -> radioNo18.isChecked = true
 
                         }
                         checkBox.isChecked = peli?.generoComedia == true
@@ -120,17 +123,17 @@ class MainActivity : AppCompatActivity() {
                         checkBox3.isChecked,
                         checkBox2.isChecked,
                         when {
-                            radioTodos.isChecked -> "Para todos los públicos"
-                            radioNo7.isChecked -> "No recomendado para -7"
-                            radioNo12.isChecked -> "No recomendado para -12"
-                            radioNo16.isChecked -> "No recomendado para -16"
-                            radioNo18.isChecked -> "No recomendado para -18"
+                            radioTodos.isChecked -> Constantes.PARA_TODOS
+                            radioNo7.isChecked -> Constantes.NO_7
+                            radioNo12.isChecked -> Constantes.NO_12
+                            radioNo16.isChecked -> Constantes.NO_16
+                            radioNo18.isChecked -> Constantes.NO_18
                             else -> ""
                         }
                     )
                     viewModel.actualizarPelicula(nuevaPelicula)
                 } else {
-                    Toast.makeText(this@MainActivity, "Formato de fecha no permitido", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@MainActivity, Constantes.NO_FORMATO, Toast.LENGTH_LONG).show()
                 }
             }
         }

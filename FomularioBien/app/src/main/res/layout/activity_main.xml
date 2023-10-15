@@ -240,7 +240,6 @@
 
     <com.google.android.material.slider.Slider
         android:id="@+id/recaudadoSeekBar"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="171dp"
         android:layout_height="26dp"
         android:valueFrom="0.0"
