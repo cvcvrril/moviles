@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.example.formulariobien.data.Repository
 import com.example.formulariobien.databinding.ActivityMainBinding
 import com.example.formulariobien.domain.modelo.Pelicula
 import com.example.formulariobien.domain.usecases.peliculas.AddPeliculasUseCase
@@ -43,6 +44,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 if (state.error == null) {
                     with(binding) {
+                        retrocederButton.isEnabled = state.indiceActual > 0
+                        avanzarButton.isEnabled =
+                            state.indiceActual < Repository.getPelicula().size - 1
                         val peli = viewModel.uiState.value?.pelicula
                         editMovieText.setText(peli?.titulo)
                         editDirectorText.setText(peli?.director)
@@ -66,6 +70,15 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
+        }
+    }
+
+    private fun isValidDate(dateStr: String): Boolean {
+        return try {
+            LocalDate.parse(dateStr)
+            true
+        } catch (e: Exception) {
+            false
         }
     }
 
@@ -93,27 +106,32 @@ class MainActivity : AppCompatActivity() {
             }
 
             updateButton.setOnClickListener {
-                val nuevaPelicula = Pelicula(
-                    editMovieText.text.toString(),
-                    editDirectorText.text.toString(),
-                    LocalDate.parse(editDateText.text.toString()),
-                    editCastText.text.toString(),
-                    recaudadoSeekBar.value,
-                    estrellasRatingBar.rating,
-                    checkBox.isChecked,
-                    checkBox4.isChecked,
-                    checkBox3.isChecked,
-                    checkBox2.isChecked,
-                    when {
-                        radioTodos.isChecked -> "Para todos los públicos"
-                        radioNo7.isChecked -> "No recomendado para -7"
-                        radioNo12.isChecked -> "No recomendado para -12"
-                        radioNo16.isChecked -> "No recomendado para -16"
-                        radioNo18.isChecked -> "No recomendado para -18"
-                        else -> ""
-                    }
-                )
-                viewModel.actualizarPelicula(nuevaPelicula)
+                val nuevaFechaStr = editDateText.text.toString()
+                if (isValidDate(nuevaFechaStr)) {
+                    val nuevaPelicula = Pelicula(
+                        editMovieText.text.toString(),
+                        editDirectorText.text.toString(),
+                        LocalDate.parse(editDateText.text.toString()),
+                        editCastText.text.toString(),
+                        recaudadoSeekBar.value,
+                        estrellasRatingBar.rating,
+                        checkBox.isChecked,
+                        checkBox4.isChecked,
+                        checkBox3.isChecked,
+                        checkBox2.isChecked,
+                        when {
+                            radioTodos.isChecked -> "Para todos los públicos"
+                            radioNo7.isChecked -> "No recomendado para -7"
+                            radioNo12.isChecked -> "No recomendado para -12"
+                            radioNo16.isChecked -> "No recomendado para -16"
+                            radioNo18.isChecked -> "No recomendado para -18"
+                            else -> ""
+                        }
+                    )
+                    viewModel.actualizarPelicula(nuevaPelicula)
+                } else {
+                    Toast.makeText(this@MainActivity, "Formato de fecha no permitido", Toast.LENGTH_LONG).show()
+                }
             }
         }
     }

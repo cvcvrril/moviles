@@ -55,6 +55,7 @@ class MainViewModel(
         if (indiceActual < Repository.getPelicula().size - 1) {
             indiceActual++
             getPelicula(indiceActual)
+            _uiState.value = _uiState.value?.copy(error = null, indiceActual = indiceActual)
         } else {
             _uiState.value = _uiState.value?.copy(error = "¡Has llegado al final de la lista!")
         }
@@ -64,6 +65,7 @@ class MainViewModel(
         if (indiceActual > 0) {
             indiceActual--
             getPelicula(indiceActual)
+            _uiState.value = _uiState.value?.copy(error = null, indiceActual = indiceActual)
         } else {
             _uiState.value = _uiState.value?.copy(error = "¡Has llegado al principio de la lista!")
         }
