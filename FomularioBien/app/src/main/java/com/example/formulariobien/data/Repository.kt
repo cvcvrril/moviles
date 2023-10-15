@@ -1,7 +1,7 @@
 package com.example.formulariobien.data
 
 import com.example.formulariobien.domain.modelo.Pelicula
-import java.sql.Date
+import com.example.formulariobien.ui.pantallaMain.Constantes
 import java.time.LocalDate
 
 object Repository {
@@ -18,7 +18,7 @@ object Repository {
                 4.5f,
                 101.00f,
                 true, false, false, true,
-                "No recomendado para -7"
+                Constantes.NO_7
             )
         )
         peliculas.add(
@@ -30,7 +30,7 @@ object Repository {
                 5f,
                 14.00f,
                 false, false, true, true,
-                "No recomendado para -7"
+                Constantes.NO_7
             )
         )
         peliculas.add(
@@ -42,7 +42,7 @@ object Repository {
                 3.5f,
                 75.00f,
                 true, false, false, false,
-                "No recomendado para -16"
+                Constantes.NO_16
             )
         )
         peliculas.add(
@@ -54,7 +54,7 @@ object Repository {
                 4.6f,
                 172.30f,
                 false, true, false, false,
-                "No recomendado para -12"
+                Constantes.NO_12
             )
         )
         peliculas.add(
@@ -66,7 +66,7 @@ object Repository {
                 5f,
                 272.70f,
                 false, true, false, true,
-                "No recomendado para -18"
+                Constantes.NO_18
             )
         )
         peliculas.add(
@@ -78,7 +78,7 @@ object Repository {
                 2.2f,
                 7.70f,
                 false, false, false, true,
-                "No recomendado para -18"
+                Constantes.NO_18
             )
         )
         peliculas.add(
@@ -90,7 +90,7 @@ object Repository {
                 4.3f,
                 18.30f,
                 false, false, false, true,
-                "No recomendado para -12"
+                Constantes.NO_12
             )
         )
     }

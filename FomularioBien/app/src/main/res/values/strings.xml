@@ -10,7 +10,7 @@
     <string name="retroceder">Retroceder</string>
     <string name="director">Director</string>
     <string name="fecha_de_estreno">Fecha de estreno</string>
-    <string name="cast">\n</string>
+    <string name="cast">Cast</string>
     <string name="recaudado">Recaudado</string>
     <string name="comedia">Comedia</string>
     <string name="tragedia">Tragedia</string>
