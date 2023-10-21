@@ -15,7 +15,6 @@ object Repository {
                 "Jonathan Dayton & Valerie Faris",
                 LocalDate.of(2006, 10, 20),
                 4.5f,
-                true, false, false, true,
                 Constantes.NO_7
             )
         )
@@ -25,7 +24,6 @@ object Repository {
                 "Wong Kar-wai",
                 LocalDate.of(2001, 2, 10),
                 5f,
-                false, false, true, true,
                 Constantes.NO_7
             )
         )
@@ -35,7 +33,6 @@ object Repository {
                 "Will Gluck",
                 LocalDate.of(2010, 10, 29),
                 3.5f,
-                true, false, false, false,
                 Constantes.NO_16
             )
         )
@@ -45,7 +42,6 @@ object Repository {
                 "Jordan Peele",
                 LocalDate.of(2022, 7, 22),
                 4.6f,
-                false, true, false, false,
                 Constantes.NO_12
             )
         )
@@ -55,7 +51,6 @@ object Repository {
                 "Jonathan Demme",
                 LocalDate.of(1991, 9, 6),
                 5f,
-                false, true, false, true,
                 Constantes.NO_18
             )
         )
@@ -65,7 +60,6 @@ object Repository {
                 "Peter Greenaway",
                 LocalDate.of(1989, 10, 13),
                 2.2f,
-                false, false, false, true,
                 Constantes.NO_18
             )
         )
@@ -75,10 +69,13 @@ object Repository {
                 "Thomas Vinterberg",
                 LocalDate.of(2012, 4, 19),
                 4.3f,
-                false, false, false, true,
                 Constantes.NO_12
             )
         )
+    }
+
+    fun getLista() : List<Pelicula>{
+        return peliculas.map { it.toPelicula() }
     }
 
     private val mapPeliculas = mutableMapOf<String,Pelicula>()
