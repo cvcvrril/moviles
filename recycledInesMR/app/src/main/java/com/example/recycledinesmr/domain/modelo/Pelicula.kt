@@ -4,10 +4,10 @@ import com.example.recycledinesmr.ui.Constantes
 import java.time.LocalDate
 
 data class Pelicula(
-    val titulo: String? = Constantes.VACIO,
-    val director: String? = Constantes.VACIO,
+    val titulo: String = Constantes.VACIO,
+    val director: String = Constantes.VACIO,
     val fecha: LocalDate? = null,
-    val cast: String? = Constantes.VACIO,
+    val cast: String = Constantes.VACIO,
     var estrellas: Float = 0.00f,
     val recaudado: Float = 0.00f,       //va en millones
     val generoComedia: Boolean = false,
