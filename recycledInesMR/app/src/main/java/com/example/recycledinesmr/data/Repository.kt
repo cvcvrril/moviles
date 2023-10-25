@@ -2,9 +2,18 @@ package com.example.recycledinesmr.data
 
 import com.example.recycledinesmr.domain.modelo.Pelicula
 import com.example.recycledinesmr.ui.Constantes
+import com.squareup.moshi.FromJson
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.ToJson
+import com.squareup.moshi.Types
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import java.io.InputStream
+import java.lang.reflect.Type
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
-object Repository {
+class Repository(file: InputStream? = null) {
 
     private val peliculas = mutableListOf<Pelicula>()
 
@@ -72,11 +81,46 @@ object Repository {
                 Constantes.NO_12
             )
         )
+
+        if (peliculas.size == 0) {
+            val moshi = Moshi.Builder()
+                .add(LocalDateAdapter())
+                .addLast(KotlinJsonAdapterFactory())
+                .build()
+            val listOfCardsType: Type = Types.newParameterizedType(
+                MutableList::class.java,
+                Pelicula::class.java
+            )
+            val ejemplo = file?.bufferedReader()?.readText()?.let { contenidoFichero ->
+                moshi.adapter<List<Pelicula>>(listOfCardsType)
+                    .fromJson(contenidoFichero)
+            }
+            ejemplo?.let { peliculas.addAll(it) }
+        }
+
+
     }
 
-    fun getLista() : List<Pelicula>{
+    class LocalDateAdapter {
+        @ToJson
+        fun toJson(value: LocalDateTime): String {
+            return FORMATTER.format(value)
+        }
+
+        @FromJson
+        fun fromJson(value: String): LocalDateTime {
+            return LocalDateTime.from(FORMATTER.parse(value))
+        }
+
+        companion object {
+            private val FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss-SSSS")
+        }
+    }
+
+
+    fun getLista(): List<Pelicula> {
         return peliculas.map { it.toPelicula() }
     }
 
-    private val mapPeliculas = mutableMapOf<String,Pelicula>()
+    private val mapPeliculas = mutableMapOf<String, Pelicula>()
 }
