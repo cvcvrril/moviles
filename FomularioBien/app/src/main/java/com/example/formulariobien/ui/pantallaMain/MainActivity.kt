@@ -14,8 +14,6 @@ import com.example.formulariobien.domain.usecases.peliculas.UpdatePeliculasUseCa
 import java.time.LocalDate
 
 
-
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -55,33 +53,23 @@ class MainActivity : AppCompatActivity() {
                         editDirectorText.setText(peli?.director)
                         editDateText.setText(LocalDate.parse(peli?.fecha.toString()).toString())
                         editCastText.setText(peli?.cast)
-                        recaudadoSeekBar.value = peli?.recaudado?.toFloat() ?: 0.0f
+                        recaudadoSeekBar.value = peli?.recaudado?: 0.0f
                         when (peli?.clasificacionEdad) {
                             Constantes.PARA_TODOS -> radioTodos.isChecked = true
                             Constantes.NO_7 -> radioNo7.isChecked = true
                             Constantes.NO_12 -> radioNo12.isChecked = true
                             Constantes.NO_16 -> radioNo16.isChecked = true
                             Constantes.NO_18 -> radioNo18.isChecked = true
-
                         }
                         checkBox.isChecked = peli?.generoComedia == true
                         checkBox2.isChecked = peli?.generoTragedia == true
                         checkBox3.isChecked = peli?.generoRomance == true
                         checkBox4.isChecked = peli?.generoTerror == true
-                        estrellasRatingBar.rating = peli?.estrellas?.toFloat() ?: 0.0f
+                        estrellasRatingBar.rating = peli?.estrellas?: 0.0f
                     }
                 }
 
             }
-        }
-    }
-
-    private fun isValidDate(dateStr: String): Boolean {
-        return try {
-            LocalDate.parse(dateStr)
-            true
-        } catch (e: Exception) {
-            false
         }
     }
 
@@ -109,32 +97,27 @@ class MainActivity : AppCompatActivity() {
             }
 
             updateButton.setOnClickListener {
-                val nuevaFechaStr = editDateText.text.toString()
-                if (isValidDate(nuevaFechaStr)) {
-                    val nuevaPelicula = Pelicula(
-                        editMovieText.text.toString(),
-                        editDirectorText.text.toString(),
-                        LocalDate.parse(editDateText.text.toString()),
-                        editCastText.text.toString(),
-                        recaudadoSeekBar.value,
-                        estrellasRatingBar.rating,
-                        checkBox.isChecked,
-                        checkBox4.isChecked,
-                        checkBox3.isChecked,
-                        checkBox2.isChecked,
-                        when {
-                            radioTodos.isChecked -> Constantes.PARA_TODOS
-                            radioNo7.isChecked -> Constantes.NO_7
-                            radioNo12.isChecked -> Constantes.NO_12
-                            radioNo16.isChecked -> Constantes.NO_16
-                            radioNo18.isChecked -> Constantes.NO_18
-                            else -> ""
-                        }
-                    )
-                    viewModel.actualizarPelicula(nuevaPelicula)
-                } else {
-                    Toast.makeText(this@MainActivity, Constantes.NO_FORMATO, Toast.LENGTH_LONG).show()
-                }
+                val nuevaPelicula = Pelicula(
+                    editMovieText.text.toString(),
+                    editDirectorText.text.toString(),
+                    LocalDate.parse(editDateText.text.toString()),
+                    editCastText.text.toString(),
+                    recaudadoSeekBar.value,
+                    estrellasRatingBar.rating,
+                    checkBox.isChecked,
+                    checkBox4.isChecked,
+                    checkBox3.isChecked,
+                    checkBox2.isChecked,
+                    when {
+                        radioTodos.isChecked -> Constantes.PARA_TODOS
+                        radioNo7.isChecked -> Constantes.NO_7
+                        radioNo12.isChecked -> Constantes.NO_12
+                        radioNo16.isChecked -> Constantes.NO_16
+                        radioNo18.isChecked -> Constantes.NO_18
+                        else -> ""
+                    }
+                )
+                viewModel.actualizarPelicula(nuevaPelicula)
             }
         }
     }
