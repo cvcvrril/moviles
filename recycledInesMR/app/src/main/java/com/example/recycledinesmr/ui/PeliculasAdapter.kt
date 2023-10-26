@@ -37,7 +37,11 @@ class PeliculasViewHolder(private val view: View) : RecyclerView.ViewHolder(view
             tvDirector.setText(pelicula.director)
         }
 
-        view.findViewById<TextView>(R.id.button2).setOnClickListener{
+//        view.findViewById<TextView>(R.id.button2).setOnClickListener{
+//            onClickBotton(pelicula.titulo)
+//        }
+
+        view.findViewById<TextView>(R.id.tvTitulo).setOnClickListener {
             onClickBotton(pelicula.titulo)
         }
 
