@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter
 
 class Repository(file: InputStream? = null) {
 
-    private val peliculas = mutableListOf<Pelicula>()
+
 
     private val peliculasJson = mutableListOf<PeliculaJson>()
 
@@ -136,5 +136,46 @@ class Repository(file: InputStream? = null) {
         return peliculas.map { it.toPelicula() }
     }
 
+    companion object {
+
+        private val peliculas = mutableListOf<Pelicula>()
+
+        fun addPelicula(pelicula: Pelicula) =
+            peliculas.add(pelicula)
+
+        fun getPelicula(): List<Pelicula> {
+            return peliculas
+        }
+
+        fun getPeliculaByIndex(index: Int): Pelicula? {
+            return if (index >= 0 && index < peliculas.size) {
+                peliculas[index]
+            } else {
+                null
+            }
+        }
+
+        fun updatePelicula(index: Int, updatedPelicula: Pelicula): Boolean {
+            val pelicula = getPeliculaByIndex(index)
+            return if (pelicula != null) {
+                peliculas[index] = updatedPelicula
+                true
+            } else {
+                false
+            }
+        }
+
+        fun deletePelicula(index: Int): Boolean {
+            val pelicula = getPeliculaByIndex(index)
+            return if (pelicula != null) {
+                peliculas.removeAt(index)
+                true
+            } else {
+                false
+            }
+
+        }
+
+    }
     private val mapPeliculas = mutableMapOf<String, Pelicula>()
 }
