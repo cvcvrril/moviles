@@ -33,6 +33,5 @@ class RecyclerActivity : AppCompatActivity() {
             rvPeliculas.adapter =adapter
             rvPeliculas.layoutManager = GridLayoutManager(this@RecyclerActivity, 1)
         }
-
     }
 }
