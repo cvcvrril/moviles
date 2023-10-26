@@ -31,7 +31,7 @@ class RecyclerActivity : AppCompatActivity() {
 
         listaPeliculas.let {
             rvPeliculas.adapter =adapter
-            rvPeliculas.layoutManager = GridLayoutManager(this@RecyclerActivity, 2)
+            rvPeliculas.layoutManager = GridLayoutManager(this@RecyclerActivity, 1)
         }
 
     }
