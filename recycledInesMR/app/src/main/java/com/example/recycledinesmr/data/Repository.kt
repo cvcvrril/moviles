@@ -120,7 +120,7 @@ class Repository(file: InputStream? = null) {
         }
 
         companion object {
-            private val FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss-SSSS")
+            private val FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         }
     }
 
