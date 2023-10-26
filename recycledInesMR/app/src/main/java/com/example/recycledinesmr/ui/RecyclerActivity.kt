@@ -1,9 +1,8 @@
 package com.example.recycledinesmr.ui
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.example.recycledinesmr.R
@@ -23,11 +22,17 @@ class RecyclerActivity : AppCompatActivity() {
         intent.extras?.let {  }
 
         val listaPeliculas = Repository(assets.open("data.json")).getLista()
-        Toast.makeText(this, "el título es ${listaPeliculas[0].titulo}", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this, "el título es ${listaPeliculas[0].titulo}", Toast.LENGTH_SHORT).show()
 
         val rvPeliculas = this.findViewById<RecyclerView>(R.id.rvPeliculas)
 
-        Snackbar.make(rvPeliculas, "${listaPeliculas[0].titulo}", Snackbar)
+        Snackbar.make(rvPeliculas, "El título es ${listaPeliculas[0].titulo}", Snackbar.LENGTH_SHORT).show()
+        var adapter = PeliculasAdapter(listaPeliculas, ::click)
+
+        listaPeliculas.let {
+            rvPeliculas.adapter =adapter
+            rvPeliculas.layoutManager = GridLayoutManager(this@RecyclerActivity, 2)
+        }
 
     }
 }

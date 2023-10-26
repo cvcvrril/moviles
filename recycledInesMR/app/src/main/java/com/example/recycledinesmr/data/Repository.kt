@@ -1,5 +1,6 @@
 package com.example.recycledinesmr.data
 
+import com.example.recycledinesmr.data.modelo.PeliculaJson
 import com.example.recycledinesmr.domain.modelo.Pelicula
 import com.example.recycledinesmr.ui.Constantes
 import com.squareup.moshi.FromJson
@@ -16,6 +17,10 @@ import java.time.format.DateTimeFormatter
 class Repository(file: InputStream? = null) {
 
     private val peliculas = mutableListOf<Pelicula>()
+
+    private val peliculasJson = mutableListOf<PeliculaJson>()
+
+
 
     init {
         peliculas.add(
@@ -82,24 +87,26 @@ class Repository(file: InputStream? = null) {
             )
         )
 
-        if (peliculas.size == 0) {
+        if (peliculasJson.size == 0) {
             val moshi = Moshi.Builder()
                 .add(LocalDateAdapter())
                 .addLast(KotlinJsonAdapterFactory())
                 .build()
             val listOfCardsType: Type = Types.newParameterizedType(
                 MutableList::class.java,
-                Pelicula::class.java
+                PeliculaJson::class.java
             )
             val ejemplo = file?.bufferedReader()?.readText()?.let { contenidoFichero ->
-                moshi.adapter<List<Pelicula>>(listOfCardsType)
+                moshi.adapter<List<PeliculaJson>>(listOfCardsType)
                     .fromJson(contenidoFichero)
             }
-            ejemplo?.let { peliculas.addAll(it) }
+            ejemplo?.let { peliculasJson.addAll(it) }
         }
 
 
     }
+
+
 
     class LocalDateAdapter {
         @ToJson
