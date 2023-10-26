@@ -103,13 +103,13 @@ class Repository(file: InputStream? = null) {
 
     class LocalDateAdapter {
         @ToJson
-        fun toJson(value: LocalDateTime): String {
+        fun toJson(value: LocalDate): String {
             return FORMATTER.format(value)
         }
 
         @FromJson
-        fun fromJson(value: String): LocalDateTime {
-            return LocalDateTime.from(FORMATTER.parse(value))
+        fun fromJson(value: String): LocalDate {
+            return LocalDate.from(FORMATTER.parse(value))
         }
 
         companion object {
