@@ -21,7 +21,6 @@ class Repository(file: InputStream? = null) {
     private val peliculasJson = mutableListOf<PeliculaJson>()
 
 
-
     init {
         peliculas.add(
             Pelicula(
@@ -87,6 +86,16 @@ class Repository(file: InputStream? = null) {
             )
         )
 
+        peliculas.add(
+            Pelicula(
+                "",
+                "",
+                LocalDate.of(2000, 1,1),
+                0.1f,
+
+        )
+        )
+
         if (peliculasJson.size == 0) {
             val moshi = Moshi.Builder()
                 .add(LocalDateAdapter())
@@ -105,8 +114,6 @@ class Repository(file: InputStream? = null) {
 
 
     }
-
-
 
     class LocalDateAdapter {
         @ToJson
