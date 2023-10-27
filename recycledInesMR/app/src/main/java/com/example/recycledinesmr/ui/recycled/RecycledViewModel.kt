@@ -5,14 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.recycledinesmr.domain.usecases.GetListaUseCase
 import com.example.recycledinesmr.ui.Constantes
-import com.example.recycledinesmr.ui.main.MainState
+import com.example.recycledinesmr.ui.detail.DetailState
 import java.lang.IllegalArgumentException
 
 class RecycledViewModel (
     private val getListaUseCase: GetListaUseCase
 ) : ViewModel(){
 
-    private val _uiState = MutableLiveData(MainState())
+    private val _uiState = MutableLiveData(DetailState())
 
 }
 

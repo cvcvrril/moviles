@@ -1,10 +1,9 @@
-package com.example.recycledinesmr.ui.main
+package com.example.recycledinesmr.ui.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.recycledinesmr.data.Repository
 import com.example.recycledinesmr.domain.modelo.Pelicula
 import com.example.recycledinesmr.domain.usecases.AddPeliculasUseCase
 import com.example.recycledinesmr.domain.usecases.GetPeliculaUseCase
@@ -23,8 +22,8 @@ class MainViewModel(
 
     private var indiceActual = 0;
 
-    private val _uiState = MutableLiveData<MainState>(MainState())
-    val uiState: LiveData<MainState> get() = _uiState
+    private val _uiState = MutableLiveData<DetailState>(DetailState())
+    val uiState: LiveData<DetailState> get() = _uiState
 
     init {
         getPelicula(indiceActual)

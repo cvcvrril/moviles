@@ -1,4 +1,4 @@
-package com.example.recycledinesmr.ui.main
+package com.example.recycledinesmr.ui.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,7 +15,7 @@ import com.example.recycledinesmr.domain.usecases.UpdatePeliculasUseCase
 import com.example.recycledinesmr.ui.Constantes
 import java.time.LocalDate
 
-class MainActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -39,10 +39,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observarViewModel() {
-        viewModel.uiState.observe(this@MainActivity) { state ->
+        viewModel.uiState.observe(this@DetailActivity) { state ->
             state?.let {
                 state.error?.let { error ->
-                    Toast.makeText(this@MainActivity, error, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@DetailActivity, error, Toast.LENGTH_LONG).show()
                     viewModel.errorMostrado()
                 }
                 if (state.error == null) {
