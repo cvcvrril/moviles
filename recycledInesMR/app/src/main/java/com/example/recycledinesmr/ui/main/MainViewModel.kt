@@ -100,5 +100,4 @@ class MainViewModelFactory(
         }
         throw IllegalArgumentException(Constantes.UNKNOWN)
     }
-
 }

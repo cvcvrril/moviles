@@ -8,13 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.example.recycledinesmr.R
 import com.example.recycledinesmr.data.Repository
+import com.example.recycledinesmr.domain.usecases.GetListaUseCase
 import com.example.recycledinesmr.ui.PeliculasAdapter
 
 class RecyclerActivity : AppCompatActivity() {
 
-//    private val viewModel: RecycledViewModel by viewModels {
-//
-//    }
+    private val viewModel: RecycledViewModel by viewModels {
+        RecycledViewModelFactory(
+            getListaUseCase = GetListaUseCase()
+        )
+    }
 
     private fun click (titulo:String){
         Snackbar.make(findViewById<RecyclerView>(R.id.rvPeliculas)

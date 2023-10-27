@@ -37,8 +37,6 @@ class Repository(file: InputStream? = null) {
             }
             ejemplo?.let { peliculasJson ->  peliculas.addAll(peliculasJson.map { it.toPelicula() }.toList()) }
         }
-
-
     }
 
     class LocalDateAdapter {

@@ -1,6 +1,10 @@
 package com.example.recycledinesmr.domain.usecases
 
+import com.example.recycledinesmr.data.Repository
+
 class GetListaUseCase {
 
-    //Esto tira de la lista JSON (List<PeliculaJson>)
+    operator fun invoke(){
+        val listaPeliculas = Repository.getPelicula()
+    }
 }

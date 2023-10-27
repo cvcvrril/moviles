@@ -6,6 +6,6 @@ import com.example.recycledinesmr.domain.modelo.Pelicula
 class GetPeliculaUseCase {
     operator fun invoke( i: Int): Pelicula {
         val peliculas = Repository.getPelicula()
-        return peliculas.get(i)
+        return peliculas[i]
     }
 }
