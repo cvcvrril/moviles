@@ -1,4 +1,4 @@
-package com.example.recycledinesmr.ui
+package com.example.recycledinesmr.ui.recycled
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.example.recycledinesmr.R
 import com.example.recycledinesmr.data.Repository
+import com.example.recycledinesmr.ui.PeliculasAdapter
 
 class RecyclerActivity : AppCompatActivity() {
 
@@ -25,6 +26,8 @@ class RecyclerActivity : AppCompatActivity() {
 //        Toast.makeText(this, "el título es ${listaPeliculas[0].titulo}", Toast.LENGTH_SHORT).show()
 
         val rvPeliculas = this.findViewById<RecyclerView>(R.id.rvPeliculas)
+
+
 
 //        Snackbar.make(rvPeliculas, "El título es ${listaPeliculas[0].titulo}", Snackbar.LENGTH_SHORT).show()
         var adapter = PeliculasAdapter(listaPeliculas, ::click)

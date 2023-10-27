@@ -1,4 +1,4 @@
-package com.example.formulariobien.domain.usecases.peliculas
+package com.example.recycledinesmr.domain.usecases
 
 import com.example.recycledinesmr.data.Repository
 
@@ -7,3 +7,4 @@ class DeletePeliculaUseCase {
         Repository.deletePelicula(index)
 
 }
+

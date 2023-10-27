@@ -15,12 +15,11 @@
         android:layout_marginTop="10dp"
         android:maxLines="2"
         android:textAlignment="viewStart"
-        android:textColor="@color/black"
         android:textSize="20sp"
         app:flow_wrapMode="chain"
         app:layout_constraintBottom_toTopOf="@id/tvDirector"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/buttonNext"
+        app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.625"

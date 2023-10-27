@@ -13,7 +13,7 @@
         android:theme="@style/Theme.RecycledInesMR"
         tools:targetApi="31">
         <activity
-            android:name=".ui.RecyclerActivity"
+            android:name=".ui.recycled.RecyclerActivity"
             android:exported="true"
             android:screenOrientation="portrait">       <!--Ni caso al SonarLint-->
             <intent-filter>
@@ -22,8 +22,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivity"
-            android:parentActivityName=".ui.RecyclerActivity"
+            android:name=".ui.main.MainActivity"
+            android:parentActivityName=".ui.recycled.RecyclerActivity"
             android:screenOrientation="portrait"/>      <!--Ni caso al SonarLint-->
     </application>
 
