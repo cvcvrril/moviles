@@ -15,7 +15,7 @@ class RecyclerActivity : AppCompatActivity() {
 
     private val viewModel: RecycledViewModel by viewModels {
         RecycledViewModelFactory(
-            getListaUseCase = GetListaUseCase()
+            GetListaUseCase()
         )
     }
 
