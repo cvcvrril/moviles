@@ -37,7 +37,7 @@ class RecyclerActivity : AppCompatActivity() {
 
         }
 
-        val listaPeliculas = Repository(assets.open("data.json")).getLista()
+        val listaPeliculas = Repository(assets.open("data.json")).getLista()        //TODO: cambiar esto
 //        Toast.makeText(this, "el título es ${listaPeliculas[0].titulo}", Toast.LENGTH_SHORT).show()
 
         val rvPeliculas = this.findViewById<RecyclerView>(R.id.rvPeliculas)
