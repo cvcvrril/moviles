@@ -7,6 +7,7 @@ import com.example.recycledinesmr.R
 import androidx.activity.viewModels
 import com.example.recycledinesmr.data.Repository
 import com.example.recycledinesmr.databinding.ActivityMainBinding
+import com.example.recycledinesmr.domain.modelo.Pelicula
 import com.example.recycledinesmr.domain.usecases.AddPeliculasUseCase
 import com.example.recycledinesmr.domain.usecases.DeletePeliculaUseCase
 import com.example.recycledinesmr.domain.usecases.GetPeliculaUseCase
@@ -25,7 +26,6 @@ class MainActivity : AppCompatActivity() {
             DeletePeliculaUseCase(),
             UpdatePeliculasUseCase(),
         )
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         eventos()
 
     }
-    
+
     private fun observarViewModel() {
         viewModel.uiState.observe(this@MainActivity) { state ->
             state?.let {
@@ -47,8 +47,6 @@ class MainActivity : AppCompatActivity() {
                 }
                 if (state.error == null) {
                     with(binding) {
-                        retrocederButton.isEnabled = state.indiceActual > 0
-                        avanzarButton.isEnabled =
                             state.indiceActual < Repository.getPelicula().size - 1
                         val peli = viewModel.uiState.value?.pelicula
                         editMovieText.setText(peli?.titulo)
@@ -70,7 +68,39 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun eventos() {
-        TODO("Not yet implemented")
+        with(binding) {
+            addButton.setOnClickListener {
+                viewModel.addPelicula(
+                    Pelicula(
+                        editMovieText.text.toString(),
+                        editDirectorText.text.toString(),
+                        LocalDate.parse(editDateText.text.toString())
+                    )
+                )
+            }
+
+            deleteButton.setOnClickListener {
+                viewModel.eliminarPelicula()
+            }
+
+            updateButton.setOnClickListener {
+                val nuevaPelicula = Pelicula(
+                    editMovieText.text.toString(),
+                    editDirectorText.text.toString(),
+                    LocalDate.parse(editDateText.text.toString()),
+                    estrellasRatingBar.rating,
+                    when {
+                        radioTodos.isChecked -> Constantes.PARA_TODOS
+                        radioNo7.isChecked -> Constantes.NO_7
+                        radioNo12.isChecked -> Constantes.NO_12
+                        radioNo16.isChecked -> Constantes.NO_16
+                        radioNo18.isChecked -> Constantes.NO_18
+                        else -> ""
+                    }
+                )
+                viewModel.actualizarPelicula(nuevaPelicula)
+            }
+        }
     }
 
 

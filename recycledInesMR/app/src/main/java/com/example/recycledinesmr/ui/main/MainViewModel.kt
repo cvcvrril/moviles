@@ -51,26 +51,6 @@ class MainViewModel(
         _uiState.value = _uiState.value?.copy(error = null)
     }
 
-    fun avanzarPelicula() {
-        if (indiceActual < Repository.getPelicula().size - 1) {
-            indiceActual++
-            getPelicula(indiceActual)
-            _uiState.value = _uiState.value?.copy(error = null, indiceActual = indiceActual)
-        } else {
-            _uiState.value = _uiState.value?.copy(error = Constantes.FINAL_LISTA)
-        }
-    }
-
-    fun retrocederPelicula() {
-        if (indiceActual > 0) {
-            indiceActual--
-            getPelicula(indiceActual)
-            _uiState.value = _uiState.value?.copy(error = null, indiceActual = indiceActual)
-        } else {
-            _uiState.value = _uiState.value?.copy(error = Constantes.PRINCIPIO_LISTA)
-        }
-    }
-
     fun eliminarPelicula() {
         val pelicula = getPeliculaUseCase(indiceActual)
         if (pelicula != null) {
@@ -102,9 +82,6 @@ class MainViewModel(
         }
     }
 }
-
-
-
 
 class MainViewModelFactory(
     private val addPeliculasUseCase: AddPeliculasUseCase,
