@@ -21,7 +21,6 @@ class MainViewModel(
     private val updatePeliculaUseCase: UpdatePeliculasUseCase
 ) : ViewModel() {
 
-
     private var indiceActual = 0;
 
     private val _uiState = MutableLiveData<MainState>(MainState())

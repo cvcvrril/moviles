@@ -1,6 +1,7 @@
 package com.example.recycledinesmr.ui.recycled
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +11,10 @@ import com.example.recycledinesmr.data.Repository
 import com.example.recycledinesmr.ui.PeliculasAdapter
 
 class RecyclerActivity : AppCompatActivity() {
+
+//    private val viewModel: RecycledViewModel by viewModels {
+//
+//    }
 
     private fun click (titulo:String){
         Snackbar.make(findViewById<RecyclerView>(R.id.rvPeliculas)
