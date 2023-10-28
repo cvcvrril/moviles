@@ -52,6 +52,10 @@ class Repository(file: InputStream? = null) {
         }
     }
 
+    fun getLista(): List<Pelicula> {
+        return peliculas
+    }
+
     companion object {
 
         private val peliculas = mutableListOf<Pelicula>()

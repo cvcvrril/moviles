@@ -8,14 +8,14 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="161dp"
-        android:layout_height="233dp"
+        android:layout_width="163dp"
+        android:layout_height="199dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.888"
+        app:layout_constraintHorizontal_bias="0.818"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.443">
+        app:layout_constraintVertical_bias="0.453">
 
         <RadioButton
             android:id="@+id/radioTodos"
@@ -53,12 +53,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/clasificaci_n"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.839"
+        app:layout_constraintHorizontal_bias="0.634"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.255" />
+        app:layout_constraintVertical_bias="0.968" />
 
     <TextView
         android:id="@+id/textView3"
@@ -69,9 +69,10 @@
         android:text="@string/poster"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.189"
+        app:layout_constraintHorizontal_bias="0.162"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/addButton"
@@ -110,8 +111,8 @@
 
     <EditText
         android:id="@+id/editDateText"
-        android:layout_width="160dp"
-        android:layout_height="44dp"
+        android:layout_width="130dp"
+        android:layout_height="45dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/fecha_de_estreno"
@@ -119,14 +120,14 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.856"
+        app:layout_constraintHorizontal_bias="0.811"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.158" />
+        app:layout_constraintVertical_bias="0.163" />
 
     <EditText
         android:id="@+id/editDirectorText"
-        android:layout_width="172dp"
+        android:layout_width="143dp"
         android:layout_height="48dp"
         android:autofillHints=""
         android:ems="10"
@@ -219,7 +220,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="380dp" />
+        app:layout_constraintGuide_begin="383dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline11"
@@ -230,11 +231,15 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="155dp"
-        android:layout_height="225dp"
-        android:src="@drawable/little_miss_sunshine_784110764_large"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="221dp" />
+        android:layout_width="135dp"
+        android:layout_height="199dp"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.452" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

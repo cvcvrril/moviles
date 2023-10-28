@@ -35,12 +35,16 @@ class DetailActivity : AppCompatActivity() {
         binding =ActivityDetailBinding.inflate(layoutInflater).apply {
             setContentView(R.layout.activity_detail)
         }
-        observarViewModel()
-        eventos()
-
+        intent.extras?.let {
+            val pelicula = it.getParcelable<Pelicula>(getString(R.string.titulo))
+            if (pelicula != null) {
+                observarViewModel(pelicula)
+            }
+            eventos()
+        }
     }
 
-    private fun observarViewModel() {
+    private fun observarViewModel(pelicula:Pelicula?) {
         viewModel.uiState.observe(this@DetailActivity) { state ->
             state?.let {
                 state.error?.let { error ->
@@ -51,17 +55,17 @@ class DetailActivity : AppCompatActivity() {
                     with(binding) {
                             state.indiceActual < Repository.getPelicula().size - 1
                         val peli = viewModel.uiState.value?.pelicula
-                        editMovieText.setText(peli?.titulo)
-                        editDirectorText.setText(peli?.director)
-                        editDateText.setText(LocalDate.parse(peli?.fecha.toString()).toString())
-                        when (peli?.clasificacionEdad) {
+                        editMovieText.setText(pelicula?.titulo)
+                        editDirectorText.setText(pelicula?.director)
+                        editDateText.setText(LocalDate.parse(pelicula?.fecha.toString()).toString())
+                        when (pelicula?.clasificacionEdad) {
                             Constantes.PARA_TODOS -> radioTodos.isChecked = true
                             Constantes.NO_7 -> radioNo7.isChecked = true
                             Constantes.NO_12 -> radioNo12.isChecked = true
                             Constantes.NO_16 -> radioNo16.isChecked = true
                             Constantes.NO_18 -> radioNo18.isChecked = true
                         }
-                        estrellasRatingBar.rating = peli?.estrellas?: 0.0f
+                        estrellasRatingBar.rating = pelicula?.estrellas?: 0.0f
                     }
                 }
 
