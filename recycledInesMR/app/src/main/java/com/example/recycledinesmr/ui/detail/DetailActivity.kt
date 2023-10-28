@@ -2,6 +2,7 @@ package com.example.recycledinesmr.ui.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.recycledinesmr.R
@@ -32,11 +33,12 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding =ActivityDetailBinding.inflate(layoutInflater).apply {
-            setContentView(R.layout.activity_detail)
-        }
+        binding = ActivityDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         intent.extras?.let {
-            val pelicula = it.getParcelable<Pelicula>(getString(R.string.titulo))
+            Log.d("LOG_BUNDLE_Detail ", "El valor del savedEtcEtc $savedInstanceState")
+            val pelicula = it.getParcelable<Pelicula>("pelicula")
+            Log.d("LOG_BUNDLE_Detail ", "El valor de la peli $pelicula")
             if (pelicula != null) {
                 observarViewModel(pelicula)
             }

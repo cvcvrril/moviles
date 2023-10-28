@@ -26,19 +26,16 @@ class RecyclerActivity : AppCompatActivity() {
     }
 
     private fun click(titulo: String) {
-        Snackbar.make(
-            findViewById<RecyclerView>(R.id.rvPeliculas), " $titulo", Snackbar.LENGTH_SHORT
-        ).show()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recycled)
+
 
         intent.extras?.let { }
 
-        binding = ActivityRecycledBinding.inflate(layoutInflater).apply {
-
+        binding = ActivityRecycledBinding.inflate(layoutInflater).apply{
+            setContentView(R.layout.activity_recycled)
         }
 
 //        val listaPeliculas = viewModel.getListaPeliculas()
@@ -50,12 +47,11 @@ class RecyclerActivity : AppCompatActivity() {
 
         val adapter = PeliculasAdapter(listaPeliculas){
             titulo -> click(titulo)
-            val pelicula = listaPeliculas.find { it.titulo == titulo }
+             val pelicula = listaPeliculas.find { it.titulo == titulo }
             val intent = Intent(this@RecyclerActivity, DetailActivity::class.java)
-            val bundle = Bundle()
-            bundle.putParcelable("pelicula", pelicula)
-            intent.putExtras(bundle)
+            intent.putExtra("pelicula", pelicula)
             startActivity(intent)
+            Log.d("LOG_BUNDLE", "El valor del intent: ${intent} ")
         }
 
         listaPeliculas.let {
