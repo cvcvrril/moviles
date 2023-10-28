@@ -2,11 +2,12 @@ package com.example.recycledinesmr.ui.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
 import com.example.recycledinesmr.R
 import androidx.activity.viewModels
 import com.example.recycledinesmr.data.Repository
-import com.example.recycledinesmr.databinding.ActivityMainBinding
+import com.example.recycledinesmr.databinding.ActivityDetailBinding
 import com.example.recycledinesmr.domain.modelo.Pelicula
 import com.example.recycledinesmr.domain.usecases.AddPeliculasUseCase
 import com.example.recycledinesmr.domain.usecases.DeletePeliculaUseCase
@@ -17,7 +18,8 @@ import java.time.LocalDate
 
 class DetailActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityDetailBinding
+    private lateinit var imageView: ImageView
 
     private val viewModel: MainViewModel by viewModels{
         MainViewModelFactory(
@@ -30,8 +32,8 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding =ActivityMainBinding.inflate(layoutInflater).apply {
-            setContentView(R.layout.activity_main)
+        binding =ActivityDetailBinding.inflate(layoutInflater).apply {
+            setContentView(R.layout.activity_detail)
         }
         observarViewModel()
         eventos()
@@ -102,6 +104,4 @@ class DetailActivity : AppCompatActivity() {
             }
         }
     }
-
-
 }

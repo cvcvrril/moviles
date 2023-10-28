@@ -19,5 +19,47 @@
     "fecha": "2006-10-20",
     "estrellas": "4.5f",
     "clasificacionEdad": "No recomendado para -7"
+  },
+  {
+    "titulo": "Jojo Rabbit",
+    "director": "Taika Waititi",
+    "fecha": "2019-10-10",
+    "estrellas": "5.0f",
+    "clasificacionEdad": "No recomendado para -12"
+  },
+  {
+    "titulo": "León: The Professional",
+    "director": "Luc Besson",
+    "fecha": "1994-10-14",
+    "estrellas": "5.0f",
+    "clasificacionEdad": "No recomendado para -16"
+  },
+  {
+    "titulo": "The Green Mile",
+    "director": "Frank Darabont",
+    "fecha": "1999-10-18",
+    "estrellas": "4.5f",
+    "clasificacionEdad": "No recomendado para -16"
+  },
+  {
+    "titulo": "Padre no hay más que uno",
+    "director": "Santiago Segura",
+    "fecha": "2019-10-26",
+    "estrellas": "0.5f",
+    "clasificacionEdad": "No recomendado para -18"
+  },
+  {
+    "titulo": "Casino Royale",
+    "director": "Martin Campbell",
+    "fecha": "2006-11-16",
+    "estrellas": "0.5f",
+    "clasificacionEdad": "No recomendado para -16"
+  },
+  {
+    "titulo": "Tron Legacy",
+    "director": "Joseph Kosinski",
+    "fecha": "2010-11-17",
+    "estrellas": "3.5f",
+    "clasificacionEdad": "Para todos los públicos"
   }
 ]

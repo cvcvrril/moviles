@@ -1,8 +1,8 @@
 package com.example.recycledinesmr.data
 
+import android.util.Log
 import com.example.recycledinesmr.data.modelo.PeliculaJson
 import com.example.recycledinesmr.domain.modelo.Pelicula
-import com.example.recycledinesmr.ui.Constantes
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
@@ -15,11 +15,6 @@ import java.time.format.DateTimeFormatter
 
 class Repository(file: InputStream? = null) {
 
-
-
-
-
-
     init {
         if (peliculas.isEmpty()) {
             val moshi = Moshi.Builder()
@@ -30,10 +25,12 @@ class Repository(file: InputStream? = null) {
                 MutableList::class.java,
                 PeliculaJson::class.java
             )
-            val ejemplo = file?.bufferedReader()?.readText()?.let { contenidoFichero ->
+            val json = file?.bufferedReader()?.use { it.readText() }
+            val ejemplo = json?.let { contenidoFichero ->
                 moshi.adapter<List<PeliculaJson>>(listOfCardsType)
                     .fromJson(contenidoFichero)
             }
+            Log.d("Repository", "Contenido del archivo JSON: $ejemplo")
             ejemplo?.let { peliculasJson ->  peliculas.addAll(peliculasJson.map { it.toPelicula() }.toList()) }
         }
     }
@@ -55,11 +52,13 @@ class Repository(file: InputStream? = null) {
     }
 
 
-    fun getLista(): List<Pelicula> {
-        return peliculas
-    }
 
     companion object {
+
+        fun getLista(): List<Pelicula> {
+            return peliculas
+        }
+
 
         private val peliculas = mutableListOf<Pelicula>()
 

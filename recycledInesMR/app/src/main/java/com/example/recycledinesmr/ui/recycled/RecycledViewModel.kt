@@ -1,8 +1,10 @@
 package com.example.recycledinesmr.ui.recycled
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.recycledinesmr.domain.modelo.Pelicula
 import com.example.recycledinesmr.domain.usecases.GetListaUseCase
 import com.example.recycledinesmr.ui.Constantes
 import com.example.recycledinesmr.ui.detail.DetailState
@@ -14,6 +16,14 @@ class RecycledViewModel (
 
     private val _uiState = MutableLiveData(DetailState())
 
+    init {
+        val listaPeliculas = getListaPeliculas()
+        Log.d("RecycledViewModel", "Cantidad de películas: ${listaPeliculas.size}")
+    }
+
+    fun getListaPeliculas(): List<Pelicula> {
+        return getListaUseCase()
+    }
 }
 
 class RecycledViewModelFactory(

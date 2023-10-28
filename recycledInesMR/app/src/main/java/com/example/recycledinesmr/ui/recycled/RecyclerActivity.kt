@@ -1,6 +1,7 @@
 package com.example.recycledinesmr.ui.recycled
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -22,31 +23,33 @@ class RecyclerActivity : AppCompatActivity() {
         )
     }
 
-    private fun click (titulo:String){
-        Snackbar.make(findViewById<RecyclerView>(R.id.rvPeliculas)
-            , " $titulo", Snackbar.LENGTH_SHORT).show()
+    private fun click(titulo: String) {
+        Snackbar.make(
+            findViewById<RecyclerView>(R.id.rvPeliculas), " $titulo", Snackbar.LENGTH_SHORT
+        ).show()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycled)
 
-        intent.extras?.let {  }
+        intent.extras?.let { }
 
         binding = ActivityRecycledBinding.inflate(layoutInflater).apply {
 
         }
 
-        val listaPeliculas = Repository(assets.open("data.json")).getLista()        //TODO: cambiar esto
+        val listaPeliculas = viewModel.getListaPeliculas()
+//        val listaPeliculas = Repository(assets.open("data.json")).getLista()
+        Log.d("RecyclerActivity", "Cantidad de películas: ${listaPeliculas.size}")
 //        Toast.makeText(this, "el título es ${listaPeliculas[0].titulo}", Toast.LENGTH_SHORT).show()
 
         val rvPeliculas = this.findViewById<RecyclerView>(R.id.rvPeliculas)
 
-
-        var adapter = PeliculasAdapter(listaPeliculas, ::click)
+        val adapter = PeliculasAdapter(listaPeliculas, ::click)
 
         listaPeliculas.let {
-            rvPeliculas.adapter =adapter
+            rvPeliculas.adapter = adapter
             rvPeliculas.layoutManager = GridLayoutManager(this@RecyclerActivity, 1)
         }
     }
