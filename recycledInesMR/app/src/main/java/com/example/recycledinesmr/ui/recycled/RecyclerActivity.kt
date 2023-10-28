@@ -43,8 +43,6 @@ class RecyclerActivity : AppCompatActivity() {
         val rvPeliculas = this.findViewById<RecyclerView>(R.id.rvPeliculas)
 
 
-
-//        Snackbar.make(rvPeliculas, "El título es ${listaPeliculas[0].titulo}", Snackbar.LENGTH_SHORT).show()
         var adapter = PeliculasAdapter(listaPeliculas, ::click)
 
         listaPeliculas.let {
