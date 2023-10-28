@@ -6,6 +6,6 @@ import com.example.recycledinesmr.domain.modelo.Pelicula
 class GetListaUseCase {
 
     operator fun invoke(): List<Pelicula>{
-        return Repository.getLista()
+        return Repository.getPelicula()
     }
 }

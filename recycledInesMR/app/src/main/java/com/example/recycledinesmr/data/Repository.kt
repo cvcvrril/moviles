@@ -25,6 +25,7 @@ class Repository(file: InputStream? = null) {
                 MutableList::class.java,
                 PeliculaJson::class.java
             )
+
             val json = file?.bufferedReader()?.use { it.readText() }
             val ejemplo = json?.let { contenidoFichero ->
                 moshi.adapter<List<PeliculaJson>>(listOfCardsType)
@@ -51,14 +52,7 @@ class Repository(file: InputStream? = null) {
         }
     }
 
-
-
     companion object {
-
-        fun getLista(): List<Pelicula> {
-            return peliculas
-        }
-
 
         private val peliculas = mutableListOf<Pelicula>()
 
