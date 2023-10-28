@@ -11,7 +11,8 @@ data class Pelicula(
     val director: String = Constantes.VACIO,
     val fecha: LocalDate? = null,
     var estrellas: Float = 0.00f,
-    val clasificacionEdad: String = Constantes.VACIO
+    val clasificacionEdad: String = Constantes.VACIO,
+    val imagen: String = Constantes.VACIO
 
     //Para todos los públicos
     //No recomendado para -7

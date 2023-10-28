@@ -20,7 +20,7 @@ import java.time.LocalDate
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
-    private lateinit var imageView: ImageView
+    private lateinit var imageViewPoster: ImageView
 
     private val viewModel: MainViewModel by viewModels{
         MainViewModelFactory(
@@ -56,7 +56,6 @@ class DetailActivity : AppCompatActivity() {
                 if (state.error == null) {
                     with(binding) {
                             state.indiceActual < Repository.getPelicula().size - 1
-                        val peli = viewModel.uiState.value?.pelicula
                         editMovieText.setText(pelicula?.titulo)
                         editDirectorText.setText(pelicula?.director)
                         editDateText.setText(LocalDate.parse(pelicula?.fecha.toString()).toString())

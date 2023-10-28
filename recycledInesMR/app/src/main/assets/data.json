@@ -4,62 +4,71 @@
     "director": "Jonathan Dayton & Valerie Faris",
     "fecha": "2006-10-20",
     "estrellas": "4.5f",
-    "clasificacionEdad": "No recomendado para -7"
+    "clasificacionEdad": "No recomendado para -7",
+    "imagen": "file:///android_asset/Pequeana_Miss_Sunshine-784110764-large.jpg"
   },
   {
     "titulo": "In The Mood For Love",
     "director": "Wong Kar-wai",
     "fecha": "2006-10-20",
     "estrellas": "4.5f",
-    "clasificacionEdad": "No recomendado para -7"
+    "clasificacionEdad": "No recomendado para -7",
+    "imagen": "file:///android_asset/in_the_mood_for_love.jpg"
   },
   {
     "titulo": "Easy A",
     "director": "Jonathan Dayton & Valerie Faris",
     "fecha": "2006-10-20",
     "estrellas": "4.5f",
-    "clasificacionEdad": "No recomendado para -7"
+    "clasificacionEdad": "No recomendado para -7",
+    "imagen": "file:///android_asset/easy_a.jpg"
   },
   {
     "titulo": "Jojo Rabbit",
     "director": "Taika Waititi",
     "fecha": "2019-10-10",
     "estrellas": "5.0f",
-    "clasificacionEdad": "No recomendado para -12"
+    "clasificacionEdad": "No recomendado para -12",
+    "imagen": "file:///android_asset/Jojo_Rabbit.jpg"
   },
   {
     "titulo": "León: The Professional",
     "director": "Luc Besson",
     "fecha": "1994-10-14",
     "estrellas": "5.0f",
-    "clasificacionEdad": "No recomendado para -16"
+    "clasificacionEdad": "No recomendado para -16",
+    "imagen": "file:///android_asset/leon_the_proffesional.jpg"
   },
   {
     "titulo": "The Green Mile",
     "director": "Frank Darabont",
     "fecha": "1999-10-18",
     "estrellas": "4.5f",
-    "clasificacionEdad": "No recomendado para -16"
+    "clasificacionEdad": "No recomendado para -16",
+    "imagen": "file:///android_asset/the_green_mile.jpg"
   },
   {
     "titulo": "Padre no hay más que uno",
     "director": "Santiago Segura",
     "fecha": "2019-10-26",
     "estrellas": "0.5f",
-    "clasificacionEdad": "No recomendado para -18"
+    "clasificacionEdad": "No recomendado para -18",
+    "imagen": "file:///android_asset/Padre_no_hay_maas_que_uno-.jpg"
   },
   {
     "titulo": "Casino Royale",
     "director": "Martin Campbell",
     "fecha": "2006-11-16",
     "estrellas": "4.7f",
-    "clasificacionEdad": "No recomendado para -16"
+    "clasificacionEdad": "No recomendado para -16",
+    "imagen": "file:///android_asset/Casino_Royale.jpg"
   },
   {
     "titulo": "Tron Legacy",
     "director": "Joseph Kosinski",
     "fecha": "2010-11-17",
     "estrellas": "3.5f",
-    "clasificacionEdad": "Para todos los públicos"
+    "clasificacionEdad": "Para todos los públicos",
+    "imagen": "file:///android_asset/TRON_Legacy.jpg"
   }
 ]
