@@ -85,6 +85,14 @@
     "fecha": "2012-04-19",
     "estrellas": "4.7f",
     "clasificacionEdad": "No recomendado para -12",
-    "imagen": "file:///android_asset/Cars_2.jpg"
+    "imagen": "file:///android_asset/the_hunt.jpg"
+  },
+  {
+    "titulo": "The Silence Of The Lambs",
+    "director": "Jonathan Demme",
+    "fecha": "1991-09-06",
+    "estrellas": "5.0f",
+    "clasificacionEdad": "No recomendado para -18",
+    "imagen": "file:///android_asset/the_silence_of_the_lambs.jpg"
   }
 ]
