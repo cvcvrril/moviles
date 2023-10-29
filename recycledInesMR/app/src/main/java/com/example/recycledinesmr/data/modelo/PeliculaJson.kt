@@ -11,9 +11,9 @@ import java.time.LocalDate
 @Parcelize
 data class PeliculaJson (
     @Json(name = "titulo")
-    val titulo: String="",
+    val titulo: String = Constantes.VACIO,
     @Json(name = "director")
-    val director: String="",
+    val director: String = Constantes.VACIO,
     @Json(name = "fecha")
     val fecha: LocalDate? = null,
     @Json(name = "estrellas" )
@@ -21,5 +21,5 @@ data class PeliculaJson (
     @Json(name = "clasificacionEdad")
     val clasificacionEdad: String = Constantes.VACIO,
     @Json(name="imagen")
-    val imagen: String = ""
+    val imagen: String = Constantes.VACIO
 ) : Parcelable

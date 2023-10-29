@@ -69,8 +69,6 @@ class DetailActivity : AppCompatActivity() {
                             Constantes.NO_18 -> radioNo18.isChecked = true
                         }
                         estrellasRatingBar.rating = pelicula?.estrellas?: 0.0f
-                        val imageLoader = ImageLoader(this@DetailActivity)
-                        val request = ImageRequest.Builder(this@DetailActivity)
                         imageView.load(pelicula?.imagen)
                     }
                 }

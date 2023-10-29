@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recycledinesmr.R
-import com.example.recycledinesmr.data.Repository
 import com.example.recycledinesmr.databinding.ActivityRecycledBinding
 import com.example.recycledinesmr.domain.usecases.GetListaUseCase
 import com.example.recycledinesmr.ui.PeliculasAdapter
