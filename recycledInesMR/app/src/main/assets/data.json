@@ -110,5 +110,13 @@
     "estrellas": "3.5f",
     "clasificacionEdad": "No recomendado para -12",
     "imagen": "file:///android_asset/scott_pilgrim_vs_the_world.jpg"
+  },
+  {
+    "titulo": "Logan",
+    "director": "James Mangold",
+    "fecha": "2017-03-03",
+    "estrellas": "4.1f",
+    "clasificacionEdad": "No recomendado para -16",
+    "imagen": "file:///android_asset/logan.jpg"
   }
 ]
