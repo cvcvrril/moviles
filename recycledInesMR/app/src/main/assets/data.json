@@ -18,7 +18,7 @@
   {
     "titulo": "Easy A",
     "director": "Jonathan Dayton & Valerie Faris",
-    "fecha": "2006-10-20",
+    "fecha": "2010-10-29",
     "estrellas": "4.5f",
     "clasificacionEdad": "No recomendado para -7",
     "imagen": "file:///android_asset/easy_a.jpg"
@@ -70,5 +70,21 @@
     "estrellas": "3.5f",
     "clasificacionEdad": "Para todos los públicos",
     "imagen": "file:///android_asset/TRON_Legacy.jpg"
+  },
+  {
+    "titulo": "Cars 2",
+    "director": "John Lasseter",
+    "fecha": "2011-07-06",
+    "estrellas": "4.0f",
+    "clasificacionEdad": "Para todos los públicos",
+    "imagen": "file:///android_asset/Cars_2.jpg"
+  },
+  {
+    "titulo": "The Hunt",
+    "director": "Thomas Vinterberg",
+    "fecha": "2012-04-19",
+    "estrellas": "4.7f",
+    "clasificacionEdad": "No recomendado para -12",
+    "imagen": "file:///android_asset/Cars_2.jpg"
   }
 ]

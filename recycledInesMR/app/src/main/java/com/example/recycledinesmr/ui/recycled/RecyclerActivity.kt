@@ -7,7 +7,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.example.recycledinesmr.R
 import com.example.recycledinesmr.data.Repository
 import com.example.recycledinesmr.databinding.ActivityRecycledBinding
@@ -21,7 +20,7 @@ class RecyclerActivity : AppCompatActivity() {
 
     private val viewModel: RecycledViewModel by viewModels {
         RecycledViewModelFactory(
-            GetListaUseCase()
+            GetListaUseCase(assets.open("data.json"))
         )
     }
 
@@ -38,10 +37,8 @@ class RecyclerActivity : AppCompatActivity() {
             setContentView(R.layout.activity_recycled)
         }
 
-//        val listaPeliculas = viewModel.getListaPeliculas()
-        val listaPeliculas = Repository(assets.open("data.json")).getLista()
+        val listaPeliculas = viewModel.getListaPeliculas()
         Log.d("RecyclerActivity", "Cantidad de películas: ${listaPeliculas.size}")
-//        Toast.makeText(this, "el título es ${listaPeliculas[0].titulo}", Toast.LENGTH_SHORT).show()
 
         val rvPeliculas = this.findViewById<RecyclerView>(R.id.rvPeliculas)
 
