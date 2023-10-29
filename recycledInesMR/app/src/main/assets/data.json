@@ -5,7 +5,7 @@
     "fecha": "2006-10-20",
     "estrellas": "4.5f",
     "clasificacionEdad": "No recomendado para -7",
-    "imagen": "file:///android_asset/Pequeana_Miss_Sunshine-784110764-large.jpg"
+    "imagen": "file:///android_asset/little_miss_sunshine.jpg"
   },
   {
     "titulo": "In The Mood For Love",
@@ -94,5 +94,13 @@
     "estrellas": "5.0f",
     "clasificacionEdad": "No recomendado para -18",
     "imagen": "file:///android_asset/the_silence_of_the_lambs.jpg"
+  },
+  {
+    "titulo": "Rogue One",
+    "director": "Gareth Edwards",
+    "fecha": "2012-04-19",
+    "estrellas": "4.7f",
+    "clasificacionEdad": "No recomendado para -12",
+    "imagen": "file:///android_asset/rogue_one.jpg"
   }
 ]

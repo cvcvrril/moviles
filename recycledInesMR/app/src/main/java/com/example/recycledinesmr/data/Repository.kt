@@ -56,6 +56,16 @@ class Repository(file: InputStream? = null) {
         return peliculas
     }
 
+    fun updatePelicula(index: Int, updatedPelicula: Pelicula): Boolean {
+        val pelicula = getPeliculaByIndex(index)
+        return if (pelicula != null) {
+            peliculas[index] = updatedPelicula
+            true
+        } else {
+            false
+        }
+    }
+
     companion object {
 
         private val peliculas = mutableListOf<Pelicula>()
@@ -75,15 +85,7 @@ class Repository(file: InputStream? = null) {
             }
         }
 
-        fun updatePelicula(index: Int, updatedPelicula: Pelicula): Boolean {
-            val pelicula = getPeliculaByIndex(index)
-            return if (pelicula != null) {
-                peliculas[index] = updatedPelicula
-                true
-            } else {
-                false
-            }
-        }
+
 
         fun deletePelicula(index: Int): Boolean {
             val pelicula = getPeliculaByIndex(index)

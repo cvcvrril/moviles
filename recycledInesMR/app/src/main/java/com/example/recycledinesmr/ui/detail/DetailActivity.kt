@@ -7,6 +7,9 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.example.recycledinesmr.R
 import androidx.activity.viewModels
+import coil.ImageLoader
+import coil.load
+import coil.request.ImageRequest
 import com.example.recycledinesmr.data.Repository
 import com.example.recycledinesmr.databinding.ActivityDetailBinding
 import com.example.recycledinesmr.domain.modelo.Pelicula
@@ -27,7 +30,7 @@ class DetailActivity : AppCompatActivity() {
             AddPeliculasUseCase(),
             GetPeliculaUseCase(),
             DeletePeliculaUseCase(),
-            UpdatePeliculasUseCase(),
+            UpdatePeliculasUseCase(assets.open("data.json")),
         )
     }
 
@@ -35,14 +38,13 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        imageViewPoster = binding.imageView
         intent.extras?.let {
-            Log.d("LOG_BUNDLE_Detail ", "El valor del savedEtcEtc $savedInstanceState")
             val pelicula = it.getParcelable<Pelicula>("pelicula")
-            Log.d("LOG_BUNDLE_Detail ", "El valor de la peli $pelicula")
             if (pelicula != null) {
                 observarViewModel(pelicula)
+                eventos()
             }
-            eventos()
         }
     }
 
@@ -67,6 +69,9 @@ class DetailActivity : AppCompatActivity() {
                             Constantes.NO_18 -> radioNo18.isChecked = true
                         }
                         estrellasRatingBar.rating = pelicula?.estrellas?: 0.0f
+                        val imageLoader = ImageLoader(this@DetailActivity)
+                        val request = ImageRequest.Builder(this@DetailActivity)
+                        imageView.load(pelicula?.imagen)
                     }
                 }
 

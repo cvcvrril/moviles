@@ -12,13 +12,15 @@ data class Pelicula(
     val fecha: LocalDate? = null,
     var estrellas: Float = 0.00f,
     val clasificacionEdad: String = Constantes.VACIO,
-    val imagen: String = Constantes.VACIO
 
     //Para todos los públicos
     //No recomendado para -7
     //No recomendado para -12
     //No recomendado para -16
     //No recomendado para -18
+
+    val imagen: String = Constantes.VACIO
+
     ) : Parcelable
 
 
