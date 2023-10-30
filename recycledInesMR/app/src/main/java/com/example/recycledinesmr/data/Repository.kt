@@ -32,7 +32,9 @@ class Repository(file: InputStream? = null) {
                     .fromJson(contenidoFichero)
             }
             Log.d("Repository", "Contenido del archivo JSON: $ejemplo")
-            ejemplo?.let { peliculasJson ->  peliculas.addAll(peliculasJson.map { it.toPelicula() }.toList()) }
+            ejemplo?.let { peliculasJson ->
+                peliculas.addAll(peliculasJson.map { it.toPelicula() }.toList())
+            }
         }
     }
 
@@ -56,26 +58,12 @@ class Repository(file: InputStream? = null) {
         return peliculas
     }
 
-    fun updatePelicula(index: Int, updatedPelicula: Pelicula): Boolean {
-        val pelicula = getPeliculaByIndex(index)
-        return if (pelicula != null) {
-            peliculas[index] = updatedPelicula
-            true
-        } else {
-            false
-        }
+    fun updatePelicula(oldPelicula: Pelicula, updatedPelicula: Pelicula) {
+        peliculas[peliculas.indexOf(oldPelicula)] = updatedPelicula
     }
 
-    fun deletePelicula(index: Int): Boolean {
-        val pelicula = getPeliculaByIndex(index)
-        return if (pelicula != null) {
-            peliculas.removeAt(index)
-            true
-        } else {
-            false
-        }
 
-    }
+    fun deletePelicula(pelicula: Pelicula) = peliculas.remove(pelicula)
 
     fun addPelicula(pelicula: Pelicula) =
         peliculas.add(pelicula)
@@ -99,5 +87,6 @@ class Repository(file: InputStream? = null) {
         }
 
     }
+
     private val mapPeliculas = mutableMapOf<String, Pelicula>()
 }

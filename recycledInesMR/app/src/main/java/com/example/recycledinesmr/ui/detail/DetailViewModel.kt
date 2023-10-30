@@ -29,19 +29,9 @@ class MainViewModel(
         _uiState.value = DetailState()
     }
 
-    fun addPelicula(pelicula: Pelicula) {
-        if (!addPeliculasUseCase(pelicula)) {
-            _uiState.value = _uiState.value?.copy(error = Constantes.ERROR)
-        }
-    }
+    fun addPelicula(pelicula: Pelicula?) {
+        _uiState.value = pelicula?.let { _uiState.value?.copy(pelicula = it)}
 
-    fun getPelicula(id: Int) {
-        val pelicula = getPeliculaUseCase(id)
-        if (pelicula != null) {
-            _uiState.value = _uiState.value?.copy(pelicula = pelicula)
-
-        } else
-            _uiState.value = _uiState.value?.copy(error = Constantes.NO_HAY_PELICULAS_DISPONIBLES)
     }
 
     fun errorMostrado() {
@@ -49,34 +39,14 @@ class MainViewModel(
     }
 
     fun eliminarPelicula() {
-        val pelicula = getPeliculaUseCase(indiceActual)
-        if (pelicula != null) {
-            if (deletePeliculaUseCase(indiceActual)) {
-                _uiState.value = _uiState.value?.copy(error = null, pelicula = pelicula)
-                if (indiceActual > 0) {
-                    indiceActual--
-                }
-            } else {
-                _uiState.value = _uiState.value?.copy(error = Constantes.ERROR_ELIMINAR)
-            }
-        } else {
-            _uiState.value = _uiState.value?.copy(error = Constantes.NO_PELIS_ELIMINAR)
-        }
+        uiState.value?.let { deletePeliculaUseCase(it.pelicula) }
+        _uiState.value = _uiState.value?.copy(error = "La película ha sido eliminada")
 
     }
 
     fun actualizarPelicula(nuevaPelicula: Pelicula) {
-        val peliculaActual = getPeliculaUseCase(indiceActual)
-        if (peliculaActual != null) {
-            if (updatePeliculaUseCase(indiceActual, nuevaPelicula)) {
-                _uiState.value = _uiState.value?.copy(error = null)
-                _uiState.value = _uiState.value?.copy(pelicula = nuevaPelicula)
-            } else {
-                _uiState.value = _uiState.value?.copy(error = Constantes.ERROR_ACTUALIZAR)
-            }
-        } else {
-            _uiState.value = _uiState.value?.copy(error = Constantes.NO_PELIS_ACTUALIZAR)
-        }
+        _uiState.value?.let { updatePeliculaUseCase(nuevaPelicula, it.pelicula) }
+        _uiState.value = _uiState.value?.copy(pelicula = nuevaPelicula, error = "La pelicula ha sido actualizada")
     }
 }
 
