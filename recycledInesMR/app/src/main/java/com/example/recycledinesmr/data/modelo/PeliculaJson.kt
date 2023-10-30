@@ -10,16 +10,16 @@ import java.time.LocalDate
 @JsonClass(generateAdapter = true)
 @Parcelize
 data class PeliculaJson (
-    @Json(name = "titulo")
+    @Json(name = Constantes.TITULO)
     val titulo: String = Constantes.VACIO,
-    @Json(name = "director")
+    @Json(name = Constantes.DIRECTOR)
     val director: String = Constantes.VACIO,
-    @Json(name = "fecha")
+    @Json(name = Constantes.FECHA)
     val fecha: LocalDate? = null,
-    @Json(name = "estrellas" )
+    @Json(name = Constantes.ESTRELLAS )
     var estrellas: Float = 0.00f,
-    @Json(name = "clasificacionEdad")
+    @Json(name = Constantes.CLAS_EDAD)
     val clasificacionEdad: String = Constantes.VACIO,
-    @Json(name="imagen")
+    @Json(name= Constantes.IMAGEN)
     val imagen: String = Constantes.VACIO
 ) : Parcelable
