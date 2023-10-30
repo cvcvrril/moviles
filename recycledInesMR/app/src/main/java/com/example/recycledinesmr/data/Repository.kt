@@ -66,12 +66,25 @@ class Repository(file: InputStream? = null) {
         }
     }
 
+    fun deletePelicula(index: Int): Boolean {
+        val pelicula = getPeliculaByIndex(index)
+        return if (pelicula != null) {
+            peliculas.removeAt(index)
+            true
+        } else {
+            false
+        }
+
+    }
+
+    fun addPelicula(pelicula: Pelicula) =
+        peliculas.add(pelicula)
+
+
     companion object {
 
         private val peliculas = mutableListOf<Pelicula>()
 
-        fun addPelicula(pelicula: Pelicula) =
-            peliculas.add(pelicula)
 
         fun getPelicula(): List<Pelicula> {
             return peliculas
@@ -83,19 +96,6 @@ class Repository(file: InputStream? = null) {
             } else {
                 null
             }
-        }
-
-
-
-        fun deletePelicula(index: Int): Boolean {
-            val pelicula = getPeliculaByIndex(index)
-            return if (pelicula != null) {
-                peliculas.removeAt(index)
-                true
-            } else {
-                false
-            }
-
         }
 
     }

@@ -13,10 +13,10 @@ import com.example.recycledinesmr.domain.modelo.Pelicula
 class PeliculasAdapter(
     private var peliculas: List<Pelicula>,
     private val onClickBotton: (String) -> Unit
-) : RecyclerView.Adapter<PeliculasViewHolder>(){
+) : RecyclerView.Adapter<PeliculasViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PeliculasViewHolder {
-        val layoutInflater = LayoutInflater. from(parent.context)
+        val layoutInflater = LayoutInflater.from(parent.context)
         return PeliculasViewHolder(layoutInflater.inflate(R.layout.item_pelicula, parent, false))
     }
 
@@ -25,19 +25,24 @@ class PeliculasAdapter(
     }
 
     override fun getItemCount(): Int = peliculas.size
+
+    fun cambiarLista(list: List<Pelicula>) {
+        peliculas = list
+        notifyDataSetChanged()
+    }
 }
 
 class PeliculasViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
-    val binding =ItemPeliculaBinding.bind(view)
+    val binding = ItemPeliculaBinding.bind(view)
 
-    fun render(pelicula: Pelicula, onClickBotton: (String) -> Unit){
-        with(binding){
+    fun render(pelicula: Pelicula, onClickBotton: (String) -> Unit) {
+        with(binding) {
             tvTitulo.setText(pelicula.titulo)
             tvDirector.setText(pelicula.director)
         }
 
-        view.findViewById<TextView>(R.id.buttonNext).setOnClickListener{
+        view.findViewById<TextView>(R.id.buttonNext).setOnClickListener {
             onClickBotton(pelicula.titulo)
         }
     }

@@ -16,7 +16,7 @@ import com.example.recycledinesmr.ui.detail.DetailActivity
 class RecyclerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRecycledBinding
-    private lateinit var adapterPelis: PeliculasAdapter
+    private lateinit var adapter: PeliculasAdapter
 
     private val viewModel: RecycledViewModel by viewModels {
         RecycledViewModelFactory(
@@ -37,6 +37,10 @@ class RecyclerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRecycledBinding.inflate(layoutInflater).apply {
             setContentView(root)
+            adapter = PeliculasAdapter(listOf(), ::click)
+            rvPeliculas.adapter = adapter
+            rvPeliculas.layoutManager =
+                GridLayoutManager(this@RecyclerActivity, 1)
         }
         Log.d("LOG_BUNDLE", "El valor del bundle: ${intent} ")
         observarViewModel()
@@ -52,17 +56,7 @@ class RecyclerActivity : AppCompatActivity() {
                 }
                 if (state.error == null) {
 //                    val listaPeliculas = viewModel.getListaPeliculas()
-                    val listaPeliculas = state.lista
-                    Log.d("RecyclerActivity", "Cantidad de películas: ${listaPeliculas.size}")
-                    adapterPelis = PeliculasAdapter(listaPeliculas) { titulo ->
-                        click(titulo)
-                        Log.d("LOG_BUNDLE", "El valor del intent: ${intent} ")
-                    }
-                    with(binding) {
-                        rvPeliculas.adapter = adapterPelis
-                        rvPeliculas.layoutManager =
-                            GridLayoutManager(this@RecyclerActivity, 1)
-                    }
+                    viewModel.uiState.value?.let { adapter.cambiarLista(it.lista) }
                 }
             }
 

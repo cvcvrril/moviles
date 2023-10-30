@@ -14,12 +14,16 @@ class RecycledViewModel (
     private val getListaUseCase: GetListaUseCase
 ) : ViewModel(){
 
-    private val _uiState = MutableLiveData<RecyclerState>(RecyclerState(emptyList()))
+    private val _uiState = MutableLiveData<RecyclerState>()
     val uiState: LiveData<RecyclerState> get() = _uiState
 
     init {
-        val listaPeliculas = getListaPeliculas()
-        _uiState.value = _uiState.value?.copy(listaPeliculas)
+        val listaPeliculas = getListaUseCase()
+        if (listaPeliculas.isEmpty()){
+            _uiState.value = RecyclerState(lista = emptyList(), error = "lista vacía")
+        } else{
+            _uiState.value = RecyclerState(lista = listaPeliculas, error = null)
+        }
         Log.d("RecycledViewModel", "Cantidad de películas: ${listaPeliculas.size}")
     }
 

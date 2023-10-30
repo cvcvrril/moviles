@@ -23,10 +23,10 @@ class DetailActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels{
         MainViewModelFactory(
-            AddPeliculasUseCase(),
-            GetPeliculaUseCase(),
-            DeletePeliculaUseCase(),
-            UpdatePeliculasUseCase(assets.open("data.json")),
+            AddPeliculasUseCase(Repository(assets.open("data.json"))),
+            GetPeliculaUseCase(Repository(assets.open("data.json"))),
+            DeletePeliculaUseCase(Repository(assets.open("data.json"))),
+            UpdatePeliculasUseCase(Repository(assets.open("data.json"))),
         )
     }
 

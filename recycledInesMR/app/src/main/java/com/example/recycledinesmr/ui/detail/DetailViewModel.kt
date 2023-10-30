@@ -26,13 +26,12 @@ class MainViewModel(
     val uiState: LiveData<DetailState> get() = _uiState
 
     init {
-        getPelicula(indiceActual)
+        _uiState.value = DetailState()
     }
 
     fun addPelicula(pelicula: Pelicula) {
         if (!addPeliculasUseCase(pelicula)) {
-            _uiState.value = _uiState
-                .value?.copy(error = Constantes.ERROR)
+            _uiState.value = _uiState.value?.copy(error = Constantes.ERROR)
         }
     }
 
@@ -80,6 +79,7 @@ class MainViewModel(
         }
     }
 }
+
 
 class MainViewModelFactory(
     private val addPeliculasUseCase: AddPeliculasUseCase,

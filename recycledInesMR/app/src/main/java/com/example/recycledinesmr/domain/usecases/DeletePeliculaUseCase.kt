@@ -2,9 +2,9 @@ package com.example.recycledinesmr.domain.usecases
 
 import com.example.recycledinesmr.data.Repository
 
-class DeletePeliculaUseCase {
+class DeletePeliculaUseCase(private val repo:Repository) {
     operator fun invoke(index: Int): Boolean =
-        Repository.deletePelicula(index)
+        repo.deletePelicula(index)
 
 }
 
