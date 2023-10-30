@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.recycledinesmr.R
+import com.example.recycledinesmr.data.Repository
 import com.example.recycledinesmr.databinding.ActivityRecycledBinding
 import com.example.recycledinesmr.domain.usecases.GetListaUseCase
 import com.example.recycledinesmr.ui.PeliculasAdapter
@@ -20,7 +21,7 @@ class RecyclerActivity : AppCompatActivity() {
 
     private val viewModel: RecycledViewModel by viewModels {
         RecycledViewModelFactory(
-            GetListaUseCase(assets.open("data.json"))
+            GetListaUseCase(Repository(assets.open("data.json")))
         )
     }
 

@@ -2,14 +2,10 @@ package com.example.recycledinesmr.ui.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
-import com.example.recycledinesmr.R
 import androidx.activity.viewModels
-import coil.ImageLoader
 import coil.load
-import coil.request.ImageRequest
 import com.example.recycledinesmr.data.Repository
 import com.example.recycledinesmr.databinding.ActivityDetailBinding
 import com.example.recycledinesmr.domain.modelo.Pelicula
@@ -105,7 +101,7 @@ class DetailActivity : AppCompatActivity() {
                         radioNo12.isChecked -> Constantes.NO_12
                         radioNo16.isChecked -> Constantes.NO_16
                         radioNo18.isChecked -> Constantes.NO_18
-                        else -> ""
+                        else -> Constantes.VACIO
                     }
                 )
                 viewModel.actualizarPelicula(nuevaPelicula)

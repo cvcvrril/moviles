@@ -40,9 +40,6 @@ class PeliculasViewHolder(private val view: View) : RecyclerView.ViewHolder(view
         view.findViewById<TextView>(R.id.buttonNext).setOnClickListener{
             onClickBotton(pelicula.titulo)
         }
-
     }
-
-
 }
 
