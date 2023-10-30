@@ -19,6 +19,7 @@ class RecycledViewModel (
 
     init {
         val listaPeliculas = getListaPeliculas()
+        _uiState.value = _uiState.value?.copy(listaPeliculas)
         Log.d("RecycledViewModel", "Cantidad de películas: ${listaPeliculas.size}")
     }
 
@@ -43,6 +44,4 @@ class RecycledViewModelFactory(
         }
         throw IllegalArgumentException(Constantes.UNKNOWN)
     }
-
-
 }
