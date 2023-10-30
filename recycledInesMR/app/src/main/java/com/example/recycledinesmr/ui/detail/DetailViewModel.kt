@@ -6,16 +6,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.recycledinesmr.domain.modelo.Pelicula
 import com.example.recycledinesmr.domain.usecases.AddPeliculasUseCase
-import com.example.recycledinesmr.domain.usecases.GetPeliculaUseCase
 import com.example.recycledinesmr.domain.usecases.DeletePeliculaUseCase
 import com.example.recycledinesmr.domain.usecases.UpdatePeliculasUseCase
 import com.example.recycledinesmr.ui.Constantes
 import java.lang.IllegalArgumentException
 
 
+
+
 class MainViewModel(
     private val addPeliculasUseCase: AddPeliculasUseCase,
-    private val getPeliculaUseCase: GetPeliculaUseCase,
     private val deletePeliculaUseCase: DeletePeliculaUseCase,
     private val updatePeliculaUseCase: UpdatePeliculasUseCase
 ) : ViewModel() {
@@ -30,8 +30,10 @@ class MainViewModel(
     }
 
     fun addPelicula(pelicula: Pelicula?) {
-        _uiState.value = pelicula?.let { _uiState.value?.copy(pelicula = it)}
-
+        if (pelicula != null) {
+            addPeliculasUseCase(pelicula)
+            _uiState.value = _uiState.value?.copy(error = Constantes.PELI_ANADIDA)
+        }
     }
 
     fun errorMostrado() {
@@ -40,20 +42,19 @@ class MainViewModel(
 
     fun eliminarPelicula() {
         uiState.value?.let { deletePeliculaUseCase(it.pelicula) }
-        _uiState.value = _uiState.value?.copy(error = "La película ha sido eliminada")
+        _uiState.value = _uiState.value?.copy(error = Constantes.PELI_ELIMINADA)
 
     }
 
     fun actualizarPelicula(nuevaPelicula: Pelicula) {
         _uiState.value?.let { updatePeliculaUseCase(nuevaPelicula, it.pelicula) }
-        _uiState.value = _uiState.value?.copy(pelicula = nuevaPelicula, error = "La pelicula ha sido actualizada")
+        _uiState.value = _uiState.value?.copy(pelicula = nuevaPelicula, error = Constantes.PELI_ACTUALIZADA)
     }
 }
 
 
 class MainViewModelFactory(
     private val addPeliculasUseCase: AddPeliculasUseCase,
-    private val getPeliculaUseCase: GetPeliculaUseCase,
     private val deletePeliculaUseCase: DeletePeliculaUseCase,
     private val updatePeliculaUseCase: UpdatePeliculasUseCase
 ) : ViewModelProvider.Factory {
@@ -62,7 +63,6 @@ class MainViewModelFactory(
             @Suppress("UNCHECKED_CAST")
             return MainViewModel(
                 addPeliculasUseCase,
-                getPeliculaUseCase,
                 deletePeliculaUseCase,
                 updatePeliculaUseCase
             ) as T

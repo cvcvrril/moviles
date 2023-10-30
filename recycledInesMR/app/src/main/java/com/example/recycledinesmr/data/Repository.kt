@@ -1,8 +1,8 @@
 package com.example.recycledinesmr.data
 
-import android.util.Log
 import com.example.recycledinesmr.data.modelo.PeliculaJson
 import com.example.recycledinesmr.domain.modelo.Pelicula
+import com.example.recycledinesmr.ui.Constantes
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
@@ -12,6 +12,8 @@ import java.io.InputStream
 import java.lang.reflect.Type
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+
+
 
 class Repository(file: InputStream? = null) {
 
@@ -31,7 +33,6 @@ class Repository(file: InputStream? = null) {
                 moshi.adapter<List<PeliculaJson>>(listOfCardsType)
                     .fromJson(contenidoFichero)
             }
-            Log.d("Repository", "Contenido del archivo JSON: $ejemplo")
             ejemplo?.let { peliculasJson ->
                 peliculas.addAll(peliculasJson.map { it.toPelicula() }.toList())
             }
@@ -50,7 +51,7 @@ class Repository(file: InputStream? = null) {
         }
 
         companion object {
-            private val FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            private val FORMATTER = DateTimeFormatter.ofPattern(Constantes.PATTERN)
         }
     }
 
@@ -61,7 +62,6 @@ class Repository(file: InputStream? = null) {
     fun updatePelicula(oldPelicula: Pelicula, updatedPelicula: Pelicula) {
         peliculas[peliculas.indexOf(oldPelicula)] = updatedPelicula
     }
-
 
     fun deletePelicula(pelicula: Pelicula) = peliculas.remove(pelicula)
 
@@ -78,15 +78,6 @@ class Repository(file: InputStream? = null) {
             return peliculas
         }
 
-        fun getPeliculaByIndex(index: Int): Pelicula? {
-            return if (index >= 0 && index < peliculas.size) {
-                peliculas[index]
-            } else {
-                null
-            }
-        }
-
     }
 
-    private val mapPeliculas = mutableMapOf<String, Pelicula>()
 }

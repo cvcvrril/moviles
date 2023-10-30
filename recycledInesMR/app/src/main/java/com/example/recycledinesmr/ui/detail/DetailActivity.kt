@@ -11,10 +11,12 @@ import com.example.recycledinesmr.databinding.ActivityDetailBinding
 import com.example.recycledinesmr.domain.modelo.Pelicula
 import com.example.recycledinesmr.domain.usecases.AddPeliculasUseCase
 import com.example.recycledinesmr.domain.usecases.DeletePeliculaUseCase
-import com.example.recycledinesmr.domain.usecases.GetPeliculaUseCase
 import com.example.recycledinesmr.domain.usecases.UpdatePeliculasUseCase
 import com.example.recycledinesmr.ui.Constantes
 import java.time.LocalDate
+
+
+
 
 class DetailActivity : AppCompatActivity() {
 
@@ -23,10 +25,9 @@ class DetailActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels{
         MainViewModelFactory(
-            AddPeliculasUseCase(Repository(assets.open("data.json"))),
-            GetPeliculaUseCase(Repository(assets.open("data.json"))),
-            DeletePeliculaUseCase(Repository(assets.open("data.json"))),
-            UpdatePeliculasUseCase(Repository(assets.open("data.json"))),
+            AddPeliculasUseCase(Repository(assets.open(Constantes.JSON))),
+            DeletePeliculaUseCase(Repository(assets.open(Constantes.JSON))),
+            UpdatePeliculasUseCase(Repository(assets.open(Constantes.JSON))),
         )
     }
 
@@ -36,7 +37,7 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
         imageViewPoster = binding.imageView
         intent.extras?.let {
-            val pelicula = it.getParcelable<Pelicula>("pelicula")
+            val pelicula = it.getParcelable<Pelicula>(Constantes.KEY)
             if (pelicula != null) {
                 observarViewModel(pelicula)
                 eventos()
@@ -53,7 +54,6 @@ class DetailActivity : AppCompatActivity() {
                 }
                 if (state.error == null) {
                     with(binding) {
-                            state.indiceActual < Repository.getPelicula().size - 1
                         editMovieText.setText(pelicula?.titulo)
                         editDirectorText.setText(pelicula?.director)
                         editDateText.setText(LocalDate.parse(pelicula?.fecha.toString()).toString())
@@ -68,7 +68,6 @@ class DetailActivity : AppCompatActivity() {
                         imageView.load(pelicula?.imagen)
                     }
                 }
-
             }
         }
     }

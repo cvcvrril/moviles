@@ -1,6 +1,5 @@
 package com.example.recycledinesmr.ui.recycled
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,6 +8,8 @@ import com.example.recycledinesmr.domain.modelo.Pelicula
 import com.example.recycledinesmr.domain.usecases.GetListaUseCase
 import com.example.recycledinesmr.ui.Constantes
 import java.lang.IllegalArgumentException
+
+
 
 class RecycledViewModel (
     private val getListaUseCase: GetListaUseCase
@@ -20,11 +21,10 @@ class RecycledViewModel (
     init {
         val listaPeliculas = getListaUseCase()
         if (listaPeliculas.isEmpty()){
-            _uiState.value = RecyclerState(lista = emptyList(), error = "lista vacía")
+            _uiState.value = RecyclerState(lista = emptyList(), error = Constantes.LISTA_VACIA)
         } else{
             _uiState.value = RecyclerState(lista = listaPeliculas, error = null)
         }
-        Log.d("RecycledViewModel", "Cantidad de películas: ${listaPeliculas.size}")
     }
 
     fun errorMostrado(){
