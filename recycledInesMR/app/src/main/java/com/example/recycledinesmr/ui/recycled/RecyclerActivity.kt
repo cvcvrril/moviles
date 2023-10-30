@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recycledinesmr.R
+import com.example.recycledinesmr.data.Repository
 import com.example.recycledinesmr.databinding.ActivityRecycledBinding
 import com.example.recycledinesmr.domain.usecases.GetListaUseCase
 import com.example.recycledinesmr.ui.PeliculasAdapter
@@ -16,10 +17,11 @@ import com.example.recycledinesmr.ui.detail.DetailActivity
 class RecyclerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRecycledBinding
+    private lateinit var adapter: PeliculasAdapter
 
     private val viewModel: RecycledViewModel by viewModels {
         RecycledViewModelFactory(
-            GetListaUseCase(assets.open("data.json"))
+            GetListaUseCase(Repository( assets.open("data.json")))
         )
     }
 
@@ -28,9 +30,6 @@ class RecyclerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-        intent.extras?.let { }
 
         binding = ActivityRecycledBinding.inflate(layoutInflater).apply{
             setContentView(R.layout.activity_recycled)
@@ -41,7 +40,7 @@ class RecyclerActivity : AppCompatActivity() {
 
         val rvPeliculas = this.findViewById<RecyclerView>(R.id.rvPeliculas)
 
-        val adapter = PeliculasAdapter(listaPeliculas){
+        adapter = PeliculasAdapter(listaPeliculas){
             titulo -> click(titulo)
              val pelicula = listaPeliculas.find { it.titulo == titulo }
             val intent = Intent(this@RecyclerActivity, DetailActivity::class.java)
