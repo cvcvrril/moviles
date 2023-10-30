@@ -1,6 +1,5 @@
 package com.example.recycledinesmr.ui.detail
 
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,7 +10,6 @@ import com.example.recycledinesmr.domain.usecases.GetPeliculaUseCase
 import com.example.recycledinesmr.domain.usecases.DeletePeliculaUseCase
 import com.example.recycledinesmr.domain.usecases.UpdatePeliculasUseCase
 import com.example.recycledinesmr.ui.Constantes
-import com.google.android.material.snackbar.Snackbar
 import java.lang.IllegalArgumentException
 
 
