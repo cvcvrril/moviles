@@ -51,6 +51,7 @@ class RecyclerActivity : AppCompatActivity() {
                 state.error?.let { error ->
                     Toast.makeText(this@RecyclerActivity, error, Toast.LENGTH_SHORT).show()
                     viewModel.errorMostrado()
+
                 }
                 if (state.error == null) {
                     viewModel.uiState.value?.let { adapter.cambiarLista(it.lista) }
