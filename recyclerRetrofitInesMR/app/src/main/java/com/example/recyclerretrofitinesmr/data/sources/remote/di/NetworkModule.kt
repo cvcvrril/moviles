@@ -1,6 +1,7 @@
 package com.example.recyclerretrofitinesmr.data.sources.remote.di;
 
 
+import com.example.recyclerretrofitinesmr.data.sources.remote.DirectorService
 import com.example.recyclerretrofitinesmr.data.sources.remote.ServiceInterceptor
 import com.example.recyclerretrofitinesmr.utils.Constants
 import javax.inject.Singleton;
@@ -25,12 +26,11 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideHttpClient(serviceInterceptor: ServiceInterceptor): OkHttpClient {
+    fun provideHttpClient(): OkHttpClient {
         return OkHttpClient
                 .Builder()
                 .readTimeout(15, TimeUnit.SECONDS)
                 .connectTimeout(15, TimeUnit.SECONDS)
-                .addInterceptor(serviceInterceptor)
                 .build()
     }
 
@@ -59,8 +59,8 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideCurrencyService(retrofit: Retrofit): DogService =
-            retrofit.create(DogService::class.java)
+    fun provideCurrencyService(retrofit: Retrofit): DirectorService =
+            retrofit.create(DirectorService::class.java)
 
 
 }
