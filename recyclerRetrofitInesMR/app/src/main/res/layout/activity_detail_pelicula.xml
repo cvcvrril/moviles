@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Nombre completo"
+        android:hint="Título"
         android:inputType="text"
         tools:layout_editor_absoluteX="99dp"
         tools:layout_editor_absoluteY="109dp" />
@@ -47,14 +47,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Fecha de nacimiento"
+        android:hint="Fecha de estreno"
         android:inputType="date"
         tools:layout_editor_absoluteX="99dp"
         tools:layout_editor_absoluteY="177dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="409dp"
-        android:layout_height="507dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="223dp" />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Añadir película"
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="293dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
