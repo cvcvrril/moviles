@@ -6,12 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="409dp"
-        android:layout_height="665dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="65dp" />
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
 
         android:id="@+id/coordinatorLayout"
@@ -30,8 +24,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:menu="@menu/menu_app_bar"
-                app:navigationIcon="@drawable/baseline_movie_filter_24"
-                app:title="Letterboxd Cutre" />
+                app:navigationIcon="@drawable/ic_launcher_foreground"
+                app:title="Letterboxd cutre" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
