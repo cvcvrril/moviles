@@ -52,6 +52,9 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
     implementation ("it.xabaras.android:recyclerview-swipedecorator:1.4")
 
+    //by viewModels()
+    implementation ("androidx.fragment:fragment-ktx:1.6.1")
+
     //Retrofit
     implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
