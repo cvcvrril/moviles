@@ -6,5 +6,6 @@ data class Director (
     val id: Int,
     var nombre: String,
     val nacimiento: LocalDate,
-    val peliculas: List<Pelicula>
+    val peliculas: List<Pelicula>,
+    var isSelected: Boolean = false
 )
