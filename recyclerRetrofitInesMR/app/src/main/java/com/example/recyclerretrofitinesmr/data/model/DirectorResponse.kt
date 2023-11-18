@@ -12,8 +12,6 @@ data class DirectorResponse(
     val nombre: String,
     @SerializedName("nacimiento")
     val nacimiento: LocalDate,
-    @SerializedName("peliculas")
-    val peliculas: List<Pelicula>
 )
 
-fun DirectorResponse.toDirector() : Director = Director(id,nombre,nacimiento, peliculas)
+fun DirectorResponse.toDirector() : Director = Director(id,nombre,nacimiento)

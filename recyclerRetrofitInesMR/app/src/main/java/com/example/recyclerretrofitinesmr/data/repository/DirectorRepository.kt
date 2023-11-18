@@ -11,9 +11,14 @@ class DirectorRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource
 ) {
 
-    suspend fun getDirector(){
+    suspend fun getAllDirector(){
         withContext(Dispatchers.IO)
-        {remoteDataSource.getDirector()}
+        {remoteDataSource.getAllDirector()}
+    }
+
+    suspend fun getDirector(id: String){
+        withContext(Dispatchers.IO)
+        {remoteDataSource.getDirector(id)}
     }
 
 }

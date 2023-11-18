@@ -5,7 +5,7 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListAdapter
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +16,8 @@ import com.example.recyclerretrofitinesmr.domain.Director
 class DirectorAdapter(
     val context: Context,
     val actions: DirectorActions
-) : ListAdapter<Director, DirectorAdapter.ItemViewholder>(DiffCallback()) {
+) :
+    ListAdapter<Director, DirectorAdapter.ItemViewholder>(DiffCallback()) {
 
     interface DirectorActions {
         fun onDelete(director: Director)
@@ -42,11 +43,15 @@ class DirectorAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewholder {
-
         return ItemViewholder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.view_pelicula, parent, false)
+                .inflate(R.layout.view_director, parent, false)
         )
+    }
+
+    override fun onBindViewHolder(holder: ItemViewholder, position: Int) = with(holder) {
+        val item = getItem(position)
+        bind(item)
     }
 
     inner class ItemViewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -54,6 +59,12 @@ class DirectorAdapter(
         private val binding = ViewDirectorBinding.bind(itemView)
 
         fun bind(item: Director) {
+            itemView.setOnClickListener {
+                if (!selectedMode){
+                    actions.onStartSelectedMode(item)
+                }
+                true
+            }
             with(binding) {
                 selected.setOnClickListener {
                     if (selectedMode) {
@@ -68,6 +79,14 @@ class DirectorAdapter(
                         }
                         actions.itemClicked(item)
                     }
+                }
+                tvNombre.text = item.nombre
+                tvId.text = item.id.toString()
+                if (selectedMode){
+                    selected.visibility =View.VISIBLE
+                } else{
+                    item.isSelected= false
+                    selected.visibility = View.GONE
                 }
             }
         }
