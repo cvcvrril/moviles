@@ -1,17 +1,17 @@
 package com.example.recyclerretrofitinesmr.data.model
 
-import com.example.recyclerretrofitinesmr.utils.NetworkResultt
+import com.example.recyclerretrofitinesmr.utils.NetworkResult
 import retrofit2.Response
 
 abstract class BaseApiResponse {
 
-    suspend fun <T,R> safeApiCall(apiCall: suspend () -> Response<R>,transform :(R) -> T ): NetworkResultt<T> {
+    suspend fun <T,R> safeApiCall(apiCall: suspend () -> Response<R>,transform :(R) -> T ): NetworkResult<T> {
         try {
             val response = apiCall()
             if (response.isSuccessful) {
                 val body = response.body()
                 body?.let {
-                    return NetworkResultt.Success(transform(body))
+                    return NetworkResult.Success(transform(body))
                 }
             }
             return error("${response.code()} ${response.message()}")
@@ -20,13 +20,13 @@ abstract class BaseApiResponse {
         }
     }
 
-    suspend fun <T> safeApiCall(apiCall: suspend () -> Response<T>): NetworkResultt<T> {
+    suspend fun <T> safeApiCall(apiCall: suspend () -> Response<T>): NetworkResult<T> {
         try {
             val response = apiCall()
             if (response.isSuccessful) {
                 val body = response.body()
                 body?.let {
-                    return NetworkResultt.Success(body)
+                    return NetworkResult.Success(body)
                 }
             }
             return error("${response.code()} ${response.message()}")
@@ -35,7 +35,7 @@ abstract class BaseApiResponse {
         }
     }
 
-    private fun <T> error(errorMessage: String): NetworkResultt<T> =
-        NetworkResultt.Error("Api call failed $errorMessage")
+    private fun <T> error(errorMessage: String): NetworkResult<T> =
+        NetworkResult.Error("Api call failed $errorMessage")
 
 }

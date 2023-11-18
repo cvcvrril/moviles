@@ -11,7 +11,11 @@ data class DirectorResponse(
     @SerializedName("nombre")
     val nombre: String,
     @SerializedName("nacimiento")
-    val nacimiento: LocalDate,
+    val nacimiento: String,
 )
 
-fun DirectorResponse.toDirector() : Director = Director(id,nombre,nacimiento)
+
+fun DirectorResponse.toDirector() : Director {
+    val fechaNacimiento = LocalDate.parse(nacimiento)
+    return Director(id, nombre, fechaNacimiento)
+}
