@@ -2,6 +2,7 @@ package com.example.recyclerretrofitinesmr.ui.main
 
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,15 +44,18 @@ class DirectorAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewholder {
+        Log.d("DirectorAdapter", "onCreateViewHolder called")
         return ItemViewholder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.view_director, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: ItemViewholder, position: Int) = with(holder) {
-        val item = getItem(position)
-        bind(item)
+    override fun onBindViewHolder(holder: ItemViewholder, position: Int){
+        val director = getItem(position)
+        director?.let {
+            holder.bind(it)
+        }
     }
 
     inner class ItemViewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -59,6 +63,7 @@ class DirectorAdapter(
         private val binding = ViewDirectorBinding.bind(itemView)
 
         fun bind(item: Director) {
+            Log.d("Directores(DirectorAdapter)", "Binding director: ${item.id}, isSelected: ${item.isSelected}")
             itemView.setOnClickListener {
                 if (!selectedMode){
                     actions.onStartSelectedMode(item)
@@ -82,6 +87,7 @@ class DirectorAdapter(
                 }
                 tvNombre.text = item.nombre
                 tvId.text = item.id.toString()
+
                 if (selectedMode){
                     selected.visibility =View.VISIBLE
                 } else{

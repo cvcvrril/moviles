@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.view.ActionMode
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.recyclerretrofitinesmr.R
 import com.example.recyclerretrofitinesmr.databinding.ActivityMainBinding
@@ -51,13 +52,18 @@ class MainActivity : AppCompatActivity() {
                 }
             )
             rvDirectores.adapter = directoresAdapter
+            rvDirectores.layoutManager = GridLayoutManager(this@MainActivity,1)
+
             val touchHelper = ItemTouchHelper(directoresAdapter.swipeGesture)
             touchHelper.attachToRecyclerView(rvDirectores)
             viewModel.handleEvent(MainEvent.GetAllDirectores)
             viewModel.uiState.observe(this@MainActivity) { state ->
-                Log.d("Directores(MainActivity)", "Directores: ${state.directores}")
+                Log.d("Directores(MainActivity2)", "Directores: ${state.directores}")
                 if (state.directores != anteriorState?.directores && state.directores.isNotEmpty()) {
                     directoresAdapter.submitList(state.directores)
+                    Log.d("Directores(MainActivity3)", "Directores Size: ${state.directores.size}")
+                    Log.d("Directores(MainActivity4)", "Directores: ${state.directores}")
+                    Log.d("Directores(MainActivity5)", "Directores Size: ${directoresAdapter.itemCount}")
                 }
                 if (state.selectMode != anteriorState?.selectMode) {
                     if (state.selectMode) {

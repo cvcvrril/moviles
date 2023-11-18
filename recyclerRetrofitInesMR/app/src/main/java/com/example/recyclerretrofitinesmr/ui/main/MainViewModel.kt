@@ -34,6 +34,7 @@ class MainViewModel @Inject constructor(private val directorRepository: Director
 
             MainEvent.GetAllDirectores -> {
                 getAllDirectores()
+                Log.d("Directores (MainViewModel2)", "Directores: ${getAllDirectores()}")
             }
 
             is MainEvent.GetDirector -> {
@@ -50,12 +51,12 @@ class MainViewModel @Inject constructor(private val directorRepository: Director
     private fun getAllDirectores() {
         viewModelScope.launch {
             val result = directorRepository.getAllDirector()
-            Log.d("Directores (MainViewModel)", "Directores: ${listaDirectores}")
+            Log.d("Directores (MainViewModel1)", "Directores: ${result}")
             when (result) {
                 is NetworkResult.Success -> {
                     listaDirectores.clear()
                     listaDirectores.addAll(result.data as List<Director>)
-                    _uiState.value = _uiState.value?.copy(directores = listaDirectores.toList())
+                    _uiState.value = _uiState.value?.copy(directores = listaDirectores)
 
                 }
                 is NetworkResult.Error -> {
