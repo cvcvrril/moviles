@@ -22,12 +22,6 @@ interface DirectorService {
     @POST(Constants.BASE_URL + "/director/")
     suspend fun createDirector(@Body director: Director): Response<DirectorResponse>
 
-    @PUT(Constants.BASE_URL + "/director/{id}")
-    suspend fun updateDirector(
-        @Path("id") directorId: Int,
-        @Body director: Director
-    ): Response<DirectorResponse>
-
     @DELETE(Constants.BASE_URL + "/director/{id}")
     suspend fun deleteDirector(@Path("id") directorId: Int): Response<Unit>
 }

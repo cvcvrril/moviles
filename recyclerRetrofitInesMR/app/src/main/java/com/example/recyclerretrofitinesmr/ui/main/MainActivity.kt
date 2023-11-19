@@ -1,5 +1,6 @@
 package com.example.recyclerretrofitinesmr.ui.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.recyclerretrofitinesmr.R
 import com.example.recyclerretrofitinesmr.databinding.ActivityMainBinding
 import com.example.recyclerretrofitinesmr.domain.Director
+import com.example.recyclerretrofitinesmr.ui.detailDirector.DetailDirectorActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("DetailDirectorActivity", "onCreate called")
         binding = ActivityMainBinding.inflate(layoutInflater).apply {
             setContentView(root)
             callback = configContextBar()
@@ -40,21 +43,28 @@ class MainActivity : AppCompatActivity() {
                     override fun onDelete(director: Director) {
                         Log.d("DirectorAdapter", "Director eliminado: ${director.id}")
                         viewModel.handleEvent(MainEvent.DeleteDirector(director))
-                        Log.d("Directores (MainActivity1)", "Directores: ${viewModel.handleEvent(MainEvent.DeleteDirector(director))}")
+                        Log.d(
+                            "Directores (MainActivity1)",
+                            "Directores: ${viewModel.handleEvent(MainEvent.DeleteDirector(director))}"
+                        )
                     }
 
                     override fun itemClicked(director: Director) {
-                        TODO("Not yet implemented")
+                        Log.d("MainActivity", "Item clicked: ${director.nombre}")
+                        val intent = Intent(context, DetailDirectorActivity::class.java)
+                        intent.putExtra("director", director)
+                        context.startActivity(intent)
                     }
 
                     override fun onStartSelectedMode(director: Director) {
-                        TODO("Not yet implemented")
+                        //viewModel.handleEvent(MainEvent.StartSelectMode)
+                        //viewModel.handleEvent(MainEvent.SeleccionaDirector(director))
                     }
 
                 }
             )
             rvDirectores.adapter = directoresAdapter
-            rvDirectores.layoutManager = GridLayoutManager(this@MainActivity,1)
+            rvDirectores.layoutManager = GridLayoutManager(this@MainActivity, 1)
 
             val touchHelper = ItemTouchHelper(directoresAdapter.swipeGesture)
             touchHelper.attachToRecyclerView(rvDirectores)
@@ -65,7 +75,13 @@ class MainActivity : AppCompatActivity() {
                     directoresAdapter.submitList(state.directores)
                     Log.d("Directores(MainActivity3)", "Directores Size: ${state.directores.size}")
                     Log.d("Directores(MainActivity4)", "Directores: ${state.directores}")
-                    Log.d("Directores(MainActivity5)", "Directores Size: ${directoresAdapter.itemCount}")
+                    Log.d("Directores(MainActivity5)", "Directores Size: ${directoresAdapter.itemCount}"
+                    )
+                }
+                if (state.directoresSeleccionados != anteriorState?.directoresSeleccionados) {
+                    directoresAdapter.setSelectedItems(state.directoresSeleccionados)
+                    actionMode?.title =
+                        "${state.directoresSeleccionados.size} selected"
                 }
                 if (state.selectMode != anteriorState?.selectMode) {
                     if (state.selectMode) {
@@ -92,7 +108,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         lifecycleScope.launch {
-            viewModel.sharedFlow.collect(){ error->
+            viewModel.sharedFlow.collect() { error ->
                 Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
             }
 
@@ -118,14 +134,17 @@ class MainActivity : AppCompatActivity() {
                         // Handle share icon press
                         true
                     }
+
                     R.id.search -> {
                         // Handle delete icon press
                         true
                     }
+
                     R.id.more -> {
                         viewModel.handleEvent(MainEvent.DeleteDirectoresSeleccionados())
                         true
                     }
+
                     else -> false
                 }
             }
@@ -152,7 +171,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
 
-                newText?.let {filtro ->
+                newText?.let { filtro ->
                     viewModel.handleEvent(MainEvent.GetDirector(filtro))
                 }
 
@@ -168,14 +187,17 @@ class MainActivity : AppCompatActivity() {
                     // Handle favorite icon press
                     true
                 }
+
                 R.id.search -> {
                     // Handle search icon press
                     true
                 }
+
                 R.id.more -> {
                     // Handle more item (inside overflow menu) press
                     true
                 }
+
                 else -> false
             }
         }

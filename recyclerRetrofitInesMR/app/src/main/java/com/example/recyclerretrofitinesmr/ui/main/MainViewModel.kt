@@ -25,6 +25,7 @@ class MainViewModel @Inject constructor(
     ViewModel() {
 
     private val listaDirectores = mutableListOf<Director>()
+    private var selectedDirectores = mutableListOf<Director>()
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> get() = _error
     private val _sharedFlow = MutableSharedFlow<String>()
@@ -47,10 +48,37 @@ class MainViewModel @Inject constructor(
                 getDirector(event.id)
             }
 
-            is MainEvent.DeleteDirectoresSeleccionados -> TODO()
-            MainEvent.ErrorVisto -> TODO()
-            MainEvent.ResetSelectMode -> TODO()
+            is MainEvent.DeleteDirectoresSeleccionados -> {
+                _uiState.value?.let {
+                    deleteDirector(it.directoresSeleccionados)
+                    resetSelectMode()
+                }
+            }
+
+            MainEvent.ErrorVisto -> {
+                _uiState.value = _uiState.value?.copy(error = null)
+            }
+
+            MainEvent.ResetSelectMode -> {
+                resetSelectMode()
+            }
+
+            is MainEvent.SeleccionaDirector -> {
+                seleccionaPersona(event.director)
+            }
+
+            MainEvent.StartSelectMode -> {
+                _uiState.value = _uiState.value?.copy(selectMode = true)
+            }
         }
+
+    }
+
+
+    private fun resetSelectMode() {
+        selectedDirectores.clear()
+        _uiState.value =
+            _uiState.value?.copy(selectMode = false, directoresSeleccionados = selectedDirectores)
 
     }
 
@@ -103,13 +131,40 @@ class MainViewModel @Inject constructor(
                     _uiState.value = _uiState.value?.copy(directores = listaDirectores)
                     Log.d("DelDirectores (MainViewModel1)", "Directores: ${listaDirectores}")
                 }
+
                 is NetworkResult.Error -> {
                     _error.value = result.message.toString()
                 }
+
                 is NetworkResult.Loading -> TODO()
             }
         }
 
+    }
+
+    private fun deleteDirector(directores: List<Director>) {
+        viewModelScope.launch {
+            listaDirectores.removeAll(directores)
+            selectedDirectores.removeAll(directores)
+            _uiState.value =
+                _uiState.value?.copy(directoresSeleccionados = selectedDirectores.toList())
+            getAllDirectores()
+        }
+    }
+
+    private fun seleccionaPersona(director: Director) {
+        if (isSelected(director)) {
+            selectedDirectores.remove(director)
+
+        } else {
+            selectedDirectores.add(director)
+        }
+        _uiState.value = _uiState.value?.copy(directoresSeleccionados = selectedDirectores)
+
+    }
+
+    private fun isSelected(director: Director): Boolean {
+        return selectedDirectores.contains(director)
     }
 
 }

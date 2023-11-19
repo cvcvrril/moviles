@@ -45,13 +45,13 @@ class DirectorAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewholder {
         Log.d("DirectorAdapter", "onCreateViewHolder called")
-        return ItemViewholder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.view_director, parent, false)
-        )
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.view_director, parent, false)
+        itemView.isClickable = true
+        return ItemViewholder(itemView)
     }
 
-    override fun onBindViewHolder(holder: ItemViewholder, position: Int){
+    override fun onBindViewHolder(holder: ItemViewholder, position: Int) {
         val director = getItem(position)
         director?.let {
             holder.bind(it)
@@ -65,19 +65,21 @@ class DirectorAdapter(
         fun bind(item: Director) {
             Log.d("Directores(DirectorAdapter)", "Binding director: ${item.id}, isSelected: ${item.isSelected}")
             itemView.setOnClickListener {
-                actions.onStartSelectedMode(item)
-                true
+                if (selectedMode) {
+                    handleSelection(item)
+                } else {
+                    actions.onStartSelectedMode(item)
+                }
             }
             with(binding) {
                 selected.setOnClickListener {
                     if (selectedMode) {
                         if (binding.selected.isChecked) {
                             item.isSelected = true
-                            itemView.setBackgroundColor(Color.GRAY)
+                            itemView.setBackgroundColor(Color.BLUE)
                             selectedDirectores.add(item)
                         } else {
                             item.isSelected = false
-                            itemView.setBackgroundColor(Color.WHITE)
                             selectedDirectores.remove(item)
                         }
                         actions.itemClicked(item)
@@ -86,16 +88,35 @@ class DirectorAdapter(
                 tvNombre.text = item.nombre
                 tvId.text = item.id.toString()
 
-                if (selectedMode){
-                    selected.visibility =View.VISIBLE
-                } else{
-                    item.isSelected= false
+                if (selectedMode) {
+                    selected.visibility = View.VISIBLE
+                } else {
+                    item.isSelected = false
                     selected.visibility = View.GONE
+                }
+
+                if (selectedDirectores.contains(item)) {
+                    itemView.setBackgroundColor(Color.BLUE)
+                    binding.selected.isChecked = true
+                } else {
+                    binding.selected.isChecked = false
                 }
             }
         }
 
     }
+
+    private fun handleSelection(director: Director) {
+        if (selectedDirectores.contains(director)) {
+            selectedDirectores.remove(director)
+            director.isSelected = false
+        } else {
+            selectedDirectores.add(director)
+            director.isSelected = true
+        }
+        notifyDataSetChanged()
+    }
+
 
     fun onDelete(director: Director) {
         val position = currentList.indexOf(director)

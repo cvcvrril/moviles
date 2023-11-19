@@ -2,7 +2,6 @@ package com.example.recyclerretrofitinesmr.data.sources.remote.di;
 
 
 import com.example.recyclerretrofitinesmr.data.sources.remote.DirectorService
-import com.example.recyclerretrofitinesmr.data.sources.remote.ServiceInterceptor
 import com.example.recyclerretrofitinesmr.utils.Constants
 import com.google.gson.GsonBuilder
 import javax.inject.Singleton;
@@ -19,10 +18,6 @@ import java.util.concurrent.TimeUnit
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
-    @Singleton
-    @Provides
-    fun provideServiceInterceptor(): ServiceInterceptor = ServiceInterceptor()
 
     @Singleton
     @Provides
