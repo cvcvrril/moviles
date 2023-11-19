@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.recyclerretrofitinesmr.data.repository.DirectorRepository
 import com.example.recyclerretrofitinesmr.domain.Director
+import com.example.recyclerretrofitinesmr.domain.usecases.GetAllDirectorUseCase
+import com.example.recyclerretrofitinesmr.domain.usecases.GetDirectorUseCase
 import com.example.recyclerretrofitinesmr.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -15,7 +17,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val directorRepository: DirectorRepository) :
+class MainViewModel @Inject constructor(
+    private val getAllDirectorUseCase: GetAllDirectorUseCase,
+    private val getDirectorUseCase: GetDirectorUseCase) :
     ViewModel() {
 
     private val listaDirectores = mutableListOf<Director>()
@@ -50,7 +54,7 @@ class MainViewModel @Inject constructor(private val directorRepository: Director
 
     private fun getAllDirectores() {
         viewModelScope.launch {
-            val result = directorRepository.getAllDirector()
+            val result = getAllDirectorUseCase.getAllDirector()
             Log.d("Directores (MainViewModel1)", "Directores: ${result}")
             when (result) {
                 is NetworkResult.Success -> {
@@ -71,11 +75,17 @@ class MainViewModel @Inject constructor(private val directorRepository: Director
 
     private fun getDirector(id: String) {
         viewModelScope.launch {
-            _uiState.value = uiState.value?.copy(
-                directores = listaDirectores.filter {
-                    it.id.equals(id)
-                }.toList()
-            )
+            val result = getDirectorUseCase.getDirector(id)
+            when(result){
+                is NetworkResult.Success ->{
+                    val director = result.data
+                    _uiState.value = _uiState.value?.copy(selectedDirector = director)
+                }
+                is NetworkResult.Error -> {
+                    _error.value = result.message.toString()
+                }
+                is NetworkResult.Loading -> TODO()
+            }
         }
     }
 
