@@ -52,4 +52,22 @@ class DirectorRepository @Inject constructor(
             return NetworkResult.Error("El parámetro id no es un número válido")
         }
     }
+
+    suspend fun deleteDirector(idParam: String): NetworkResult<Unit> {
+        try {
+            val id: Int = idParam.toInt()
+            val response = directorService.deleteDirector(id)
+
+            return if (response.isSuccessful) {
+                NetworkResult.Success(Unit)
+            } else {
+                NetworkResult.Error("Ha habido un error al eliminar el director: ${response.code()}")
+            }
+        } catch (e: NumberFormatException) {
+            return NetworkResult.Error("El parámetro id no es un número válido")
+        } catch (e: Exception) {
+            return NetworkResult.Error(e.message ?: e.toString())
+        }
+
+    }
 }

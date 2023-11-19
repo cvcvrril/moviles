@@ -8,6 +8,6 @@ sealed class MainEvent {
     class GetDirector(val id: String) : MainEvent()
     class DeleteDirector (val director: Director) : MainEvent()
     object ErrorVisto : MainEvent()
-    class DeletePersonasSeleccionadas() : MainEvent()
+    class DeleteDirectoresSeleccionados() : MainEvent()
     object ResetSelectMode: MainEvent()
 }

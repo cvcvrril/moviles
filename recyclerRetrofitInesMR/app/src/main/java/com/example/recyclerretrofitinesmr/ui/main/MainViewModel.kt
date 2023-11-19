@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.recyclerretrofitinesmr.data.repository.DirectorRepository
 import com.example.recyclerretrofitinesmr.domain.Director
+import com.example.recyclerretrofitinesmr.domain.usecases.DeleteDirectorUseCase
 import com.example.recyclerretrofitinesmr.domain.usecases.GetAllDirectorUseCase
 import com.example.recyclerretrofitinesmr.domain.usecases.GetDirectorUseCase
 import com.example.recyclerretrofitinesmr.utils.NetworkResult
@@ -19,7 +19,9 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val getAllDirectorUseCase: GetAllDirectorUseCase,
-    private val getDirectorUseCase: GetDirectorUseCase) :
+    private val getDirectorUseCase: GetDirectorUseCase,
+    private val deleteDirectorUseCase: DeleteDirectorUseCase
+) :
     ViewModel() {
 
     private val listaDirectores = mutableListOf<Director>()
@@ -45,7 +47,7 @@ class MainViewModel @Inject constructor(
                 getDirector(event.id)
             }
 
-            is MainEvent.DeletePersonasSeleccionadas -> TODO()
+            is MainEvent.DeleteDirectoresSeleccionados -> TODO()
             MainEvent.ErrorVisto -> TODO()
             MainEvent.ResetSelectMode -> TODO()
         }
@@ -63,6 +65,7 @@ class MainViewModel @Inject constructor(
                     _uiState.value = _uiState.value?.copy(directores = listaDirectores)
 
                 }
+
                 is NetworkResult.Error -> {
                     _error.value = result.message.toString()
                 }
@@ -76,10 +79,29 @@ class MainViewModel @Inject constructor(
     private fun getDirector(id: String) {
         viewModelScope.launch {
             val result = getDirectorUseCase.getDirector(id)
-            when(result){
-                is NetworkResult.Success ->{
+            when (result) {
+                is NetworkResult.Success -> {
                     val director = result.data
                     _uiState.value = _uiState.value?.copy(selectedDirector = director)
+                }
+
+                is NetworkResult.Error -> {
+                    _error.value = result.message.toString()
+                }
+
+                is NetworkResult.Loading -> TODO()
+            }
+        }
+    }
+
+    private fun deleteDirector(director: Director) {
+        viewModelScope.launch {
+            val result = deleteDirectorUseCase.deleteDirector(director.id.toString())
+            when (result) {
+                is NetworkResult.Success -> {
+                    listaDirectores.removeAll { it.id == director.id }
+                    _uiState.value = _uiState.value?.copy(directores = listaDirectores)
+                    Log.d("DelDirectores (MainViewModel1)", "Directores: ${listaDirectores}")
                 }
                 is NetworkResult.Error -> {
                     _error.value = result.message.toString()
@@ -87,9 +109,6 @@ class MainViewModel @Inject constructor(
                 is NetworkResult.Loading -> TODO()
             }
         }
-    }
-
-    private fun deleteDirector(directores: Director) {
 
     }
 

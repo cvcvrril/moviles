@@ -65,9 +65,7 @@ class DirectorAdapter(
         fun bind(item: Director) {
             Log.d("Directores(DirectorAdapter)", "Binding director: ${item.id}, isSelected: ${item.isSelected}")
             itemView.setOnClickListener {
-                if (!selectedMode){
-                    actions.onStartSelectedMode(item)
-                }
+                actions.onStartSelectedMode(item)
                 true
             }
             with(binding) {
@@ -99,6 +97,13 @@ class DirectorAdapter(
 
     }
 
+    fun onDelete(director: Director) {
+        val position = currentList.indexOf(director)
+        selectedDirectores.remove(director)
+        notifyItemRemoved(position)
+        actions.onDelete(director)
+    }
+
     class DiffCallback : DiffUtil.ItemCallback<Director>() {
         override fun areItemsTheSame(oldItem: Director, newItem: Director): Boolean {
             return oldItem.id == newItem.id
@@ -109,12 +114,13 @@ class DirectorAdapter(
         }
     }
 
+
     val swipeGesture = object : SwipeGesture(context) {
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             when (direction) {
                 ItemTouchHelper.LEFT -> {
                     selectedDirectores.remove(currentList[viewHolder.adapterPosition])
-                    actions.onDelete(currentList[viewHolder.adapterPosition])
+                    onDelete(currentList[viewHolder.adapterPosition])
                     if (selectedMode)
                         actions.itemClicked(currentList[viewHolder.adapterPosition])
                 }

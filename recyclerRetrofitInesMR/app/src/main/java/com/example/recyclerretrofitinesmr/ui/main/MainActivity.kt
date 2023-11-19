@@ -38,7 +38,9 @@ class MainActivity : AppCompatActivity() {
             directoresAdapter = DirectorAdapter(this@MainActivity,
                 object : DirectorAdapter.DirectorActions {
                     override fun onDelete(director: Director) {
+                        Log.d("DirectorAdapter", "Director eliminado: ${director.id}")
                         viewModel.handleEvent(MainEvent.DeleteDirector(director))
+                        Log.d("Directores (MainActivity1)", "Directores: ${viewModel.handleEvent(MainEvent.DeleteDirector(director))}")
                     }
 
                     override fun itemClicked(director: Director) {
@@ -121,7 +123,7 @@ class MainActivity : AppCompatActivity() {
                         true
                     }
                     R.id.more -> {
-                        viewModel.handleEvent(MainEvent.DeletePersonasSeleccionadas())
+                        viewModel.handleEvent(MainEvent.DeleteDirectoresSeleccionados())
                         true
                     }
                     else -> false
