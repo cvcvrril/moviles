@@ -1,4 +1,4 @@
-package com.example.recyclerretrofitinesmr.domain.usecases
+package com.example.recyclerretrofitinesmr.domain.usecases.director
 
 import com.example.recyclerretrofitinesmr.data.repository.DirectorRepository
 import com.example.recyclerretrofitinesmr.utils.NetworkResult

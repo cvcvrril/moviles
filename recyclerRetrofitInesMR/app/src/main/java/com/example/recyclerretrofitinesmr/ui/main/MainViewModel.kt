@@ -6,9 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.recyclerretrofitinesmr.domain.Director
-import com.example.recyclerretrofitinesmr.domain.usecases.DeleteDirectorUseCase
-import com.example.recyclerretrofitinesmr.domain.usecases.GetAllDirectorUseCase
-import com.example.recyclerretrofitinesmr.domain.usecases.GetDirectorUseCase
+import com.example.recyclerretrofitinesmr.domain.usecases.director.DeleteDirectorUseCase
+import com.example.recyclerretrofitinesmr.domain.usecases.director.GetAllDirectorUseCase
+import com.example.recyclerretrofitinesmr.domain.usecases.director.GetDirectorUseCase
 import com.example.recyclerretrofitinesmr.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow

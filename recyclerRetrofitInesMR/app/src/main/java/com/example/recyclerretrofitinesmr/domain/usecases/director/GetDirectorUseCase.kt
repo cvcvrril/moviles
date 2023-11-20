@@ -1,6 +1,5 @@
-package com.example.recyclerretrofitinesmr.domain.usecases
+package com.example.recyclerretrofitinesmr.domain.usecases.director
 
-import android.util.Log
 import com.example.recyclerretrofitinesmr.data.repository.DirectorRepository
 import com.example.recyclerretrofitinesmr.domain.Director
 import com.example.recyclerretrofitinesmr.utils.NetworkResult
@@ -10,14 +9,13 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @ActivityRetainedScoped
-class GetAllDirectorUseCase @Inject constructor(
+class GetDirectorUseCase @Inject constructor(
     private val directorRepository: DirectorRepository
 ) {
 
-    suspend fun getAllDirector(): NetworkResult<List<Director>> {
+    suspend fun getDirector(id: String): NetworkResult<Director> {
         return withContext(Dispatchers.IO)
-        { directorRepository.getAllDirector() }
-        Log.d("Directores (DirectorRepository)", "Directores: ${directorRepository.getAllDirector()}")
+        { directorRepository.getDirector(id) }
     }
 
 }
