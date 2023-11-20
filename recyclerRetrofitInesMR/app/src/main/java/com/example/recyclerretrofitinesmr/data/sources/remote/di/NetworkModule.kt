@@ -2,6 +2,7 @@ package com.example.recyclerretrofitinesmr.data.sources.remote.di;
 
 
 import com.example.recyclerretrofitinesmr.data.sources.remote.DirectorService
+import com.example.recyclerretrofitinesmr.data.sources.remote.PeliculaService
 import com.example.recyclerretrofitinesmr.utils.Constants
 import com.google.gson.GsonBuilder
 import javax.inject.Singleton;
@@ -51,5 +52,10 @@ object NetworkModule {
     fun provideCurrencyService(retrofit: Retrofit): DirectorService =
             retrofit.create(DirectorService::class.java)
 
+
+    @Singleton
+    @Provides
+    fun providePeliculaService(retrofit: Retrofit): PeliculaService =
+        retrofit.create(PeliculaService::class.java)
 
 }

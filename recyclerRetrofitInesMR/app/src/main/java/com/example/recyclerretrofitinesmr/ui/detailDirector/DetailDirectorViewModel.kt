@@ -11,9 +11,11 @@ import com.example.recyclerretrofitinesmr.domain.usecases.peliculas.GetAllPelicu
 import com.example.recyclerretrofitinesmr.domain.usecases.peliculas.GetAllPeliculasUseCase
 import com.example.recyclerretrofitinesmr.ui.main.MainState
 import com.example.recyclerretrofitinesmr.utils.NetworkResult
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class DetailDirectorViewModel @Inject constructor(
     private val getAllPeliculasUseCase: GetAllPeliculasUseCase,
     private val getAllPeliculasIdDirectorUseCase: GetAllPeliculasIdDirectorUseCase
