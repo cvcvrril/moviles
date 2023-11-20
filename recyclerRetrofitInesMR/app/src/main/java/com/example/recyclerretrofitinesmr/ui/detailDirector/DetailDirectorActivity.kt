@@ -39,7 +39,7 @@ class DetailDirectorActivity : AppCompatActivity() {
             fechaDirector.setText(birthDate)
         }
 
-        viewModel.handleEvent(DetailDirectorEvent.GetAllPeliculasIdDirector(director.id.toString()))
+        viewModel.handleEvent(DetailDirectorEvent.GetAllPeliculasIdDirector(director.id))
 
         viewModel.uiState.observe(this@DetailDirectorActivity) { state ->
             state.peliculas.let { peliculas ->

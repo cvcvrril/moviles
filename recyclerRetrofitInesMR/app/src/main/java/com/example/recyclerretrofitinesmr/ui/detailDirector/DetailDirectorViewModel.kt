@@ -13,6 +13,7 @@ import com.example.recyclerretrofitinesmr.ui.main.MainState
 import com.example.recyclerretrofitinesmr.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -39,7 +40,7 @@ class DetailDirectorViewModel @Inject constructor(
     private fun getAllPeliculas() {
         viewModelScope.launch {
             val result = getAllPeliculasUseCase.getAllPeliculas()
-            Log.d("Directores (MainViewModel1)", "Directores: ${result}")
+
             when (result) {
                 is NetworkResult.Success -> {
                     listaPeliculas.clear()
@@ -56,9 +57,10 @@ class DetailDirectorViewModel @Inject constructor(
         }
     }
 
-    private fun getAllPeliculasIdDirector(idDirector: String) {
+    private fun getAllPeliculasIdDirector(idDirector: Int) {
         viewModelScope.launch {
             val result = getAllPeliculasIdDirectorUseCase.getAllPeliculasIdDirector(idDirector)
+            Log.d("Peliculas (MainViewModel1)", "Peliculas: ${result}")
             when (result) {
                 is NetworkResult.Success -> {
                     listaPeliculas.clear()
@@ -68,6 +70,7 @@ class DetailDirectorViewModel @Inject constructor(
 
                 is NetworkResult.Error -> {
                     _error.value = result.message.toString()
+                    Timber.e("Error en getAllPeliculasIdDirector: ${result.message}")
                 }
 
                 is NetworkResult.Loading -> TODO()

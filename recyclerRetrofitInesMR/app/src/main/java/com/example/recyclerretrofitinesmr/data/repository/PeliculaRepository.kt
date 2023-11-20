@@ -32,14 +32,15 @@ class PeliculaRepository @Inject constructor(
         }
     }
 
-    suspend fun getPeliculasIdDirector(idDirectorParam: String): NetworkResult<List<Pelicula>> {
+    suspend fun getPeliculasIdDirector(idDirectorParam: Int): NetworkResult<List<Pelicula>> {
         try {
-            val idDirector: Int = idDirectorParam.toInt()
-            val response = peliculaService.getPeliculasIdDirector(idDirector)
+            val response = peliculaService.getPeliculasIdDirector(idDirectorParam)
+            Timber.d("Peliculas(Repository)","IdDirector: ${idDirectorParam}")
             if (response.isSuccessful) {
                 val peliculaResponse = response.body()
                 if (peliculaResponse != null) {
-                    val peliculasDirector = peliculaResponse.map { it.toPelicula() }
+                    val peliculasDirector =
+                        peliculaResponse.map { peliculaResponse -> peliculaResponse.toPelicula() }
                     return NetworkResult.Success(peliculasDirector)
                 } else {
                     return NetworkResult.Error("Respuesta nula del servidor")
@@ -47,14 +48,10 @@ class PeliculaRepository @Inject constructor(
             } else {
                 return NetworkResult.Error("Error en la respuesta del servidor: ${response.code()}")
             }
-
-        } catch (e: NumberFormatException) {
-            return NetworkResult.Error("El parámetro id no es un número válido")
         } catch (e: Exception) {
             return NetworkResult.Error("Error: ${e.message}")
         }
     }
-
 
 
 }
