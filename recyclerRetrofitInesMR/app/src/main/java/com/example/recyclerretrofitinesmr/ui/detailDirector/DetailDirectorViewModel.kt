@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.recyclerretrofitinesmr.domain.Director
 import com.example.recyclerretrofitinesmr.domain.Pelicula
+import com.example.recyclerretrofitinesmr.domain.usecases.peliculas.DeletePeliculaUseCase
 import com.example.recyclerretrofitinesmr.domain.usecases.peliculas.GetAllPeliculasIdDirectorUseCase
 import com.example.recyclerretrofitinesmr.domain.usecases.peliculas.GetAllPeliculasUseCase
 import com.example.recyclerretrofitinesmr.ui.main.MainState
@@ -19,7 +20,8 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailDirectorViewModel @Inject constructor(
     private val getAllPeliculasUseCase: GetAllPeliculasUseCase,
-    private val getAllPeliculasIdDirectorUseCase: GetAllPeliculasIdDirectorUseCase
+    private val getAllPeliculasIdDirectorUseCase: GetAllPeliculasIdDirectorUseCase,
+    private val deletePeliculaUseCase: DeletePeliculaUseCase
 ) : ViewModel() {
 
     private val listaPeliculas = mutableListOf<Pelicula>()
@@ -43,7 +45,17 @@ class DetailDirectorViewModel @Inject constructor(
 
     private fun deletePelicula(pelicula: Pelicula) {
         viewModelScope.launch {
-            val result = deletePelicula(pelicula.)
+            val result = deletePeliculaUseCase.deletePelicula(pelicula.id.toString())
+            when(result){
+                is NetworkResult.Success -> {
+                    listaPeliculas.removeAll{it.id == pelicula.id}
+                    _uiState.value = _uiState.value?.copy(peliculas = listaPeliculas)
+                    Log.d("DelPeliculas (MainViewModel1)", "Directores: ${listaPeliculas}")
+                }
+                is NetworkResult.Error -> TODO()
+                is NetworkResult.Loading -> TODO()
+
+            }
         }
 
     }

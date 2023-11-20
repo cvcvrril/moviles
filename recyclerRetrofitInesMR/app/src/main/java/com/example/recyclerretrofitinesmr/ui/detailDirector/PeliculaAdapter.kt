@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerretrofitinesmr.R
+import com.example.recyclerretrofitinesmr.domain.Director
 import com.example.recyclerretrofitinesmr.domain.Pelicula
 import com.example.recyclerretrofitinesmr.ui.main.SwipeGesture
 
@@ -21,6 +22,8 @@ class PeliculaAdapter(
     interface PeliculaActions{
         fun onDelete(pelicula: Pelicula)
     }
+
+    private var selectedPelicula = mutableListOf<Pelicula>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PeliculaViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.view_pelicula, parent, false)
@@ -63,7 +66,12 @@ class PeliculaAdapter(
     }
 
     private fun onDelete(pelicula: Pelicula?) {
-
+        val position = currentList.indexOf(pelicula)
+        selectedPelicula.remove(pelicula)
+        notifyItemRemoved(position)
+        if (pelicula != null) {
+            actions.onDelete(pelicula)
+        }
 
     }
 }

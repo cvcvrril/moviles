@@ -28,7 +28,10 @@ class DetailDirectorActivity : AppCompatActivity() {
         peliculaAdapter = PeliculaAdapter(this@DetailDirectorActivity,
             object : PeliculaAdapter.PeliculaActions{
                 override fun onDelete(pelicula: Pelicula) {
+                    Timber.tag("PeliculaAdapter").d("Peloicula eliminada: %s", pelicula.id)
                     viewModel.handleEvent(DetailDirectorEvent.DeletePelicula(pelicula))
+                    Timber.tag("Peliculas (MainActivity1)")
+                        .d("Peliculas: " + viewModel.handleEvent(DetailDirectorEvent.DeletePelicula(pelicula)))
                 }
             })
         setupRecyclerView()
