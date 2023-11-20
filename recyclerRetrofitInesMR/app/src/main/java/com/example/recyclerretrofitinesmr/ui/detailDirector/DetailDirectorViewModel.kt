@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.recyclerretrofitinesmr.domain.Director
 import com.example.recyclerretrofitinesmr.domain.Pelicula
+import com.example.recyclerretrofitinesmr.domain.usecases.peliculas.GetAllPeliculasIdDirectorUseCase
 import com.example.recyclerretrofitinesmr.domain.usecases.peliculas.GetAllPeliculasUseCase
 import com.example.recyclerretrofitinesmr.ui.main.MainState
 import com.example.recyclerretrofitinesmr.utils.NetworkResult
@@ -14,8 +15,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DetailDirectorViewModel @Inject constructor(
-    private val getAllPeliculasUseCase: GetAllPeliculasUseCase)
-    :ViewModel(){
+    private val getAllPeliculasUseCase: GetAllPeliculasUseCase,
+    private val getAllPeliculasIdDirectorUseCase: GetAllPeliculasIdDirectorUseCase
+) : ViewModel() {
 
     private val listaPeliculas = mutableListOf<Pelicula>()
     private val _error = MutableLiveData<String>()
@@ -23,6 +25,14 @@ class DetailDirectorViewModel @Inject constructor(
     val uiState: LiveData<DetailDirectorState> get() = _uiState
     val error: LiveData<String> get() = _error
 
+    fun handleEvent(event: DetailDirectorEvent) {
+        when (event) {
+            is DetailDirectorEvent.GetAllPeliculasIdDirector -> {
+                getAllPeliculasIdDirector(event.idDirector)
+            }
+        }
+
+    }
 
     private fun getAllPeliculas() {
         viewModelScope.launch {
@@ -32,8 +42,7 @@ class DetailDirectorViewModel @Inject constructor(
                 is NetworkResult.Success -> {
                     listaPeliculas.clear()
                     listaPeliculas.addAll(result.data as List<Pelicula>)
-                    //_uiState.value = _uiState.value?.copy(peliculas = listaPeliculas)
-
+                    _uiState.value = _uiState.value?.copy(peliculas = listaPeliculas)
                 }
 
                 is NetworkResult.Error -> {
@@ -45,7 +54,24 @@ class DetailDirectorViewModel @Inject constructor(
         }
     }
 
+    private fun getAllPeliculasIdDirector(idDirector: String) {
+        viewModelScope.launch {
+            val result = getAllPeliculasIdDirectorUseCase.getAllPeliculasIdDirector(idDirector)
+            when (result) {
+                is NetworkResult.Success -> {
+                    listaPeliculas.clear()
+                    listaPeliculas.addAll(result.data as List<Pelicula>)
+                    _uiState.value = _uiState.value?.copy(peliculas = listaPeliculas)
+                }
+
+                is NetworkResult.Error -> {
+                    _error.value = result.message.toString()
+                }
+
+                is NetworkResult.Loading -> TODO()
+            }
+        }
 
 
-
+    }
 }

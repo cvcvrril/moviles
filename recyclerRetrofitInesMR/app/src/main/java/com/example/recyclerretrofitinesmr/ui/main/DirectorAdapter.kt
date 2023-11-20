@@ -45,11 +45,6 @@ class DirectorAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewholder {
         Log.d("DirectorAdapter", "onCreateViewHolder called")
-        //return val itemView = LayoutInflater.from(parent.context)
-        //    .inflate(R.layout.view_director, parent, false)
-        //itemView.isClickable = true
-        //return ItemViewholder(itemView)
-
         return ItemViewholder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.view_director, parent, false)

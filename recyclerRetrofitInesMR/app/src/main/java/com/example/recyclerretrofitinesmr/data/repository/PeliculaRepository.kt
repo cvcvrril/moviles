@@ -11,7 +11,7 @@ import javax.inject.Inject
 @ActivityRetainedScoped
 class PeliculaRepository @Inject constructor(
     private val peliculaService: PeliculaService
-)  {
+) {
 
     suspend fun getAllPeliculas(): NetworkResult<List<Pelicula>> {
         try {
@@ -31,6 +31,30 @@ class PeliculaRepository @Inject constructor(
             return error(e.message ?: e.toString())
         }
     }
+
+    suspend fun getPeliculasIdDirector(idDirectorParam: String): NetworkResult<List<Pelicula>> {
+        try {
+            val idDirector: Int = idDirectorParam.toInt()
+            val response = peliculaService.getPeliculasIdDirector(idDirector)
+            if (response.isSuccessful) {
+                val peliculaResponse = response.body()
+                if (peliculaResponse != null) {
+                    val peliculasDirector = peliculaResponse.map { it.toPelicula() }
+                    return NetworkResult.Success(peliculasDirector)
+                } else {
+                    return NetworkResult.Error("Respuesta nula del servidor")
+                }
+            } else {
+                return NetworkResult.Error("Error en la respuesta del servidor: ${response.code()}")
+            }
+
+        } catch (e: NumberFormatException) {
+            return NetworkResult.Error("El parámetro id no es un número válido")
+        } catch (e: Exception) {
+            return NetworkResult.Error("Error: ${e.message}")
+        }
+    }
+
 
 
 }
