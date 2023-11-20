@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/favorite"
-        android:icon="@drawable/ic_baseline_favorite_24"
-        android:title="favortio"
+        android:icon="@drawable/baseline_delete_forever_24"
+        android:title="delete"
         android:contentDescription="descripcion"
         app:showAsAction="ifRoom" />
 

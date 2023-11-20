@@ -19,6 +19,7 @@ import com.example.recyclerretrofitinesmr.domain.Director
 import com.example.recyclerretrofitinesmr.ui.detailDirector.DetailDirectorActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -34,31 +35,30 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("DetailDirectorActivity", "onCreate called")
+        Timber.tag("DetailDirectorActivity").d("onCreate called")
         binding = ActivityMainBinding.inflate(layoutInflater).apply {
             setContentView(root)
             callback = configContextBar()
             directoresAdapter = DirectorAdapter(this@MainActivity,
                 object : DirectorAdapter.DirectorActions {
                     override fun onDelete(director: Director) {
-                        Log.d("DirectorAdapter", "Director eliminado: ${director.id}")
+                        Timber.tag("DirectorAdapter").d("Director eliminado: %s", director.id)
                         viewModel.handleEvent(MainEvent.DeleteDirector(director))
-                        Log.d(
-                            "Directores (MainActivity1)",
-                            "Directores: ${viewModel.handleEvent(MainEvent.DeleteDirector(director))}"
-                        )
+                        Timber.tag("Directores (MainActivity1)")
+                            .d("Directores: " + viewModel.handleEvent(MainEvent.DeleteDirector(director)))
                     }
 
                     override fun itemClicked(director: Director) {
-                        Log.d("MainActivity", "Item clicked: ${director.nombre}")
+                        //viewModel.handleEvent(MainEvent.)
+                        Timber.tag("MainActivity").d("Item clicked: %s", director.nombre)
                         val intent = Intent(context, DetailDirectorActivity::class.java)
                         intent.putExtra("director", director)
                         context.startActivity(intent)
                     }
 
                     override fun onStartSelectedMode(director: Director) {
-                        //viewModel.handleEvent(MainEvent.StartSelectMode)
-                        //viewModel.handleEvent(MainEvent.SeleccionaDirector(director))
+                        viewModel.handleEvent(MainEvent.StartSelectMode)
+                        viewModel.handleEvent(MainEvent.SeleccionaDirector(director))
                     }
 
                 }
@@ -70,13 +70,14 @@ class MainActivity : AppCompatActivity() {
             touchHelper.attachToRecyclerView(rvDirectores)
             viewModel.handleEvent(MainEvent.GetAllDirectores)
             viewModel.uiState.observe(this@MainActivity) { state ->
-                Log.d("Directores(MainActivity2)", "Directores: ${state.directores}")
+                Timber.tag("Directores(MainActivity2)").d("Directores: %s", state.directores)
                 if (state.directores != anteriorState?.directores && state.directores.isNotEmpty()) {
                     directoresAdapter.submitList(state.directores)
-                    Log.d("Directores(MainActivity3)", "Directores Size: ${state.directores.size}")
-                    Log.d("Directores(MainActivity4)", "Directores: ${state.directores}")
-                    Log.d("Directores(MainActivity5)", "Directores Size: ${directoresAdapter.itemCount}"
-                    )
+                    Timber.tag("Directores(MainActivity3)")
+                        .d("Directores Size: %s", state.directores.size)
+                    Timber.tag("Directores(MainActivity4)").d("Directores: %s", state.directores)
+                    Timber.tag("Directores(MainActivity5)")
+                        .d("Directores Size: %s", directoresAdapter.itemCount)
                 }
                 if (state.directoresSeleccionados != anteriorState?.directoresSeleccionados) {
                     directoresAdapter.setSelectedItems(state.directoresSeleccionados)
@@ -174,7 +175,6 @@ class MainActivity : AppCompatActivity() {
                 newText?.let { filtro ->
                     viewModel.handleEvent(MainEvent.GetDirector(filtro))
                 }
-
                 return false
             }
 
