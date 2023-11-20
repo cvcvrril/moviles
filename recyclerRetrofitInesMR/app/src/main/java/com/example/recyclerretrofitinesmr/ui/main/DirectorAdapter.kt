@@ -65,11 +65,8 @@ class DirectorAdapter(
         fun bind(item: Director) {
             Log.d("Directores(DirectorAdapter)", "Binding director: ${item.id}, isSelected: ${item.isSelected}")
             itemView.setOnClickListener {
-                if (selectedMode) {
-                    handleSelection(item)
-                } else {
-                    actions.onStartSelectedMode(item)
-                }
+                actions.itemClicked(director = item)
+
             }
             with(binding) {
                 selected.setOnClickListener {
@@ -82,7 +79,7 @@ class DirectorAdapter(
                             item.isSelected = false
                             selectedDirectores.remove(item)
                         }
-                        actions.itemClicked(item)
+
                     }
                 }
                 tvNombre.text = item.nombre

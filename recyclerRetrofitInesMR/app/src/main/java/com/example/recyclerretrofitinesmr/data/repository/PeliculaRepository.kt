@@ -1,9 +1,8 @@
 package com.example.recyclerretrofitinesmr.data.repository
 
-import android.util.Log
-import com.example.recyclerretrofitinesmr.data.model.toDirector
-import com.example.recyclerretrofitinesmr.data.sources.remote.DirectorService
-import com.example.recyclerretrofitinesmr.domain.Director
+import com.example.recyclerretrofitinesmr.data.model.toPelicula
+import com.example.recyclerretrofitinesmr.data.sources.remote.PeliculaService
+import com.example.recyclerretrofitinesmr.domain.Pelicula
 import com.example.recyclerretrofitinesmr.utils.NetworkResult
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import timber.log.Timber
@@ -11,19 +10,19 @@ import javax.inject.Inject
 
 @ActivityRetainedScoped
 class PeliculaRepository @Inject constructor(
-    private val directorService: DirectorService
+    private val peliculaService: PeliculaService
 )  {
 
-    suspend fun getAllPeliculas(): NetworkResult<List<Director>> {
+    suspend fun getAllPeliculas(): NetworkResult<List<Pelicula>> {
         try {
-            val response = directorService.getAllDirector()
+            val response = peliculaService.getAllPeliculas()
             if (response.isSuccessful) {
                 response.body()?.let {
-                    val directores = it.map { directorResponse ->
-                        directorResponse.toDirector()
+                    val peliculas = it.map { peliculaResponse ->
+                        peliculaResponse.toPelicula()
                     }
-                    Timber.tag("Directores (RemoteDataSource)").d("Directores: " + directores)
-                    return NetworkResult.Success(directores)
+                    Timber.tag("Peliculas (RemoteDataSource)").d("Directores: " + peliculas)
+                    return NetworkResult.Success(peliculas)
                 }
                 return error("No hay datos")
             }

@@ -32,7 +32,7 @@ class DetailDirectorViewModel @Inject constructor(
                 is NetworkResult.Success -> {
                     listaPeliculas.clear()
                     listaPeliculas.addAll(result.data as List<Pelicula>)
-                   // _uiState.value = _uiState.value?.copy(peliculas = listaPeliculas)
+                    //_uiState.value = _uiState.value?.copy(peliculas = listaPeliculas)
 
                 }
 
