@@ -1,5 +1,6 @@
 package com.example.recyclerretrofitinesmr.ui.detailDirector
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recyclerretrofitinesmr.databinding.ActivityDetailDirectorBinding
 import com.example.recyclerretrofitinesmr.domain.Director
 import com.example.recyclerretrofitinesmr.domain.Pelicula
+import com.example.recyclerretrofitinesmr.ui.detailPelicula.DetailPeliculaActivity
 import com.example.recyclerretrofitinesmr.ui.main.MainEvent
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -17,6 +19,7 @@ import java.time.format.DateTimeFormatter
 @AndroidEntryPoint
 class DetailDirectorActivity : AppCompatActivity() {
 
+    val context = this
     private lateinit var binding: ActivityDetailDirectorBinding
     private val viewModel: DetailDirectorViewModel by viewModels()
     private lateinit var peliculaAdapter: PeliculaAdapter
@@ -32,6 +35,12 @@ class DetailDirectorActivity : AppCompatActivity() {
                     viewModel.handleEvent(DetailDirectorEvent.DeletePelicula(pelicula))
                     Timber.tag("Peliculas (MainActivity1)")
                         .d("Peliculas: " + viewModel.handleEvent(DetailDirectorEvent.DeletePelicula(pelicula)))
+                }
+
+                override fun itemClicked(pelicula: Pelicula) {
+                    val intent = Intent(context, DetailPeliculaActivity::class.java)
+                    intent.putExtra("pelicula", pelicula)
+                    context.startActivity(intent)
                 }
             })
         setupRecyclerView()

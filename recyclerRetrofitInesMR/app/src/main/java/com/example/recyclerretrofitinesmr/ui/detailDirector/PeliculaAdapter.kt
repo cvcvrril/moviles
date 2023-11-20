@@ -10,23 +10,34 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerretrofitinesmr.R
-import com.example.recyclerretrofitinesmr.domain.Director
 import com.example.recyclerretrofitinesmr.domain.Pelicula
 import com.example.recyclerretrofitinesmr.ui.main.SwipeGesture
 
 class PeliculaAdapter(
     val context: Context,
     val actions: PeliculaActions
-): ListAdapter<Pelicula, PeliculaAdapter.PeliculaViewHolder>(PeliculaDiffCallBack()) {
+) : ListAdapter<Pelicula, PeliculaAdapter.PeliculaViewHolder>(PeliculaDiffCallBack()) {
 
-    interface PeliculaActions{
+    interface PeliculaActions {
         fun onDelete(pelicula: Pelicula)
+        fun itemClicked(pelicula: Pelicula)
     }
 
     private var selectedPelicula = mutableListOf<Pelicula>()
+    private var selectedMode: Boolean = false
+
+    fun startSelectMode() {
+        selectedMode = true
+    }
+
+    fun resetSelectMode() {
+        selectedMode = false
+        selectedPelicula.clear()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PeliculaViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_pelicula, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.view_pelicula, parent, false)
         return PeliculaViewHolder(view)
     }
 
@@ -45,7 +56,7 @@ class PeliculaAdapter(
         }
     }
 
-     class PeliculaDiffCallBack : DiffUtil.ItemCallback<Pelicula>() {
+    class PeliculaDiffCallBack : DiffUtil.ItemCallback<Pelicula>() {
         override fun areItemsTheSame(oldItem: Pelicula, newItem: Pelicula): Boolean {
             return oldItem.id == newItem.id
         }
@@ -60,18 +71,18 @@ class PeliculaAdapter(
             when (direction) {
                 ItemTouchHelper.LEFT -> {
                     onDelete(currentList[viewHolder.adapterPosition])
+                    if (selectedMode)
+                        actions.itemClicked(currentList[viewHolder.adapterPosition])
                 }
             }
         }
     }
 
-    private fun onDelete(pelicula: Pelicula?) {
+    private fun onDelete(pelicula: Pelicula) {
         val position = currentList.indexOf(pelicula)
         selectedPelicula.remove(pelicula)
         notifyItemRemoved(position)
-        if (pelicula != null) {
-            actions.onDelete(pelicula)
-        }
+        actions.onDelete(pelicula)
 
     }
 }
