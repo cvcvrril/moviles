@@ -40,7 +40,7 @@
         android:hint="Nombre completo"
         android:inputType="text"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintBottom_toTopOf="@+id/rvPeliculas"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout"
@@ -54,14 +54,14 @@
         android:hint="Fecha de nacimiento"
         android:inputType="date"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintBottom_toTopOf="@+id/rvPeliculas"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout"
         app:layout_constraintVertical_bias="0.774" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/rvPeliculas"
         android:layout_width="376dp"
         android:layout_height="414dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"

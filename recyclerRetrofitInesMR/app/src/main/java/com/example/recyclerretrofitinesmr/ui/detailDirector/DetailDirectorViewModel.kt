@@ -33,6 +33,17 @@ class DetailDirectorViewModel @Inject constructor(
             is DetailDirectorEvent.GetAllPeliculasIdDirector -> {
                 getAllPeliculasIdDirector(event.idDirector)
             }
+
+            is DetailDirectorEvent.DeletePelicula -> {
+                deletePelicula(event.pelicula)
+            }
+        }
+
+    }
+
+    private fun deletePelicula(pelicula: Pelicula) {
+        viewModelScope.launch {
+            val result = deletePelicula(pelicula.)
         }
 
     }

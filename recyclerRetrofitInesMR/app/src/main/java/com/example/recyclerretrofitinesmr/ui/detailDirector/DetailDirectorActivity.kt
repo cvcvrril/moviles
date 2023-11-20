@@ -4,9 +4,12 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recyclerretrofitinesmr.databinding.ActivityDetailDirectorBinding
 import com.example.recyclerretrofitinesmr.domain.Director
+import com.example.recyclerretrofitinesmr.domain.Pelicula
+import com.example.recyclerretrofitinesmr.ui.main.MainEvent
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.time.format.DateTimeFormatter
@@ -22,7 +25,12 @@ class DetailDirectorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailDirectorBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        peliculaAdapter = PeliculaAdapter()
+        peliculaAdapter = PeliculaAdapter(this@DetailDirectorActivity,
+            object : PeliculaAdapter.PeliculaActions{
+                override fun onDelete(pelicula: Pelicula) {
+                    viewModel.handleEvent(DetailDirectorEvent.DeletePelicula(pelicula))
+                }
+            })
         setupRecyclerView()
 
         val director: Director? = intent.getParcelableExtra("director")
@@ -47,10 +55,13 @@ class DetailDirectorActivity : AppCompatActivity() {
                 peliculaAdapter.submitList(peliculas)
             }
         }
+
+        val touchHelper = ItemTouchHelper(peliculaAdapter.swipeGesture)
+        touchHelper.attachToRecyclerView(binding.rvPeliculas)
     }
 
     private fun setupRecyclerView() {
-        binding.recyclerView.layoutManager = LinearLayoutManager(this@DetailDirectorActivity)
-        binding.recyclerView.adapter = peliculaAdapter
+        binding.rvPeliculas.layoutManager = LinearLayoutManager(this@DetailDirectorActivity)
+        binding.rvPeliculas.adapter = peliculaAdapter
     }
 }
