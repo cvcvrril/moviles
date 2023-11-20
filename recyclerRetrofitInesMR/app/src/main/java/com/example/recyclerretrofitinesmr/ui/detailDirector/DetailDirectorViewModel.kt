@@ -50,7 +50,6 @@ class DetailDirectorViewModel @Inject constructor(
                 is NetworkResult.Success -> {
                     listaPeliculas.removeAll{it.id == pelicula.id}
                     _uiState.value = _uiState.value?.copy(peliculas = listaPeliculas)
-                    Log.d("DelPeliculas (MainViewModel1)", "Directores: ${listaPeliculas}")
                 }
                 is NetworkResult.Error -> TODO()
                 is NetworkResult.Loading -> TODO()
@@ -83,7 +82,6 @@ class DetailDirectorViewModel @Inject constructor(
     private fun getAllPeliculasIdDirector(idDirector: Int) {
         viewModelScope.launch {
             val result = getAllPeliculasIdDirectorUseCase.getAllPeliculasIdDirector(idDirector)
-            Log.d("Peliculas (MainViewModel1)", "Peliculas: ${result}")
             when (result) {
                 is NetworkResult.Success -> {
                     listaPeliculas.clear()
@@ -93,7 +91,6 @@ class DetailDirectorViewModel @Inject constructor(
 
                 is NetworkResult.Error -> {
                     _error.value = result.message.toString()
-                    Timber.e("Error en getAllPeliculasIdDirector: ${result.message}")
                 }
 
                 is NetworkResult.Loading -> TODO()

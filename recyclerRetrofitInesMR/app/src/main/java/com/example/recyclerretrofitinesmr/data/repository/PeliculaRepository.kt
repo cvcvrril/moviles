@@ -3,10 +3,13 @@ package com.example.recyclerretrofitinesmr.data.repository
 import com.example.recyclerretrofitinesmr.data.model.toPelicula
 import com.example.recyclerretrofitinesmr.data.sources.remote.PeliculaService
 import com.example.recyclerretrofitinesmr.domain.Pelicula
+import com.example.recyclerretrofitinesmr.utils.Constants
 import com.example.recyclerretrofitinesmr.utils.NetworkResult
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import timber.log.Timber
 import javax.inject.Inject
+
+
 
 @ActivityRetainedScoped
 class PeliculaRepository @Inject constructor(
@@ -21,12 +24,11 @@ class PeliculaRepository @Inject constructor(
                     val peliculas = it.map { peliculaResponse ->
                         peliculaResponse.toPelicula()
                     }
-                    Timber.tag("Peliculas (RemoteDataSource)").d("Directores: " + peliculas)
                     return NetworkResult.Success(peliculas)
                 }
-                return error("No hay datos")
+                return error(Constants.NO_HAY_DATOS)
             }
-            return error("Ha habido un error al conseguir la información")
+            return error(Constants.HA_HABIDO_UN_ERROR_AL_CONSEGUIR_LA_INFORMACION)
         } catch (e: Exception) {
             return error(e.message ?: e.toString())
         }
@@ -35,7 +37,6 @@ class PeliculaRepository @Inject constructor(
     suspend fun getPeliculasIdDirector(idDirectorParam: Int): NetworkResult<List<Pelicula>> {
         try {
             val response = peliculaService.getPeliculasIdDirector(idDirectorParam)
-            Timber.d("Peliculas(Repository)","IdDirector: ${idDirectorParam}")
             if (response.isSuccessful) {
                 val peliculaResponse = response.body()
                 if (peliculaResponse != null) {
@@ -43,13 +44,13 @@ class PeliculaRepository @Inject constructor(
                         peliculaResponse.map { peliculaResponse -> peliculaResponse.toPelicula() }
                     return NetworkResult.Success(peliculasDirector)
                 } else {
-                    return NetworkResult.Error("Respuesta nula del servidor")
+                    return NetworkResult.Error(Constants.RESPUESTA_NULA_DEL_SERVIDOR)
                 }
             } else {
-                return NetworkResult.Error("Error en la respuesta del servidor: ${response.code()}")
+                return NetworkResult.Error(Constants.ERROR_SERVIDOR)
             }
         } catch (e: Exception) {
-            return NetworkResult.Error("Error: ${e.message}")
+            return NetworkResult.Error(Constants.HA_HABIDO_UN_ERROR_AL_CONSEGUIR_LA_INFORMACION)
         }
     }
 
@@ -61,10 +62,10 @@ class PeliculaRepository @Inject constructor(
             return if (response.isSuccessful) {
                 NetworkResult.Success(Unit)
             } else {
-                NetworkResult.Error("Ha habido un error al eliminar la película: ${response.code()}")
+                NetworkResult.Error(Constants.ERROR_ELIMINAR_PELI)
             }
         } catch (e: NumberFormatException) {
-            return NetworkResult.Error("El parámetro id no es un número válido")
+            return NetworkResult.Error(Constants.EL_PARAMETRO_ID_NO_ES_UN_NUMERO_VALIDO)
         } catch (e: Exception) {
             return NetworkResult.Error(e.message ?: e.toString())
         }

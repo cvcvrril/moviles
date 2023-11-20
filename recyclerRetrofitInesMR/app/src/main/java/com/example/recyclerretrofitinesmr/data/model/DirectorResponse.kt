@@ -2,15 +2,16 @@ package com.example.recyclerretrofitinesmr.data.model
 
 import com.example.recyclerretrofitinesmr.domain.Director
 import com.example.recyclerretrofitinesmr.domain.Pelicula
+import com.example.recyclerretrofitinesmr.utils.Constants
 import com.google.gson.annotations.SerializedName
 import java.time.LocalDate
 
 data class DirectorResponse(
-    @SerializedName("id")
+    @SerializedName(Constants.ID)
     val id: Int,
-    @SerializedName("nombre")
+    @SerializedName(Constants.NOMBRE)
     val nombre: String,
-    @SerializedName("nacimiento")
+    @SerializedName(Constants.NACIMIENTO)
     val nacimiento: String,
 )
 

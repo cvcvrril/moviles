@@ -1,14 +1,11 @@
 package com.example.recyclerretrofitinesmr.ui.detailPelicula
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.recyclerretrofitinesmr.databinding.ActivityDetailDirectorBinding
 import com.example.recyclerretrofitinesmr.databinding.ActivityDetailPeliculaBinding
-import com.example.recyclerretrofitinesmr.domain.Director
 import com.example.recyclerretrofitinesmr.domain.Pelicula
-import com.example.recyclerretrofitinesmr.ui.detailDirector.DetailDirectorViewModel
+import com.example.recyclerretrofitinesmr.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.format.DateTimeFormatter
 
@@ -23,7 +20,7 @@ class DetailPeliculaActivity : AppCompatActivity() {
         binding = ActivityDetailPeliculaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val pelicula: Pelicula? = intent.getParcelableExtra("pelicula")
+        val pelicula: Pelicula? = intent.getParcelableExtra(Constants.PELICULA)
 
         pelicula?.let {
             observarViewModel(pelicula)
@@ -32,7 +29,7 @@ class DetailPeliculaActivity : AppCompatActivity() {
     }
 
     private fun observarViewModel(pelicula: Pelicula) {
-        val releaseDate = pelicula.fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+        val releaseDate = pelicula.fecha.format(DateTimeFormatter.ofPattern(Constants.DATE_PATTERN))
 
         with(binding) {
             nombreCompletoDirector.setText(pelicula.titulo)

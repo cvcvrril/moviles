@@ -4,9 +4,11 @@ import android.util.Log
 import com.example.recyclerretrofitinesmr.data.model.toDirector
 import com.example.recyclerretrofitinesmr.data.sources.remote.DirectorService
 import com.example.recyclerretrofitinesmr.domain.Director
+import com.example.recyclerretrofitinesmr.utils.Constants
 import com.example.recyclerretrofitinesmr.utils.NetworkResult
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import javax.inject.Inject
+
 
 @ActivityRetainedScoped
 class DirectorRepository @Inject constructor(
@@ -21,12 +23,11 @@ class DirectorRepository @Inject constructor(
                     val directores = it.map { directorResponse ->
                         directorResponse.toDirector()
                     }
-                    Log.d("Directores (RemoteDataSource)", "Directores: ${directores}")
                     return NetworkResult.Success(directores)
                 }
-                return error("No hay datos")
+                return error(Constants.NO_HAY_DATOS)
             }
-            return error("Ha habido un error al conseguir la información")
+            return error(Constants.HA_HABIDO_UN_ERROR_AL_CONSEGUIR_LA_INFORMACION)
         } catch (e: Exception) {
             return error(e.message ?: e.toString())
         }
@@ -42,14 +43,14 @@ class DirectorRepository @Inject constructor(
                     val director = directorResponse.toDirector()
                     return NetworkResult.Success(director)
                 } else {
-                    return NetworkResult.Error("Respuesta nula del servidor")
+                    return NetworkResult.Error(Constants.RESPUESTA_NULA_DEL_SERVIDOR)
                 }
             }
-            return error("Ha habido un error al conseguir la información")
+            return error(Constants.HA_HABIDO_UN_ERROR_AL_CONSEGUIR_LA_INFORMACION)
         } catch (e: Exception) {
             return error(e.message ?: e.toString())
         } catch (e: NumberFormatException) {
-            return NetworkResult.Error("El parámetro id no es un número válido")
+            return NetworkResult.Error(Constants.EL_PARAMETRO_ID_NO_ES_UN_NUMERO_VALIDO)
         }
     }
 
@@ -61,10 +62,10 @@ class DirectorRepository @Inject constructor(
             return if (response.isSuccessful) {
                 NetworkResult.Success(Unit)
             } else {
-                NetworkResult.Error("Ha habido un error al eliminar el director: ${response.code()}")
+                NetworkResult.Error(Constants.ERROR_ELIMINAR_DIRECTOR)
             }
         } catch (e: NumberFormatException) {
-            return NetworkResult.Error("El parámetro id no es un número válido")
+            return NetworkResult.Error(Constants.EL_PARAMETRO_ID_NO_ES_UN_NUMERO_VALIDO)
         } catch (e: Exception) {
             return NetworkResult.Error(e.message ?: e.toString())
         }

@@ -13,15 +13,15 @@ import retrofit2.http.Path
 
 interface DirectorService {
 
-    @GET(Constants.BASE_URL + "/director/")
+    @GET(Constants.BASE_URL + Constants.PATH_DIR)
     suspend fun getAllDirector(): Response<List<DirectorResponse>>
 
-    @GET(Constants.BASE_URL + "/director/{id}")
-    suspend fun getDirector(@Path("id") directorId: Int): Response<DirectorResponse>
+    @GET(Constants.BASE_URL + Constants.PATH_DIR_ID)
+    suspend fun getDirector(@Path(Constants.ID) directorId: Int): Response<DirectorResponse>
 
-    @POST(Constants.BASE_URL + "/director/")
+    @POST(Constants.BASE_URL + Constants.PATH_DIR)
     suspend fun createDirector(@Body director: Director): Response<DirectorResponse>
 
-    @DELETE(Constants.BASE_URL + "/director/{id}")
-    suspend fun deleteDirector(@Path("id") directorId: Int): Response<Unit>
+    @DELETE(Constants.BASE_URL + Constants.PATH_DIR_ID)
+    suspend fun deleteDirector(@Path(Constants.ID) directorId: Int): Response<Unit>
 }

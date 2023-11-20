@@ -12,9 +12,12 @@ import com.example.recyclerretrofitinesmr.domain.Director
 import com.example.recyclerretrofitinesmr.domain.Pelicula
 import com.example.recyclerretrofitinesmr.ui.detailPelicula.DetailPeliculaActivity
 import com.example.recyclerretrofitinesmr.ui.main.MainEvent
+import com.example.recyclerretrofitinesmr.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.time.format.DateTimeFormatter
+
+
 
 @AndroidEntryPoint
 class DetailDirectorActivity : AppCompatActivity() {
@@ -31,28 +34,25 @@ class DetailDirectorActivity : AppCompatActivity() {
         peliculaAdapter = PeliculaAdapter(this@DetailDirectorActivity,
             object : PeliculaAdapter.PeliculaActions{
                 override fun onDelete(pelicula: Pelicula) {
-                    Timber.tag("PeliculaAdapter").d("Peloicula eliminada: %s", pelicula.id)
                     viewModel.handleEvent(DetailDirectorEvent.DeletePelicula(pelicula))
-                    Timber.tag("Peliculas (MainActivity1)")
-                        .d("Peliculas: " + viewModel.handleEvent(DetailDirectorEvent.DeletePelicula(pelicula)))
                 }
 
                 override fun itemClicked(pelicula: Pelicula) {
                     val intent = Intent(context, DetailPeliculaActivity::class.java)
-                    intent.putExtra("pelicula", pelicula)
+                    intent.putExtra(Constants.PELICULA, pelicula)
                     context.startActivity(intent)
                 }
             })
         setupRecyclerView()
 
-        val director: Director? = intent.getParcelableExtra("director")
+        val director: Director? = intent.getParcelableExtra(Constants.DIRECTOR)
         director?.let {
             observarViewModel(director)
         }
     }
 
     private fun observarViewModel(director: Director) {
-        val birthDate = director.nacimiento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+        val birthDate = director.nacimiento.format(DateTimeFormatter.ofPattern(Constants.DATE_PATTERN))
 
         with(binding) {
             nombreCompletoDirector.setText(director.nombre)
@@ -63,7 +63,6 @@ class DetailDirectorActivity : AppCompatActivity() {
 
         viewModel.uiState.observe(this@DetailDirectorActivity) { state ->
             state.peliculas.let { peliculas ->
-                Timber.d("DetailDirectorActivity(Lista)", "Lista de películas: $peliculas")
                 peliculaAdapter.submitList(peliculas)
             }
         }

@@ -1,17 +1,18 @@
 package com.example.recyclerretrofitinesmr.data.model
 
 import com.example.recyclerretrofitinesmr.domain.Pelicula
+import com.example.recyclerretrofitinesmr.utils.Constants
 import com.google.gson.annotations.SerializedName
 import java.time.LocalDate
 
 data class PeliculaResponse (
-    @SerializedName("id")
+    @SerializedName(Constants.ID)
     val id: Int,
-    @SerializedName("titulo")
+    @SerializedName(Constants.TITULO)
     val titulo: String,
-    @SerializedName("fecha")
+    @SerializedName(Constants.FECHA)
     val fecha: String,
-    @SerializedName("idDirector")
+    @SerializedName(Constants.ID_DIRECTOR)
     val idDirector: Int
 )
 

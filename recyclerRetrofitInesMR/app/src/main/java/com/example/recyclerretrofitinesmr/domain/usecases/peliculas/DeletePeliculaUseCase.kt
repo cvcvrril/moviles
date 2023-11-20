@@ -1,6 +1,5 @@
 package com.example.recyclerretrofitinesmr.domain.usecases.peliculas
 
-import android.util.Log
 import com.example.recyclerretrofitinesmr.data.repository.PeliculaRepository
 import com.example.recyclerretrofitinesmr.utils.NetworkResult
 import dagger.hilt.android.scopes.ActivityRetainedScoped
@@ -17,6 +16,5 @@ class DeletePeliculaUseCase@Inject constructor(
     suspend fun deletePelicula(id:String): NetworkResult<Unit> {
         return withContext(Dispatchers.IO)
         { peliculaRepository.deletePelicula(id) }
-        Log.d("Directores (DirectorRepository)", "Directores: ${peliculaRepository.getAllPeliculas()}")
     }
 }

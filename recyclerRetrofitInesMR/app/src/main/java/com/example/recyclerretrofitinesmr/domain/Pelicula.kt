@@ -2,6 +2,7 @@ package com.example.recyclerretrofitinesmr.domain
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.example.recyclerretrofitinesmr.utils.Constants
 import java.time.LocalDate
 
 data class Pelicula (
@@ -12,8 +13,8 @@ data class Pelicula (
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
-        parcel.readString() ?: "",
-        LocalDate.parse(parcel.readString() ?: ""),
+        parcel.readString() ?: Constants.EMPTY,
+        LocalDate.parse(parcel.readString() ?: Constants.EMPTY),
         parcel.readInt()
     )
 

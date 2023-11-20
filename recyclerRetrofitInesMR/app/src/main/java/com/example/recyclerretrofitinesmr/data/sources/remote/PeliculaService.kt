@@ -10,16 +10,16 @@ import retrofit2.http.Query
 
 interface PeliculaService {
 
-    @GET(Constants.BASE_URL + "/peliculas/")
+    @GET(Constants.BASE_URL + Constants.PATH_PELI)
     suspend fun getAllPeliculas(): Response<List<PeliculaResponse>>
 
-    @GET(Constants.BASE_URL + "/peliculas/{id}")
-    suspend fun getPelicula(@Path("id") peliculaId: Int): Response<PeliculaResponse>
+    @GET(Constants.BASE_URL + Constants.PATH_PELI_ID)
+    suspend fun getPelicula(@Path(Constants.ID) peliculaId: Int): Response<PeliculaResponse>
 
-    @GET(Constants.BASE_URL + "/peliculas/")
-    suspend fun getPeliculasIdDirector(@Query("idDirector") directorId: Int): Response<List<PeliculaResponse>>
+    @GET(Constants.BASE_URL + Constants.PATH_PELI)
+    suspend fun getPeliculasIdDirector(@Query(Constants.ID_DIRECTOR) directorId: Int): Response<List<PeliculaResponse>>
 
-    @DELETE(Constants.BASE_URL + "/peliculas/{id}")
-    suspend fun deletePelicula(@Path("id") peliculaId: Int): Response<Unit>
+    @DELETE(Constants.BASE_URL + Constants.PATH_PELI_ID)
+    suspend fun deletePelicula(@Path(Constants.ID) peliculaId: Int): Response<Unit>
 
 }

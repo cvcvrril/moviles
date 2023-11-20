@@ -1,6 +1,5 @@
 package com.example.recyclerretrofitinesmr.domain.usecases.peliculas
 
-import android.util.Log
 import com.example.recyclerretrofitinesmr.data.repository.PeliculaRepository
 import com.example.recyclerretrofitinesmr.domain.Pelicula
 import com.example.recyclerretrofitinesmr.utils.NetworkResult
@@ -14,7 +13,6 @@ class GetAllPeliculasUseCase@Inject constructor(
     suspend fun getAllPeliculas(): NetworkResult<List<Pelicula>> {
         return withContext(Dispatchers.IO)
         { peliculaRepository.getAllPeliculas() }
-        Log.d("Directores (DirectorRepository)", "Directores: ${peliculaRepository.getAllPeliculas()}")
     }
 
 
