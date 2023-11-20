@@ -64,22 +64,27 @@ class DirectorAdapter(
 
         fun bind(item: Director) {
             Log.d("Directores(DirectorAdapter)", "Binding director: ${item.id}, isSelected: ${item.isSelected}")
+            itemView.setOnLongClickListener{
+                if (!selectedMode) {
+                    actions.onStartSelectedMode(director = item)
+                }
+                true
+            }
             itemView.setOnClickListener {
-                actions.itemClicked(director = item)
-
+                actions.itemClicked(item)
             }
             with(binding) {
                 selected.setOnClickListener {
                     if (selectedMode) {
                         if (binding.selected.isChecked) {
                             item.isSelected = true
-                            itemView.setBackgroundColor(Color.BLUE)
+                            itemView.setBackgroundColor(Color.GRAY)
                             selectedDirectores.add(item)
                         } else {
                             item.isSelected = false
+                            itemView.setBackgroundColor(Color.TRANSPARENT)
                             selectedDirectores.remove(item)
                         }
-
                     }
                 }
                 tvNombre.text = item.nombre
@@ -93,28 +98,16 @@ class DirectorAdapter(
                 }
 
                 if (selectedDirectores.contains(item)) {
-                    itemView.setBackgroundColor(Color.BLUE)
+                    itemView.setBackgroundColor(Color.GRAY)
                     binding.selected.isChecked = true
                 } else {
+                    itemView.setBackgroundColor(Color.TRANSPARENT)
                     binding.selected.isChecked = false
                 }
             }
         }
 
     }
-
-    private fun handleSelection(director: Director) {
-        if (selectedDirectores.contains(director)) {
-            selectedDirectores.remove(director)
-            director.isSelected = false
-        } else {
-            selectedDirectores.add(director)
-            director.isSelected = true
-        }
-        notifyDataSetChanged()
-    }
-
-
     fun onDelete(director: Director) {
         val position = currentList.indexOf(director)
         selectedDirectores.remove(director)
