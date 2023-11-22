@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/fragment_primer"
+        android:icon="@drawable/baseline_home_24"
+        android:title="@string/fragment_primero"
+        android:contentDescription="@string/primer_fragment_app"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/fragment_segundo"
+        android:icon="@drawable/baseline_mode_edit_24"
+        android:title="@string/fragment_segundo"
+        android:contentDescription="@string/segundo_fragment_app"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/fragment_tercero"
+        android:icon="@drawable/baseline_mood_bad_24"
+        android:title="@string/fragment_segundo"
+        android:contentDescription="@string/segundo_fragment_app"
+        app:showAsAction="ifRoom"/>
+
+
+</menu>
