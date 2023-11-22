@@ -3,15 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/primerFragment">
+    app:startDestination="@id/fragment_primer">
 
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.example.fragmentosinesmr.main.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
     <fragment
-        android:id="@+id/primerFragment"
+        android:id="@+id/fragment_primer"
         android:name="com.example.fragmentosinesmr.fragmentos.PrimerFragment"
-        android:label="PrimerFragment" />
+        android:label="PrimerFragment">
+        <action
+            android:id="@+id/action_fragment_primer_to_segundoFragment"
+            app:destination="@id/segundoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/segundoFragment"
+        android:name="com.example.fragmentosinesmr.fragmentos.SegundoFragment"
+        android:label="SegundoFragment" />
+
 </navigation>
