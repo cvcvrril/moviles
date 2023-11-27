@@ -41,22 +41,6 @@ class SegundoFragment : Fragment(),MenuProvider {
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.menu_segundo_fragment, menu)
-
-        val actionSearch = menu.findItem(R.id.search).actionView as SearchView
-
-        actionSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(p0: String?): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-
-                newText?.let {
-                    binding.texto.setText(newText)
-                }
-                return false
-            }
-        })
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -66,10 +50,9 @@ class SegundoFragment : Fragment(),MenuProvider {
                 findNavController().navigate(action)
                 true
             }
-            R.id.otroTercerFragment -> {
-                val action = SegundoFragmentDirections.meVoyDeSegundoATercero(binding.texto.text.toString())
+            R.id.tercerFragment -> {
+                val action = SegundoFragmentDirections.actionSegundoFragmentToTercerFragment(binding.texto.text.toString())
                 findNavController().navigate(action)
-               // findNavController().navigate(R.id.action_segundoFragment_to_primerFragment)
                 true
             }
             else -> false

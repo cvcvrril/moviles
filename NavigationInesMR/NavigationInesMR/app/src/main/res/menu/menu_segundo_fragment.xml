@@ -8,8 +8,8 @@
         android:contentDescription="des1"
         app:showAsAction="never" />
     <item
-        android:id="@+id/otroTercerFragment"
-        android:title="otroFragment"
+        android:id="@+id/tercerFragment"
+        android:title="tercerFragment"
         android:contentDescription="des1"
         app:showAsAction="never" />
 </menu>

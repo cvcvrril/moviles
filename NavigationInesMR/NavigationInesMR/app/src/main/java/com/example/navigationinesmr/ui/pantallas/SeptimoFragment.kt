@@ -1,4 +1,6 @@
 package com.example.navigationinesmr.ui.pantallas
 
-class SeptimoFragment {
+import androidx.fragment.app.Fragment
+
+class SeptimoFragment : Fragment() {
 }

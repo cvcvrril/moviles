@@ -9,7 +9,7 @@
         android:id="@+id/primerFragment"
         android:name="com.example.navigationinesmr.ui.pantallas.PrimerFragment"
         android:label="@string/primero"
-        tools:layout="@layout/fragment_primer" >
+        tools:layout="@layout/fragment_primer">
         <action
             android:id="@+id/action_primerFragment_to_tercerFragment"
             app:destination="@id/tercerFragment" />
@@ -28,9 +28,9 @@
         android:id="@+id/segundoFragment"
         android:name="com.example.navigationinesmr.ui.pantallas.SegundoFragment"
         android:label="@string/segundo"
-        tools:layout="@layout/fragment_segundo" >
+        tools:layout="@layout/fragment_segundo">
         <action
-            android:id="@+id/meVoyDeSegundoATercero"
+            android:id="@+id/action_segundoFragment_to_tercerFragment"
             app:destination="@id/tercerFragment" />
         <action
             android:id="@+id/action_segundoFragment_to_primerFragment"
@@ -40,7 +40,7 @@
         android:id="@+id/tercerFragment"
         android:name="com.example.navigationinesmr.ui.pantallas.TercerFragment"
         android:label="@string/tercero"
-        tools:layout="@layout/fragment_tercer" >
+        tools:layout="@layout/fragment_tercer">
         <action
             android:id="@+id/action_tercerFragment_to_primerFragment"
             app:destination="@id/primerFragment" />
@@ -62,4 +62,15 @@
             app:destination="@id/primerFragment" />
 
     </fragment>
+    <fragment
+        android:id="@+id/septimoFragment"
+        android:name="com.example.navigationinesmr.ui.pantallas.SeptimoFragment"
+        android:label="SeptimoFragment"
+        tools:layout="@layout/fragment_cuarto">
+        <action
+            android:id="@+id/action_septimoFragment_to_primerFragment"
+            app:destination="@id/primerFragment" />
+
+    </fragment>
+
 </navigation>
