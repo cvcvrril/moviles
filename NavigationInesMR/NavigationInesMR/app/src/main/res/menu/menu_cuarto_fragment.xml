@@ -3,7 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/quintoFragment"
-        android:title="Quinto fragment"
         android:icon="@drawable/baseline_accessible_forward_24"
+        android:title="Quinto fragment"
         android:contentDescription="boton para ir al quinto fragment" />
+    <item
+        android:id="@+id/sextoFragment"
+        android:icon="@drawable/baseline_cruelty_free_24"
+        android:title="Sexto fragment"
+        android:contentDescription="boton para ir al sexto fragment" />
 </menu>

@@ -2,7 +2,6 @@ package com.example.navigationinesmr.ui.pantallas
 
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -16,6 +15,7 @@ class SegundoFragment : Fragment(),MenuProvider {
 
     private var _binding : FragmentSegundoBinding? = null
     private val binding get() = _binding!!
+    private var isOriginalMenu = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,21 +37,24 @@ class SegundoFragment : Fragment(),MenuProvider {
 
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-        menuInflater.inflate(R.menu.menu_segundo_fragment, menu)
+        if (isOriginalMenu) {
+            menuInflater.inflate(R.menu.menu_segundo_fragment, menu)
+        }
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         return when (menuItem.itemId) {
-            R.id.primerFragment -> {
-                val action = SegundoFragmentDirections.actionSegundoFragmentToPrimerFragment(binding.texto.text.toString())
-                findNavController().navigate(action)
-                true
-            }
             R.id.tercerFragment -> {
                 val action = SegundoFragmentDirections.actionSegundoFragmentToTercerFragment(binding.texto.text.toString())
                 findNavController().navigate(action)
                 true
             }
+            R.id.cuartoFragment -> {
+                val action = SegundoFragmentDirections.actionSegundoFragmentToCuartoFragment(binding.texto.text.toString())
+                findNavController().navigate(action)
+                true
+            }
+
             else -> false
         }
     }
