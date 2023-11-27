@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.navigationinesmr.databinding.FragmentOctavoBinding
-import com.example.navigationinesmr.databinding.FragmentSeptimoBinding
 
 class OctavoFragment : Fragment() {
 

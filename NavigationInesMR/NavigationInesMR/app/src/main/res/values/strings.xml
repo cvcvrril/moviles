@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">NavigationInesMR</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="segundo">Segundo</string>
     <string name="primero">Primero</string>
@@ -12,4 +11,10 @@
     <string name="octavo">Octavo</string>
     <string name="noveno">Noveno</string>
     <string name="decimo">Decimo</string>
+    <string name="segundo_fragment">Segundo fragment</string>
+    <string name="boton_para_ir_al_segundo_fragment">boton para ir al segundo fragment</string>
+    <string name="tercer_fragment">Tercer fragment</string>
+    <string name="boton_para_ir_al_tercer_fragment">boton para ir al tercer fragment</string>
+    <string name="cuarto_fragment">Cuarto fragment</string>
+    <string name="boton_para_ir_al_cuarto_fragment">boton para ir al cuarto fragment</string>
 </resources>

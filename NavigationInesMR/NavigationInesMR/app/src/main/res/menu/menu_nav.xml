@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@style/TitleMenu">
     <item
         android:id="@+id/segundoFragment"
         android:icon="@drawable/baseline_mode_edit_24"
-        android:title="Segundo fragment"
-        android:contentDescription="boton para ir al segundo fragment"
+        android:title="@string/segundo_fragment"
+        android:contentDescription="@string/boton_para_ir_al_segundo_fragment"
          />
 
     <item
         android:id="@+id/tercerFragment"
         android:icon="@drawable/baseline_mood_bad_24"
-        android:title="Tercer fragment"
-        android:contentDescription="boton para ir al tercer fragment"
+        android:title="@string/tercer_fragment"
+        android:contentDescription="@string/boton_para_ir_al_tercer_fragment"
         />
 
     <item
         android:id="@+id/cuartoFragment"
         android:icon="@drawable/baseline_coronavirus_24"
-        android:title="Cuarto fragment"
-        android:contentDescription="boton para ir al cuarto fragment"
+        android:title="@string/cuarto_fragment"
+        android:contentDescription="@string/boton_para_ir_al_cuarto_fragment"
          />
-
-
 </menu>

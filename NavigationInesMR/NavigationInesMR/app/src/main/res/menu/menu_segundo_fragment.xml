@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/quintoFragment"
-        android:title="Quinto fragment"
-        android:icon="@drawable/baseline_accessible_forward_24"
-        android:contentDescription="boton para ir al quinto fragment" />
-</menu>

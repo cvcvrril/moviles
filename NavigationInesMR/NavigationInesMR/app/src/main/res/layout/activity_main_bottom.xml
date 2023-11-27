@@ -8,7 +8,7 @@
     <FrameLayout
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:background="@color/white"
+        android:background="@android:color/transparent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,9 +40,9 @@
         android:layout_width="0dp"
 
         android:layout_height="wrap_content"
-        app:backgroundTint="@color/design_default_color_primary"
-        app:itemIconTint="@color/design_default_color_on_primary"
-        app:itemTextColor="@color/design_default_color_on_primary"
+        app:backgroundTint="@color/purple_700"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
