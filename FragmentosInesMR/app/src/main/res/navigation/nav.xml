@@ -8,7 +8,8 @@
     <fragment
         android:id="@+id/fragment_primer"
         android:name="com.example.fragmentosinesmr.fragmentos.PrimerFragment"
-        android:label="PrimerFragment">
+        android:label="PrimerFragment"
+        tools:layout="@layout/fragment_primer">
         <action
             android:id="@+id/action_fragment_primer_to_segundoFragment"
             app:destination="@id/segundoFragment" />
@@ -16,6 +17,7 @@
     <fragment
         android:id="@+id/segundoFragment"
         android:name="com.example.fragmentosinesmr.fragmentos.SegundoFragment"
-        android:label="SegundoFragment" />
+        android:label="SegundoFragment"
+        tools:layout="@layout/fragment_segundo"/>
 
 </navigation>
