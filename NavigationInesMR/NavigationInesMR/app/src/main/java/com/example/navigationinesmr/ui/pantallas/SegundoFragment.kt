@@ -1,17 +1,15 @@
-package com.example.navigationdecero.ui.pantallas
+package com.example.navigationinesmr.ui.pantallas
 
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.onNavDestinationSelected
-import com.example.navigationdecero.R
-import com.example.navigationdecero.databinding.FragmentSegundoBinding
+import com.example.navigationinesmr.R
+import com.example.navigationinesmr.databinding.FragmentSegundoBinding
 
 
 class SegundoFragment : Fragment(),MenuProvider {
@@ -41,7 +39,6 @@ class SegundoFragment : Fragment(),MenuProvider {
     }
 
 
-    //menuprovider
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.menu_segundo_fragment, menu)
 
@@ -57,11 +54,8 @@ class SegundoFragment : Fragment(),MenuProvider {
                 newText?.let {
                     binding.texto.setText(newText)
                 }
-
                 return false
             }
-
-
         })
     }
 

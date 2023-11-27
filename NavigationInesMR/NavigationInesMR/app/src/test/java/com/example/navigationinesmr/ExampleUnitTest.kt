@@ -1,4 +1,4 @@
-package com.example.navigationdecero
+package com.example.navigationinesmr
 
 import org.junit.Test
 

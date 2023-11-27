@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.navigationdecero"
+    namespace = "com.example.navigationinesmr"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.navigationdecero"
+        applicationId = "com.example.navigationinesmr"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

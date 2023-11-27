@@ -1,12 +1,12 @@
-package com.example.navigationdecero.ui.pantallas
+package com.example.navigationinesmr.ui.pantallas
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.example.navigationdecero.R
-import com.example.navigationdecero.databinding.ActivityMainBottomBinding
+import com.example.navigationinesmr.R
+import com.example.navigationinesmr.databinding.ActivityMainBottomBinding
 
 
 /*ESTE ES EL BUENO*/
