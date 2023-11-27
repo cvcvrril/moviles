@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_segundoFragment_to_cuartoFragment"
             app:destination="@id/cuartoFragment" />
+        <action
+            android:id="@+id/action_segundoFragment_to_novenoFragment"
+            app:destination="@id/novenoFragment" />
     </fragment>
     <fragment
         android:id="@+id/tercerFragment"
@@ -116,5 +119,29 @@
         <action
             android:id="@+id/action_octavoFragment_to_septimoFragment"
             app:destination="@id/septimoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/novenoFragment"
+        android:name="com.example.navigationinesmr.ui.pantallas.NovenoFragment"
+        android:label="@string/noveno"
+        tools:layout="@layout/fragment_noveno">
+        <action
+            android:id="@+id/action_novenoFragment_to_segundoFragment"
+            app:destination="@id/segundoFragment" />
+        <action
+            android:id="@+id/action_novenoFragment_to_decimoFragment"
+            app:destination="@id/decimoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/decimoFragment"
+        android:name="com.example.navigationinesmr.ui.pantallas.DecimoFragment"
+        android:label="@string/decimo"
+        tools:layout="@layout/fragment_decimo">
+        <action
+            android:id="@+id/action_decimoFragment_to_novenoFragment"
+            app:destination="@id/novenoFragment" />
+        <action
+            android:id="@+id/action_decimoFragment_to_segundoFragment"
+            app:destination="@id/segundoFragment" />
     </fragment>
 </navigation>
