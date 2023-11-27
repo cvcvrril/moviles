@@ -3,21 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/fragment_primer">
+    app:startDestination="@id/primerFragment">
 
     <fragment
-        android:id="@+id/fragment_primer"
+        android:id="@+id/primerFragment"
         android:name="com.example.fragmentosinesmr.fragmentos.PrimerFragment"
-        android:label="PrimerFragment"
+        android:label="@string/primero"
         tools:layout="@layout/fragment_primer">
         <action
-            android:id="@+id/action_fragment_primer_to_segundoFragment"
+            android:id="@+id/action_primerFragment_to_segundoFragment"
             app:destination="@id/segundoFragment" />
     </fragment>
     <fragment
         android:id="@+id/segundoFragment"
         android:name="com.example.fragmentosinesmr.fragmentos.SegundoFragment"
-        android:label="SegundoFragment"
-        tools:layout="@layout/fragment_segundo"/>
-
+        android:label="@string/segundo"
+        tools:layout="@layout/fragment_segundo" />
 </navigation>

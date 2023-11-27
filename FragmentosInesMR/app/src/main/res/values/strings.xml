@@ -2,7 +2,9 @@
     <string name="app_name">FragmentosInesMR</string>
     <string name="primer_fragment_app">primer_fragment_app</string>
     <string name="fragment_primero">fragment_primero</string>
-    <string name="fragment_segundo">\n</string>
     <string name="segundo_fragment_app" />
     <string name="pantalla_principal">Pantalla principal</string>
+    <string name="segundo">segundo</string>
+    <string name="primero">primero</string>
+    <string name="tercero">tercero</string>
 </resources>
