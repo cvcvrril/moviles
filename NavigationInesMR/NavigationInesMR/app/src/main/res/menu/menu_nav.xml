@@ -2,20 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/segundoFragment"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="SegundoFragment"
-        android:contentDescription="descripcion"
+        android:icon="@drawable/baseline_mode_edit_24"
+        android:title="Segundo fragment"
+        android:contentDescription="boton para ir al segundo fragment"
          />
 
     <item
         android:id="@+id/primerFragment"
-        android:title="primerFragment"
-        android:contentDescription="des1"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Primer fragment"
+        android:contentDescription="boton para ir al primer fragment"
          />
 
     <item
         android:id="@+id/tercerFragment"
-        android:title="tercerFragment"
-        android:contentDescription="eo"
+        android:icon="@drawable/baseline_mood_bad_24"
+        android:title="Tercer fragment"
+        android:contentDescription="boton para ir al tercer fragment"
         />
 </menu>

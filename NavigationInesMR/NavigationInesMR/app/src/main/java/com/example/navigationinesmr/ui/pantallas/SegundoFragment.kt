@@ -17,8 +17,6 @@ class SegundoFragment : Fragment(),MenuProvider {
     private var _binding : FragmentSegundoBinding? = null
     private val binding get() = _binding!!
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -26,8 +24,7 @@ class SegundoFragment : Fragment(),MenuProvider {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    ): View {
         _binding =  FragmentSegundoBinding.inflate(inflater,container,false)
         return binding.root
     }
