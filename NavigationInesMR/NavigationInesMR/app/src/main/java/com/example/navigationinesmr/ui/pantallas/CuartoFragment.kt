@@ -31,7 +31,7 @@ class CuartoFragment : Fragment(), MenuProvider {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.irQuinto.setOnClickListener {
-            val action = CuartoFragmentDirections.actionCuartoFragmentToQuintoFragment(binding.texto.text.toString())
+            val action = CuartoFragmentDirections.actionCuartoFragmentToQuintoFragment()
             findNavController().navigate(action)
         }
         val menuHost: MenuHost = requireActivity()
@@ -45,7 +45,7 @@ class CuartoFragment : Fragment(), MenuProvider {
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         return when (menuItem.itemId) {
             R.id.quintoFragment -> {
-                val action = CuartoFragmentDirections.actionCuartoFragmentToQuintoFragment(binding.texto.text.toString())
+                val action = CuartoFragmentDirections.actionCuartoFragmentToQuintoFragment()
                 findNavController().navigate(action)
                 true
             }

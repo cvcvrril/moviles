@@ -45,12 +45,12 @@ class SegundoFragment : Fragment(),MenuProvider {
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         return when (menuItem.itemId) {
             R.id.tercerFragment -> {
-                val action = SegundoFragmentDirections.actionSegundoFragmentToTercerFragment(binding.texto.text.toString())
+                val action = SegundoFragmentDirections.actionSegundoFragmentToTercerFragment()
                 findNavController().navigate(action)
                 true
             }
             R.id.cuartoFragment -> {
-                val action = SegundoFragmentDirections.actionSegundoFragmentToCuartoFragment(binding.texto.text.toString())
+                val action = SegundoFragmentDirections.actionSegundoFragmentToCuartoFragment()
                 findNavController().navigate(action)
                 true
             }

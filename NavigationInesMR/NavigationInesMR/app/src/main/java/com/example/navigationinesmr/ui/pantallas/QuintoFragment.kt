@@ -25,11 +25,11 @@ class QuintoFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.irCuarto.setOnClickListener{
-            val action = QuintoFragmentDirections.actionQuintoFragmentToCuartoFragment(binding.texto.text.toString())
+            val action = QuintoFragmentDirections.actionQuintoFragmentToCuartoFragment()
             findNavController().navigate(action)
         }
         binding.irSexto.setOnClickListener{
-            val action = QuintoFragmentDirections.actionQuintoFragmentToSextoFragment(binding.texto.text.toString())
+            val action = QuintoFragmentDirections.actionQuintoFragmentToSextoFragment()
             findNavController().navigate(action)
         }
     }
