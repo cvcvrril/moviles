@@ -27,8 +27,6 @@ Mapp/src/main/java/com/example/navigationinesmr/ui/pantallas/NovenoFragment.kt,
 +app/src/main/res/layout/fragment_decimo.xml,f\0\f0d15aba76d4dcd055ba682f382a23e6e67fb3a4
 [
 +app/src/main/res/layout/fragment_octavo.xml,5\b\5b659ad860771bf46540d6be5822b0b03466e87b
-^
-.app/src/main/res/menu/menu_cuarto_fragment.xml,f\9\f9e82d5831875f05580ad4027a65798b2a7b1836
 D
 app/build.gradle.kts,d\2\d2a4383452aad84a18429a5844d31330a012a9e6
 >
@@ -41,8 +39,6 @@ P
 +app/src/main/res/layout/fragment_quinto.xml,7\2\72d9ebbb4f9f32cac15ef453d6bdee93ab29b552
 ^
 .app/src/main/res/xml/data_extraction_rules.xml,3\b\3bc4db92963be77ebed9d7a4fff09127a1110e4d
-_
-/app/src/main/res/menu/menu_segundo_fragment.xml,9\3\930bee3451fceca1224bcb9008a46da5de76fd83
 R
 "app/src/main/res/menu/menu_nav.xml,7\b\7b5cb0d914ed4d97fd33023bcf01b7f506ff0b62
 `
@@ -101,3 +97,5 @@ Qapp/src/main/java/com/example/navigationinesmr/ui/pantallas/MainActivityBottom.
 Mapp/src/main/java/com/example/navigationinesmr/ui/pantallas/QuintoFragment.kt,1\7\17c98cbea298f1a8081e82a9ed1ae1ec2dee3bc9
 ~
 Napp/src/main/java/com/example/navigationinesmr/ui/pantallas/SegundoFragment.kt,c\7\c718731dea3937b76f047ed26ed78f64a0c09392
+@
+build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
