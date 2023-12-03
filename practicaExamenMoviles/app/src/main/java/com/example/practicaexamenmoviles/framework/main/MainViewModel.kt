@@ -33,5 +33,9 @@ class MainViewModel @Inject constructor(
         TODO("Not yet implemented")
     }
 
+    fun handleEvent(event: MainEvent) {
+
+    }
+
 
 }

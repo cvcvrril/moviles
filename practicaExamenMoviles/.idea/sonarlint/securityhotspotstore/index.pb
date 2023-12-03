@@ -53,3 +53,5 @@ Rapp/src/main/java/com/example/practicaexamenmoviles/framework/main/MainActivity
 Rapp/src/main/java/com/example/practicaexamenmoviles/framework/main/SwipeGesture.kt,8\e\8e0a64b267cf6a9e8a99715cdd29658913095a95
 x
 Happ/src/main/java/com/example/practicaexamenmoviles/framework/HiltApp.kt,5\1\511d9c61beff694ac76c720cb932bb27399aedd7
+s
+Capp/src/main/java/com/example/practicaexamenmoviles/MainActivity.kt,d\9\d910a42743eb7cbc7c00480e511819cd648ad4c3
