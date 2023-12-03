@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">practicaExamenMoviles</string>
+    <string name="titulo">titulo</string>
+    <string name="id">ID:</string>
 </resources>

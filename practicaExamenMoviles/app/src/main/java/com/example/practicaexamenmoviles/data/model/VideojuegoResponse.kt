@@ -1,4 +1,14 @@
 package com.example.practicaexamenmoviles.data.model
 
-class VideojuegoResponse {
-}
+import com.example.practicaexamenmoviles.domain.model.Videojuego
+import com.google.gson.annotations.SerializedName
+
+data class VideojuegoResponse (
+    @SerializedName("id")
+    val id: Int,
+    @SerializedName("titulo")
+    val titulo: String,
+    @SerializedName("year")
+    val anyoPublicacion: Int
+)
+fun VideojuegoResponse.toVideojuego() : Videojuego = Videojuego(id, titulo, anyoPublicacion)
