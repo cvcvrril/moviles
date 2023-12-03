@@ -1,4 +1,4 @@
-package com.example.practicaexamenmoviles.domain.usecases.videojuego
+package com.example.practicaexamenmoviles.framework.main
 
 import android.graphics.Canvas
 import androidx.recyclerview.widget.ItemTouchHelper

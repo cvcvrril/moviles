@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.practicaexamenmoviles.R
 import com.example.practicaexamenmoviles.databinding.ViewVideojuegoBinding
 import com.example.practicaexamenmoviles.domain.model.Videojuego
-import com.example.practicaexamenmoviles.domain.usecases.videojuego.SwipeGesture
 
 class VideojuegoAdapter(
     val context: Context,

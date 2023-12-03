@@ -25,3 +25,7 @@ s
 Capp/src/main/java/com/example/recyclerretrofitinesmr/utils/Utils.kt,d\b\db266d63939fa57cb928c4421b9fddebafcc0477
 
 Oapp/src/main/java/com/example/recyclerretrofitinesmr/ui/main/DirectorAdapter.kt,f\2\f2557fe6bab2b767127cb009945a0e396532baa6
+y
+Iapp/src/main/java/com/example/recyclerretrofitinesmr/ui/main/MainEvent.kt,e\a\ea29c1d9de504c2a94e0171c38aa2b0296388e75
+r
+Bapp/src/main/java/com/example/recyclerretrofitinesmr/ui/HiltApp.kt,f\e\fe501d84aba4f0832eb109a356b2db1a26808218

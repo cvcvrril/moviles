@@ -5,7 +5,7 @@ import com.example.practicaexamenmoviles.domain.model.Videojuego
 import com.example.practicaexamenmoviles.utils.NetworkResult
 import javax.inject.Inject
 
-abstract class RemoteDataSource @Inject constructor(
+class RemoteDataSource @Inject constructor(
     private val videojuegoService: VideojuegoService, private val personajeService: PersonajeService
 ) {
      suspend fun getVideojuegos(): NetworkResult<List<Videojuego>> {
