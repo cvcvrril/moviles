@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.practicaexamenmoviles.R
 import com.example.practicaexamenmoviles.databinding.ViewVideojuegoBinding
 import com.example.practicaexamenmoviles.domain.model.Videojuego
+import com.example.practicaexamenmoviles.domain.usecases.videojuego.SwipeGesture
 
 class VideojuegoAdapter(
     val context: Context,
@@ -29,16 +31,19 @@ class VideojuegoAdapter(
 
     fun startSelectMode(){
         selectedMode = true
+        notifyDataSetChanged()
     }
 
     fun resetSelectMode(){
         selectedMode = false
         selectedVideojuegos.clear()
+        notifyDataSetChanged()
     }
 
     fun selectedVideojuegos(videojuegosSeleccionados: List<Videojuego>){
         selectedVideojuegos.clear()
         selectedVideojuegos.addAll(videojuegosSeleccionados)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewholder{
@@ -87,10 +92,20 @@ class VideojuegoAdapter(
 
                 tvTitulo.text = item.titulo
                 tvId.text = item.id.toString()
+                if (selectedMode) selected.visibility = View.VISIBLE
+                else{
+                    item.isSelected = false
+                    selected.visibility = View.GONE
+                }
 
+                if (selectedVideojuegos.contains(item)){
+                    itemView.setBackgroundColor(Color.GREEN)
+                    binding.selected.isChecked = true
+                }else{
+                    itemView.setBackgroundColor(Color.TRANSPARENT)
+                    binding.selected.isChecked = false
+                }
             }
-
-
         }
     }
 
@@ -102,6 +117,26 @@ class VideojuegoAdapter(
         override fun areContentsTheSame(oldItem: Videojuego, newItem: Videojuego): Boolean {
             return oldItem == newItem
         }
+    }
+
+    val swipeGesture = object: SwipeGesture(context){
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            when(direction){
+                ItemTouchHelper.LEFT ->{
+                    selectedVideojuegos.remove(currentList[viewHolder.adapterPosition])
+                    val deletedVideojuego = currentList[viewHolder.adapterPosition]
+                    actions.onDelete(currentList[viewHolder.adapterPosition])
+                    if (selectedMode){
+                        actions.itemHasClicked(currentList[viewHolder.adapterPosition])
+                    }
+                    if (currentList.contains(deletedVideojuego)){
+                        notifyItemChanged(viewHolder.adapterPosition)
+                    }
+                }
+            }
+        }
+
     }
 
 }

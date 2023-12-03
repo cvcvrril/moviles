@@ -31,3 +31,5 @@ Japp/src/main/java/com/example/practicaexamenmoviles/utils/NetworkResult.kt,0\d
 japp/src/main/java/com/example/practicaexamenmoviles/domain/usecases/videojuego/GetAllVideojuegosUseCase.kt,9\1\91065133285f86c04f5995763be56a7a55a41e0c
 ‡
 Wapp/src/main/java/com/example/practicaexamenmoviles/framework/main/VideojuegoAdapter.kt,d\d\dd6b91dcc1362342bfae5a9df57e49b10882f6ba
+Ž
+^app/src/main/java/com/example/practicaexamenmoviles/domain/usecases/videojuego/SwipeGesture.kt,6\2\6256d05f3bc08c254274e03b6d99d5d979f4d0dc
