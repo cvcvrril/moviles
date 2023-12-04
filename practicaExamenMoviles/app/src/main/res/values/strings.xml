@@ -2,6 +2,8 @@
     <string name="app_name">practicaExamenMoviles</string>
     <string name="titulo">titulo</string>
     <string name="id">ID:</string>
+    <string name="nombre">Nombre:</string>
+    <string name="year">Year:</string>
     <string name="videojuegos">Videojuegos</string>
     <string name="descripcion">descripcion</string>
     <string name="delete_selected">delete selected</string>

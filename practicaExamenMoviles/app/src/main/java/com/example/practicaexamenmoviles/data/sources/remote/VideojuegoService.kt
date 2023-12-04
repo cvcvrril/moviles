@@ -9,10 +9,8 @@ import retrofit2.http.Path
 interface VideojuegoService {
     @GET("https://my-json-server.typicode.com/cvcvrril/REST-Videojuegos/videojuego/")
     suspend fun getAllVideojuegos(): Response<List<VideojuegoResponse>>
-
     @GET("https://my-json-server.typicode.com/cvcvrril/REST-Videojuegos/videojuego/{id}")
     suspend fun getVideojuego(@Path("id") videojuegoId: Int): Response<VideojuegoResponse>
-
     @DELETE("https://my-json-server.typicode.com/cvcvrril/REST-Videojuegos/videojuego/{id}")
     suspend fun deleteVideojuego(@Path("id") videojuegoId: Int): Response<Unit>
 

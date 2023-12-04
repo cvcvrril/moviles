@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.practicaexamenmoviles.R
 import com.example.practicaexamenmoviles.databinding.ActivityMainBinding
 import com.example.practicaexamenmoviles.domain.model.Videojuego
-import com.example.practicaexamenmoviles.framework.videojuegoDetail.VideojuegoActivity
+import com.example.practicaexamenmoviles.framework.personaje.PersonajeActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun click(id: Int){
-        val intent = Intent(this, VideojuegoActivity::class.java)
+        val intent = Intent(this, PersonajeActivity::class.java)
         intent.putExtra("id", id)
         startActivity(intent)
     }

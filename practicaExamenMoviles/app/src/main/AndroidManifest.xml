@@ -25,6 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".framework.personaje.PersonajeActivity"
+            android:parentActivityName=".framework.main.MainActivity" />
     </application>
 
 </manifest>
