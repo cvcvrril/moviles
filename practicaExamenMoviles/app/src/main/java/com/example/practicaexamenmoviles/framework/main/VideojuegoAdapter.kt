@@ -39,7 +39,7 @@ class VideojuegoAdapter(
         notifyDataSetChanged()
     }
 
-    fun selectedVideojuegos(videojuegosSeleccionados: List<Videojuego>){
+    fun setSelectedItems(videojuegosSeleccionados: List<Videojuego>){
         selectedVideojuegos.clear()
         selectedVideojuegos.addAll(videojuegosSeleccionados)
         notifyDataSetChanged()
@@ -55,6 +55,7 @@ class VideojuegoAdapter(
         val item = getItem(position)
         bind(item)
     }
+
 
     inner class ItemViewholder(itemView: View) : RecyclerView.ViewHolder(itemView){
         private var binding = ViewVideojuegoBinding.bind(itemView)

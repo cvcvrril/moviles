@@ -9,6 +9,6 @@ data class VideojuegoResponse (
     @SerializedName("titulo")
     val titulo: String,
     @SerializedName("year")
-    val anyoPublicacion: Int
+    val year: Int
 )
-fun VideojuegoResponse.toVideojuego() : Videojuego = Videojuego(id, titulo, anyoPublicacion)
+fun VideojuegoResponse.toVideojuego() : Videojuego = Videojuego(id, titulo, year)

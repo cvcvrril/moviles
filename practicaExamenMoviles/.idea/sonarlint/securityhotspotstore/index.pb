@@ -7,8 +7,6 @@ D
 Napp/src/main/java/com/example/practicaexamenmoviles/domain/model/Videojuego.kt,5\b\5bdd447be8ceb70266135c0e90c94d71a30ff2d4
 }
 Mapp/src/main/java/com/example/practicaexamenmoviles/domain/model/Personaje.kt,8\2\82e948c9ca354fbade05f674008e8e99f5741ba3
-v
-Fapp/src/main/java/com/example/practicaexamenmoviles/data/Repository.kt,b\7\b7bc493e9b6029bb267d284f0eb57c604763dcb7
 å
 \app/src/main/java/com/example/practicaexamenmoviles/data/repositories/PersonajeRepository.kt,1\8\1893015e7bc585c3f4d8a0402a5bd5cb3f1ac79f
 ç
@@ -31,16 +29,6 @@ Japp/src/main/java/com/example/practicaexamenmoviles/utils/NetworkResult.kt,0\d
 japp/src/main/java/com/example/practicaexamenmoviles/domain/usecases/videojuego/GetAllVideojuegosUseCase.kt,9\1\91065133285f86c04f5995763be56a7a55a41e0c
 á
 Wapp/src/main/java/com/example/practicaexamenmoviles/framework/main/VideojuegoAdapter.kt,d\d\dd6b91dcc1362342bfae5a9df57e49b10882f6ba
-é
-^app/src/main/java/com/example/practicaexamenmoviles/domain/usecases/videojuego/SwipeGesture.kt,6\2\6256d05f3bc08c254274e03b6d99d5d979f4d0dc
-é
-^app/src/main/java/com/example/practicaexamenmoviles/domain/usecases/videojuego/MainActivity.kt,d\8\d8a5fafba106935689b76b91938998da22a12856
-è
-_app/src/main/java/com/example/practicaexamenmoviles/domain/usecases/videojuego/MainViewModel.kt,4\7\4725913139762a7a3b69196d264511e6f1829c5d
-ã
-[app/src/main/java/com/example/practicaexamenmoviles/domain/usecases/videojuego/MainState.kt,5\f\5fe3924e1f126bbf0c9d53640a282d0256215f41
-ã
-[app/src/main/java/com/example/practicaexamenmoviles/domain/usecases/videojuego/MainEvent.kt,8\d\8dd5dcd94072b06f1d8ddf65095a5a6573700eb8
 
 Oapp/src/main/java/com/example/practicaexamenmoviles/framework/main/MainEvent.kt,1\3\13dfbcf025a801c6655077c37e4c191aae0d8c4b
 
@@ -53,5 +41,7 @@ Rapp/src/main/java/com/example/practicaexamenmoviles/framework/main/MainActivity
 Rapp/src/main/java/com/example/practicaexamenmoviles/framework/main/SwipeGesture.kt,8\e\8e0a64b267cf6a9e8a99715cdd29658913095a95
 x
 Happ/src/main/java/com/example/practicaexamenmoviles/framework/HiltApp.kt,5\1\511d9c61beff694ac76c720cb932bb27399aedd7
-s
-Capp/src/main/java/com/example/practicaexamenmoviles/MainActivity.kt,d\9\d910a42743eb7cbc7c00480e511819cd648ad4c3
+â
+Yapp/src/main/java/com/example/practicaexamenmoviles/framework/detail/PersonajeActivity.kt,f\2\f27a981c426f2ff321d8bb2092c82fcf82b19977
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e

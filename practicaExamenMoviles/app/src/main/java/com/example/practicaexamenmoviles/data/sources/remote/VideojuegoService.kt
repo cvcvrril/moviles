@@ -5,7 +5,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 interface VideojuegoService {
-    @GET("videojuego")
+    @GET("https://my-json-server.typicode.com/cvcvrril/REST-Videojuegos/videojuego/")
     suspend fun getAllVideojuegos(): Response<List<VideojuegoResponse>>
 
 }

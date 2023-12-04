@@ -17,8 +17,6 @@ w
 Gapp/src/main/java/com/example/recyclerretrofitinesmr/utils/Constants.kt,b\a\ba898d4b684c65ee15a113800e76b36d4247a51a
 ä
 Zapp/src/main/java/com/example/recyclerretrofitinesmr/data/repository/DirectorRepository.kt,5\1\51be09a054f2cdafdf002f91f5d696917ad0eec9
-å
-\app/src/main/java/com/example/recyclerretrofitinesmr/data/sources/remote/RemoteDataSource.kt,1\2\12613499a6695406279c4539dd9da6f27962a779
 {
 Kapp/src/main/java/com/example/recyclerretrofitinesmr/utils/NetworkResult.kt,5\2\524183fea12acdf1a17c50e12aa71c676de88180
 s
@@ -29,3 +27,15 @@ y
 Iapp/src/main/java/com/example/recyclerretrofitinesmr/ui/main/MainEvent.kt,e\a\ea29c1d9de504c2a94e0171c38aa2b0296388e75
 r
 Bapp/src/main/java/com/example/recyclerretrofitinesmr/ui/HiltApp.kt,f\e\fe501d84aba4f0832eb109a356b2db1a26808218
+ë
+aapp/src/main/java/com/example/recyclerretrofitinesmr/ui/detailDirector/DetailDirectorViewModel.kt,4\6\4638f559999a41ad9bf0a759599d0a11edaea951
+ñ
+fapp/src/main/java/com/example/recyclerretrofitinesmr/domain/usecases/director/GetAllDirectorUseCase.kt,1\9\19ee1103d61c921497655ecf23aff1a62be40cc7
+ê
+`app/src/main/java/com/example/recyclerretrofitinesmr/ui/detailPelicula/DetailPeliculaActivity.kt,e\a\eae0d94e2784409f3e5a8c37394ff6cde7299179
+ê
+`app/src/main/java/com/example/recyclerretrofitinesmr/ui/detailDirector/DetailDirectorActivity.kt,a\7\a7acfc108dd3ed919eddad75f229be7c5dab8872
+|
+Lapp/src/main/java/com/example/recyclerretrofitinesmr/ui/main/MainActivity.kt,f\b\fbd4426a97dcb8357d41a94ae54d420de156e8d9
+}
+Mapp/src/main/java/com/example/recyclerretrofitinesmr/ui/main/MainViewModel.kt,a\9\a90531f856ee20a3a1a6e5940c3bf657e041bcda

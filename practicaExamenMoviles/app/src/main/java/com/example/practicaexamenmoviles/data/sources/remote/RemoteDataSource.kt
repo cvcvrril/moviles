@@ -1,5 +1,6 @@
 package com.example.practicaexamenmoviles.data.sources.remote
 
+import android.util.Log
 import com.example.practicaexamenmoviles.data.model.toVideojuego
 import com.example.practicaexamenmoviles.domain.model.Videojuego
 import com.example.practicaexamenmoviles.utils.NetworkResult
