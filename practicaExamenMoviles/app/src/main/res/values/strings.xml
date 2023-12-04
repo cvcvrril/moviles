@@ -8,8 +8,9 @@
     <string name="descripcion">descripcion</string>
     <string name="delete_selected">delete selected</string>
     <string name="customers">CUSTOMERS</string>
-    <string name="new_order">NEW ORDER</string>
+    <string name="new_personaje">NUEVO PERSONAJE</string>
     <string name="customer_id">Customer ID:</string>
+    <string name="videojuego_id">Videojuego ID:</string>
     <string name="customerid">customerid</string>
     <string name="table_id">Table ID:</string>
     <string name="table_number">Table number</string>
