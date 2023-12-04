@@ -32,7 +32,6 @@ class MainViewModel @Inject constructor(
             viedojuegosSelected = selectedVideojuegos.toList(),
             selectedMode = false
         )
-        getVideojuegos()
 
     }
 
