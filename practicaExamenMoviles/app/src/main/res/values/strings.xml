@@ -13,7 +13,7 @@
     <string name="customerid">customerid</string>
     <string name="table_id">Table ID:</string>
     <string name="table_number">Table number</string>
-    <string name="orders">ORDERS</string>
+    <string name="personajes">PERSONAJES</string>
     <string name="first_name">First Name:</string>
     <string name="last_name">Last Name:</string>
     <string name="email">Email:</string>

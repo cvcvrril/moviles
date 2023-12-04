@@ -63,14 +63,14 @@ class RemoteDataSource @Inject constructor(
 
     //TODO: HACER EL GETALL, EL GET(ID) Y EL DELETE DE PERSONAJE
 
-    suspend fun getPersonajes(id: Int): NetworkResult<List<Personaje>>{
+    suspend fun getPersonajes(idVideojuego: Int): NetworkResult<List<Personaje>>{
         try {
             val response = personajeService.getAllPersonajes()
             if (response.isSuccessful){
                 val body = response.body()
                 body?.let {
                     val filteredPersonajes =
-                        body.filter { it.id == id }.map { it.toPersonaje() }
+                        body.filter { it.idVideojuego == idVideojuego }.map { it.toPersonaje() }
                     return NetworkResult.Success(filteredPersonajes)
                 }
             }

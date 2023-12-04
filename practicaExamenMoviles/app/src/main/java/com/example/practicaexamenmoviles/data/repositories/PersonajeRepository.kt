@@ -10,9 +10,9 @@ class PersonajeRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource
 ) {
 
-    suspend fun getPersonajes(id: Int) =
+    suspend fun getPersonajes(idVideojuego: Int) =
         withContext(Dispatchers.IO) {
-            remoteDataSource.getPersonajes(id)
+            remoteDataSource.getPersonajes(idVideojuego)
         }
 
     suspend fun getPersonaje(idPersonaje: Int) =

@@ -28,6 +28,9 @@
         <activity
             android:name=".framework.personaje.PersonajeActivity"
             android:parentActivityName=".framework.main.MainActivity" />
+        <activity
+            android:name=".framework.newPersonaje.NewPersonajeActivity"
+            android:parentActivityName=".framework.personaje.PersonajeActivity" />
     </application>
 
 </manifest>
