@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/imagenFragment"
+        android:icon="@drawable/baseline_accessibility_24"
+        android:title="@string/imagen_personaje"
+        android:contentDescription="@string/boton_para_ir_a_la_imagen"
+         />
+
+    <item
+        android:id="@+id/detalleFragment"
+        android:icon="@drawable/baseline_image_24"
+        android:title="@string/detalle_personaje"
+        android:contentDescription="@string/boton_para_ir_al_detalle"
+        />
+</menu>
