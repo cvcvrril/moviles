@@ -39,19 +39,20 @@ class MainActivity : AppCompatActivity() {
         videojuegoAdapter = VideojuegoAdapter(this,
             object : VideojuegoAdapter.VideojuegoActions{
                 override fun onDelete(videojuego: Videojuego) {
-                    TODO("Not yet implemented")
+                    viewModel.handleEvent(MainEvent.DeleteVideojuego(videojuego))
                 }
 
                 override fun onStrartSelectMode(videojuego: Videojuego) {
-                    TODO("Not yet implemented")
+                    viewModel.handleEvent(MainEvent.StartSelectedMode)
+                    viewModel.handleEvent(MainEvent.SeleccionaVideojuegos(videojuego))
                 }
 
                 override fun itemHasClicked(videojuego: Videojuego) {
-                    TODO("Not yet implemented")
+                    viewModel.handleEvent(MainEvent.SeleccionaVideojuegos(videojuego))
                 }
 
                 override fun onClickItem(idVideojuego: Int) {
-                    TODO("Not yet implemented")
+                    click(idVideojuego)
                 }
 
             })

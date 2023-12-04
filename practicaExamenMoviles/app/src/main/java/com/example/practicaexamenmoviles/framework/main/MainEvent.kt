@@ -6,7 +6,7 @@ sealed class MainEvent {
 
     class DeleteVideojuegosSeleccionados() : MainEvent()
     class DeleteVideojuego(val videojuego: Videojuego) : MainEvent()
-    class SeleccionaVdieojuegos(val videojuego: Videojuego) : MainEvent()
+    class SeleccionaVideojuegos(val videojuego: Videojuego) : MainEvent()
 
     class GetVideojuegosFiltrados(val filtro: String) : MainEvent()
     object GetVideojuegos : MainEvent()
