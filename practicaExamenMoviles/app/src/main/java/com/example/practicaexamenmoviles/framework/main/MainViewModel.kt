@@ -113,7 +113,6 @@ class MainViewModel @Inject constructor(
                 _uiState.value?.copy(error= "Total deleted: ${totalDeleted} of ${totalSelected}")
             selectedVideojuegos.clear()
             _uiState.value = _uiState.value?.copy(viedojuegosSelected = selectedVideojuegos.toList())
-            getVideojuegos()
         }
     }
 
@@ -123,11 +122,9 @@ class MainViewModel @Inject constructor(
             when(result){
                 is NetworkResult.Error -> {
                     _uiState.value = _uiState.value?.copy(error = result.message)
-                    getVideojuegos()
                 }
                 is NetworkResult.Success -> {
-                    _uiState.value = _uiState.value?.copy(error = "Videojuegos eliminados")
-                    getVideojuegos()
+                    _uiState.value = _uiState.value?.copy(error = "Videojuego eliminado")
                 }
             }
         }
