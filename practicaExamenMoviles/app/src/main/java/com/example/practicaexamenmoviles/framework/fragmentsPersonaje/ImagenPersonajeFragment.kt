@@ -5,4 +5,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ImagenPersonajeFragment : Fragment() {
+
+
+
+
 }

@@ -10,5 +10,6 @@ data class VideojuegoResponse (
     val titulo: String,
     @SerializedName("year")
     val year: Int
+
 )
 fun VideojuegoResponse.toVideojuego() : Videojuego = Videojuego(id, titulo, year)
