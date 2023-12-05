@@ -31,6 +31,9 @@
         <activity
             android:name=".framework.newPersonaje.NewPersonajeActivity"
             android:parentActivityName=".framework.personaje.PersonajeActivity" />
+        <activity
+            android:name=".framework.detallePersonaje.DetallePersonajeActivity"
+            android:parentActivityName=".framework.personaje.PersonajeActivity" />
     </application>
 
 </manifest>

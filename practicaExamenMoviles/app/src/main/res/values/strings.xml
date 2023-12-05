@@ -13,6 +13,7 @@
     <string name="table_number">Table number</string>
     <string name="personajes">PERSONAJES</string>
     <string name="name">name</string>
+    <string name="first_name">name</string>
     <string name="search">SEARCH</string>
     <string name="add">add</string>
     <string name="imagen_personaje">Imagen</string>

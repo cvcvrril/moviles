@@ -2,4 +2,16 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation" />
+    android:id="@+id/navigation"
+    app:startDestination="@id/detallePersonajeFragment">
+    <fragment
+        android:id="@+id/detallePersonajeFragment"
+        android:name="com.example.practicaexamenmoviles.framework.fragmentsPersonaje.DetallePersonajeFragment"
+        android:label="DetallePersonajeFragment"
+        tools:layout="@layout/fragment_detail_personaje"/>
+    <fragment
+        android:id="@+id/imagenPersonajeFragment"
+        android:name="com.example.practicaexamenmoviles.framework.fragmentsPersonaje.ImagenPersonajeFragment"
+        android:label="ImagenPersonajeFragment"
+        tools:layout="@layout/fragment_imagen_personaje"/>
+</navigation>

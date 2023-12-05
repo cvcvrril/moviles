@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.practicaexamenmoviles.R
 import com.example.practicaexamenmoviles.databinding.ActivityPersonajeBinding
+import com.example.practicaexamenmoviles.domain.model.Personaje
+import com.example.practicaexamenmoviles.framework.detallePersonaje.DetallePersonajeActivity
 import com.example.practicaexamenmoviles.framework.newPersonaje.NewPersonajeActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -32,9 +34,17 @@ class PersonajeActivity : AppCompatActivity() {
             viewModel.handleEvent(PersonajeEvent.GetVideojuego(id))
         }
 
-        personajeAdapter = PersonajeAdapter(this) { personaje ->
-            viewModel.handleEvent(PersonajeEvent.DeletePersonaje(personaje.id))
-        }
+        personajeAdapter = PersonajeAdapter(this,
+            object : PersonajeAdapter.PersonajeActions{
+                override fun onDelete(personaje: Personaje) {
+                    viewModel.handleEvent(PersonajeEvent.DeletePersonaje(personaje.id))
+                }
+
+                override fun onClickItem(idPersonaje: Int) {
+                    click(idPersonaje)
+                }
+
+            })
 
         with(binding) {
             rvPersonajes.adapter = personajeAdapter
@@ -68,6 +78,12 @@ class PersonajeActivity : AppCompatActivity() {
                 personajeAdapter.submitList(emptyList())
             }
         }
+    }
+
+    private fun click(id: Int){
+        val intent = Intent(this, DetallePersonajeActivity::class.java)
+        intent.putExtra("id", id)
+        startActivity(intent)
     }
 
     private fun pintarPersonaje(state: PersonajeState) {

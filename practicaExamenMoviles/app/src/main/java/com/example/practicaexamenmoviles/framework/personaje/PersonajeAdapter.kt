@@ -18,8 +18,9 @@ class PersonajeAdapter(
     val actions: PersonajeActions
 ) : ListAdapter<Personaje, PersonajeAdapter.ViewHolder>(DiffCallBack()){
 
-    fun interface PersonajeActions {
+     interface PersonajeActions {
         fun onDelete(personaje: Personaje)
+        fun onClickItem(idPersonaje: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -38,6 +39,9 @@ class PersonajeAdapter(
         private val binding = ViewPersonajeBinding.bind(itemView)
 
         fun bind(item: Personaje){
+            itemView.setOnClickListener{
+                actions.onClickItem(item.id)
+            }
             binding.tvId.text = item.id.toString()
             binding.tvNombre.text = item.name
         }
