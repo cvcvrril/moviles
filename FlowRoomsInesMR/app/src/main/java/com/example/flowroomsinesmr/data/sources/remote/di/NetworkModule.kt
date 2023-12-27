@@ -1,4 +1,4 @@
-package com.example.practicaexamenmoviles.data.sources.remote.di;
+package com.example.flowroomsinesmr.data.sources.remote.di;
 
 import com.example.flowroomsinesmr.data.sources.remote.CredencialService
 import com.google.gson.GsonBuilder
