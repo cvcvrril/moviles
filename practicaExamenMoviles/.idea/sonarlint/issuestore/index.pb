@@ -41,7 +41,5 @@ Rapp/src/main/java/com/example/practicaexamenmoviles/framework/main/MainActivity
 Rapp/src/main/java/com/example/practicaexamenmoviles/framework/main/SwipeGesture.kt,8\e\8e0a64b267cf6a9e8a99715cdd29658913095a95
 x
 Happ/src/main/java/com/example/practicaexamenmoviles/framework/HiltApp.kt,5\1\511d9c61beff694ac76c720cb932bb27399aedd7
-‰
-Yapp/src/main/java/com/example/practicaexamenmoviles/framework/detail/PersonajeActivity.kt,f\2\f27a981c426f2ff321d8bb2092c82fcf82b19977
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
