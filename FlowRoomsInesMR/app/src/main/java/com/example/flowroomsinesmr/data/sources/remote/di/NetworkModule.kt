@@ -39,7 +39,7 @@ object NetworkModule {
             gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-                .baseUrl("https://my-json-server.typicode.com/cvcvrril/REST-Videojuegos/")
+                .baseUrl("http://192.168.1.140:8080/videojuegosServidor-1.0-SNAPSHOT/api/")
                 .client(okHttpClient)
                 .addConverterFactory(gsonConverterFactory)
                 .build()

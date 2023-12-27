@@ -28,7 +28,7 @@ class MainViewModel @Inject constructor(
 
     fun handleEvent(event: MainEvent) {
         when (event) {
-            is MainEvent.getLogin -> getLogin(event.user, event.password)
+            is MainEvent.GetLogin -> getLogin(event.user, event.password)
         }
     }
 

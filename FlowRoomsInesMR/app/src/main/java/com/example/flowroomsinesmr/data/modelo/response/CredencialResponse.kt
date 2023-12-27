@@ -4,7 +4,7 @@ import com.example.flowroomsinesmr.domain.modelo.Credencial
 import com.google.gson.annotations.SerializedName
 
 data class CredencialResponse(
-    @SerializedName("user")
+    @SerializedName("username")
     val user: String,
     @SerializedName("password")
     val password: String,
