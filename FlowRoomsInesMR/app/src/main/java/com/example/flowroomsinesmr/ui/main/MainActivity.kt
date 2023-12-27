@@ -1,7 +1,8 @@
-package com.example.flowroomsinesmr
+package com.example.flowroomsinesmr.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.flowroomsinesmr.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
