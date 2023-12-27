@@ -43,3 +43,15 @@ x
 Happ/src/main/java/com/example/practicaexamenmoviles/framework/HiltApp.kt,5\1\511d9c61beff694ac76c720cb932bb27399aedd7
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+ñ
+fapp/src/main/java/com/example/practicaexamenmoviles/domain/usecases/videojuego/GetVideojuegoUseCase.kt,9\5\9519ac6831bea0fe9ed95b09d4e8e740f8a58038
+ç
+]app/src/main/java/com/example/practicaexamenmoviles/framework/personaje/PersonajeViewModel.kt,f\e\fe925c0c516f952b9baa6683b4908a651b928734
+â
+Yapp/src/main/java/com/example/practicaexamenmoviles/framework/personaje/PersonajeEvent.kt,f\4\f41e33abb4e7d490e3b9464b110cab7afd7ca04d
+â
+Yapp/src/main/java/com/example/practicaexamenmoviles/framework/personaje/PersonajeState.kt,f\e\feb406eba3ce5200918738199c8411295e6754b8
+å
+\app/src/main/java/com/example/practicaexamenmoviles/framework/personaje/PersonajeActivity.kt,5\3\532ae447e1e4192f4724a44d81bc59737beca8a2
+ö
+japp/src/main/java/com/example/practicaexamenmoviles/framework/detallePersonaje/DetallePersonajeActivity.kt,5\a\5af1ecb8ba2f0a36236a140a7b517949de27611f
