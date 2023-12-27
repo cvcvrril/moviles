@@ -36,22 +36,18 @@ class MainLoginFragment : Fragment(){
         }
 
         binding.buttonLogin.setOnClickListener {
-            // Verificar si los campos de usuario y contraseña no están vacíos
             val usuario = binding.textUser.text.toString()
             val contrasena = binding.textPassword.text.toString()
 
             if (usuario.isNotEmpty() && contrasena.isNotEmpty()) {
-                // Llamar a la función de inicio de sesión
                 login(usuario, contrasena)
             } else {
-                // Mostrar un mensaje de error si los campos están vacíos
                 Toast.makeText(requireContext(), "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun login(usuario: String, contrasena: String) {
-        // Llamar a la función de manejo de evento en el ViewModel
         viewModel.handleEvent(MainEvent.GetLogin(usuario, contrasena))
     }
 

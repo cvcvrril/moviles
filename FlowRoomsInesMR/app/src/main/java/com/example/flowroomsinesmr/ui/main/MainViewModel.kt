@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.flowroomsinesmr.domain.modelo.Credencial
+import com.example.flowroomsinesmr.domain.usecases.credencial.DoRegisterUseCase
 import com.example.flowroomsinesmr.domain.usecases.credencial.GetLoginUseCase
 import com.example.flowroomsinesmr.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val getLoginUseCase: GetLoginUseCase
+    private val getLoginUseCase: GetLoginUseCase,
+    private val doRegisterUseCase: DoRegisterUseCase
 ) : ViewModel() {
 
     private val _error = MutableLiveData<String>()
@@ -29,6 +32,19 @@ class MainViewModel @Inject constructor(
     fun handleEvent(event: MainEvent) {
         when (event) {
             is MainEvent.GetLogin -> getLogin(event.user, event.password)
+            is MainEvent.DoRegister -> doRegister(event.credencial)
+        }
+    }
+
+    private fun doRegister(credencial: Credencial) {
+        viewModelScope.launch {
+            val result = doRegisterUseCase(credencial)
+            when (result) {
+                is NetworkResult.Error -> _error.value = result.message ?: "Error"
+                is NetworkResult.Success -> result.data?.let {
+                    _uiState.value = _uiState.value?.copy(error = "Registro completado")
+                }
+            }
         }
     }
 
@@ -36,7 +52,7 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             val result = getLoginUseCase(user, password)
             when (result) {
-                is NetworkResult.Error -> _error.value = result.message ?: ""
+                is NetworkResult.Error -> _error.value = result.message ?: "Error"
                 is NetworkResult.Success -> result.data?.let {
                     _uiState.value = _uiState.value?.copy(credencial = result.data)
                 }
