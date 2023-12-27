@@ -43,6 +43,4 @@ class MainViewModel @Inject constructor(
             }
         }
     }
-
-
 }
