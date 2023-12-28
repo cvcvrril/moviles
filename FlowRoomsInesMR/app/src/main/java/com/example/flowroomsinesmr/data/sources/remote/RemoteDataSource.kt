@@ -39,9 +39,4 @@ class RemoteDataSource @Inject constructor(
             NetworkResult.Error(e.message ?: e.toString())
         }
     }
-
-
-    //TODO: HACER EL REGISTRO
-
-
 }

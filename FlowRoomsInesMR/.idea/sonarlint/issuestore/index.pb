@@ -39,3 +39,5 @@ Tapp/src/main/java/com/example/flowroomsinesmr/ui/main/fragments/MainLoginFragme
 Wapp/src/main/java/com/example/flowroomsinesmr/ui/main/fragments/MainRegistroFragment.kt,8\3\83e173a98034bce85468b970be0d48c76497692b
 ã
 [app/src/main/java/com/example/flowroomsinesmr/domain/usecases/credencial/GetLoginUseCase.kt,b\1\b16cdc2fd7376a9209712c0aabe9830dfea6e1d4
+ç
+]app/src/main/java/com/example/flowroomsinesmr/domain/usecases/credencial/DoRegisterUseCase.kt,c\5\c51ece7339c517bd6ee58df82846259de9332e05

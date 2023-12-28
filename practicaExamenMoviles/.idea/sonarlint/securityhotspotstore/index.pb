@@ -55,3 +55,9 @@ Yapp/src/main/java/com/example/practicaexamenmoviles/framework/personaje/Persona
 \app/src/main/java/com/example/practicaexamenmoviles/framework/personaje/PersonajeActivity.kt,5\3\532ae447e1e4192f4724a44d81bc59737beca8a2
 š
 japp/src/main/java/com/example/practicaexamenmoviles/framework/detallePersonaje/DetallePersonajeActivity.kt,5\a\5af1ecb8ba2f0a36236a140a7b517949de27611f
+œ
+lapp/src/main/java/com/example/practicaexamenmoviles/framework/fragmentsPersonaje/DetallePersonajeFragment.kt,1\1\11792b9524ca293dbcb477e9507f4aae338fb1fa
+›
+kapp/src/main/java/com/example/practicaexamenmoviles/framework/fragmentsPersonaje/ImagenPersonajeFragment.kt,3\9\39da18d2abeb90504272118f429237cd9585fb29
+”
+dapp/src/main/java/com/example/practicaexamenmoviles/domain/usecases/personaje/AddPersonajeUseCase.kt,c\2\c2a1b6be6dd6627d8e3761a7f355a7dd9f1aa6b4
