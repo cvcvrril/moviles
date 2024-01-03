@@ -41,9 +41,12 @@ class MainViewModel @Inject constructor(
             val result = doRegisterUseCase(credencial)
             when (result) {
                 is NetworkResult.Error -> _error.value = result.message ?: "Error"
+                is NetworkResult.Loading -> TODO()
                 is NetworkResult.Success -> result.data?.let {
                     _uiState.value = _uiState.value?.copy(error = "Registro completado")
                 }
+
+
             }
         }
     }
@@ -53,6 +56,7 @@ class MainViewModel @Inject constructor(
             val result = getLoginUseCase(user, password)
             when (result) {
                 is NetworkResult.Error -> _error.value = result.message ?: "Error"
+                is NetworkResult.Loading -> TODO()
                 is NetworkResult.Success -> result.data?.let {
                     _uiState.value = _uiState.value?.copy(credencial = result.data)
                 }

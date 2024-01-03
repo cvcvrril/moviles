@@ -20,17 +20,9 @@ class VideojuegoRepository @Inject constructor(
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
 
-    suspend fun getAllVideojuegos(): NetworkResult<List<Videojuego>> {
-        return withContext(dispatcher) {
-            return@withContext videojuegoDao.getAll().let { list ->
-                NetworkResult.Success(list.map { it.toVideojuego() })
-            }
-        }
-    }
-
-    fun getAllVideojuegosFlow(): Flow<NetworkResult<List<Videojuego>>> {
+    fun getAllVideojuegos(): Flow<NetworkResult<List<Videojuego>>> {
         return flow {
-            emit(getAllVideojuegos())
+            emit(getAllVideojuegosCacheo())
             emit(NetworkResult.Loading())
             val result = remoteDataSource.getAllVideojuegosFlow()
             emit(result)
@@ -43,5 +35,15 @@ class VideojuegoRepository @Inject constructor(
             }
         }.flowOn(dispatcher)
     }
+
+    suspend fun getAllVideojuegosCacheo(): NetworkResult<List<Videojuego>> {
+        return withContext(dispatcher) {
+            return@withContext videojuegoDao.getAll().let { list ->
+                NetworkResult.Success(list.map { it.toVideojuego() })
+            }
+        }
+    }
+
+
 
 }

@@ -1,6 +1,7 @@
 package com.example.flowroomsinesmr.data.sources.remote.di;
 
 import com.example.flowroomsinesmr.data.sources.remote.CredencialService
+import com.example.flowroomsinesmr.data.sources.remote.VideojuegoService
 import com.google.gson.GsonBuilder
 import javax.inject.Singleton;
 
@@ -45,10 +46,14 @@ object NetworkModule {
                 .build()
     }
 
-    @Singleton
+
     @Provides
     fun provideCurrencyService(retrofit: Retrofit): CredencialService =
             retrofit.create(CredencialService::class.java)
+
+    @Provides
+    fun provideVideojuegoService(retrofit: Retrofit): VideojuegoService =
+        retrofit.create(VideojuegoService::class.java)
 
 
 }
