@@ -11,8 +11,10 @@ data class CredencialResponse(
     @SerializedName("email")
     val email : String,
     @SerializedName("autentificado")
-    val autentificado: Boolean
+    val autentificado: Boolean,
+    @SerializedName("rol")
+    val rol: String
 )
 
 
-fun CredencialResponse.toCredencial() : Credencial = Credencial(user, password, email, autentificado)
+fun CredencialResponse.toCredencial() : Credencial = Credencial(user, password, email, autentificado, rol)

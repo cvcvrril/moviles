@@ -13,6 +13,7 @@ import com.example.flowroomsinesmr.domain.modelo.Credencial
 import com.example.flowroomsinesmr.ui.main.MainEvent
 import com.example.flowroomsinesmr.ui.main.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class MainRegistroFragment : Fragment(){
@@ -41,12 +42,23 @@ class MainRegistroFragment : Fragment(){
             val contrasena = binding.textPasswordReg.text.toString()
             val email = binding.textEmailReg.text.toString()
             if (usuario.isNotEmpty() && contrasena.isNotEmpty()) {
-                val nuevaCredencial : Credencial = Credencial(usuario,contrasena,email,false)
+                val nuevaCredencial : Credencial = Credencial(usuario,contrasena,email,false, "User")
                 register(nuevaCredencial)
+
+                viewModel.operacionExitosa.observe(viewLifecycleOwner) { exitoso ->
+                    if (exitoso) {
+                        Toast.makeText(requireContext(), "Registro exitoso", Toast.LENGTH_SHORT).show()
+                        binding.textUserReg.text.clear()
+                        binding.textPasswordReg.text.clear()
+                        binding.textEmailReg.text.clear()
+                        viewModel.operacionExitosa.removeObservers(viewLifecycleOwner)
+                    } else{
+                        Toast.makeText(requireContext(), "Hubo un error", Toast.LENGTH_SHORT).show()
+                    }
+                }
             } else {
                 Toast.makeText(requireContext(), "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
             }
-
         }
     }
 

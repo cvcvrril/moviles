@@ -2,6 +2,8 @@ package com.example.flowroomsinesmr.data.sources.remote
 
 import com.example.flowroomsinesmr.data.modelo.entity.toVideojuego
 import com.example.flowroomsinesmr.data.modelo.response.toCredencial
+import com.example.flowroomsinesmr.data.sources.remote.service.CredencialService
+import com.example.flowroomsinesmr.data.sources.remote.service.VideojuegoService
 import com.example.flowroomsinesmr.domain.modelo.Credencial
 import com.example.flowroomsinesmr.domain.modelo.Videojuego
 import com.example.flowroomsinesmr.domain.modelo.toCredencialResponse

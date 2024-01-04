@@ -6,7 +6,7 @@ data class Credencial(
     val user: String,
     val password: String,
     val email : String,
-    val autentificado: Boolean
+    val autentificado: Boolean,
+    val rol: String
 )
-
-fun Credencial.toCredencialResponse(): CredencialResponse = CredencialResponse(user, password, email, autentificado)
+fun Credencial.toCredencialResponse(): CredencialResponse = CredencialResponse(user, password, email, autentificado, rol)

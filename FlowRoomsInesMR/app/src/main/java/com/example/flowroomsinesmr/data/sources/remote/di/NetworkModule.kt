@@ -1,7 +1,7 @@
 package com.example.flowroomsinesmr.data.sources.remote.di;
 
-import com.example.flowroomsinesmr.data.sources.remote.CredencialService
-import com.example.flowroomsinesmr.data.sources.remote.VideojuegoService
+import com.example.flowroomsinesmr.data.sources.remote.service.CredencialService
+import com.example.flowroomsinesmr.data.sources.remote.service.VideojuegoService
 import com.google.gson.GsonBuilder
 import javax.inject.Singleton;
 
@@ -40,7 +40,7 @@ object NetworkModule {
             gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-                .baseUrl("http://192.168.1.140:8080/videojuegosServidor-1.0-SNAPSHOT/api/")
+                .baseUrl("http://192.168.78.104:8080/videojuegosServidor-1.0-SNAPSHOT/api/")
                 .client(okHttpClient)
                 .addConverterFactory(gsonConverterFactory)
                 .build()

@@ -10,6 +10,7 @@ import com.example.flowroomsinesmr.domain.usecases.credencial.GetLoginUseCase
 import com.example.flowroomsinesmr.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,6 +23,8 @@ class MainViewModel @Inject constructor(
     val error: LiveData<String> get() = _error
     private val _uiState = MutableLiveData(MainState())
     val uiState: LiveData<MainState> get() = _uiState
+    private val _operacionExitosa = MutableLiveData<Boolean>()
+    val operacionExitosa: LiveData<Boolean> get() = _operacionExitosa
 
     init {
         _uiState.value = MainState(
@@ -44,6 +47,7 @@ class MainViewModel @Inject constructor(
                 is NetworkResult.Loading -> TODO()
                 is NetworkResult.Success -> result.data?.let {
                     _uiState.value = _uiState.value?.copy(error = "Registro completado")
+                    _operacionExitosa.value = true
                 }
 
 
@@ -58,9 +62,11 @@ class MainViewModel @Inject constructor(
                 is NetworkResult.Error -> _error.value = result.message ?: "Error"
                 is NetworkResult.Loading -> TODO()
                 is NetworkResult.Success -> result.data?.let {
+                    _operacionExitosa.value = true
                     _uiState.value = _uiState.value?.copy(credencial = result.data)
                 }
             }
         }
     }
+
 }
