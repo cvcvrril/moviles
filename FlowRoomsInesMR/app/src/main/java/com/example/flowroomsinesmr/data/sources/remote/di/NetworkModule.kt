@@ -1,5 +1,6 @@
-package com.example.flowroomsinesmr.data.sources.remote.network;
+package com.example.flowroomsinesmr.data.sources.remote.di;
 
+import com.example.flowroomsinesmr.data.sources.remote.network.AuthInterceptor
 import com.example.flowroomsinesmr.data.sources.remote.service.CredencialService
 import com.example.flowroomsinesmr.data.sources.remote.service.VideojuegoService
 import com.google.gson.GsonBuilder
@@ -19,6 +20,7 @@ import java.util.concurrent.TimeUnit
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
+    @Singleton
     @Provides
     fun provideHTTPLoggingInterceptor(): HttpLoggingInterceptor {
         val interceptor = HttpLoggingInterceptor()
@@ -27,6 +29,7 @@ object NetworkModule {
     }
 
 
+    @Singleton
     @Provides
     fun provideOkHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
@@ -35,8 +38,8 @@ object NetworkModule {
         return OkHttpClient
             .Builder()
             .addInterceptor(loggingInterceptor)
-            .addInterceptor(AuthInterceptor(authInterceptor.getAccessToken()))
-            .addInterceptor(AuthInterceptor(authInterceptor.getRefreshToken()))
+            .addInterceptor(authInterceptor)
+            //.addInterceptor(AuthInterceptor(authInterceptor.getRefreshToken()))
             .readTimeout(30, TimeUnit.SECONDS)
             .connectTimeout(30, TimeUnit.SECONDS)
             .build()
@@ -61,11 +64,20 @@ object NetworkModule {
             .build()
     }
 
+    @Singleton
+    @Provides
+    fun provideAuthInterceptor(
+        authInterceptor: AuthInterceptor
+    ): AuthInterceptor {
+        return AuthInterceptor(authInterceptor.getAccessToken())
+    }
 
+    @Singleton
     @Provides
     fun provideCurrencyService(retrofit: Retrofit): CredencialService =
         retrofit.create(CredencialService::class.java)
 
+    @Singleton
     @Provides
     fun provideVideojuegoService(retrofit: Retrofit): VideojuegoService =
         retrofit.create(VideojuegoService::class.java)

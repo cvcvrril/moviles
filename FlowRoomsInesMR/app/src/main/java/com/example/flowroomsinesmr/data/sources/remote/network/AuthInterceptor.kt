@@ -1,6 +1,5 @@
 package com.example.flowroomsinesmr.data.sources.remote.network
 
-
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
@@ -9,6 +8,7 @@ import okhttp3.Response
 /**
  * Intercepts and adds Token or API Key
  */
+
 class AuthInterceptor(private val authorizationBearer: String) : Interceptor {
 
     private lateinit var accessToken: String
