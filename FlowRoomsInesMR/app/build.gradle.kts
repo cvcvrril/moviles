@@ -47,6 +47,9 @@ dependencies {
     val lifecycle_version by extra("2.5.1")
     val room_version = "2.6.1"
 
+    //DataStore
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+
     //Fragments
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.5")
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.5")
