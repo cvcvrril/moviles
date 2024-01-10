@@ -17,7 +17,7 @@ import com.example.flowroomsinesmr.ui.main.viewmodels.MainLoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainLoginFragment : Fragment(){
+class MainLoginFragment : Fragment() {
 
     private var _binding: FragmentMainLoginBinding? = null
     private val binding get() = _binding!!
@@ -39,31 +39,44 @@ class MainLoginFragment : Fragment(){
             findNavController().navigate(action)
         }
 
+        observe()
+
         binding.buttonLogin.setOnClickListener {
             val usuario = binding.textUser.text.toString()
             val contrasena = binding.textPassword.text.toString()
 
             if (usuario.isNotEmpty() && contrasena.isNotEmpty()) {
                 login(usuario, contrasena)
-                viewModel.operacionExitosa.observe(viewLifecycleOwner){ exitoso ->
-                    if (exitoso){
-                        Toast.makeText(requireContext(), "Registro exitoso", Toast.LENGTH_SHORT).show()
-                        binding.textUser.text.clear()
-                        binding.textPassword.text.clear()
-                        val intent = Intent(requireContext(), DetailActivity::class.java)
-                        startActivity(intent)
-                        this@MainLoginFragment.activity?.finish()
-                    }else{
-                        Toast.makeText(requireContext(), "Hubo un error", Toast.LENGTH_SHORT).show()
-                    }
-                }
+                Toast.makeText(requireContext(), "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+                binding.textUser.text.clear()
+                binding.textPassword.text.clear()
+                val intent = Intent(requireContext(), DetailActivity::class.java)
+                startActivity(intent)
+                this@MainLoginFragment.activity?.finish()
+
             } else {
-                Toast.makeText(requireContext(), "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Por favor, completa todos los campos",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
 
     private fun login(usuario: String, contrasena: String) {
         viewModel.handleEvent(MainLoginEvent.GetLogin(usuario, contrasena))
+    }
+
+    private fun observe() {
+        viewModel.uiState.observe(viewLifecycleOwner) { state ->
+            state.error?.let { error ->
+                Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
+                viewModel.handleEvent(MainLoginEvent.ErrorVisto)
+            }
+            if (state.error == null) {
+
+            }
+        }
     }
 }

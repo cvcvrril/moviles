@@ -33,6 +33,7 @@ class MainLoginViewModel @Inject constructor(
     fun handleEvent(event: MainLoginEvent) {
         when (event) {
             is MainLoginEvent.GetLogin -> getLogin(event.user, event.password)
+            MainLoginEvent.ErrorVisto ->  _uiState.value = _uiState.value?.copy(error = null)
         }
     }
 
