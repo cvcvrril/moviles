@@ -50,7 +50,6 @@ class MainRegistroFragment : Fragment(){
                         binding.textUserReg.text.clear()
                         binding.textPasswordReg.text.clear()
                         binding.textEmailReg.text.clear()
-                        viewModel.operacionExitosa.removeObservers(viewLifecycleOwner)
                     } else{
                         Toast.makeText(requireContext(), "Hubo un error", Toast.LENGTH_SHORT).show()
                     }
@@ -64,6 +63,4 @@ class MainRegistroFragment : Fragment(){
     private fun register(credencial: Credencial){
         viewModel.handleEvent(MainRegistroEvent.DoRegister(credencial))
     }
-
-
 }
