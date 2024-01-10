@@ -11,8 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.flowroomsinesmr.databinding.FragmentMainLoginBinding
 import com.example.flowroomsinesmr.ui.detail.DetailActivity
-import com.example.flowroomsinesmr.ui.main.MainEvent
-import com.example.flowroomsinesmr.ui.main.viewmodels.MainRegistroViewModel
+import com.example.flowroomsinesmr.ui.main.events.MainLoginEvent
+import com.example.flowroomsinesmr.ui.main.viewmodels.MainLoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,7 +20,7 @@ class MainLoginFragment : Fragment(){
 
     private var _binding: FragmentMainLoginBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: MainRegistroViewModel by viewModels()
+    private val viewModel: MainLoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,7 +62,7 @@ class MainLoginFragment : Fragment(){
     }
 
     private fun login(usuario: String, contrasena: String) {
-        viewModel.handleEvent(MainEvent.GetLogin(usuario, contrasena))
+        viewModel.handleEvent(MainLoginEvent.GetLogin(usuario, contrasena))
     }
 
 }

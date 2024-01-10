@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.flowroomsinesmr.domain.modelo.Credencial
 import com.example.flowroomsinesmr.domain.usecases.credencial.DoRegisterUseCase
-import com.example.flowroomsinesmr.domain.usecases.credencial.GetLoginUseCase
 import com.example.flowroomsinesmr.ui.main.MainEvent
 import com.example.flowroomsinesmr.ui.main.MainState
 import com.example.flowroomsinesmr.ui.main.events.MainLoginEvent
@@ -37,7 +36,6 @@ class MainRegistroViewModel @Inject constructor(
     fun handleEvent(event: MainRegistroEvent) {
         when (event) {
             is MainRegistroEvent.DoRegister -> doRegister(event.credencial)
-            is MainLoginEvent.GetLogin -> TODO()
         }
     }
 

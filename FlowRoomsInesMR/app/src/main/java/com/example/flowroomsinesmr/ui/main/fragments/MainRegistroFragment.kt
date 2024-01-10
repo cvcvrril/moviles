@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.flowroomsinesmr.databinding.FragmentMainRegisterBinding
 import com.example.flowroomsinesmr.domain.modelo.Credencial
-import com.example.flowroomsinesmr.ui.main.MainEvent
+import com.example.flowroomsinesmr.ui.main.events.MainRegistroEvent
 import com.example.flowroomsinesmr.ui.main.viewmodels.MainRegistroViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -62,7 +62,7 @@ class MainRegistroFragment : Fragment(){
     }
 
     private fun register(credencial: Credencial){
-        viewModel.handleEvent(MainEvent.DoRegister(credencial))
+        viewModel.handleEvent(MainRegistroEvent.DoRegister(credencial))
     }
 
 

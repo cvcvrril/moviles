@@ -55,7 +55,7 @@ object NetworkModule {
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://10.2.3.106:8080/videojuegosServidor-1.0-SNAPSHOT/api/")
+            .baseUrl("http://192.168.1.140:8080/videojuegosServidor-1.0-SNAPSHOT/api/")
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()

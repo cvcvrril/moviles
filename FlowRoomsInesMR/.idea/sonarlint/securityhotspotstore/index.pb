@@ -9,8 +9,6 @@ t
 Dapp/src/main/java/com/example/flowroomsinesmr/utils/NetworkResult.kt,9\c\9c5ce89d6ce18dd83ea2c87219d44009cbe496a7
 y
 Iapp/src/main/java/com/example/flowroomsinesmr/domain/modelo/Credencial.kt,c\0\c054dd7aef3b642a7e5c004bf6dee4386b903255
-†
-Vapp/src/main/java/com/example/flowroomsinesmr/data/sources/remote/CredencialService.kt,7\7\77cbfe907f57d9bec63dc26cbbc7ef7fe2272b6c
 ˆ
 Xapp/src/main/java/com/example/flowroomsinesmr/data/modelo/response/CredencialResponse.kt,8\4\8496744524385f67cbe691012a96f8d2244a1ca5
 x
@@ -27,8 +25,6 @@ r
 Bapp/src/main/java/com/example/flowroomsinesmr/ui/main/MainEvent.kt,9\9\99701f410f8422aca9610c993339d7adf0649e39
 r
 Bapp/src/main/java/com/example/flowroomsinesmr/ui/main/MainState.kt,0\0\00014b790ed78aadbce334b5ecd2833966a90b0d
-v
-Fapp/src/main/java/com/example/flowroomsinesmr/ui/main/MainViewModel.kt,0\4\040553db48e068da888a0dd0a788782559ee2fde
 …
 Uapp/src/main/java/com/example/flowroomsinesmr/data/repository/CredencialRepository.kt,7\f\7f6f67abd26008af1364daf0fdd4469053053f39
 ‹
