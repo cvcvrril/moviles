@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.flowroomsinesmr.databinding.FragmentMainLoginBinding
 import com.example.flowroomsinesmr.ui.detail.DetailActivity
 import com.example.flowroomsinesmr.ui.main.MainEvent
-import com.example.flowroomsinesmr.ui.main.MainViewModel
+import com.example.flowroomsinesmr.ui.main.viewmodels.MainRegistroViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,7 +20,7 @@ class MainLoginFragment : Fragment(){
 
     private var _binding: FragmentMainLoginBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainRegistroViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,9 +43,16 @@ class MainLoginFragment : Fragment(){
 
             if (usuario.isNotEmpty() && contrasena.isNotEmpty()) {
                 login(usuario, contrasena)
-                val intent = Intent(requireContext(), DetailActivity::class.java)
-                startActivity(intent)
-
+                viewModel.operacionExitosa.observe(viewLifecycleOwner){ exitoso ->
+                    if (exitoso){
+                        Toast.makeText(requireContext(), "Registro exitoso", Toast.LENGTH_SHORT).show()
+                        binding.textUser.text.clear()
+                        binding.textPassword.text.clear()
+                        val intent = Intent(requireContext(), DetailActivity::class.java)
+                        startActivity(intent)
+                        this@MainLoginFragment.activity?.finish()
+                    }
+                }
             } else {
                 Toast.makeText(requireContext(), "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
             }

@@ -11,16 +11,15 @@ import androidx.navigation.fragment.findNavController
 import com.example.flowroomsinesmr.databinding.FragmentMainRegisterBinding
 import com.example.flowroomsinesmr.domain.modelo.Credencial
 import com.example.flowroomsinesmr.ui.main.MainEvent
-import com.example.flowroomsinesmr.ui.main.MainViewModel
+import com.example.flowroomsinesmr.ui.main.viewmodels.MainRegistroViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class MainRegistroFragment : Fragment(){
 
     private var _binding: FragmentMainRegisterBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainRegistroViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

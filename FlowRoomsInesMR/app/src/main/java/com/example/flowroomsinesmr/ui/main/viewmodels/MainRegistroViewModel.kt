@@ -1,4 +1,4 @@
-package com.example.flowroomsinesmr.ui.main
+package com.example.flowroomsinesmr.ui.main.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,15 +7,17 @@ import androidx.lifecycle.viewModelScope
 import com.example.flowroomsinesmr.domain.modelo.Credencial
 import com.example.flowroomsinesmr.domain.usecases.credencial.DoRegisterUseCase
 import com.example.flowroomsinesmr.domain.usecases.credencial.GetLoginUseCase
+import com.example.flowroomsinesmr.ui.main.MainEvent
+import com.example.flowroomsinesmr.ui.main.MainState
+import com.example.flowroomsinesmr.ui.main.events.MainLoginEvent
+import com.example.flowroomsinesmr.ui.main.events.MainRegistroEvent
 import com.example.flowroomsinesmr.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
-    private val getLoginUseCase: GetLoginUseCase,
+class MainRegistroViewModel @Inject constructor(
     private val doRegisterUseCase: DoRegisterUseCase
 ) : ViewModel() {
 
@@ -32,10 +34,10 @@ class MainViewModel @Inject constructor(
         )
     }
 
-    fun handleEvent(event: MainEvent) {
+    fun handleEvent(event: MainRegistroEvent) {
         when (event) {
-            is MainEvent.GetLogin -> getLogin(event.user, event.password)
-            is MainEvent.DoRegister -> doRegister(event.credencial)
+            is MainRegistroEvent.DoRegister -> doRegister(event.credencial)
+            is MainLoginEvent.GetLogin -> TODO()
         }
     }
 
@@ -55,18 +57,6 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun getLogin(user: String, password: String) {
-        viewModelScope.launch {
-            val result = getLoginUseCase(user, password)
-            when (result) {
-                is NetworkResult.Error -> _error.value = result.message ?: "Error"
-                is NetworkResult.Loading -> TODO()
-                is NetworkResult.Success -> result.data?.let {
-                    _operacionExitosa.value = true
-                    _uiState.value = _uiState.value?.copy(credencial = result.data)
-                }
-            }
-        }
-    }
+
 
 }

@@ -1,6 +1,5 @@
 package com.example.flowroomsinesmr.data.sources.remote.di;
 
-import com.example.flowroomsinesmr.data.sources.remote.network.AuthInterceptor
 import com.example.flowroomsinesmr.data.sources.remote.service.CredencialService
 import com.example.flowroomsinesmr.data.sources.remote.service.VideojuegoService
 import com.google.gson.GsonBuilder
@@ -33,12 +32,10 @@ object NetworkModule {
     @Provides
     fun provideOkHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
-        authInterceptor: AuthInterceptor
     ): OkHttpClient {
         return OkHttpClient
             .Builder()
             .addInterceptor(loggingInterceptor)
-            .addInterceptor(authInterceptor)
             //.addInterceptor(AuthInterceptor(authInterceptor.getRefreshToken()))
             .readTimeout(30, TimeUnit.SECONDS)
             .connectTimeout(30, TimeUnit.SECONDS)
@@ -58,18 +55,10 @@ object NetworkModule {
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://192.168.78.104:8080/videojuegosServidor-1.0-SNAPSHOT/api/")
+            .baseUrl("http://10.2.3.106:8080/videojuegosServidor-1.0-SNAPSHOT/api/")
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()
-    }
-
-    @Singleton
-    @Provides
-    fun provideAuthInterceptor(
-        authInterceptor: AuthInterceptor
-    ): AuthInterceptor {
-        return AuthInterceptor(authInterceptor.getAccessToken())
     }
 
     @Singleton
