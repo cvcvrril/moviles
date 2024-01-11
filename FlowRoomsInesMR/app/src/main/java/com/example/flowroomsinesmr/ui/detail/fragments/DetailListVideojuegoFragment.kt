@@ -32,7 +32,7 @@ class DetailListVideojuegoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        videojuegoAdapter = VideojuegoAdapter()
+        videojuegoAdapter = VideojuegoAdapter(requireContext())
         binding.rvVideojuegos.adapter = videojuegoAdapter
         viewModel.handleEvent(DetailContract.DetailEvent.GetVideojuegos)
     }

@@ -1,5 +1,6 @@
 package com.example.flowroomsinesmr.ui.detail.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,9 @@ import com.example.flowroomsinesmr.R
 import com.example.flowroomsinesmr.databinding.VideojuegoViewBinding
 import com.example.flowroomsinesmr.domain.modelo.Videojuego
 
-class VideojuegoAdapter() : ListAdapter<Videojuego, VideojuegoAdapter.ItemViewHolder>(DiffCallback()) {
+class VideojuegoAdapter(
+    val context: Context
+) : ListAdapter<Videojuego, VideojuegoAdapter.ItemViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
 
