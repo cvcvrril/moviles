@@ -14,18 +14,11 @@ import kotlinx.coroutines.flow.map
 class TokenManager(private val context: Context) {
     companion object {
         private val ACCESS_TOKEN = stringPreferencesKey("jwt_token")
-        private val REFRESH_TOKEN = stringPreferencesKey("refresh_token")
     }
 
     fun getAccessToken(): Flow<String?> {
         return context.dataStore.data.map { preferences ->
             preferences[ACCESS_TOKEN]
-        }
-    }
-
-    fun getRefreshToken(): Flow<String?> {
-        return context.dataStore.data.map { preferences ->
-            preferences[REFRESH_TOKEN]
         }
     }
 
@@ -35,21 +28,9 @@ class TokenManager(private val context: Context) {
         }
     }
 
-    suspend fun saveRefreshToken(token: String) {
-        context.dataStore.edit { preferences ->
-            preferences[REFRESH_TOKEN] = token
-        }
-    }
-
     suspend fun deleteAccessToken() {
         context.dataStore.edit { preferences ->
             preferences.remove(ACCESS_TOKEN)
-        }
-    }
-
-    suspend fun deleteRefreshToken() {
-        context.dataStore.edit { preferences ->
-            preferences.remove(REFRESH_TOKEN)
         }
     }
 }

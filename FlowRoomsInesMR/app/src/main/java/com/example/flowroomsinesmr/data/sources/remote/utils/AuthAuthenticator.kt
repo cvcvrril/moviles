@@ -9,7 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
-//TODO: COSAS QUE ARREGLAR ->
+//TODO: COSAS QUE ARREGLAR -> (de momento nada)
 
 
 class AuthAuthenticator @Inject constructor(
@@ -29,9 +29,9 @@ class AuthAuthenticator @Inject constructor(
             }
 
             newAcessToken.body()?.let {
-                tokenManager.saveAccessToken(it.token)
+                tokenManager.saveAccessToken(it.toString())
                 response.request.newBuilder()
-                    .header("Authorization", "Bearer ${it.token}")
+                    .header("Authorization", "Bearer $it")
                     .build()
             }
         }
@@ -45,7 +45,7 @@ class AuthAuthenticator @Inject constructor(
         val okHttpClient = OkHttpClient.Builder().addInterceptor(loggingInterceptor).build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://jwt-test-api.onrender.com/api/")
+            .baseUrl("http://192.168.1.140:8080/videojuegosServidor-1.0-SNAPSHOT/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
