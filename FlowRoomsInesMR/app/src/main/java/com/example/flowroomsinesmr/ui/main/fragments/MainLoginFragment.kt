@@ -38,6 +38,10 @@ class MainLoginFragment : Fragment() {
             val action = MainLoginFragmentDirections.actionMainLoginFragmentToMainRegistroFragment()
             findNavController().navigate(action)
         }
+        binding.buttonForgotPassword.setOnClickListener {
+            val action = MainLoginFragmentDirections.actionMainLoginFragmentToMainForgotPasswordFragment()
+            findNavController().navigate(action)
+        }
 
         observe()
 

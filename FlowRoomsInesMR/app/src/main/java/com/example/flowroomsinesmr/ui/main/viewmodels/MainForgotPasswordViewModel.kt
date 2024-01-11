@@ -48,8 +48,6 @@ class MainForgotPasswordViewModel @Inject constructor(
                     _uiState.value = _uiState.value?.copy(error = "Email enviado")
                     _operacionExitosa.value = true
                 }
-
-
             }
         }
     }

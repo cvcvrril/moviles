@@ -48,8 +48,6 @@ class MainRegistroViewModel @Inject constructor(
                     _uiState.value = _uiState.value?.copy(error = "Registro completado")
                     _operacionExitosa.value = true
                 }
-
-
             }
         }
     }

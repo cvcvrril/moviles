@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_mainLoginFragment_to_mainRegistroFragment"
             app:destination="@id/mainRegistroFragment" />
+        <action
+            android:id="@+id/action_mainLoginFragment_to_mainForgotPasswordFragment"
+            app:destination="@id/mainForgotPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainRegistroFragment"
@@ -20,6 +23,15 @@
         tools:layout="@layout/fragment_main_register" >
         <action
             android:id="@+id/action_mainRegistroFragment_to_mainLoginFragment"
+            app:destination="@id/mainLoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainForgotPasswordFragment"
+        android:name="com.example.flowroomsinesmr.ui.main.fragments.MainForgotPasswordFragment"
+        android:label="fragment_main_forgotpassword"
+        tools:layout="@layout/fragment_main_forgotpassword" >
+        <action
+            android:id="@+id/action_mainForgotPasswordFragment_to_mainLoginFragment"
             app:destination="@id/mainLoginFragment" />
     </fragment>
 </navigation>
