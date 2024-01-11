@@ -29,7 +29,7 @@ class RemoteDataSource @Inject constructor(
         } catch (e: Exception) {
             return NetworkResult.Error(e.message ?: e.toString())
         }
-        return NetworkResult.Error("Hubo un problema al sacar el videojuego con el id proporcionado")
+        return NetworkResult.Error("Hubo un problema al iniciar sesión")
     }
 
     suspend fun doRegister(credencial: Credencial): NetworkResult<Unit> {
@@ -41,6 +41,19 @@ class RemoteDataSource @Inject constructor(
                 NetworkResult.Error("${response.code()} ${response.message()}")
             }
         } catch (e: Exception) {
+            NetworkResult.Error(e.message ?: e.toString())
+        }
+    }
+
+    suspend fun forgotPassword(credencial: Credencial): NetworkResult<Unit>{
+        return try {
+            val response = credencialService.forgotPassword(credencial.toCredencialResponse())
+            if (response.isSuccessful){
+                NetworkResult.Success(Unit)
+            }else{
+                NetworkResult.Error("${response.code()} ${response.message()}")
+            }
+        }catch (e: Exception) {
             NetworkResult.Error(e.message ?: e.toString())
         }
     }

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.flowroomsinesmr.domain.modelo.Credencial
 import com.example.flowroomsinesmr.domain.usecases.credencial.DoRegisterUseCase
 import com.example.flowroomsinesmr.ui.main.MainState
+import com.example.flowroomsinesmr.ui.main.events.MainForgotPasswordEvent
 import com.example.flowroomsinesmr.ui.main.events.MainRegistroEvent
 import com.example.flowroomsinesmr.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel

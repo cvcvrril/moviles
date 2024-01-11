@@ -20,6 +20,10 @@ class CredencialRepository @Inject constructor(private val remoteDataSource: Rem
             remoteDataSource.doRegister(credencial)
         }
 
+    suspend fun forgotPassword(credencial: Credencial)=
+        withContext(Dispatchers.IO){
+            remoteDataSource.forgotPassword(credencial)
+        }
 
 
 }
