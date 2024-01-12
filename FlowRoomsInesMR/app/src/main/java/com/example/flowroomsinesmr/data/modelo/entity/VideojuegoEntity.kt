@@ -5,7 +5,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.flowroomsinesmr.domain.modelo.Videojuego
 
-
 @Entity(tableName = "videojuegos")
 data class VideojuegoEntity (
     @PrimaryKey(autoGenerate = true)

@@ -68,15 +68,11 @@ class RemoteDataSource @Inject constructor(
 
     //VIDEOJUEGOS
 
-    //TODO: ARREGLAR ESTO
+    //TODO: ARREGLAR ESTO -> DEVUELVE UNA LISTA, NO ES COMO EL EJEMPLO
 
     suspend fun getAllVideojuegosFlow(): NetworkResult<List<Videojuego>> {
         return safeApiCall(apiCall = { videojuegoService.getAllVideojuegos() },
-            transform = { videojuegosResponse ->
-                videojuegosResponse
-                    .results?.map { videojuegoEntity -> videojuegoEntity.toVideojuego() }
-                    ?: emptyList()
-            })
+            transform = { videojuegoResponse -> videojuegoResponse.results?.map { videojuegoEntity -> videojuegoEntity.toVideojuego() } ?: emptyList() })
     }
 
     //PERSONAJES
