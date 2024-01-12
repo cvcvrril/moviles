@@ -7,6 +7,6 @@ import retrofit2.http.GET
 interface VideojuegoService {
 
     @GET("videojuegos")
-    suspend fun getAllVideojuegos() : Response<VideojuegoResponse>
+    suspend fun getAllVideojuegos() : Response<List<VideojuegoResponse>>
 
 }

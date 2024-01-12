@@ -51,13 +51,10 @@ class MainLoginFragment : Fragment() {
 
             if (usuario.isNotEmpty() && contrasena.isNotEmpty()) {
                 login(usuario, contrasena)
-                Toast.makeText(requireContext(), "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(), "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+                //TODO: ARREGLAR :)
                 binding.textUser.text.clear()
                 binding.textPassword.text.clear()
-                val intent = Intent(requireContext(), DetailActivity::class.java)
-                startActivity(intent)
-                this@MainLoginFragment.activity?.finish()
-
             } else {
                 Toast.makeText(
                     requireContext(),
@@ -78,8 +75,11 @@ class MainLoginFragment : Fragment() {
                 Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
                 viewModel.handleEvent(MainLoginEvent.ErrorVisto)
             }
-            if (state.error == null) {
+            if (state.credencial != null) {
 
+                val intent = Intent(requireContext(), DetailActivity::class.java)
+                startActivity(intent)
+                this@MainLoginFragment.activity?.finish()
             }
         }
     }

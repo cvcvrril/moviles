@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.flowroomsinesmr.data.sources.remote.service.CredencialService
 import com.example.flowroomsinesmr.data.sources.remote.service.VideojuegoService
+import com.example.flowroomsinesmr.data.sources.remote.utils.AuthInterceptor
 import com.google.gson.GsonBuilder
 import javax.inject.Singleton;
 
@@ -38,11 +39,12 @@ object NetworkModule {
     @Provides
     fun provideOkHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
+        authInterceptor: AuthInterceptor
     ): OkHttpClient {
         return OkHttpClient
             .Builder()
             .addInterceptor(loggingInterceptor)
-            //.addInterceptor(AuthInterceptor(authInterceptor.getRefreshToken()))
+            .addInterceptor(authInterceptor)
             .readTimeout(30, TimeUnit.SECONDS)
             .connectTimeout(30, TimeUnit.SECONDS)
             .build()
@@ -61,7 +63,7 @@ object NetworkModule {
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://192.168.1.140:8080/videojuegosServidor-1.0-SNAPSHOT/api/")
+            .baseUrl("http://10.2.3.106:8080/videojuegosServidor-1.0-SNAPSHOT/api/")
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()
