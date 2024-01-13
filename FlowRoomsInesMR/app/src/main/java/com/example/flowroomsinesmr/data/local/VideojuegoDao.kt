@@ -10,7 +10,7 @@ import com.example.flowroomsinesmr.data.modelo.entity.VideojuegoEntity
 @Dao
 interface VideojuegoDao {
 
-    @Query("select * from videojuegos order by titulo asc")
+    @Query("select * from videojuegos")
     fun getAll() : List<VideojuegoEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

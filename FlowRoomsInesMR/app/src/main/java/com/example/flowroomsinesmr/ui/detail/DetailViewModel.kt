@@ -3,6 +3,7 @@ package com.example.flowroomsinesmr.ui.detail
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.flowroomsinesmr.data.repository.VideojuegoRepository
 import com.example.flowroomsinesmr.domain.usecases.credencial.GetAllVideojuegosUseCase
 import com.example.flowroomsinesmr.utils.InternetConexion
 import com.example.flowroomsinesmr.utils.NetworkResult
@@ -20,7 +21,8 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailViewModel @Inject constructor(
     @ApplicationContext val appContext: Context,
-    private val getAllVideojuegosUseCase: GetAllVideojuegosUseCase
+    private val videojuegoRepository: VideojuegoRepository,
+    private val getAllVideojuegosUseCase: GetAllVideojuegosUseCase,
 ) : ViewModel() {
 
     private val _uiState: MutableStateFlow<DetailContract.DetailState> by lazy {
@@ -51,7 +53,8 @@ class DetailViewModel @Inject constructor(
     private fun getVideojuegos() {
         viewModelScope.launch {
             if (InternetConexion.hasInternetConnection(context = appContext)) {
-                getAllVideojuegosUseCase.invoke()
+                //getAllVideojuegosUseCase.invoke()
+                videojuegoRepository.getAllVideojuegos()
                     .catch(action = { cause -> _uiError.send(cause.message ?: "") })
                     .collect { result ->
                         when (result) {
@@ -67,6 +70,9 @@ class DetailViewModel @Inject constructor(
                             is NetworkResult.Loading -> _uiState.update { it.copy(isLoading = true) }
                             is NetworkResult.Success -> _uiState.update {
                                 it.copy(
+
+                                    //NOTA: CUANDO PASA AL SUCCESS SE QUEDA EL ISLOADING A TRUE -> REVISAR SI HAY ALGÚN ERROR AQUÍ
+
                                     videojuegos = result.data ?: emptyList(), isLoading = false
                                 )
                             }
@@ -79,6 +85,15 @@ class DetailViewModel @Inject constructor(
                         error = "No hay internet",
                         isLoading = false
                     )
+                }
+                when(val result = videojuegoRepository.getAllVideojuegosCacheo()){
+                    is NetworkResult.Error -> TODO()
+                    is NetworkResult.Loading -> TODO()
+                    is NetworkResult.Success -> _uiState.update {
+                        it.copy(
+                            videojuegos = result.data ?: emptyList(), isLoading = false
+                        )
+                    }
                 }
             }
         }
