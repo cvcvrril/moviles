@@ -14,7 +14,7 @@ interface VideojuegoDao {
     fun getAll() : List<VideojuegoEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(movies: List<VideojuegoEntity>)
+    fun insertAll(videojuegos: List<VideojuegoEntity>)
     @Delete
     fun deleteAll(videojuegos: List<VideojuegoEntity>)
 

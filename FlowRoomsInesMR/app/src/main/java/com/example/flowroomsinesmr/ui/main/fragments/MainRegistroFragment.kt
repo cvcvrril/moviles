@@ -41,7 +41,7 @@ class MainRegistroFragment : Fragment(){
             val contrasena = binding.textPasswordReg.text.toString()
             val email = binding.textEmailReg.text.toString()
             if (usuario.isNotEmpty() && contrasena.isNotEmpty()) {
-                val nuevaCredencial : Credencial = Credencial(usuario,contrasena,email,false, "User")
+                val nuevaCredencial : Credencial = Credencial(usuario,contrasena,email,false, "User", "")
                 register(nuevaCredencial)
 
                 viewModel.operacionExitosa.observe(viewLifecycleOwner) { exitoso ->

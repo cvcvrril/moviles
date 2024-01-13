@@ -9,5 +9,14 @@
         android:id="@+id/detailListVideojuegoFragment"
         android:name="com.example.flowroomsinesmr.ui.detail.fragments.DetailListVideojuegoFragment"
         android:label="fragment_detail_videojuego_list"
-        tools:layout="@layout/fragment_detail_videojuego_list" />
+        tools:layout="@layout/fragment_detail_videojuego_list" >
+        <action
+            android:id="@+id/action_detailListVideojuegoFragment_to_detailListPersonajeFragment"
+            app:destination="@id/detailListPersonajeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailListPersonajeFragment"
+        android:name="com.example.flowroomsinesmr.ui.detail.fragments.DetailListPersonajeFragment"
+        android:label="DetailListPersonajeFragment"
+        tools:layout="@layout/fragment_detail_personaje_list"/>
 </navigation>

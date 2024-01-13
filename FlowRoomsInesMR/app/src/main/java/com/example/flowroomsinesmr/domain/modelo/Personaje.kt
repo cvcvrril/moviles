@@ -9,4 +9,4 @@ data class Personaje (
     val idVideojuego: Int
 )
 
-fun Personaje.toPersonajeResponse() : PersonajeResponse = PersonajeResponse(id, nombre, descripcion, idVideojuego)
+//fun Personaje.toPersonajeResponse() : PersonajeResponse = PersonajeResponse()

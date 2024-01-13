@@ -4,12 +4,12 @@ import com.example.flowroomsinesmr.domain.modelo.Videojuego
 
 interface DetailContract {
 
-    sealed class DetailEvent {
-        object GetVideojuegos : DetailEvent()
-        object ErrorVisto : DetailEvent()
+    sealed class DetailVideojuegoEvent {
+        object GetVideojuegos : DetailVideojuegoEvent()
+        object ErrorVisto : DetailVideojuegoEvent()
     }
 
-    data class DetailState(
+    data class DetailVideojuegoState(
         val error: String? = null,
         val isLoading: Boolean = false,
         val videojuegos: List<Videojuego> = emptyList(),

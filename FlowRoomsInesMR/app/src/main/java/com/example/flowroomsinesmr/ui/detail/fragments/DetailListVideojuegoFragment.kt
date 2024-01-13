@@ -14,11 +14,10 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flowroomsinesmr.databinding.FragmentDetailVideojuegoListBinding
 import com.example.flowroomsinesmr.ui.detail.DetailContract
-import com.example.flowroomsinesmr.ui.detail.DetailViewModel
+import com.example.flowroomsinesmr.ui.detail.viewmodels.DetailVideojuegoViewModel
 import com.example.flowroomsinesmr.ui.detail.adapters.VideojuegoAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -27,7 +26,7 @@ class DetailListVideojuegoFragment : Fragment() {
 
     private var _binding: FragmentDetailVideojuegoListBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: DetailViewModel by viewModels()
+    private val viewModel: DetailVideojuegoViewModel by viewModels()
     private lateinit var videojuegoAdapter: VideojuegoAdapter
 
     override fun onCreateView(
@@ -42,19 +41,19 @@ class DetailListVideojuegoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         init()
-        viewModel.handleEvent(DetailContract.DetailEvent.GetVideojuegos)
+        viewModel.handleEvent(DetailContract.DetailVideojuegoEvent.GetVideojuegos)
         observe()
     }
 
-    private fun observe(){
+    private fun observe() {
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED){
-                viewModel.uiState.collect(){value ->
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { value ->
                     binding.loading.visibility = if (value.isLoading) View.VISIBLE else View.GONE
                     videojuegoAdapter.submitList(value.videojuegos)
                     value.error.let {
                         //TODO: METER AQUÍ UN TOAST DEL ERROR
-                        viewModel.handleEvent(DetailContract.DetailEvent.ErrorVisto)
+                        viewModel.handleEvent(DetailContract.DetailVideojuegoEvent.ErrorVisto)
                     }
 
                 }
@@ -62,16 +61,16 @@ class DetailListVideojuegoFragment : Fragment() {
         }
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                withContext(Dispatchers.Main.immediate ) {
-                    viewModel.uiError.collect {
-                        Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                withContext(Dispatchers.Main.immediate) {
+                    viewModel.uiState.collect {
+                        //Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
         }
     }
 
-    private fun init(){
+    private fun init() {
 
         val layoutManager = LinearLayoutManager(requireContext())
         binding.rvVideojuegos.layoutManager = layoutManager
@@ -87,8 +86,6 @@ class DetailListVideojuegoFragment : Fragment() {
 
 
     }
-
-
 
 
 }

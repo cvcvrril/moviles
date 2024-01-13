@@ -5,7 +5,7 @@ import retrofit2.http.GET
 
 interface PersonajeService {
 
-    @GET("personajes")
-    suspend fun getPersonajes(): Response<PersonajeService>
+    @GET("personajes/{idVideojuego}")
+    suspend fun getPersonajes(): Response<List<PersonajeService>>
 
 }

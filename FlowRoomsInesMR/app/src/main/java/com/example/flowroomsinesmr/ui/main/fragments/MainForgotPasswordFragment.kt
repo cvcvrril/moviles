@@ -39,7 +39,7 @@ class MainForgotPasswordFragment : Fragment (){
         binding.buttonEnviarFP.setOnClickListener {
             val email = binding.editTextEmailFP.text.toString()
             if (email.isNotEmpty()){
-                val credencialForgotPassword : Credencial = Credencial("", "", email, false, "User")
+                val credencialForgotPassword : Credencial = Credencial("", "", email, false, "User", "")
                 forgotPassword(credencialForgotPassword)
                 binding.editTextEmailFP.text.clear()
 

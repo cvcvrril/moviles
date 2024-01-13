@@ -17,7 +17,7 @@ import javax.inject.Inject
 class VideojuegoRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val videojuegoDao: VideojuegoDao,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) {
 
     fun getAllVideojuegos(): Flow<NetworkResult<List<Videojuego>>> {

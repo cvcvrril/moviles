@@ -16,7 +16,7 @@ class RemoteDataSource @Inject constructor(
     private val credencialService: CredencialService,
     private val videojuegoService: VideojuegoService,
     private val tokenManager: TokenManager,
-) : BaseApiResponse() {
+) {
 
     suspend fun getLogin(username: String, password: String): NetworkResult<AuthorizacionResponse> {
         try {
@@ -85,10 +85,9 @@ class RemoteDataSource @Inject constructor(
         return NetworkResult.Error("Error")
     }
 
-
-
-
     //PERSONAJES
+
+
 
 
 }
