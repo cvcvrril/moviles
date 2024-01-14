@@ -1,6 +1,6 @@
 package com.example.flowroomsinesmr.data.repository
 
-import com.example.flowroomsinesmr.data.local.VideojuegoDao
+import com.example.flowroomsinesmr.data.dao.VideojuegoDao
 import com.example.flowroomsinesmr.data.modelo.entity.toVideojuego
 import com.example.flowroomsinesmr.data.modelo.entity.toVideojuegoEntity
 import com.example.flowroomsinesmr.data.sources.remote.RemoteDataSource

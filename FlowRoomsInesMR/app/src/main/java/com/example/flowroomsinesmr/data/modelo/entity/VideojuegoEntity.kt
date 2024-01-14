@@ -20,3 +20,4 @@ data class VideojuegoEntity (
 
 fun VideojuegoEntity.toVideojuego() : Videojuego = Videojuego(id, titulo, descripcion)
 fun Videojuego.toVideojuegoEntity() : VideojuegoEntity = VideojuegoEntity(id, titulo, descripcion)
+fun List<VideojuegoEntity>.toVideojuegoList(): List<Videojuego> = map { it.toVideojuego() }

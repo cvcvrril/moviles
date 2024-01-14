@@ -1,4 +1,4 @@
-package com.example.flowroomsinesmr.domain.usecases.credencial
+package com.example.flowroomsinesmr.domain.usecases.videojuego
 
 import com.example.flowroomsinesmr.data.repository.VideojuegoRepository
 import com.example.flowroomsinesmr.domain.modelo.Videojuego

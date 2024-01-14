@@ -1,4 +1,4 @@
-package com.example.flowroomsinesmr.data.local
+package com.example.flowroomsinesmr.data.dao
 
 import androidx.room.Dao
 import androidx.room.Delete

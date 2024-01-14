@@ -2,8 +2,9 @@ package com.example.flowroomsinesmr.data.sources.remote.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.flowroomsinesmr.data.dao.JugadorDao
+import com.example.flowroomsinesmr.data.dao.VideojuegoDao
 import com.example.flowroomsinesmr.data.local.AppDatabase
-import com.example.flowroomsinesmr.data.local.VideojuegoDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,7 +36,13 @@ object DatabaseModule {
     fun provideIODispatcher(): CoroutineDispatcher = Dispatchers.IO
 
     @Provides
-    fun provideMovieDao(appDatabase: AppDatabase): VideojuegoDao {
+    fun provideJugadorDao(appDatabase: AppDatabase): JugadorDao {
+        return appDatabase.jugadorDao()
+    }
+
+    @Provides
+    fun provideVideojuegorDao(appDatabase: AppDatabase): VideojuegoDao {
         return appDatabase.videojuegoDao()
     }
+
 }

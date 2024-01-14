@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.flowroomsinesmr.data.repository.VideojuegoRepository
 import com.example.flowroomsinesmr.domain.modelo.Videojuego
-import com.example.flowroomsinesmr.domain.usecases.credencial.GetAllVideojuegosUseCase
+import com.example.flowroomsinesmr.domain.usecases.videojuego.GetAllVideojuegosUseCase
 import com.example.flowroomsinesmr.ui.detail.DetailContract
 import com.example.flowroomsinesmr.utils.InternetConexion
 import com.example.flowroomsinesmr.utils.NetworkResult
