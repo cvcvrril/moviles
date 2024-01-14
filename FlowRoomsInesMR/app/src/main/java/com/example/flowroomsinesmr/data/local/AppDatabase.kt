@@ -8,7 +8,7 @@ import com.example.flowroomsinesmr.data.dao.VideojuegoDao
 import com.example.flowroomsinesmr.data.modelo.entity.JugadorEntity
 import com.example.flowroomsinesmr.data.modelo.entity.VideojuegoEntity
 
-@Database(entities = [VideojuegoEntity::class, JugadorEntity::class], version = 1)
+@Database(entities = [VideojuegoEntity::class, JugadorEntity::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun videojuegoDao() : VideojuegoDao
     //abstract fun personajeDao() : PersonajeDao
