@@ -10,9 +10,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
-//TODO: COSAS QUE ARREGLAR -> (de momento nada)
-
-
 class AuthAuthenticator @Inject constructor(
     private val tokenManager: TokenManager,
 ): Authenticator {
