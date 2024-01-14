@@ -1,5 +1,6 @@
 package com.example.flowroomsinesmr.data.sources.remote.utils
 
+import com.example.flowroomsinesmr.BuildConfig
 import com.example.flowroomsinesmr.data.sources.remote.service.CredencialService
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
@@ -43,7 +44,8 @@ class AuthAuthenticator @Inject constructor(
         val okHttpClient = OkHttpClient.Builder().addInterceptor(loggingInterceptor).build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.1.140:8080/videojuegosServidor-1.0-SNAPSHOT/api/")
+            //.baseUrl("http://192.168.1.140:8080/videojuegosServidor-1.0-SNAPSHOT/api/")
+            .baseUrl(BuildConfig.BASEURL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()

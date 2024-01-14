@@ -7,6 +7,7 @@ plugins {
 }
 
 android {
+
     namespace = "com.example.flowroomsinesmr"
     compileSdk = 34
 
@@ -16,6 +17,8 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+
+        buildConfigField("String", "BASEURL", "\"" + "http://192.168.1.140:8080/videojuegosServidor-1.0-SNAPSHOT/api/" + "\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -38,6 +41,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 

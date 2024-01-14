@@ -26,7 +26,6 @@ class VideojuegoRepository @Inject constructor(
             emit(NetworkResult.Loading())
             val result = remoteDataSource.getAllVideojuegosFlow()
             emit(result)
-            //Cache to database if response is successful
             if (result is NetworkResult.Success) {
                 result.data?.let { it ->
                     videojuegoDao.deleteAll(it.map { it.toVideojuegoEntity() })
