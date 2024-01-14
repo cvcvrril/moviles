@@ -13,10 +13,22 @@
         <action
             android:id="@+id/action_detailListVideojuegoFragment_to_detailListPersonajeFragment"
             app:destination="@id/detailListPersonajeFragment" />
+        <action
+            android:id="@+id/action_detailListVideojuegoFragment_to_detailListJugadorFragment"
+            app:destination="@id/detailListJugadorFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailListPersonajeFragment"
         android:name="com.example.flowroomsinesmr.ui.detail.fragments.DetailListPersonajeFragment"
         android:label="DetailListPersonajeFragment"
         tools:layout="@layout/fragment_detail_personaje_list"/>
+    <fragment
+        android:id="@+id/detailListJugadorFragment"
+        android:name="com.example.flowroomsinesmr.ui.detail.fragments.DetailListJugadorFragment"
+        android:label="DetailListJugadorFragment"
+        tools:layout="@layout/fragment_detail_jugador_list">
+        <action
+            android:id="@+id/action_detailListJugadorFragment_to_detailListVideojuegoFragment"
+            app:destination="@id/detailListVideojuegoFragment" />
+    </fragment>
 </navigation>
