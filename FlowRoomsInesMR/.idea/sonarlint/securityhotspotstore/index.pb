@@ -99,3 +99,13 @@ x
 Happ/src/main/java/com/example/flowroomsinesmr/domain/modelo/Personaje.kt,c\3\c3ac9e031c373b823eff600df46a145492074cae
 è
 _app/src/main/java/com/example/flowroomsinesmr/ui/detail/viewmodels/DetailVideojuegoViewModel.kt,d\7\d7aa075e4499252146db466e5378504eaa906683
+w
+Gapp/src/main/java/com/example/flowroomsinesmr/data/local/AppDatabase.kt,6\3\63e2f7856f2377ece86466d676d12dcad90b23d1
+
+Oapp/src/main/java/com/example/flowroomsinesmr/data/local/JugadorRoomDatabase.kt,c\5\c5344e2cea32dbb97c2e495d3e0476b7bb77f943
+Ç
+Rapp/src/main/java/com/example/flowroomsinesmr/data/local/VideojuegoRoomDatabase.kt,9\5\957bc57c36ed5a2f75e9cd496264c8993827531f
+w
+Gapp/src/main/java/com/example/flowroomsinesmr/data/dao/VideojuegoDao.kt,c\2\c2ee998b77d47e4ae264a3d27e095123fba1e9aa
+y
+Iapp/src/main/java/com/example/flowroomsinesmr/ui/detail/DetailActivity.kt,9\d\9d4424f87796175daa15d9c1e9f4d8f2132633b1
