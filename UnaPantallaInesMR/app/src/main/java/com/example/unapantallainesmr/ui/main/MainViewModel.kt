@@ -1,4 +1,4 @@
-package com.example.unapantallainesmr
+package com.example.unapantallainesmr.ui.main
 
 import androidx.lifecycle.ViewModel
 import com.example.unapantallainesmr.data.SerieRepository

@@ -53,6 +53,8 @@ android {
 
 dependencies {
 
+    val room_version = "2.6.1"
+
     /*imagenes*/
     implementation ("io.coil-kt:coil-compose:2.2.2")
 
@@ -66,6 +68,10 @@ dependencies {
     /*Más iconos del material*/
     implementation("androidx.compose.material:material-icons-extended")
 
+    /*Rooms*/
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
