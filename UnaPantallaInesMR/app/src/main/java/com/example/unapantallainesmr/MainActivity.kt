@@ -17,8 +17,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.unapantallainesmr.ui.theme.UnaPantallaInesMRTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +32,18 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun ContenidoPantalla(){
+fun Pantalla(
+
+    viewModel: MainViewModel = hiltViewModel()
+
+
+) {
+
+
+}
+
+@Composable
+fun ContenidoPantalla() {
     UnaPantallaInesMRTheme {
         // A surface container using the 'background' color from the theme
         Surface(
@@ -39,7 +53,7 @@ fun ContenidoPantalla(){
             Greeting("Android")
             Column {
                 var texto by remember { mutableStateOf("") }
-                TextField(value = texto, onValueChange = texto)
+                //TextField(value = texto, onValueChange = texto)
             }
         }
     }
@@ -54,7 +68,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun CajaTexto(texto: String){
+fun CajaTexto(texto: String) {
     Row() {
         Text(text = texto)
     }
