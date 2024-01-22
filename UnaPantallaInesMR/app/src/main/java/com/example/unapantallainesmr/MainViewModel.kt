@@ -13,7 +13,7 @@ class MainViewModel @Inject constructor(
     private val repository: SerieRepository
 ) : ViewModel() {
 
-    private val _text = MutableStateFlow("test")
+    private val _text = MutableStateFlow("")
     val text: StateFlow<String> = _text.asStateFlow()
 
     fun changeText(texto: String) {
