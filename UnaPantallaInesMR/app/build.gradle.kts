@@ -31,12 +31,15 @@ android {
             )
         }
     }
+
+    //TODO: Preguntar sobre el error (lo he probado con el Java 1.8 y me seguía dando el mismo error delk Hilt)
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
