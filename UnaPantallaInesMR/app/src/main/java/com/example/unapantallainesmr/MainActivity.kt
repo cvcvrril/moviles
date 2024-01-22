@@ -11,6 +11,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,7 +27,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ContenidoPantalla()
+            //ContenidoPantalla()
+            Pantalla()
         }
     }
 }
@@ -36,14 +38,16 @@ fun Pantalla(
 
     viewModel: MainViewModel = hiltViewModel()
 
-
 ) {
-
+    ContenidoPantalla(viewModel)
 
 }
 
 @Composable
-fun ContenidoPantalla() {
+fun ContenidoPantalla(
+    viewModel: MainViewModel? = null,
+
+) {
     UnaPantallaInesMRTheme {
         // A surface container using the 'background' color from the theme
         Surface(
@@ -53,7 +57,10 @@ fun ContenidoPantalla() {
             Greeting("Android")
             Column {
                 var texto by remember { mutableStateOf("") }
-                //TextField(value = texto, onValueChange = texto)
+                var textoViewModel = viewModel?.text?.collectAsState()
+                TextField(value = textoViewModel?.value ?: "", onValueChange = {
+                    viewModel?.changeText(it)
+                } )
             }
         }
     }
@@ -78,7 +85,5 @@ fun CajaTexto(texto: String) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    UnaPantallaInesMRTheme {
-        Greeting("Android")
-    }
+    ContenidoPantalla()
 }
