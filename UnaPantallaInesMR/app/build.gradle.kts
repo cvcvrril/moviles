@@ -53,16 +53,18 @@ android {
 
 dependencies {
 
-    //imagenes
+    /*imagenes*/
     implementation ("io.coil-kt:coil-compose:2.2.2")
 
-
-    //Dagger - Hilt
+    /*Dagger - Hilt*/
     implementation ("com.google.dagger:hilt-android:2.44")
     kapt ("com.google.dagger:hilt-android-compiler:2.44")
     //implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
     kapt ("androidx.hilt:hilt-compiler:1.0.0")
     implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
+
+    /*Más iconos del material*/
+    implementation("androidx.compose.material:material-icons-extended")
 
 
     implementation("androidx.core:core-ktx:1.12.0")
