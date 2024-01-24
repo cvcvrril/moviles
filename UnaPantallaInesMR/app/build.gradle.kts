@@ -32,7 +32,7 @@ android {
         }
     }
 
-    //TODO: Preguntar sobre el error (lo he probado con el Java 1.8 y me seguía dando el mismo error delk Hilt)
+    //TODO: Preguntar sobre el error (lo he probado con el Java 1.8 y me seguía dando el mismo error del Hilt)
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -62,11 +62,11 @@ dependencies {
     implementation ("io.coil-kt:coil-compose:2.2.2")
 
     /*Dagger - Hilt*/
-    implementation ("com.google.dagger:hilt-android:2.44")
-    kapt ("com.google.dagger:hilt-android-compiler:2.44")
+    implementation ("com.google.dagger:hilt-android:2.48.1")
+    kapt ("com.google.dagger:hilt-android-compiler:2.48")
     //implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
-    kapt ("androidx.hilt:hilt-compiler:1.0.0")
-    implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
+    kapt ("androidx.hilt:hilt-compiler:1.1.0")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.1.0")
 
     /*Más iconos del material*/
     implementation("androidx.compose.material:material-icons-extended")
