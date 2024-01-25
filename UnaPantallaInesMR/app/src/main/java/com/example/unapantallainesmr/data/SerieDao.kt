@@ -12,4 +12,5 @@ interface SerieDao {
     @Query("select * from series where id = :id")
     suspend fun get(id: Int): SerieEntity
 
+
 }
