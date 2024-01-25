@@ -1,5 +1,6 @@
 package com.example.unapantallainesmr.data
 
+import com.example.unapantallainesmr.data.modelo.toSerie
 import com.example.unapantallainesmr.domain.modelo.Serie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -12,6 +13,6 @@ class SerieRepository @Inject constructor(
 ) {
     fun getAll() : Flow<List<Serie>> =
         flow{
-            emit((1..100).map { i -> Serie(i,"titulo $i") })
+            emit(serieDao.getAll().map { it.toSerie() })
         }.flowOn(Dispatchers.IO)
 }

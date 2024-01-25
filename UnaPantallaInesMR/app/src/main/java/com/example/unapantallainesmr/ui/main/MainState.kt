@@ -8,7 +8,7 @@ data class MainState (
     val editMode: Boolean = false,
     val series: List<Serie> = emptyList(),
     val error: String? = null,
-
+    val texto: String? = null,
 )
 
 
