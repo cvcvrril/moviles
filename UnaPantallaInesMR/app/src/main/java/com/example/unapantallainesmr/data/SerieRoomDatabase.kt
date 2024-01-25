@@ -26,7 +26,6 @@ abstract class SerieRoomDatabase : RoomDatabase(){
                     .fallbackToDestructiveMigrationFrom(4)
                     .build()
                 INSTANCE = instance
-                // return instance
                 instance
             }
 
