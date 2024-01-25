@@ -1,5 +1,7 @@
 package com.example.unapantallainesmr.ui.main
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.unapantallainesmr.data.SerieRepository
@@ -18,10 +20,12 @@ class MainViewModel @Inject constructor(
     private val getAllSeriesUseCase: GetAllSeriesUseCase
 ) : ViewModel() {
 
+    //INFO: Sé que esto lo tengo mal, pero no sé cómo hacerlo bien
+
     private val _text = MutableStateFlow("")
     val text: StateFlow<String> = _text.asStateFlow()
-    private val _series: MutableStateFlow<Serie>? = null
-    //val series: StateFlow<Serie> get() = _series
+    private val _series = MutableLiveData<List<Serie>>()
+    val series: LiveData<List<Serie>> get() = _series
 
     fun changeText(texto: String) {
         _text.value = texto
