@@ -20,4 +20,19 @@ class SerieRepository @Inject constructor(
         flow {
             emit(serieDao.get(id).toSerie())
         }
+
+    fun insert(serie: Serie) =
+        flow {
+            emit(serieDao.insert(serie))
+        }
+
+    fun delete(serie: Serie) =
+        flow {
+            emit(serieDao.delete(serie))
+        }
+
+    fun update(serie: Serie) =
+        flow {
+            emit(serieDao.update(serie))
+        }
 }
