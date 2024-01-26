@@ -6,22 +6,29 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.unapantallainesmr.data.SerieRepository
 import com.example.unapantallainesmr.domain.modelo.Serie
+import com.example.unapantallainesmr.domain.usecases.DeleteSerieUseCase
 import com.example.unapantallainesmr.domain.usecases.GetAllSeriesUseCase
+import com.example.unapantallainesmr.domain.usecases.GetSerieUseCase
+import com.example.unapantallainesmr.domain.usecases.InsertSerieUseCase
+import com.example.unapantallainesmr.domain.usecases.UpdateSerieUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val repository: SerieRepository,
-    private val getAllSeriesUseCase: GetAllSeriesUseCase
+    private val getAllSeriesUseCase: GetAllSeriesUseCase,
+    private val getSerieUseCase: GetSerieUseCase,
+    private val insertSerieUseCase: InsertSerieUseCase,
+    private val updateSerieUseCase: UpdateSerieUseCase,
+    private val deleteSerieUseCase: DeleteSerieUseCase
 ) : ViewModel() {
-
-    //INFO: Sé que esto lo tengo mal, pero no sé cómo hacerlo bien
 
     private val _uiState = MutableStateFlow(MainState())
     val uiState: StateFlow<MainState> = _uiState
@@ -30,22 +37,40 @@ class MainViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(texto = texto)
     }
 
-    fun handleEvent(event:MainEvent){
-        when(event){
+    fun handleEvent(event: MainEvent) {
+        when (event) {
             MainEvent.Error -> _uiState.update { it.copy(error = null) }
-            MainEvent.GetSeries -> getAll()
+            MainEvent.GetSeries -> getAllSeries()
             is MainEvent.ChangeTexto -> changeText(event.texto)
         }
     }
 
-    private fun getAll(){
+    private fun getAllSeries() {
         viewModelScope.launch {
-            try{
-                repository.getAll()
-                
-            }catch (e: Exception){
-                throw e
-            }
+            getAllSeriesUseCase.invoke()
+                .collect { result ->
+                    _uiState.update {
+                        it.copy(
+                            series = result,
+                            error = "Series cargadas correctamente",
+                        )
+                    }
+                }
+
+        }
+    }
+
+    private fun getSerie(id: Int) {
+        viewModelScope.launch {
+            getSerieUseCase.invoke(id)
+                .collect{result->
+                    _uiState.update {
+                        it.copy(
+                            serie = result,
+                            error = "Serie cargada correctamente"
+                        )
+                    }
+                }
         }
     }
 
