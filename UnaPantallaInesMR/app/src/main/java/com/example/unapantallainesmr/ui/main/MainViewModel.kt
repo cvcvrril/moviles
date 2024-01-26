@@ -26,17 +26,15 @@ class MainViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(MainState())
     val uiState: StateFlow<MainState> = _uiState
 
-    private val _text = MutableStateFlow("")
-    val text: StateFlow<String> = _text.asStateFlow()
-
-    fun changeText(texto: String) {
-        _text.value = texto
+    private fun changeText(texto: String) {
+        _uiState.value = _uiState.value.copy(texto = texto)
     }
 
     fun handleEvent(event:MainEvent){
         when(event){
             MainEvent.Error -> _uiState.update { it.copy(error = null) }
             MainEvent.GetSeries -> getAll()
+            is MainEvent.ChangeTexto -> changeText(event.texto)
         }
     }
 
