@@ -16,10 +16,10 @@ interface SerieDao {
     @Query("select * from series where id = :id")
     suspend fun get(id: Int): SerieEntity
     @Insert
-    suspend fun insert(serie: Serie)
+    suspend fun insert(serie: SerieEntity)
     @Delete
-    suspend fun delete(serie: Serie)
+    suspend fun delete(serie: SerieEntity)
     @Update
-    suspend fun update(serie: Serie)
+    suspend fun update(serie: SerieEntity)
 
 }

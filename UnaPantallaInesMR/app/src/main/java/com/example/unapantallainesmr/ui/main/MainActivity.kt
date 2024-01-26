@@ -59,8 +59,6 @@ fun ContenidoPantalla(
         ) {
             Column(
                 modifier = Modifier
-                    //.width(200.dp)
-                    //.height(200.dp)
                     .padding(20.dp),                         /*Esto es para ajustar los márgenes generales*/
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -70,14 +68,17 @@ fun ContenidoPantalla(
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 Row {
-                    //if (viewModel?)
-
-
-                    var textoViewModel = viewModel?.uiState?.collectAsState()
-                   //TextoEditable(textoViewModel)          /*Esto para cuando arregle el método*/
-                    TextField(value = textoViewModel?.value?.texto  ?: "", onValueChange = {
-                        viewModel?.handleEvent(MainEvent.ChangeTexto(it))
-                    },  placeholder = { Text("Título") })
+                    var estadoModo = viewModel?.uiState?.value?.editMode ?: false
+                    if (estadoModo == true){
+                        val textoViewModel = viewModel?.uiState?.collectAsState()
+                        //TextoEditable(textoViewModel)          /*Esto para cuando arregle el método*/
+                        TextField(value = textoViewModel?.value?.texto  ?: "", onValueChange = {
+                            viewModel?.handleEvent(MainEvent.ChangeTexto(it))
+                        },  placeholder = { Text("Título") })
+                    } else {
+                        val tituloSerie = viewModel?.uiState?.value?.serie?.titulo ?: "No carga"
+                        CajaTexto(texto = tituloSerie)
+                    }
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 Row {

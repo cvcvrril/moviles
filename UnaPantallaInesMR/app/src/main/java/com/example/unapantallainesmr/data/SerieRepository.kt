@@ -1,6 +1,7 @@
 package com.example.unapantallainesmr.data
 
 import com.example.unapantallainesmr.data.modelo.toSerie
+import com.example.unapantallainesmr.data.modelo.toSerieEntity
 import com.example.unapantallainesmr.domain.modelo.Serie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -23,16 +24,16 @@ class SerieRepository @Inject constructor(
 
     fun insert(serie: Serie) =
         flow {
-            emit(serieDao.insert(serie))
+            emit(serieDao.insert(serie.toSerieEntity()))
         }
 
     fun delete(serie: Serie) =
         flow {
-            emit(serieDao.delete(serie))
+            emit(serieDao.delete(serie.toSerieEntity()))
         }
 
     fun update(serie: Serie) =
         flow {
-            emit(serieDao.update(serie))
+            emit(serieDao.update(serie.toSerieEntity()))
         }
 }
