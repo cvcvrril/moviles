@@ -70,10 +70,11 @@ fun ContenidoPantalla(
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 Row {
-                    //var textoViewModel = viewModel?.text?.collectAsState()
+                    //if (viewModel?)
+
+
                     var textoViewModel = viewModel?.uiState?.collectAsState()
                    //TextoEditable(textoViewModel)          /*Esto para cuando arregle el método*/
-                    //No funciona lo del textoViewModel?.value?.texto ?: ""
                     TextField(value = textoViewModel?.value?.texto  ?: "", onValueChange = {
                         viewModel?.handleEvent(MainEvent.ChangeTexto(it))
                     },  placeholder = { Text("Título") })

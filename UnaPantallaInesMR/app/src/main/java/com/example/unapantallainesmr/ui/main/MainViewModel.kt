@@ -30,6 +30,9 @@ class MainViewModel @Inject constructor(
     private val deleteSerieUseCase: DeleteSerieUseCase
 ) : ViewModel() {
 
+    //IDEA: Montar en el MainEvent un GetEditModo para comprobar el estado (si se puede editar o no)
+    //IDEA: 
+
     private val _uiState = MutableStateFlow(MainState())
     val uiState: StateFlow<MainState> = _uiState
 
