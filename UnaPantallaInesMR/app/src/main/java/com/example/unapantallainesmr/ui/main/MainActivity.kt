@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -82,7 +83,7 @@ fun ContenidoPantalla(
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 Row {
-
+                    BotonSimpleEdicion(texto = "Editar")
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 Row{
@@ -98,6 +99,17 @@ fun CajaTexto(texto: String, modifier: Modifier = Modifier) {
     Row() {
         Text(text = texto,
             modifier = modifier)
+    }
+}
+
+@Composable
+fun BotonSimpleEdicion(texto: String){
+    Row(){
+        Button(onClick = {
+            //TODO: MONTAR ALGO PARA CAMBIAR EL ESTADO DEL BOOLEANO EDITMODE
+        }) {
+            Text(text = texto)
+        }
     }
 }
 
