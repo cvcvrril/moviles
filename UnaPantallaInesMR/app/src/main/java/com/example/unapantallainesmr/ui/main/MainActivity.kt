@@ -60,7 +60,7 @@ fun ContenidoPantalla(
         ) {
             Column(
                 modifier = Modifier
-                    .padding(20.dp),                         /*Esto es para ajustar los márgenes generales*/
+                    .padding(20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Spacer(modifier = Modifier.height(8.dp))
@@ -69,13 +69,13 @@ fun ContenidoPantalla(
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 Row {
-                    var estadoModo = viewModel?.uiState?.value?.editMode ?: false
-                    if (estadoModo == true){
+                    val estadoModo = viewModel?.uiState?.value?.editMode ?: false
+                    if (estadoModo) {
                         val textoViewModel = viewModel?.uiState?.collectAsState()
                         //TextoEditable(textoViewModel)          /*Esto para cuando arregle el método*/
-                        TextField(value = textoViewModel?.value?.texto  ?: "", onValueChange = {
+                        TextField(value = textoViewModel?.value?.texto ?: "", onValueChange = {
                             viewModel?.handleEvent(MainEvent.ChangeTexto(it))
-                        },  placeholder = { Text("Título") })
+                        }, placeholder = { Text("Título") })
                     } else {
                         val tituloSerie = viewModel?.uiState?.value?.serie?.titulo ?: "No carga"
                         CajaTexto(texto = tituloSerie)
@@ -83,10 +83,17 @@ fun ContenidoPantalla(
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 Row {
-                    BotonSimpleEdicion(texto = "Editar")
+                     Button(onClick = {
+                        //TODO: MONTAR ALGO PARA CAMBIAR EL ESTADO DEL BOOLEANO EDITMODE
+                        var estadoModo = viewModel?.uiState?.value?.editMode ?: false
+                        estadoModo = true
+                        viewModel?.handleEvent(MainEvent.ChangeMode(estadoModo))
+                    }) {
+                        Text(text = "Editar")
+                    }
                 }
                 Spacer(modifier = Modifier.height(8.dp))
-                Row{
+                Row {
 
                 }
             }
@@ -97,14 +104,16 @@ fun ContenidoPantalla(
 @Composable
 fun CajaTexto(texto: String, modifier: Modifier = Modifier) {
     Row() {
-        Text(text = texto,
-            modifier = modifier)
+        Text(
+            text = texto,
+            modifier = modifier
+        )
     }
 }
 
 @Composable
-fun BotonSimpleEdicion(texto: String){
-    Row(){
+fun BotonSimpleEdicion(texto: String) {
+    Row() {
         Button(onClick = {
             //TODO: MONTAR ALGO PARA CAMBIAR EL ESTADO DEL BOOLEANO EDITMODE
         }) {

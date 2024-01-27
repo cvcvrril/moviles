@@ -31,7 +31,6 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
 
     //IDEA: Montar en el MainEvent un GetEditModo para comprobar el estado (si se puede editar o no)
-    //IDEA: 
 
     private val _uiState = MutableStateFlow(MainState())
     val uiState: StateFlow<MainState> = _uiState
@@ -40,11 +39,16 @@ class MainViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(texto = texto)
     }
 
+    private fun changeMode(mode: Boolean) {
+        _uiState.value = _uiState.value.copy(editMode = mode)
+    }
+
     fun handleEvent(event: MainEvent) {
         when (event) {
             MainEvent.Error -> _uiState.update { it.copy(error = null) }
             MainEvent.GetSeries -> getAllSeries()
             is MainEvent.ChangeTexto -> changeText(event.texto)
+            is MainEvent.ChangeMode -> changeMode(event.mode)
         }
     }
 
@@ -76,6 +80,5 @@ class MainViewModel @Inject constructor(
                 }
         }
     }
-
 
 }
