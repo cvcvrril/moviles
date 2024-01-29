@@ -55,6 +55,8 @@ class MainViewModel @Inject constructor(
             is MainEvent.ChangeMode -> changeMode(event.mode)
             is MainEvent.GetSerie -> getSerie(event.id)
             is MainEvent.AddSerie -> addSerie(event.serie)
+            is MainEvent.DeleteSerie -> updateSerie(event.serie)
+            is MainEvent.UpdateSerie -> deleteSerie(event.serie)
         }
     }
 
@@ -98,6 +100,35 @@ class MainViewModel @Inject constructor(
                         )
                     }
                 }
+        }
+    }
+
+    private fun updateSerie(serie: Serie) {
+        viewModelScope.launch {
+            updateSerieUseCase.invoke(serie)
+                .collect {
+                    _uiState.update {
+                        it.copy(
+                            serie = serie,
+                            error = "Serie editada correctamente"
+                        )
+                    }
+                }
+        }
+    }
+
+    private fun deleteSerie(serie: Serie) {
+        viewModelScope.launch {
+            deleteSerieUseCase.invoke(serie)
+                .collect{
+                    _uiState.update {
+                        it.copy(
+                            error = "Serie eliminada correctamente"
+                        )
+                    }
+                }
+
+
         }
     }
 

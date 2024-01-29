@@ -110,6 +110,7 @@ fun ContenidoPantalla(
                 Spacer(modifier = Modifier.height(8.dp))
                 Row {
                     Button(onClick = {
+                        val serieActualizada = Serie(0, "Algo", "BJFFGGHJ")
 
                     }) {
                         Text(text = "Actualizar")
