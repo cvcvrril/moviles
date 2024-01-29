@@ -53,6 +53,7 @@ class MainViewModel @Inject constructor(
             MainEvent.GetSeries -> getAllSeries()
             is MainEvent.ChangeTexto -> changeText(event.texto)
             is MainEvent.ChangeMode -> changeMode(event.mode)
+            is MainEvent.GetSerie -> getSerie(event.id)
         }
     }
 

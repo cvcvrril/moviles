@@ -72,13 +72,13 @@ fun ContenidoPantalla(
                     val textoViewModel = viewModel?.uiState?.collectAsState()
                     val estadoModo = textoViewModel?.value?.editMode ?: false
                     if (estadoModo) {
-
                         //TextoEditable(textoViewModel)          /*Esto para cuando arregle el método*/
                         TextField(value = textoViewModel?.value?.texto ?: "", onValueChange = {
                             viewModel?.handleEvent(MainEvent.ChangeTexto(it))
                         }, placeholder = { Text("Título") })
                     } else {
-                        val tituloSerie = viewModel?.uiState?.value?.serie?.titulo ?: "No carga"
+                        val serie = viewModel?.handleEvent(MainEvent.GetSerie(0));
+                        val tituloSerie = textoViewModel?.value?.serie?.titulo ?: "No carga"
                         CajaTexto(texto = tituloSerie)
                     }
                 }

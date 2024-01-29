@@ -3,6 +3,7 @@ package com.example.unapantallainesmr.utils
 import android.content.Context
 import androidx.room.Room
 import com.example.unapantallainesmr.data.SerieDao
+import com.example.unapantallainesmr.data.local.SerieRoomDatabase
 import com.example.unapantallainesmr.data.local.AppDatabase
 import dagger.Module
 import dagger.Provides
@@ -25,8 +26,9 @@ object DatabaseModule {
         return Room.databaseBuilder(
             appContext,
             AppDatabase::class.java,
-            "app.db"
-        ).fallbackToDestructiveMigration()
+            "series.db"
+        ).createFromAsset("database/series.db")
+            .fallbackToDestructiveMigration()
             .build()
     }
 
