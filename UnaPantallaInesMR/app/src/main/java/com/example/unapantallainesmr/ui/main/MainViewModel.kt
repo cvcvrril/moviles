@@ -54,6 +54,7 @@ class MainViewModel @Inject constructor(
             is MainEvent.ChangeTexto -> changeText(event.texto)
             is MainEvent.ChangeMode -> changeMode(event.mode)
             is MainEvent.GetSerie -> getSerie(event.id)
+            is MainEvent.AddSerie -> addSerie(event.serie)
         }
     }
 
@@ -75,11 +76,25 @@ class MainViewModel @Inject constructor(
     private fun getSerie(id: Int) {
         viewModelScope.launch {
             getSerieUseCase.invoke(id)
-                .collect{result->
+                .collect { result ->
                     _uiState.update {
                         it.copy(
                             serie = result,
                             error = "Serie cargada correctamente"
+                        )
+                    }
+                }
+        }
+    }
+
+    private fun addSerie(serie: Serie) {
+        viewModelScope.launch {
+            insertSerieUseCase.invoke(serie)
+                .collect {
+                    _uiState.update {
+                        it.copy(
+                            serie = serie,
+                            error = "Serie añadida correctamente"
                         )
                     }
                 }

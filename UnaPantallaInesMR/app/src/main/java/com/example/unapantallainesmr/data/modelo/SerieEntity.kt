@@ -10,5 +10,7 @@ data class SerieEntity (
     @ColumnInfo(name = "id")
     val id: Int,
     @ColumnInfo(name = "titulo")
-    val titulo: String
+    val titulo: String,
+    @ColumnInfo(name = "descripcion")
+    val descripcion: String,
 )

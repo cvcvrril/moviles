@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -22,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.unapantallainesmr.domain.modelo.Serie
 
 import com.example.unapantallainesmr.ui.theme.UnaPantallaInesMRTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -68,23 +70,24 @@ fun ContenidoPantalla(
                     CajaTexto(texto = "Formulario")
                 }
                 Spacer(modifier = Modifier.height(8.dp))
+                val textoViewModel = viewModel?.uiState?.collectAsState()
                 Row {
-                    val textoViewModel = viewModel?.uiState?.collectAsState()
                     val estadoModo = textoViewModel?.value?.editMode ?: false
                     if (estadoModo) {
-                        //TextoEditable(textoViewModel)          /*Esto para cuando arregle el método*/
                         TextField(value = textoViewModel?.value?.texto ?: "", onValueChange = {
                             viewModel?.handleEvent(MainEvent.ChangeTexto(it))
                         }, placeholder = { Text("Título") })
                     } else {
-                        val serie = viewModel?.handleEvent(MainEvent.GetSerie(0));
+                        //val serie = viewModel?.handleEvent(MainEvent.GetSerie(0));
                         val tituloSerie = textoViewModel?.value?.serie?.titulo ?: "No carga"
+                        val descripcionSerie = textoViewModel?.value?.serie?.descripcion ?: "No carga"
                         CajaTexto(texto = tituloSerie)
+                        CajaTexto(texto = descripcionSerie)
                     }
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 Row {
-                     Button(onClick = {
+                    Button(onClick = {
                         var estadoModo = viewModel?.uiState?.value?.editMode
                         viewModel?.handleEvent(MainEvent.ChangeMode(estadoModo))
                     }) {
@@ -93,7 +96,37 @@ fun ContenidoPantalla(
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 Row {
+                    Button(onClick = {
 
+                    }) {
+                        Text(text = "Anterior")
+                    }
+                    Button(onClick = {
+
+                    }) {
+                        Text(text = "Siguiente")
+                    }
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+                Row {
+                    Button(onClick = {
+
+                    }) {
+                        Text(text = "Actualizar")
+                    }
+
+                    Button(onClick = {
+                        val nuevaSerie = Serie(0, "Prueba", "Hola esto es una prueba")
+                        viewModel?.handleEvent(MainEvent.AddSerie(nuevaSerie))
+                    }) {
+                        Text(text = "Añadir")
+                    }
+
+                    Button(onClick = {
+
+                    }) {
+                        Text(text = "Eliminar")
+                    }
                 }
             }
         }
@@ -127,6 +160,7 @@ fun TextoEditable() {
     //TODO: PASAR EL TEXTFIELD AQUÍ
 
 }
+
 
 @Preview(showBackground = true)
 @Composable
