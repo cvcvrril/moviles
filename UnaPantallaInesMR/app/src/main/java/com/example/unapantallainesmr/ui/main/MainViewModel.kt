@@ -41,8 +41,10 @@ class MainViewModel @Inject constructor(
 
     //INFO: debería de ser cambiar el modo, independientemente del estado en el que esté (si está a false -> true; si está a true -> false)
 
-    private fun changeMode(mode: Boolean) {
-        _uiState.value = _uiState.value.copy(editMode = true)
+    private fun changeMode(mode: Boolean?) {
+        var nuevoMode = mode ?: false
+        nuevoMode = !nuevoMode
+        _uiState.value = _uiState.value.copy(editMode = nuevoMode)
     }
 
     fun handleEvent(event: MainEvent) {
