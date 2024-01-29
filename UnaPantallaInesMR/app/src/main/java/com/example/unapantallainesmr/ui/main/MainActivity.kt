@@ -86,7 +86,6 @@ fun ContenidoPantalla(
                      Button(onClick = {
                         //TODO: MONTAR ALGO PARA CAMBIAR EL ESTADO DEL BOOLEANO EDITMODE
                         var estadoModo = viewModel?.uiState?.value?.editMode ?: false
-                        estadoModo = true
                         viewModel?.handleEvent(MainEvent.ChangeMode(estadoModo))
                     }) {
                         Text(text = "Editar")
