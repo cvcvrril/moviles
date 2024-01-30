@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -83,9 +84,14 @@ fun ContenidoPantalla(
                         }, placeholder = { Text("Título") })
                     } else {
                         val tituloSerie = textoViewModel?.value?.serie?.titulo ?: "No carga"
-                        val descripcionSerie = textoViewModel?.value?.serie?.descripcion ?: "No carga"
-                        CajaTexto(texto = tituloSerie)
-                        CajaTexto(texto = descripcionSerie)
+                        val descripcionSerie =
+                            textoViewModel?.value?.serie?.descripcion ?: "No carga"
+                        Box{
+                            CajaTexto(texto = tituloSerie)
+                        }
+                        Box{
+                            CajaTexto(texto = descripcionSerie)
+                        }
                     }
                 }
                 Spacer(modifier = Modifier.height(8.dp))
@@ -100,12 +106,12 @@ fun ContenidoPantalla(
                 Spacer(modifier = Modifier.height(8.dp))
                 Row {
                     Button(onClick = {
-                    viewModel?.handleEvent(MainEvent.AvanzarId(idGlob))
+                        viewModel?.handleEvent(MainEvent.AvanzarId(idGlob))
                     }) {
                         Text(text = "Anterior")
                     }
                     Button(onClick = {
-                    viewModel?.handleEvent(MainEvent.RetrocederId(idGlob))
+                        viewModel?.handleEvent(MainEvent.RetrocederId(idGlob))
                     }) {
                         Text(text = "Siguiente")
                     }
@@ -113,7 +119,8 @@ fun ContenidoPantalla(
                 Spacer(modifier = Modifier.height(8.dp))
                 Row {
                     Button(onClick = {
-                        val serieActualizada = Serie(idGlob, textoViewModel?.value?.texto ?: "", "BJFFGGHJ")
+                        val serieActualizada =
+                            Serie(idGlob, textoViewModel?.value?.texto ?: "", "BJFFGGHJ")
                         viewModel?.handleEvent(MainEvent.UpdateSerie(serieActualizada))
                     }) {
                         Text(text = "Actualizar")
@@ -121,7 +128,8 @@ fun ContenidoPantalla(
 
                     Button(onClick = {
                         val lastIndex = viewModel?.uiState?.value?.series?.lastIndex ?: 0
-                        val nuevaSerie = Serie(lastIndex, textoViewModel?.value?.texto ?: "", "Hola esto es una prueba")
+                        val nuevaSerie =
+                            Serie(0, textoViewModel?.value?.texto ?: "", "Hola esto es una prueba")
                         viewModel?.handleEvent(MainEvent.AddSerie(nuevaSerie))
                     }) {
                         Text(text = "Añadir")
