@@ -132,4 +132,12 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    private fun avanzarSerie(id: Int){
+
+    }
+
+    private fun retrocederSerie(id: Int){
+
+    }
+
 }

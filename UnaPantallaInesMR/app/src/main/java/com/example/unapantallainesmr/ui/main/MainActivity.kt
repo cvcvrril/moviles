@@ -111,7 +111,7 @@ fun ContenidoPantalla(
                 Row {
                     Button(onClick = {
                         val serieActualizada = Serie(0, "Algo", "BJFFGGHJ")
-
+                        viewModel?.handleEvent(MainEvent.UpdateSerie(serieActualizada))
                     }) {
                         Text(text = "Actualizar")
                     }
