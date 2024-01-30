@@ -1,6 +1,7 @@
 package com.example.unapantallainesmr.ui.main
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
@@ -112,14 +113,15 @@ fun ContenidoPantalla(
                 Spacer(modifier = Modifier.height(8.dp))
                 Row {
                     Button(onClick = {
-                        val serieActualizada = Serie(0, "Algo", "BJFFGGHJ")
+                        val serieActualizada = Serie(idGlob, textoViewModel?.value?.texto ?: "", "BJFFGGHJ")
                         viewModel?.handleEvent(MainEvent.UpdateSerie(serieActualizada))
                     }) {
                         Text(text = "Actualizar")
                     }
 
                     Button(onClick = {
-                        val nuevaSerie = Serie(0, "Prueba", "Hola esto es una prueba")
+                        val lastIndex = viewModel?.uiState?.value?.series?.lastIndex ?: 0
+                        val nuevaSerie = Serie(lastIndex, textoViewModel?.value?.texto ?: "", "Hola esto es una prueba")
                         viewModel?.handleEvent(MainEvent.AddSerie(nuevaSerie))
                     }) {
                         Text(text = "Añadir")
