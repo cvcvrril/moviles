@@ -133,7 +133,6 @@ fun ContenidoPantalla(
                     }
 
                     Button(onClick = {
-                        val lastIndex = viewModel?.uiState?.value?.series?.lastIndex ?: 0
                         val nuevaSerie =
                             Serie(0, textoViewModel?.value?.texto ?: "", textoViewModel?.value?.descripcion ?: "")
                         viewModel?.handleEvent(MainEvent.AddSerie(nuevaSerie))
