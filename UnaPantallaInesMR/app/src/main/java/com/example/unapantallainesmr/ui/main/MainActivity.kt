@@ -79,17 +79,23 @@ fun ContenidoPantalla(
                 Row {
                     val estadoModo = textoViewModel?.value?.editMode ?: false
                     if (estadoModo) {
-                        TextField(value = textoViewModel?.value?.texto ?: "", onValueChange = {
-                            viewModel?.handleEvent(MainEvent.ChangeTexto(it))
-                        }, placeholder = { Text("Título") })
+                        Column {
+                            Spacer(modifier = Modifier.height(15.dp))
+                            TextField(value = textoViewModel?.value?.texto ?: "", onValueChange = {
+                                viewModel?.handleEvent(MainEvent.ChangeTexto(it))
+                            }, placeholder = { Text("Título") })
+                            Spacer(modifier = Modifier.height(15.dp))
+                            TextField(value = textoViewModel?.value?.descripcion ?: "", onValueChange = {
+                                viewModel?.handleEvent(MainEvent.ChangeDescripcion(it))
+                            }, placeholder = { Text("Descripcion") })
+                        }
                     } else {
                         val tituloSerie = textoViewModel?.value?.serie?.titulo ?: "No carga"
                         val descripcionSerie =
                             textoViewModel?.value?.serie?.descripcion ?: "No carga"
-                        Box{
+                        Column {
                             CajaTexto(texto = tituloSerie)
-                        }
-                        Box{
+                            Spacer(modifier = Modifier.height(8.dp))
                             CajaTexto(texto = descripcionSerie)
                         }
                     }
@@ -120,7 +126,7 @@ fun ContenidoPantalla(
                 Row {
                     Button(onClick = {
                         val serieActualizada =
-                            Serie(idGlob, textoViewModel?.value?.texto ?: "", "BJFFGGHJ")
+                            Serie(idGlob, textoViewModel?.value?.texto ?: "", textoViewModel?.value?.descripcion ?: "")
                         viewModel?.handleEvent(MainEvent.UpdateSerie(serieActualizada))
                     }) {
                         Text(text = "Actualizar")
@@ -129,7 +135,7 @@ fun ContenidoPantalla(
                     Button(onClick = {
                         val lastIndex = viewModel?.uiState?.value?.series?.lastIndex ?: 0
                         val nuevaSerie =
-                            Serie(0, textoViewModel?.value?.texto ?: "", "Hola esto es una prueba")
+                            Serie(0, textoViewModel?.value?.texto ?: "", textoViewModel?.value?.descripcion ?: "")
                         viewModel?.handleEvent(MainEvent.AddSerie(nuevaSerie))
                     }) {
                         Text(text = "Añadir")

@@ -8,7 +8,8 @@ data class MainState (
     var serie: Serie? = null,
     val error: String? = null,
     val texto: String? = null,
-    val id: Int = 1
+    val descripcion: String? = null,
+    val id: Int = 1,
 )
 
 

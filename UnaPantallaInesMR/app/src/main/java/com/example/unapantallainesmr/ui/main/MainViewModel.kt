@@ -36,6 +36,9 @@ class MainViewModel @Inject constructor(
     private fun changeText(texto: String) {
         _uiState.value = _uiState.value.copy(texto = texto)
     }
+    private fun changeDescripcion(descripcion: String) {
+        _uiState.value = _uiState.value.copy(descripcion = descripcion)
+    }
 
     private fun changeMode(mode: Boolean?) {
         var nuevoMode = mode ?: false
@@ -68,6 +71,7 @@ class MainViewModel @Inject constructor(
             MainEvent.Error -> _uiState.update { it.copy(error = null) }
             MainEvent.GetSeries -> getAllSeries()
             is MainEvent.ChangeTexto -> changeText(event.texto)
+            is MainEvent.ChangeDescripcion -> changeDescripcion(event.descripcion)
             is MainEvent.ChangeMode -> changeMode(event.mode)
             is MainEvent.GetSerie -> getSerie(event.id)
             is MainEvent.AddSerie -> addSerie(event.serie)
@@ -75,6 +79,7 @@ class MainViewModel @Inject constructor(
             is MainEvent.UpdateSerie -> deleteSerie(event.serie)
             is MainEvent.AvanzarId -> avanzarId(event.id)
             is MainEvent.RetrocederId -> retrocederId(event.id)
+
         }
     }
 
