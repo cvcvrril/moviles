@@ -9,6 +9,8 @@ sealed class MainEvent {
     class AddSerie(val serie: Serie) : MainEvent()
     class UpdateSerie(val serie: Serie) : MainEvent()
     class DeleteSerie(val serie: Serie) : MainEvent()
+    class AvanzarId(val id: Int) : MainEvent()
+    class RetrocederId(val id: Int) : MainEvent()
     object Error : MainEvent()
     object GetSeries : MainEvent()
 

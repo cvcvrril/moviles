@@ -43,7 +43,21 @@ class MainViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(editMode = nuevoMode)
     }
 
-    //TODO: Montar el init
+
+    private fun avanzarId(id: Int){
+        var nuevoId = id
+        nuevoId = nuevoId++
+        _uiState.value = _uiState.value.copy(id = nuevoId)
+    }
+
+    private fun retrocederId(id: Int){
+        var nuevoId = id
+        nuevoId = nuevoId--
+        if (nuevoId < 0){
+            nuevoId = 1
+        }
+        _uiState.value = _uiState.value.copy(id = nuevoId)
+    }
 
     init {
         getAllSeries()
@@ -59,6 +73,8 @@ class MainViewModel @Inject constructor(
             is MainEvent.AddSerie -> addSerie(event.serie)
             is MainEvent.DeleteSerie -> updateSerie(event.serie)
             is MainEvent.UpdateSerie -> deleteSerie(event.serie)
+            is MainEvent.AvanzarId -> avanzarId(event.id)
+            is MainEvent.RetrocederId -> retrocederId(event.id)
         }
     }
 
@@ -134,12 +150,5 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun avanzarSerie(id: Int){
-
-    }
-
-    private fun retrocederSerie(id: Int){
-
-    }
 
 }

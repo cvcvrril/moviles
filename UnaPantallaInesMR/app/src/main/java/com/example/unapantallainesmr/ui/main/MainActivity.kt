@@ -73,6 +73,7 @@ fun ContenidoPantalla(
                 Spacer(modifier = Modifier.height(8.dp))
                 val textoViewModel = viewModel?.uiState?.collectAsState()
                 val context = currentCompositionLocalContext
+                val idGlob = textoViewModel?.value?.id ?: 1
                 Row {
                     val estadoModo = textoViewModel?.value?.editMode ?: false
                     if (estadoModo) {
@@ -98,12 +99,12 @@ fun ContenidoPantalla(
                 Spacer(modifier = Modifier.height(8.dp))
                 Row {
                     Button(onClick = {
-
+                    viewModel?.handleEvent(MainEvent.AvanzarId(idGlob))
                     }) {
                         Text(text = "Anterior")
                     }
                     Button(onClick = {
-
+                    viewModel?.handleEvent(MainEvent.RetrocederId(idGlob))
                     }) {
                         Text(text = "Siguiente")
                     }
@@ -143,24 +144,6 @@ fun CajaTexto(texto: String, modifier: Modifier = Modifier) {
             modifier = modifier
         )
     }
-}
-
-@Composable
-fun BotonSimpleEdicion(texto: String) {
-    Row() {
-        Button(onClick = {
-            //TODO: MONTAR ALGO PARA CAMBIAR EL ESTADO DEL BOOLEANO EDITMODE
-        }) {
-            Text(text = texto)
-        }
-    }
-}
-
-@Composable
-fun TextoEditable() {
-
-    //TODO: PASAR EL TEXTFIELD AQUÍ
-
 }
 
 

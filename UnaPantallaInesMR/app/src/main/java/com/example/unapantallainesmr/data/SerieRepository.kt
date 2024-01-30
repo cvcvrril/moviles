@@ -17,7 +17,7 @@ class SerieRepository @Inject constructor(
             emit(serieDao.getAll().map { it.toSerie() })
         }.flowOn(Dispatchers.IO)
 
-    fun get(id: Int) : Flow<Serie> =
+    fun get(id: Int) : Flow<Serie?> =
         flow {
             emit(serieDao.get(id)?.toSerie())
         }.flowOn(Dispatchers.IO)
