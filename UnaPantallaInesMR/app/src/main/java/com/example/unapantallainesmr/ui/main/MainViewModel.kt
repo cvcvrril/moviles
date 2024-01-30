@@ -30,8 +30,6 @@ class MainViewModel @Inject constructor(
     private val deleteSerieUseCase: DeleteSerieUseCase
 ) : ViewModel() {
 
-    //IDEA: Montar en el MainEvent un GetEditModo para comprobar el estado (si se puede editar o no)
-
     private val _uiState = MutableStateFlow(MainState())
     val uiState: StateFlow<MainState> = _uiState
 
@@ -39,12 +37,16 @@ class MainViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(texto = texto)
     }
 
-    //INFO: debería de ser cambiar el modo, independientemente del estado en el que esté (si está a false -> true; si está a true -> false)
-
     private fun changeMode(mode: Boolean?) {
         var nuevoMode = mode ?: false
         nuevoMode = !nuevoMode
         _uiState.value = _uiState.value.copy(editMode = nuevoMode)
+    }
+
+    //TODO: Montar el init
+
+    init {
+        getAllSeries()
     }
 
     fun handleEvent(event: MainEvent) {

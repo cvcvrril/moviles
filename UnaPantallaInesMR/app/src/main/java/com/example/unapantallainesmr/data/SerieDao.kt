@@ -14,7 +14,7 @@ interface SerieDao {
     suspend fun getAll(): List<SerieEntity>
 
     @Query("select * from series where id = :id")
-    suspend fun get(id: Int): SerieEntity
+    suspend fun get(id: Int): SerieEntity?
     @Insert
     suspend fun insert(serie: SerieEntity)
     @Delete

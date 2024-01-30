@@ -18,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.currentCompositionLocalContext
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -71,6 +72,7 @@ fun ContenidoPantalla(
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 val textoViewModel = viewModel?.uiState?.collectAsState()
+                val context = currentCompositionLocalContext
                 Row {
                     val estadoModo = textoViewModel?.value?.editMode ?: false
                     if (estadoModo) {
@@ -78,7 +80,6 @@ fun ContenidoPantalla(
                             viewModel?.handleEvent(MainEvent.ChangeTexto(it))
                         }, placeholder = { Text("Título") })
                     } else {
-                        //val serie = viewModel?.handleEvent(MainEvent.GetSerie(0));
                         val tituloSerie = textoViewModel?.value?.serie?.titulo ?: "No carga"
                         val descripcionSerie = textoViewModel?.value?.serie?.descripcion ?: "No carga"
                         CajaTexto(texto = tituloSerie)
