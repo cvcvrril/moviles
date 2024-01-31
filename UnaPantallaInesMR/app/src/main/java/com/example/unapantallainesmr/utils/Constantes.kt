@@ -15,6 +15,11 @@ object Constantes {
     const val no_fav = "No está añadido a favoritos"
     const val fav = "Añadido a favoritos"
     const val no_carga = "No carga"
+    const val msj_getall = "Series cargadas correctamente"
+    const val msj_get = "Serie cargada correctamente"
+    const val msj_add = "Serie añadida correctamente"
+    const val msj_update = "Serie editada correctamente"
+    const val msj_delete = "Serie eliminada correctamente"
 
 }
 

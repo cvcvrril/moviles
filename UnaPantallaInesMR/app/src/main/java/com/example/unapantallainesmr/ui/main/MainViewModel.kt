@@ -1,25 +1,22 @@
 package com.example.unapantallainesmr.ui.main
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.unapantallainesmr.data.SerieRepository
 import com.example.unapantallainesmr.domain.modelo.Serie
 import com.example.unapantallainesmr.domain.usecases.DeleteSerieUseCase
 import com.example.unapantallainesmr.domain.usecases.GetAllSeriesUseCase
 import com.example.unapantallainesmr.domain.usecases.GetSerieUseCase
 import com.example.unapantallainesmr.domain.usecases.InsertSerieUseCase
 import com.example.unapantallainesmr.domain.usecases.UpdateSerieUseCase
+import com.example.unapantallainesmr.utils.Constantes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
+
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
@@ -32,6 +29,29 @@ class MainViewModel @Inject constructor(
 
     private val _uiState = MutableStateFlow(MainState())
     val uiState: StateFlow<MainState> = _uiState
+
+    init {
+        getAllSeries()
+    }
+
+    fun handleEvent(event: MainEvent) {
+        when (event) {
+            MainEvent.Error -> _uiState.update { it.copy(error = null) }
+            MainEvent.GetSeries -> getAllSeries()
+            is MainEvent.ChangeTexto -> changeText(event.texto)
+            is MainEvent.ChangeDescripcion -> changeDescripcion(event.descripcion)
+            is MainEvent.ChangeFavorito -> changeFavorito(event.favorito)
+            is MainEvent.ChangePuntuacion -> changePuntuacion(event.puntuacion)
+            is MainEvent.ChangeMode -> changeMode(event.mode)
+            is MainEvent.GetSerie -> getSerie(event.id)
+            is MainEvent.AddSerie -> addSerie(event.serie)
+            is MainEvent.DeleteSerie -> updateSerie(event.serie)
+            is MainEvent.UpdateSerie -> deleteSerie(event.serie)
+            is MainEvent.AvanzarId -> avanzarId(event.id)
+            is MainEvent.RetrocederId -> retrocederId(event.id)
+
+        }
+    }
 
     private fun changeText(texto: String) {
         _uiState.value = _uiState.value.copy(texto = texto)
@@ -71,30 +91,7 @@ class MainViewModel @Inject constructor(
         }
         _uiState.value = _uiState.value.copy(id = nuevoId)
     }
-
-    init {
-        getAllSeries()
-    }
-
-    fun handleEvent(event: MainEvent) {
-        when (event) {
-            MainEvent.Error -> _uiState.update { it.copy(error = null) }
-            MainEvent.GetSeries -> getAllSeries()
-            is MainEvent.ChangeTexto -> changeText(event.texto)
-            is MainEvent.ChangeDescripcion -> changeDescripcion(event.descripcion)
-            is MainEvent.ChangeFavorito -> changeFavorito(event.favorito)
-            is MainEvent.ChangePuntuacion -> changePuntuacion(event.puntuacion)
-            is MainEvent.ChangeMode -> changeMode(event.mode)
-            is MainEvent.GetSerie -> getSerie(event.id)
-            is MainEvent.AddSerie -> addSerie(event.serie)
-            is MainEvent.DeleteSerie -> updateSerie(event.serie)
-            is MainEvent.UpdateSerie -> deleteSerie(event.serie)
-            is MainEvent.AvanzarId -> avanzarId(event.id)
-            is MainEvent.RetrocederId -> retrocederId(event.id)
-
-        }
-    }
-
+    
     private fun getAllSeries() {
         viewModelScope.launch {
             getAllSeriesUseCase.invoke()
@@ -102,7 +99,7 @@ class MainViewModel @Inject constructor(
                     _uiState.update {
                         it.copy(
                             series = result,
-                            error = "Series cargadas correctamente",
+                            error = Constantes.msj_getall,
                         )
                     }
                 }
@@ -117,7 +114,7 @@ class MainViewModel @Inject constructor(
                     _uiState.update {
                         it.copy(
                             serie = result,
-                            error = "Serie cargada correctamente"
+                            error = Constantes.msj_get
                         )
                     }
                 }
@@ -131,7 +128,7 @@ class MainViewModel @Inject constructor(
                     _uiState.update {
                         it.copy(
                             serie = serie,
-                            error = "Serie añadida correctamente"
+                            error = Constantes.msj_add
                         )
                     }
                 }
@@ -145,7 +142,7 @@ class MainViewModel @Inject constructor(
                     _uiState.update {
                         it.copy(
                             serie = serie,
-                            error = "Serie editada correctamente"
+                            error = Constantes.msj_update
                         )
                     }
                 }
@@ -158,7 +155,7 @@ class MainViewModel @Inject constructor(
                 .collect{
                     _uiState.update {
                         it.copy(
-                            error = "Serie eliminada correctamente"
+                            error = Constantes.msj_delete
                         )
                     }
                 }
