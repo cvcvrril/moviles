@@ -1,10 +1,8 @@
 package com.example.unapantallainesmr.ui.main
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -29,6 +26,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.unapantallainesmr.domain.modelo.Serie
 
 import com.example.unapantallainesmr.ui.theme.UnaPantallaInesMRTheme
+import com.example.unapantallainesmr.utils.Constantes
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,6 +49,8 @@ fun Pantalla(
 
 }
 
+
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ContenidoPantalla(
@@ -70,7 +70,7 @@ fun ContenidoPantalla(
             ) {
                 Spacer(modifier = Modifier.height(8.dp))
                 Row() {
-                    CajaTexto(texto = "Formulario")
+                    CajaTexto(texto = Constantes.formulario)
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 val textoViewModel = viewModel?.uiState?.collectAsState()
@@ -81,13 +81,13 @@ fun ContenidoPantalla(
                     if (estadoModo) {
                         Column {
                             Spacer(modifier = Modifier.height(15.dp))
-                            TextField(value = textoViewModel?.value?.texto ?: "", onValueChange = {
+                            TextField(value = textoViewModel?.value?.texto ?: Constantes.empty, onValueChange = {
                                 viewModel?.handleEvent(MainEvent.ChangeTexto(it))
-                            }, placeholder = { Text("Título") })
+                            }, placeholder = { Text(Constantes.titulo) })
                             Spacer(modifier = Modifier.height(15.dp))
-                            TextField(value = textoViewModel?.value?.descripcion ?: "", onValueChange = {
+                            TextField(value = textoViewModel?.value?.descripcion ?: Constantes.empty, onValueChange = {
                                 viewModel?.handleEvent(MainEvent.ChangeDescripcion(it))
-                            }, placeholder = { Text("Descripcion") })
+                            }, placeholder = { Text(Constantes.descripcion) })
                         }
                     } else {
                         val tituloSerie = textoViewModel?.value?.serie?.titulo ?: "No carga"
@@ -106,7 +106,7 @@ fun ContenidoPantalla(
                         var estadoModo = viewModel?.uiState?.value?.editMode
                         viewModel?.handleEvent(MainEvent.ChangeMode(estadoModo))
                     }) {
-                        Text(text = "Editar")
+                        Text(text = Constantes.editar)
                     }
                 }
                 Spacer(modifier = Modifier.height(8.dp))
@@ -114,38 +114,38 @@ fun ContenidoPantalla(
                     Button(onClick = {
                         viewModel?.handleEvent(MainEvent.AvanzarId(idGlob))
                     }) {
-                        Text(text = "Anterior")
+                        Text(text = Constantes.anterior)
                     }
                     Button(onClick = {
                         viewModel?.handleEvent(MainEvent.RetrocederId(idGlob))
                     }) {
-                        Text(text = "Siguiente")
+                        Text(text = Constantes.siguiente)
                     }
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 Row {
                     Button(onClick = {
                         val serieActualizada =
-                            Serie(idGlob, textoViewModel?.value?.texto ?: "", textoViewModel?.value?.descripcion ?: "")
+                            Serie(idGlob, textoViewModel?.value?.texto ?: Constantes.empty, textoViewModel?.value?.descripcion ?: Constantes.empty)
                         viewModel?.handleEvent(MainEvent.UpdateSerie(serieActualizada))
                     }) {
-                        Text(text = "Actualizar")
+                        Text(text = Constantes.actualizar)
                     }
 
                     Button(onClick = {
                         val nuevaSerie =
-                            Serie(0, textoViewModel?.value?.texto ?: "", textoViewModel?.value?.descripcion ?: "")
+                            Serie(0, textoViewModel?.value?.texto ?: Constantes.empty, textoViewModel?.value?.descripcion ?: Constantes.empty)
                         viewModel?.handleEvent(MainEvent.AddSerie(nuevaSerie))
                     }) {
-                        Text(text = "Añadir")
+                        Text(text = Constantes.anadir)
                     }
 
                     Button(onClick = {
                         val serieEliminar =
-                            Serie(idGlob, "", "")
+                            Serie(idGlob, Constantes.empty, Constantes.empty)
                         viewModel?.handleEvent(MainEvent.DeleteSerie(serieEliminar))
                     }) {
-                        Text(text = "Eliminar")
+                        Text(text = Constantes.eliminar)
                     }
                 }
             }
