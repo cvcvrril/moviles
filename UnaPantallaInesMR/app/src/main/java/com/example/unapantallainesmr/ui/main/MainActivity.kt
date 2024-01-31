@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -88,15 +89,35 @@ fun ContenidoPantalla(
                             TextField(value = textoViewModel?.value?.descripcion ?: Constantes.empty, onValueChange = {
                                 viewModel?.handleEvent(MainEvent.ChangeDescripcion(it))
                             }, placeholder = { Text(Constantes.descripcion) })
+                            Spacer(modifier = Modifier.height(15.dp))
+                            //TODO: meter slider
+                            Spacer(modifier = Modifier.height(15.dp))
+                            Checkbox(checked = textoViewModel?.value?.favorito ?: false,
+                                onCheckedChange = {
+                                    val favoritoSerie = textoViewModel?.value?.serie?.favorito ?: false
+                                    viewModel?.handleEvent(MainEvent.ChangeMode(favoritoSerie))
+                                })
+                            //TODO: meter checkbox
                         }
                     } else {
                         val tituloSerie = textoViewModel?.value?.serie?.titulo ?: "No carga"
                         val descripcionSerie =
                             textoViewModel?.value?.serie?.descripcion ?: "No carga"
+                        val puntuacionSerie = textoViewModel?.value?.serie?.puntuacion ?: 0f
+                        val favoritoSerie = textoViewModel?.value?.serie?.favorito ?: false
                         Column {
                             CajaTexto(texto = tituloSerie)
                             Spacer(modifier = Modifier.height(8.dp))
                             CajaTexto(texto = descripcionSerie)
+                            Spacer(modifier = Modifier.height(8.dp))
+                            CajaTexto(texto = puntuacionSerie.toString())
+                            Spacer(modifier = Modifier.height(8.dp))
+                            if (favoritoSerie){
+                                CajaTexto(texto = "Añadido a favoritos")
+                            } else{
+                                CajaTexto(texto = "No está añadido a favoritos")
+                            }
+
                         }
                     }
                 }
@@ -126,7 +147,7 @@ fun ContenidoPantalla(
                 Row {
                     Button(onClick = {
                         val serieActualizada =
-                            Serie(idGlob, textoViewModel?.value?.texto ?: Constantes.empty, textoViewModel?.value?.descripcion ?: Constantes.empty)
+                            Serie(idGlob, textoViewModel?.value?.texto ?: Constantes.empty, textoViewModel?.value?.descripcion ?: Constantes.empty, textoViewModel?.value?.puntuacion ?: 0f, textoViewModel?.value?.favorito ?: false)
                         viewModel?.handleEvent(MainEvent.UpdateSerie(serieActualizada))
                     }) {
                         Text(text = Constantes.actualizar)
@@ -134,7 +155,7 @@ fun ContenidoPantalla(
 
                     Button(onClick = {
                         val nuevaSerie =
-                            Serie(0, textoViewModel?.value?.texto ?: Constantes.empty, textoViewModel?.value?.descripcion ?: Constantes.empty)
+                            Serie(0, textoViewModel?.value?.texto ?: Constantes.empty, textoViewModel?.value?.descripcion ?: Constantes.empty, textoViewModel?.value?.puntuacion ?: 0f, textoViewModel?.value?.favorito ?: false)
                         viewModel?.handleEvent(MainEvent.AddSerie(nuevaSerie))
                     }) {
                         Text(text = Constantes.anadir)
@@ -142,7 +163,7 @@ fun ContenidoPantalla(
 
                     Button(onClick = {
                         val serieEliminar =
-                            Serie(idGlob, Constantes.empty, Constantes.empty)
+                            Serie(idGlob, Constantes.empty, Constantes.empty, 0f, false)
                         viewModel?.handleEvent(MainEvent.DeleteSerie(serieEliminar))
                     }) {
                         Text(text = Constantes.eliminar)

@@ -7,9 +7,12 @@ data class MainState (
     var series: List<Serie> = emptyList(),
     var serie: Serie? = null,
     val error: String? = null,
+    val id: Int = 1,
     val texto: String? = null,
     val descripcion: String? = null,
-    val id: Int = 1,
+    val puntuacion: Float = 0f,
+    val favorito: Boolean = false,
+
 )
 
 

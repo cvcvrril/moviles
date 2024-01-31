@@ -40,12 +40,17 @@ class MainViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(descripcion = descripcion)
     }
 
+    private fun changeFavorito(favorito: Boolean){
+        var nuevoFavorito = favorito ?: false
+        nuevoFavorito = !nuevoFavorito
+        _uiState.value = _uiState.value.copy(favorito = nuevoFavorito)
+    }
+
     private fun changeMode(mode: Boolean?) {
         var nuevoMode = mode ?: false
         nuevoMode = !nuevoMode
         _uiState.value = _uiState.value.copy(editMode = nuevoMode)
     }
-
 
     private fun avanzarId(id: Int){
         var nuevoId = id
@@ -73,6 +78,7 @@ class MainViewModel @Inject constructor(
             MainEvent.GetSeries -> getAllSeries()
             is MainEvent.ChangeTexto -> changeText(event.texto)
             is MainEvent.ChangeDescripcion -> changeDescripcion(event.descripcion)
+            is MainEvent.ChangeFavorito -> changeFavorito(event.favorito)
             is MainEvent.ChangeMode -> changeMode(event.mode)
             is MainEvent.GetSerie -> getSerie(event.id)
             is MainEvent.AddSerie -> addSerie(event.serie)

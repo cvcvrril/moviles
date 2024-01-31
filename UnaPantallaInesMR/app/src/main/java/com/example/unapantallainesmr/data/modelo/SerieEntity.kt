@@ -13,4 +13,8 @@ data class SerieEntity (
     val titulo: String,
     @ColumnInfo(name = "descripcion")
     val descripcion: String,
+    @ColumnInfo(name = "puntuacion")
+    val puntuacion: Float,
+    @ColumnInfo(name = "favorito")
+    val favorito: Boolean,
 )
