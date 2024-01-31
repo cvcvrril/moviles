@@ -50,6 +50,7 @@ class MainViewModel @Inject constructor(
     private fun avanzarId(id: Int){
         var nuevoId = id
         nuevoId = nuevoId++
+        getSerie(nuevoId)
         _uiState.value = _uiState.value.copy(id = nuevoId)
     }
 

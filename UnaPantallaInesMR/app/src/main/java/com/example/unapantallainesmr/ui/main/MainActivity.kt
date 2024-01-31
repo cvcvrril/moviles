@@ -141,7 +141,9 @@ fun ContenidoPantalla(
                     }
 
                     Button(onClick = {
-
+                        val serieEliminar =
+                            Serie(idGlob, "", "")
+                        viewModel?.handleEvent(MainEvent.DeleteSerie(serieEliminar))
                     }) {
                         Text(text = "Eliminar")
                     }
