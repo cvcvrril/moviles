@@ -17,7 +17,6 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
-
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val getAllSeriesUseCase: GetAllSeriesUseCase,
@@ -91,7 +90,7 @@ class MainViewModel @Inject constructor(
         }
         _uiState.value = _uiState.value.copy(id = nuevoId)
     }
-    
+
     private fun getAllSeries() {
         viewModelScope.launch {
             getAllSeriesUseCase.invoke()

@@ -16,6 +16,8 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
 
+
+
 @InstallIn(SingletonComponent::class)
 @Module
 object DatabaseModule {
@@ -26,8 +28,8 @@ object DatabaseModule {
         return Room.databaseBuilder(
             appContext,
             AppDatabase::class.java,
-            "series.db"
-        ).createFromAsset("database/series.db")
+            Constantes.SERIES_DB
+        ).createFromAsset(Constantes.DATABASE_SERIES_DB)
             .fallbackToDestructiveMigration()
             .build()
     }

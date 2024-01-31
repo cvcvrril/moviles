@@ -20,6 +20,8 @@ object Constantes {
     const val msj_add = "Serie añadida correctamente"
     const val msj_update = "Serie editada correctamente"
     const val msj_delete = "Serie eliminada correctamente"
+    const val SERIES_DB = "series.db"
+    const val DATABASE_SERIES_DB = "database/series.db"
 
 }
 
