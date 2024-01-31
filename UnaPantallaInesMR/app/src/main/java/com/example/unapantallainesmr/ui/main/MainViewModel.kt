@@ -41,9 +41,13 @@ class MainViewModel @Inject constructor(
     }
 
     private fun changeFavorito(favorito: Boolean){
-        var nuevoFavorito = favorito ?: false
+        var nuevoFavorito = favorito
         nuevoFavorito = !nuevoFavorito
         _uiState.value = _uiState.value.copy(favorito = nuevoFavorito)
+    }
+
+    private fun changePuntuacion(puntuacion: Float){
+        _uiState.value = _uiState.value.copy(puntuacion = puntuacion)
     }
 
     private fun changeMode(mode: Boolean?) {
@@ -79,6 +83,7 @@ class MainViewModel @Inject constructor(
             is MainEvent.ChangeTexto -> changeText(event.texto)
             is MainEvent.ChangeDescripcion -> changeDescripcion(event.descripcion)
             is MainEvent.ChangeFavorito -> changeFavorito(event.favorito)
+            is MainEvent.ChangePuntuacion -> changePuntuacion(event.puntuacion)
             is MainEvent.ChangeMode -> changeMode(event.mode)
             is MainEvent.GetSerie -> getSerie(event.id)
             is MainEvent.AddSerie -> addSerie(event.serie)

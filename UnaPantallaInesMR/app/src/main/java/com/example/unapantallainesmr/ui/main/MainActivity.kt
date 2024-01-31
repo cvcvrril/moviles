@@ -13,6 +13,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Slider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -90,19 +91,23 @@ fun ContenidoPantalla(
                                 viewModel?.handleEvent(MainEvent.ChangeDescripcion(it))
                             }, placeholder = { Text(Constantes.descripcion) })
                             Spacer(modifier = Modifier.height(15.dp))
-                            //TODO: meter slider
                             Spacer(modifier = Modifier.height(15.dp))
+                            Slider(
+                                value = textoViewModel?.value?.puntuacion ?: 0f,
+                                onValueChange = {
+                                    viewModel?.handleEvent(MainEvent.ChangePuntuacion(it))
+                                }
+                            )
                             Checkbox(checked = textoViewModel?.value?.favorito ?: false,
                                 onCheckedChange = {
                                     val favoritoSerie = textoViewModel?.value?.serie?.favorito ?: false
-                                    viewModel?.handleEvent(MainEvent.ChangeMode(favoritoSerie))
+                                    viewModel?.handleEvent(MainEvent.ChangeFavorito(favoritoSerie))
                                 })
-                            //TODO: meter checkbox
                         }
                     } else {
-                        val tituloSerie = textoViewModel?.value?.serie?.titulo ?: "No carga"
+                        val tituloSerie = textoViewModel?.value?.serie?.titulo ?: Constantes.no_carga
                         val descripcionSerie =
-                            textoViewModel?.value?.serie?.descripcion ?: "No carga"
+                            textoViewModel?.value?.serie?.descripcion ?: Constantes.no_carga
                         val puntuacionSerie = textoViewModel?.value?.serie?.puntuacion ?: 0f
                         val favoritoSerie = textoViewModel?.value?.serie?.favorito ?: false
                         Column {
@@ -113,9 +118,9 @@ fun ContenidoPantalla(
                             CajaTexto(texto = puntuacionSerie.toString())
                             Spacer(modifier = Modifier.height(8.dp))
                             if (favoritoSerie){
-                                CajaTexto(texto = "Añadido a favoritos")
+                                CajaTexto(texto = Constantes.fav)
                             } else{
-                                CajaTexto(texto = "No está añadido a favoritos")
+                                CajaTexto(texto = Constantes.no_fav)
                             }
 
                         }

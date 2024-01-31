@@ -1,6 +1,6 @@
 package com.example.unapantallainesmr.utils
 
-object Constantes{
+object Constantes {
 
     const val eliminar: String = "Eliminar"
     const val anadir = "Añadir"
@@ -12,6 +12,9 @@ object Constantes{
     const val titulo = "Título"
     const val descripcion = "Descripcion"
     const val empty = ""
+    const val no_fav = "No está añadido a favoritos"
+    const val fav = "Añadido a favoritos"
+    const val no_carga = "No carga"
 
 }
 

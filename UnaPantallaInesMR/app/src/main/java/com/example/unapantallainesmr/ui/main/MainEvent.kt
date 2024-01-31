@@ -6,6 +6,7 @@ sealed class MainEvent {
     class ChangeTexto(val texto: String) : MainEvent()
     class ChangeDescripcion(val descripcion: String) : MainEvent()
     class ChangeFavorito(val favorito : Boolean) : MainEvent()
+    class ChangePuntuacion(val puntuacion: Float) : MainEvent()
     class ChangeMode(val mode: Boolean?) : MainEvent()
     class GetSerie(val id: Int) : MainEvent()
     class AddSerie(val serie: Serie) : MainEvent()
