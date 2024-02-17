@@ -43,3 +43,5 @@ t
 Dapp/src/main/java/com/example/unapantallainesmr/ui/main/MainState.kt,f\4\f48741c2d470ef2a746189096065ee077361a977
 w
 Gapp/src/main/java/com/example/unapantallainesmr/ui/main/MainActivity.kt,b\c\bc6b4603cb279255f2f5ca65e0af8c33a6a3c60e
+†
+Vapp/src/main/java/com/example/unapantallainesmr/domain/usecases/GetAllSeriesUseCase.kt,5\b\5b0befce22bdf0685effa4f4258cae15b6b2a284
