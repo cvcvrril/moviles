@@ -2,7 +2,7 @@ package com.example.composefullequip.ui.screens.lista
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.composefullequip.data.ListaRepository
+import com.example.aprobarines.data.repository.ListaRepository
 
 import com.example.composefullequip.ui.screens.lista.PantallaListaEvent.GetPersonas
 import dagger.hilt.android.lifecycle.HiltViewModel

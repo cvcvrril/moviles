@@ -1,4 +1,4 @@
-package com.example.composefullequip.data
+package com.example.aprobarines.data.repository
 
 import com.example.composefullequip.domain.modelo.Persona
 import javax.inject.Inject

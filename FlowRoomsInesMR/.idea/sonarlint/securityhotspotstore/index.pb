@@ -41,8 +41,6 @@ Yapp/src/main/java/com/example/flowroomsinesmr/ui/main/viewmodels/MainRegistroVi
 Napp/src/main/java/com/example/flowroomsinesmr/ui/main/events/MainLoginEvent.kt,6\0\60ba14d9bd4358fa37601c2fc57fdc9f0f8e351b
 Ü
 Vapp/src/main/java/com/example/flowroomsinesmr/ui/main/viewmodels/MainLoginViewModel.kt,0\f\0f6523a5c34a7ac11176300e0c293d06f9df739d
-y
-Iapp/src/main/java/com/example/flowroomsinesmr/data/local/VideojuegoDao.kt,a\f\af8732168324139f9bcac8d5716fc3ec662405dc
 w
 Gapp/src/main/java/com/example/flowroomsinesmr/utils/InternetConexion.kt,a\1\a1b5c75d585a6db90127aee05f9cccf612506a9b
 ä
@@ -89,8 +87,6 @@ y
 Iapp/src/main/java/com/example/flowroomsinesmr/ui/detail/DetailContract.kt,a\a\aaf61c4f0d5840c29a1761ac5ae95f2720f7ee0f
 É
 Sapp/src/main/java/com/example/flowroomsinesmr/data/modelo/entity/PersonajeEntity.kt,1\6\1603b1ccf8c3f93631065704551842b2625f7f97
-x
-Happ/src/main/java/com/example/flowroomsinesmr/data/local/PersonajeDao.kt,d\1\d16d6de6e226e9d64dfe8cb6179e0b292e4c2ce7
 ç
 ]app/src/main/java/com/example/flowroomsinesmr/data/sources/remote/service/PersonajeService.kt,4\3\437a8faf393ff2662a6b6ea590255f249d5e5b86
 á

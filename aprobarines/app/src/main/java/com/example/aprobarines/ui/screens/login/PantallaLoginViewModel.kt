@@ -1,7 +1,7 @@
 package com.example.aprobarines.ui.screens.login
 
 import androidx.lifecycle.ViewModel
-import com.example.composefullequip.data.ListaRepository
+import com.example.aprobarines.data.repository.ListaRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -43,8 +43,6 @@ Vapp/src/main/java/com/example/flowroomsinesmr/ui/main/viewmodels/MainLoginViewM
 Napp/src/main/java/com/example/flowroomsinesmr/ui/main/events/MainLoginEvent.kt,6\0\60ba14d9bd4358fa37601c2fc57fdc9f0f8e351b
 w
 Gapp/src/main/java/com/example/flowroomsinesmr/utils/InternetConexion.kt,a\1\a1b5c75d585a6db90127aee05f9cccf612506a9b
-y
-Iapp/src/main/java/com/example/flowroomsinesmr/data/local/VideojuegoDao.kt,a\f\af8732168324139f9bcac8d5716fc3ec662405dc
 é
 ^app/src/main/java/com/example/flowroomsinesmr/data/sources/remote/service/CredencialService.kt,0\4\0423d900a68c9a73d36707bed3adc05d6ee45a0f
 ä
@@ -87,8 +85,6 @@ Tapp/src/main/java/com/example/flowroomsinesmr/ui/detail/adapters/PersonajeAdapt
 ^app/src/main/java/com/example/flowroomsinesmr/ui/detail/fragments/DetailListJugadorFragment.kt,9\3\93c5f619976fe2b96950ddc328077504b281ac89
 é
 ^app/src/main/java/com/example/flowroomsinesmr/ui/detail/fragments/DetailListPartidaFragment.kt,a\3\a31ad975f01f134c54d0ecd2f1fa6acd3ebd7c1d
-x
-Happ/src/main/java/com/example/flowroomsinesmr/data/local/PersonajeDao.kt,d\1\d16d6de6e226e9d64dfe8cb6179e0b292e4c2ce7
 ç
 ]app/src/main/java/com/example/flowroomsinesmr/data/sources/remote/service/PersonajeService.kt,4\3\437a8faf393ff2662a6b6ea590255f249d5e5b86
 É
