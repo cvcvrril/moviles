@@ -98,5 +98,8 @@ dependencies {
     implementation("com.apollographql.apollo3:apollo-api:3.7.5")
     implementation("com.apollographql.apollo3:apollo-runtime:3.7.5")
     implementation("com.apollographql.apollo3:apollo-normalized-cache-sqlite:3.7.5")
+    implementation("com.graphql-java:graphql-java-extended-scalars:21.0")
+
 
 }
+
