@@ -105,3 +105,5 @@ w
 Gapp/src/main/java/com/example/flowroomsinesmr/data/dao/VideojuegoDao.kt,c\2\c2ee998b77d47e4ae264a3d27e095123fba1e9aa
 y
 Iapp/src/main/java/com/example/flowroomsinesmr/ui/detail/DetailActivity.kt,9\d\9d4424f87796175daa15d9c1e9f4d8f2132633b1
+„
+Tapp/src/main/java/com/example/flowroomsinesmr/domain/modelo/AuthorizacionResponse.kt,a\9\a9bc6df393bf03be405d0d7a901373d48e28a0c6

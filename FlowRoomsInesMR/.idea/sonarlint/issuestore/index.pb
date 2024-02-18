@@ -105,3 +105,5 @@ Oapp/src/main/java/com/example/flowroomsinesmr/data/local/JugadorRoomDatabase.kt
 Rapp/src/main/java/com/example/flowroomsinesmr/data/local/VideojuegoRoomDatabase.kt,9\5\957bc57c36ed5a2f75e9cd496264c8993827531f
 y
 Iapp/src/main/java/com/example/flowroomsinesmr/ui/detail/DetailActivity.kt,9\d\9d4424f87796175daa15d9c1e9f4d8f2132633b1
+„
+Tapp/src/main/java/com/example/flowroomsinesmr/domain/modelo/AuthorizacionResponse.kt,a\9\a9bc6df393bf03be405d0d7a901373d48e28a0c6

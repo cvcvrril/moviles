@@ -1,0 +1,16 @@
+scalar Int
+scalar String
+
+type Videojuego{
+    id: Int!
+    titulo: String!
+    descripcion: String!
+}
+
+
+type Query {
+    getVideojuegos: [Videojuego!]!
+}
+
+
+

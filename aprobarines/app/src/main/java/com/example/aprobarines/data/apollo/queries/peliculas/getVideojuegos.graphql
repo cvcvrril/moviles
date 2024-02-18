@@ -1,0 +1,6 @@
+query GetVideojuegos {
+    getVideojuegos {
+        titulo
+        descripcion
+    }
+}

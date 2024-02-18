@@ -90,7 +90,13 @@ dependencies {
     implementation ("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
     //DataStore
-    implementation ("androidx.datastore:datastore-preferences")
-    implementation("androidx.datastore:datastore-core:1.0.0")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    //Apollo
+    implementation("com.graphql-java:graphql-java-extended-scalars:21.0")
+
+    implementation("com.apollographql.apollo3:apollo-api:3.7.5")
+    implementation("com.apollographql.apollo3:apollo-runtime:3.7.5")
+    implementation("com.apollographql.apollo3:apollo-normalized-cache-sqlite:3.7.5")
 
 }
