@@ -59,7 +59,7 @@ object NetworkModule {
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://localhost:8080/graphql")
+            .baseUrl("http://192.168.1.140:8080/graphql")
             //.baseUrl(BuildConfig.BASEURL)
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
