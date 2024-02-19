@@ -21,9 +21,6 @@ interface UserService {
     @POST("login/forgotPassword")
     suspend fun forgotPassword(@Body credencialResponse: UserResponse) : Response<Unit>
 
-
     @POST("login/refreshToken")
     suspend fun refreshToken(@Header("Authorization") token: String): Response<Unit>
-
-
 }
