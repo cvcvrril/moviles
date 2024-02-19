@@ -30,16 +30,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-
-import com.example.composefullequip.domain.modelo.Persona
-import java.util.UUID
+import com.example.aprobarines.domain.modelo.Videojuego
 
 
 
 @Composable
 fun PantallaLista(
     viewModel: PantallaListaViewModel = hiltViewModel(),
-    onViewDetalle: (UUID) -> Unit,
+    onViewDetalle: (Int) -> Unit,
     bottomNavigationBar : @Composable () -> Unit = {}
 
 
@@ -54,18 +52,13 @@ fun PantallaLista(
         onViewDetalle = onViewDetalle,
         bottomNavigationBar = bottomNavigationBar,
     )
-
-
-
-
-
 }
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PantallaListaInterna(
     state: PantallaListaState,
-    onViewDetalle: (UUID) -> Unit,
+    onViewDetalle: (Int) -> Unit,
     bottomNavigationBar : @Composable () -> Unit = {},
 
 ) {
@@ -100,9 +93,9 @@ fun PantallaListaInterna(
                 .background(Color.Gray)
         ) {
 
-            items(items = state.personas, key = { persona -> persona.id }) {
-                    persona ->
-                PersonaItem(persona = persona,
+            items(items = state.videojuegos, key = { persona -> persona.id }) {
+                    videojuego ->
+                VideojuegoItem(videojuego = videojuego,
                     onViewDetalle = onViewDetalle,
                     modifier = Modifier.animateItemPlacement(
                         animationSpec = tween(1000)
@@ -117,27 +110,22 @@ fun PantallaListaInterna(
 
 
 @Composable
-fun PersonaItem(persona: Persona,
-
-                onViewDetalle: (UUID) -> Unit,
-                modifier: Modifier = Modifier){
+fun VideojuegoItem(videojuego: Videojuego,
+                   onViewDetalle: (Int) -> Unit,
+                   modifier: Modifier = Modifier){
 
     Card(modifier = modifier
         .fillMaxWidth()
         .padding(8.dp)
-        .clickable { onViewDetalle(persona.id) } ) {
+        .clickable { onViewDetalle(videojuego.id) } ) {
         Row( modifier = Modifier.padding(8.dp)){
             Text(
                 modifier = Modifier.weight(weight = 0.4F),
-                text = persona.nombre
+                text = videojuego.titulo
             )
             Text(
                 modifier = Modifier.weight(0.4F),
-                text = persona.apellido)
-            Text(
-                text = persona.edad.toString(),
-                modifier = Modifier.weight(0.2F)
-            )
+                text = videojuego.descripcion)
         }
     }
 
@@ -146,9 +134,9 @@ fun PersonaItem(persona: Persona,
 
 @Preview
 @Composable
-fun previewPersonaItem() {
-    PersonaItem(
-        persona = Persona("nombre", "apellido", 10),
+fun previewVideojuegoItem() {
+    VideojuegoItem(
+        videojuego = Videojuego(0, "Prueba Videojuego", "Descripción Prueba Videojuego"),
         onViewDetalle = {},
     )
 }

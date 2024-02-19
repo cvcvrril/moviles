@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 
 class VideojuegoRepository @Inject constructor(
-    var apolloClient: ApolloClient
+    private var apolloClient: ApolloClient
 ) {
     suspend fun getVideojuegos() =
         apolloClient.query(GetVideojuegosQuery()).execute().data?.getVideojuegos?.map{
