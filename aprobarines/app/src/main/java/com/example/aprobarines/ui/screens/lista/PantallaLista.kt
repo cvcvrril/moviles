@@ -44,7 +44,7 @@ fun PantallaLista(
     ) {
     val state = viewModel.state.collectAsState()
     LaunchedEffect(Unit) {
-        //TODO: meter aquí el HandleEvent
+        viewModel.handleEvent(PantallaListaEvent.GetVideojuegos)
     }
 
     PantallaListaInterna(
