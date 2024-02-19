@@ -1,9 +1,6 @@
 package com.example.composefullequip.ui.screens.lista
 
 sealed class PantallaListaEvent {
+    object GetVideojuegos : PantallaListaEvent()
 
-
-    object GetPersonas : PantallaListaEvent()
-
-    object ShufflePersonas : PantallaListaEvent()
 }

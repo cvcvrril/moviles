@@ -1,8 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    id("com.apollographql.apollo3").version("3.7.5")
+    kotlin("kapt")
 }
 
 android {
@@ -103,3 +104,10 @@ dependencies {
 
 }
 
+apollo {
+    service("videojuegos") {
+        sourceFolder.set("org/example/videojuegos")
+        packageName.set("org.example.videojuegos")
+    }
+    generateKotlinModels.set(true)
+}
