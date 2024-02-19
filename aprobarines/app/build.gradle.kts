@@ -101,6 +101,8 @@ dependencies {
     implementation("com.apollographql.apollo3:apollo-normalized-cache-sqlite:3.7.5")
     implementation("com.graphql-java:graphql-java-extended-scalars:21.0")
 
+    //Splash Screen
+    implementation("androidx.core:core-splashscreen:1.0.0")
 
 }
 
