@@ -53,3 +53,11 @@ Qapp/src/main/java/com/example/aprobarines/data/repository/VideojuegoRepository.
 Tapp/src/main/java/com/example/aprobarines/data/apollo/queries/getVideojuegos.graphql,7\0\705385d5a8cde5f95a9acf1b8cfc6d7def63ef79
 ‚
 Rapp/src/main/java/com/example/aprobarines/data/apollo/queries/getPeliculas.graphql,0\3\03172f16db0f053da2b97867737abbd084918df9
+u
+Eapp/src/main/java/com/example/aprobarines/domain/modelo/Videojuego.kt,6\9\69babf66074eb389da60f1dcdf776e61a55c8d97
+r
+Bapp/src/main/java/com/example/aprobarines/domain/modelo/Persona.kt,8\4\8471231d3ca4e131c92c1433de17eeac0e8568a9
+Ž
+^app/src/main/java/com/example/aprobarines/data/apollo/queries/peliculas/getVideojuegos.graphql,e\a\eaa2e6fa38276a32f87cfee52b434e2f16e8f8ce
+‡
+Wapp/src/main/java/com/example/aprobarines/data/apollo/queries/peliculas/schema.graphqls,8\2\82d2f356c4e0b230ac10c89d36e270bfdcac6746
