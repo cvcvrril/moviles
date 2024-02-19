@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.aprobarines.data.repository.ListaRepository
 import com.example.aprobarines.domain.usecases.GetVideojuegoUseCase
+import com.example.aprobarines.utils.NetworkResult
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -42,14 +43,27 @@ class PantallaListaViewModel @Inject constructor(
 
     private fun getVideojuegos() {
         viewModelScope.launch {
-            getVideojuegoUseCase.invoke()
-                .collect { result ->
-                    _state.update {
-                        it.copy(
-                            videojuegos = result,
-                            error = "Videojuegos cargados",
-                        )
+            getVideojuegoUseCase.invoke().collect { result ->
+                    when (result) {
+                        is NetworkResult.Error -> _state.update {
+                            it.copy(
+                                error = result.message, isLoading = false
+                            )
+                        }
+
+                        is NetworkResult.Loading -> _state.update {
+                            it.copy(isLoading = false)
+                        }
+
+                        is NetworkResult.Success -> _state.update {
+                            it.copy(
+                                videojuegos = result.data ?: emptyList(),
+                                isLoading = false,
+                                error = "Videojuegos cargados",
+                            )
+                        }
                     }
+
                 }
         }
     }
