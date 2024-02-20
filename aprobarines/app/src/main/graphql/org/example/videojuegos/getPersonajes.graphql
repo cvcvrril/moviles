@@ -1,0 +1,6 @@
+query GetPersonajes {
+    getPersonajes {
+        nombre
+        descripcion
+    }
+}

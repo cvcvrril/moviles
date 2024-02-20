@@ -4,8 +4,14 @@ type Videojuego{
     descripcion: String!
 }
 
+type Personaje{
+    nombre: String!
+    descripcion: String!
+}
+
 type Query {
     getVideojuegos: [Videojuego!]!
+    getPersonajes: [Personaje!]!
 }
 
 

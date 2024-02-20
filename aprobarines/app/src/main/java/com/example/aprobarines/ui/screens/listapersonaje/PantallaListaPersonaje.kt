@@ -1,4 +1,4 @@
-package com.example.composefullequip.ui.screens.lista
+package com.example.aprobarines.ui.screens.listapersonaje
 
 
 import androidx.compose.animation.core.tween
@@ -36,7 +36,7 @@ import com.example.aprobarines.domain.modelo.Videojuego
 
 @Composable
 fun PantallaLista(
-    viewModel: PantallaListaViewModel = hiltViewModel(),
+    viewModel: PantallaListaPersonajeViewModel = hiltViewModel(),
     onViewDetalle: (Int) -> Unit,
     bottomNavigationBar : @Composable () -> Unit = {}
 
@@ -44,7 +44,7 @@ fun PantallaLista(
     ) {
     val state = viewModel.state.collectAsState()
     LaunchedEffect(Unit) {
-        viewModel.handleEvent(PantallaListaEvent.GetVideojuegos)
+        viewModel.handleEvent(PantallaListaPersonajeEvent.GetVideojuegos)
     }
 
     PantallaListaInterna(
@@ -57,11 +57,11 @@ fun PantallaLista(
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PantallaListaInterna(
-    state: PantallaListaState,
+    state: PantallaListaPersonajeState,
     onViewDetalle: (Int) -> Unit,
     bottomNavigationBar : @Composable () -> Unit = {},
 
-) {
+    ) {
 
     val snackbarHostState = remember { SnackbarHostState() }
 
@@ -95,7 +95,7 @@ fun PantallaListaInterna(
 
             items(items = state.videojuegos, key = { persona -> persona.id }) {
                     videojuego ->
-                VideojuegoItem(videojuego = videojuego,
+                PersonajeItem(videojuego = videojuego,
                     onViewDetalle = onViewDetalle,
                     modifier = Modifier.animateItemPlacement(
                         animationSpec = tween(1000)
@@ -110,9 +110,9 @@ fun PantallaListaInterna(
 
 
 @Composable
-fun VideojuegoItem(videojuego: Videojuego,
-                   onViewDetalle: (Int) -> Unit,
-                   modifier: Modifier = Modifier){
+fun PersonajeItem(videojuego: Videojuego,
+                  onViewDetalle: (Int) -> Unit,
+                  modifier: Modifier = Modifier){
 
     Card(modifier = modifier
         .fillMaxWidth()
@@ -135,7 +135,7 @@ fun VideojuegoItem(videojuego: Videojuego,
 @Preview
 @Composable
 fun previewVideojuegoItem() {
-    VideojuegoItem(
+    PersonajeItem(
         videojuego = Videojuego(0, "Prueba Videojuego", "Descripción Prueba Videojuego"),
         onViewDetalle = {},
     )
