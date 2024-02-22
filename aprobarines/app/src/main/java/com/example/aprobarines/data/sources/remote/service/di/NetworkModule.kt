@@ -60,7 +60,7 @@ object NetworkModule {
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://192.168.1.140:8081/auth")
+            .baseUrl("http://192.168.1.140:8081/auth/")
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()

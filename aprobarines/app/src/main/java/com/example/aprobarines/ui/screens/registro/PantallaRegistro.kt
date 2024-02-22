@@ -2,14 +2,14 @@
 
 package com.example.aprobarines.ui.screens.registro
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.aprobarines.ui.screens.login.PantallaLoginViewModel
 
 @Composable
-fun PantallaLogin(
+fun PantallaRegistro(
     viewModel: PantallaRegistroViewModel = hiltViewModel(),
     bottomNavigationBar : @Composable () -> Unit = {}
 ) {
@@ -18,7 +18,7 @@ fun PantallaLogin(
 
     //TODO: Montar aquí todo el tema de la funcionalidad, métodos del ViewModel, etc.
 
-    PantallaLoginInterna(
+    PantallaRegistroInterna(
         state = state.value,
         bottomNavigationBar = bottomNavigationBar
     )
@@ -26,17 +26,19 @@ fun PantallaLogin(
 }
 
 
-fun PantallaLoginInterna(
+@Composable
+fun PantallaRegistroInterna(
     state: PantallaRegistroState,
     bottomNavigationBar: @Composable () -> Unit = {}
 ){
 
+    Text("Registro")
 
 }
 
 @Preview
 @Composable
-fun previewPantallaLogin(){
+fun previewPantallaRegistro(){
 
 }
 
