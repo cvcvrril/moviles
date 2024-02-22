@@ -53,7 +53,7 @@ class PantallaListaPersonajeViewModel @Inject constructor(
                             it.copy(
                                 personajes = result.data ?: emptyList(),
                                 isLoading = false,
-                                error = "Videojuegos cargados",
+                                error = "Personajes cargados",
                             )
                         }
                     }

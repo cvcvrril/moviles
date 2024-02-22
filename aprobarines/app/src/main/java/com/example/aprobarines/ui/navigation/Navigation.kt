@@ -1,13 +1,6 @@
 package com.example.composefullequip.ui.navigation
 
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -16,7 +9,8 @@ import androidx.navigation.navArgument
 import com.example.aprobarines.ui.common.BottomBar
 import com.example.aprobarines.ui.screens.listapersonaje.PantallaListaPersonajes
 
-import com.example.composefullequip.ui.screens.detalle.PantallaDetalle
+import com.example.composefullequip.ui.screens.detalle.PantallaDetallePersonaje
+import com.example.composefullequip.ui.screens.detalle.PantallaDetalleVideojuego
 import com.example.composefullequip.ui.screens.lista.PantallaListaVideojuegos
 
 
@@ -44,16 +38,16 @@ fun Navigation()
             )
         }
         composable(
-            route =  "detalle/{personaId}",
+            route =  "detalle/{videojuegoId}",
             arguments = listOf(
-                navArgument(name = "personaId") {
+                navArgument(name = "videojuegoId") {
                     type = NavType.StringType
                     defaultValue = ""
                 }
             )
         ) {
-            PantallaDetalle(
-                personaId = it.arguments?.getString("personaId") ?: "" ,
+            PantallaDetalleVideojuego(
+                videojuegoId = it.arguments?.getString("personaId") ?: "" ,
                 )
         }
         composable(
@@ -69,6 +63,19 @@ fun Navigation()
                         screens = screensBottomBar)
                 }) 
 
+        }
+        composable(
+            route =  "detalle/{personajeId}",
+            arguments = listOf(
+                navArgument(name = "personajeId") {
+                    type = NavType.StringType
+                    defaultValue = ""
+                }
+            )
+        ) {
+            PantallaDetallePersonaje(
+                personajeId = it.arguments?.getString("personajeId") ?: "" ,
+            )
         }
     }
 
