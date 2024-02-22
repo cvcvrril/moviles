@@ -23,6 +23,7 @@ type Query {
     getVideojuegos: [Videojuego!]!
     getPersonajes: [Personaje!]!
     getMapas: [Mapa!]!
+    getPersonaje(id:Int) : Personaje!
 }
 
 type Mutation{

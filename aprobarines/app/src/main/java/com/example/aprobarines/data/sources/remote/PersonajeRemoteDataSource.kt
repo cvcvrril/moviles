@@ -3,6 +3,7 @@ package com.example.aprobarines.data.sources.remote
 import com.apollographql.apollo3.ApolloClient
 import com.example.aprobarines.domain.modelo.Personaje
 import com.example.aprobarines.utils.NetworkResult
+import org.example.videojuegos.GetPersonajeQuery
 import org.example.videojuegos.GetPersonajesQuery
 import javax.inject.Inject
 
@@ -29,5 +30,4 @@ class PersonajeRemoteDataSource @Inject constructor(
             return NetworkResult.Error(e.message ?: e.toString())
         }
     }
-
 }
