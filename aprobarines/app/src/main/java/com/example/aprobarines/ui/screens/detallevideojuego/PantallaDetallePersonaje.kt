@@ -9,6 +9,6 @@ fun PantallaDetallePersonaje(
 ) {
 
 
-    Text("Pantalla Detalle ${personajeId}" )
+    Text("Pantalla Detalle Personaje ${personajeId}" )
     
 }

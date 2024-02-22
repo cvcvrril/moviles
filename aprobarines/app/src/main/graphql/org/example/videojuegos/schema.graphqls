@@ -25,5 +25,13 @@ type Query {
     getMapas: [Mapa!]!
 }
 
+type Mutation{
+    addVideojuego (videojuegoInput : VideojuegoInput): Videojuego
+}
+
+input VideojuegoInput {
+    id: Int!
+    titulo: String!
+}
 
 

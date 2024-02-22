@@ -28,6 +28,8 @@ class PantallaListaPersonajeViewModel @Inject constructor(
             is PantallaListaPersonajeEvent.ErrorVisto -> {
                 _state.update { it.copy(error = null) }
             }
+
+            else -> {}
         }
     }
 

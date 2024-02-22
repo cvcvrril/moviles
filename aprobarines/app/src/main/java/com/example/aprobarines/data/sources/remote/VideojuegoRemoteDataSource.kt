@@ -7,26 +7,29 @@ import org.example.videojuegos.GetVideojuegosQuery
 
 import javax.inject.Inject
 
-class VideojuegoRemoteDataSource  @Inject constructor(
-    private var apolloClient: ApolloClient) {
+class VideojuegoRemoteDataSource @Inject constructor(
+    private var apolloClient: ApolloClient
+) {
 
-    suspend fun getVideojuegos() : NetworkResult<List<Videojuego>> {
+    suspend fun getVideojuegos(): NetworkResult<List<Videojuego>> {
         try {
             val response = apolloClient.query(GetVideojuegosQuery()).execute()
-            if (response.hasErrors()){
+            if (response.hasErrors()) {
                 return NetworkResult.Error("Error")
-            }else{
+            } else {
                 val body = response.data?.getVideojuegos?.map {
                     Videojuego(it.id, it.titulo, it.descripcion)
                 } ?: emptyList()
-                if (body.isEmpty()){
+                if (body.isEmpty()) {
                     return NetworkResult.Error("La lista de videojuegos está vacía.")
-                } else{
+                } else {
                     return NetworkResult.Success(body)
                 }
             }
-        }catch (e : Exception){
+        } catch (e: Exception) {
             return NetworkResult.Error(e.message ?: e.toString())
         }
     }
+
+
 }

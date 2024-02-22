@@ -15,8 +15,7 @@ import com.example.composefullequip.ui.screens.lista.PantallaListaVideojuegos
 
 
 @Composable
-fun Navigation()
-{
+fun Navigation() {
     val navController = rememberNavController()
 
     NavHost(
@@ -27,18 +26,19 @@ fun Navigation()
             "videojuegos"
         ) {
             PantallaListaVideojuegos(
-                onViewDetalle = {uuid ->
-                    navController.navigate("detalle/${uuid}")
+                onViewDetalle = { uuid ->
+                    navController.navigate("detalle_videojuego/${uuid}")
                 },
-                bottomNavigationBar =  {
+                bottomNavigationBar = {
                     BottomBar(
                         navController = navController,
-                        screens = screensBottomBar)
+                        screens = screensBottomBar
+                    )
                 }
             )
         }
         composable(
-            route =  "detalle/{videojuegoId}",
+            route = "detalle_videojuego/{videojuegoId}",
             arguments = listOf(
                 navArgument(name = "videojuegoId") {
                     type = NavType.StringType
@@ -47,25 +47,26 @@ fun Navigation()
             )
         ) {
             PantallaDetalleVideojuego(
-                videojuegoId = it.arguments?.getString("personaId") ?: "" ,
-                )
+                videojuegoId = it.arguments?.getString("personaId") ?: "",
+            )
         }
         composable(
             "personajes"
         ) {
 
-            PantallaListaPersonajes (onViewDetalle = {uuid ->
-                navController.navigate("detalle/${uuid}")
+            PantallaListaPersonajes(onViewDetalle = { uuid ->
+                navController.navigate("detalle_personaje/${uuid}")
             },
-                bottomNavigationBar =  {
+                bottomNavigationBar = {
                     BottomBar(
                         navController = navController,
-                        screens = screensBottomBar)
-                }) 
+                        screens = screensBottomBar
+                    )
+                })
 
         }
         composable(
-            route =  "detalle/{personajeId}",
+            route = "detalle_personaje/{personajeId}",
             arguments = listOf(
                 navArgument(name = "personajeId") {
                     type = NavType.StringType
@@ -74,11 +75,10 @@ fun Navigation()
             )
         ) {
             PantallaDetallePersonaje(
-                personajeId = it.arguments?.getString("personajeId") ?: "" ,
+                personajeId = it.arguments?.getString("personajeId") ?: "",
             )
         }
     }
-
 
 
 }

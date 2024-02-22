@@ -8,7 +8,6 @@ fun PantallaDetalleVideojuego(
     videojuegoId: String
 ) {
 
-
-    Text("Pantalla Detalle ${videojuegoId}" )
+    Text("Pantalla Detalle Videojuego ${videojuegoId}" )
     
 }
