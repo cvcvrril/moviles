@@ -14,8 +14,6 @@ fun PantallaLogin(
 
     val state = viewModel.state.collectAsState()
 
-    //TODO: Montar aquí todo el tema de la funcionalidad, métodos del ViewModel, etc.
-
     PantallaLoginInterna(
         state = state.value,
         bottomNavigationBar = bottomNavigationBar
