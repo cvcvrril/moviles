@@ -30,4 +30,24 @@ class PersonajeRemoteDataSource @Inject constructor(
             return NetworkResult.Error(e.message ?: e.toString())
         }
     }
+
+    suspend fun getPersonaje(id: Int): NetworkResult<Personaje>{
+        try {
+            val response = apolloClient.query(GetPersonajeQuery()).execute()
+            if (response.hasErrors()) {
+                return NetworkResult.Error("Error")
+            } else {
+                val body = response.data?.getPersonaje?.let {
+                    Personaje(it.id, it.nombre, it.descripcion)
+                } ?: null
+                if (body == null) {
+                    return NetworkResult.Error("La lista de personajes está vacía.")
+                } else {
+                    return NetworkResult.Success(body)
+                }
+            }
+        }catch (e: Exception) {
+            return NetworkResult.Error(e.message ?: e.toString())
+        }
+    }
 }

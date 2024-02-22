@@ -22,4 +22,12 @@ class PersonajeRepository @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
+    fun getPersonaje(id : Int) : Flow<NetworkResult<Personaje>>{
+        return flow {
+            emit(NetworkResult.Loading())
+            val result = remoteDataSource.getPersonaje(id)
+            emit(result)
+        }.flowOn(Dispatchers.IO)
+    }
+
 }

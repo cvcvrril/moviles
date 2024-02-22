@@ -1,5 +1,6 @@
 query GetPersonaje {
     getPersonaje (id: 1) {
+        id
         nombre
         descripcion
     }
