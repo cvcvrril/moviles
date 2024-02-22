@@ -2,37 +2,32 @@ package com.example.aprobarines.data.sources.remote
 
 import com.apollographql.apollo3.ApolloClient
 import com.example.aprobarines.domain.modelo.Personaje
-import com.example.aprobarines.domain.modelo.Videojuego
 import com.example.aprobarines.utils.NetworkResult
 import org.example.videojuegos.GetPersonajesQuery
-import org.example.videojuegos.GetVideojuegosQuery
 import javax.inject.Inject
 
-class PersonajeRemoteDataSource  @Inject constructor(
+class PersonajeRemoteDataSource @Inject constructor(
     private var apolloClient: ApolloClient
 ) {
 
-    suspend fun getPersonajes() : NetworkResult<List<Personaje>>{
+    suspend fun getPersonajes(): NetworkResult<List<Personaje>> {
         try {
             val response = apolloClient.query(GetPersonajesQuery()).execute()
-            if (response.hasErrors()){
+            if (response.hasErrors()) {
                 return NetworkResult.Error("Error")
-            }else{
+            } else {
                 val body = response.data?.getPersonajes?.map {
-                    Personaje( it.id, it.nombre, it.descripcion)
+                    Personaje(it.id, it.nombre, it.descripcion)
                 } ?: emptyList()
-                if (body.isEmpty()){
+                if (body.isEmpty()) {
                     return NetworkResult.Error("La lista de personajes está vacía.")
-                } else{
+                } else {
                     return NetworkResult.Success(body)
                 }
             }
-        }catch (e : Exception){
+        } catch (e: Exception) {
             return NetworkResult.Error(e.message ?: e.toString())
         }
     }
-
-
-
 
 }

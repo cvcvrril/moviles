@@ -26,8 +26,8 @@ fun Navigation() {
             "videojuegos"
         ) {
             PantallaListaVideojuegos(
-                onViewDetalle = { uuid ->
-                    navController.navigate("detalle_videojuego/${uuid}")
+                onViewDetalle = { id ->
+                    navController.navigate("detalle_videojuego/${id}")
                 },
                 bottomNavigationBar = {
                     BottomBar(
@@ -54,8 +54,8 @@ fun Navigation() {
             "personajes"
         ) {
 
-            PantallaListaPersonajes(onViewDetalle = { uuid ->
-                navController.navigate("detalle_personaje/${uuid}")
+            PantallaListaPersonajes(onViewDetalle = { id ->
+                navController.navigate("detalle_personaje/${id}")
             },
                 bottomNavigationBar = {
                     BottomBar(
@@ -75,7 +75,7 @@ fun Navigation() {
             )
         ) {
             PantallaDetallePersonaje(
-                personajeId = it.arguments?.getString("personajeId") ?: "",
+                personajeId = it.arguments?.getString("personajeId")?.toInt() ?: 0,
             )
         }
     }

@@ -27,6 +27,7 @@ type Query {
 
 type Mutation{
     addVideojuego (videojuegoInput : VideojuegoInput): Videojuego
+    deletePersonaje (id : Int) : Personaje
 }
 
 input VideojuegoInput {
