@@ -15,7 +15,7 @@ interface UserService {
     @GET("login")
     suspend fun getLogin(@Query("username") user:String, @Query("password") password:String): Response<AuthorizacionResponse>
 
-    @POST("login")
+    @POST("registro")
     suspend fun doRegister(@Body credencialResponse: UserResponse) : Response<Unit>
 
     @POST("login/forgotPassword")

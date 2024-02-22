@@ -20,24 +20,14 @@ fun LoginNavigation() {
             "login"
         ){
             PantallaLogin {
-                bottomNavigationBar = {
-                    BottomBar(
-                        navController = navController,
-                        screens = screensBottomBar
-                    )
-                }
+
             }
         }
         composable(
             "registro"
         ){
             PantallaRegistro {
-                bottomNavigationBar = {
-                    BottomBar(
-                        navController = navController,
-                        screens = screensBottomBar
-                    )
-                }
+
             }
         }
     }
