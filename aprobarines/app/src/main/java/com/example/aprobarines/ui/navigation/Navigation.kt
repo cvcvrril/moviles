@@ -14,9 +14,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.aprobarines.ui.common.BottomBar
+import com.example.aprobarines.ui.screens.listapersonaje.PantallaListaPersonajes
 
 import com.example.composefullequip.ui.screens.detalle.PantallaDetalle
-import com.example.composefullequip.ui.screens.lista.PantallaLista
+import com.example.composefullequip.ui.screens.lista.PantallaListaVideojuegos
 
 
 @Composable
@@ -26,12 +27,12 @@ fun Navigation()
 
     NavHost(
         navController = navController,
-        startDestination = "listado",
+        startDestination = "videojuegos",
     ) {
         composable(
-            "listado"
+            "videojuegos"
         ) {
-            PantallaLista(
+            PantallaListaVideojuegos(
                 onViewDetalle = {uuid ->
                     navController.navigate("detalle/${uuid}")
                 },
@@ -56,24 +57,17 @@ fun Navigation()
                 )
         }
         composable(
-            "pantalla"
+            "personajes"
         ) {
 
-            val snackbarHostState = remember { SnackbarHostState() }
-            Scaffold (
-                snackbarHost = { SnackbarHost(snackbarHostState) },
-                bottomBar =  { BottomBar(
-                    navController = navController,
-                    screens = screensBottomBar) },
-
-            ) { innerPadding ->
-                Text(
-                    modifier = Modifier.padding(
-                        innerPadding),
-                    text = "pantalla")
-
-
-            }
+            PantallaListaPersonajes (onViewDetalle = {uuid ->
+                navController.navigate("detalle/${uuid}")
+            },
+                bottomNavigationBar =  {
+                    BottomBar(
+                        navController = navController,
+                        screens = screensBottomBar)
+                }) 
 
         }
     }

@@ -19,7 +19,7 @@ class PersonajeRemoteDataSource  @Inject constructor(
                 return NetworkResult.Error("Error")
             }else{
                 val body = response.data?.getPersonajes?.map {
-                    Personaje( it.nombre, it.descripcion)
+                    Personaje( it.id, it.nombre, it.descripcion)
                 } ?: emptyList()
                 if (body.isEmpty()){
                     return NetworkResult.Error("La lista de personajes está vacía.")

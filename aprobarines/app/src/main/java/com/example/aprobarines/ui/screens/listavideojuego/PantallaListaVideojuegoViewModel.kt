@@ -2,7 +2,7 @@ package com.example.composefullequip.ui.screens.lista
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.aprobarines.domain.usecases.GetVideojuegoUseCase
+import com.example.aprobarines.domain.usecases.GetVideojuegosUseCase
 import com.example.aprobarines.utils.NetworkResult
 
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PantallaListaVideojuegoViewModel @Inject constructor(
-    private val getVideojuegoUseCase: GetVideojuegoUseCase,
+    private val getVideojuegosUseCase: GetVideojuegosUseCase,
 ) : ViewModel() {
 
 
@@ -41,7 +41,7 @@ class PantallaListaVideojuegoViewModel @Inject constructor(
 
     private fun getVideojuegos() {
         viewModelScope.launch {
-            getVideojuegoUseCase.invoke().collect { result ->
+            getVideojuegosUseCase.invoke().collect { result ->
                     when (result) {
                         is NetworkResult.Error -> _state.update {
                             it.copy(

@@ -1,0 +1,6 @@
+query GetMapas {
+    getMapas {
+        id
+        nombre
+    }
+}

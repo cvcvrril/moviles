@@ -4,6 +4,7 @@ import com.apollographql.apollo3.ApolloClient
 import com.example.aprobarines.domain.modelo.Videojuego
 import com.example.aprobarines.utils.NetworkResult
 import org.example.videojuegos.GetVideojuegosQuery
+
 import javax.inject.Inject
 
 class VideojuegoRemoteDataSource  @Inject constructor(

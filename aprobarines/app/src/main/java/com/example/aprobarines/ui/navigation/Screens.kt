@@ -5,9 +5,9 @@ package com.example.composefullequip.ui.navigation
 
 
 val screensBottomBar = listOf(
-    Screens("listado"),
+    Screens("videojuegos"),
 
-    Screens("pantalla"),
+    Screens("personajes"),
 )
 
 data class Screens(val route: String) {

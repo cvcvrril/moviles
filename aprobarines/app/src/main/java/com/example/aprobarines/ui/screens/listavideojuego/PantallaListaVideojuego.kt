@@ -35,7 +35,7 @@ import com.example.aprobarines.domain.modelo.Videojuego
 
 
 @Composable
-fun PantallaLista(
+fun PantallaListaVideojuegos(
     viewModel: PantallaListaVideojuegoViewModel = hiltViewModel(),
     onViewDetalle: (Int) -> Unit,
     bottomNavigationBar : @Composable () -> Unit = {}
@@ -47,7 +47,7 @@ fun PantallaLista(
         viewModel.handleEvent(PantallaListaVideojuegoEvent.GetVideojuegos)
     }
 
-    PantallaListaInterna(
+    PantallaListaVideojuegosInterna(
         state = state.value,
         onViewDetalle = onViewDetalle,
         bottomNavigationBar = bottomNavigationBar,
@@ -56,7 +56,7 @@ fun PantallaLista(
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun PantallaListaInterna(
+fun PantallaListaVideojuegosInterna(
     state: PantallaListaVideojuegoState,
     onViewDetalle: (Int) -> Unit,
     bottomNavigationBar : @Composable () -> Unit = {},

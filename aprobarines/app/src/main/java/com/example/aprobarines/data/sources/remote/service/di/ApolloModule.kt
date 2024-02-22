@@ -25,8 +25,8 @@ object ApolloModule {
     @Provides
     fun createApolloClient(): ApolloClient {
         return ApolloClient.Builder()
-            //.serverUrl("http://192.168.1.140:8080/graphql")
-            .serverUrl("http://10.2.3.106:8080/graphql")
+            .serverUrl("http://192.168.1.140:8080/graphql")
+            //.serverUrl("http://10.2.3.106:8080/graphql")
             .okHttpClient(
                 OkHttpClient.Builder()
                     .build()

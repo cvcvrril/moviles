@@ -30,12 +30,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.aprobarines.domain.modelo.Personaje
 import com.example.aprobarines.domain.modelo.Videojuego
 
 
 
 @Composable
-fun PantallaLista(
+fun PantallaListaPersonajes(
     viewModel: PantallaListaPersonajeViewModel = hiltViewModel(),
     onViewDetalle: (Int) -> Unit,
     bottomNavigationBar : @Composable () -> Unit = {}
@@ -44,10 +45,10 @@ fun PantallaLista(
     ) {
     val state = viewModel.state.collectAsState()
     LaunchedEffect(Unit) {
-        viewModel.handleEvent(PantallaListaPersonajeEvent.GetVideojuegos)
+        viewModel.handleEvent(PantallaListaPersonajeEvent.GetPersonajes)
     }
 
-    PantallaListaInterna(
+    PantallaListaPersonajesInterna(
         state = state.value,
         onViewDetalle = onViewDetalle,
         bottomNavigationBar = bottomNavigationBar,
@@ -56,7 +57,7 @@ fun PantallaLista(
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun PantallaListaInterna(
+fun PantallaListaPersonajesInterna(
     state: PantallaListaPersonajeState,
     onViewDetalle: (Int) -> Unit,
     bottomNavigationBar : @Composable () -> Unit = {},
@@ -93,9 +94,9 @@ fun PantallaListaInterna(
                 .background(Color.Gray)
         ) {
 
-            items(items = state.videojuegos, key = { persona -> persona.id }) {
-                    videojuego ->
-                PersonajeItem(videojuego = videojuego,
+            items(items = state.personajes, key = { persona -> persona.id }) {
+                    personaje ->
+                PersonajeItem(personaje = personaje,
                     onViewDetalle = onViewDetalle,
                     modifier = Modifier.animateItemPlacement(
                         animationSpec = tween(1000)
@@ -110,22 +111,22 @@ fun PantallaListaInterna(
 
 
 @Composable
-fun PersonajeItem(videojuego: Videojuego,
+fun PersonajeItem(personaje: Personaje,
                   onViewDetalle: (Int) -> Unit,
                   modifier: Modifier = Modifier){
 
     Card(modifier = modifier
         .fillMaxWidth()
         .padding(8.dp)
-        .clickable { onViewDetalle(videojuego.id) } ) {
+        .clickable { onViewDetalle(personaje.id) } ) {
         Row( modifier = Modifier.padding(8.dp)){
             Text(
                 modifier = Modifier.weight(weight = 0.4F),
-                text = videojuego.titulo
+                text = personaje.nombre
             )
             Text(
                 modifier = Modifier.weight(0.4F),
-                text = videojuego.descripcion)
+                text = personaje.descripcion)
         }
     }
 
@@ -136,7 +137,7 @@ fun PersonajeItem(videojuego: Videojuego,
 @Composable
 fun previewVideojuegoItem() {
     PersonajeItem(
-        videojuego = Videojuego(0, "Prueba Videojuego", "Descripción Prueba Videojuego"),
+        personaje = Personaje(0, "Prueba Personaje", "Descripción Prueba Personaje"),
         onViewDetalle = {},
     )
 }
