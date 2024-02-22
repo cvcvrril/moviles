@@ -60,9 +60,11 @@ class PantallaRegistroViewModel @Inject constructor(
                         )
                     }
                 }
+
             }
 
         }
+
     }
 
     private fun introducedUsername(usernameIntroduced: String) {

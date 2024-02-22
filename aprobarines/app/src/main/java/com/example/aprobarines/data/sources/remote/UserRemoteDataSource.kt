@@ -34,7 +34,8 @@ class UserRemoteDataSource @Inject constructor(
 
     suspend fun doRegister(user: User): NetworkResult<Unit> {
         return try {
-            val response = service.doRegister(user.toUserResponse())
+            val nuevoUser = User(user.username, user.password, user.rol)
+            val response = service.doRegister(nuevoUser.toUserResponse())
             if (response.isSuccessful) {
                 NetworkResult.Success(Unit)
             } else {
