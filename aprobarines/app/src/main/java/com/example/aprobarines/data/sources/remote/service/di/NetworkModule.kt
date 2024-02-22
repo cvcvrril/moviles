@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import com.example.aprobarines.data.sources.remote.service.UserService
 import com.google.gson.GsonBuilder
 import javax.inject.Singleton;
 
@@ -60,10 +61,14 @@ object NetworkModule {
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl("http://192.168.1.140:8081/auth")
-            //.baseUrl(BuildConfig.BASEURL)
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()
     }
+
+    @Singleton
+    @Provides
+    fun provideUserService(retrofit: Retrofit): UserService =
+        retrofit.create(UserService::class.java)
 
 }

@@ -7,9 +7,9 @@ import androidx.activity.viewModels
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.example.aprobarines.ui.navigation.LoginNavigation
 import com.example.aprobarines.ui.screens.splashscreen.SplashScreenViewModel
 import com.example.aprobarines.ui.theme.AprobarInesTheme
-import com.example.composefullequip.ui.navigation.Navigation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,6 +29,7 @@ class LoginRegistroActivity : ComponentActivity(){
             AprobarInesTheme{
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colorScheme.background) {
+                    LoginNavigation()
                 }
             }
         }

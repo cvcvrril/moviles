@@ -12,14 +12,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PantallaLoginViewModel  @Inject constructor(
-    private val repository: UserRepository,
-    private val doRegistroUseCase: DoRegistroUseCase,
     private val doLoginUseCase: DoLoginUseCase,
 ): ViewModel(){
 
     private val _state = MutableStateFlow(PantallaLoginState())
     val state : StateFlow<PantallaLoginState> = _state.asStateFlow()
-    
+
 
 
 

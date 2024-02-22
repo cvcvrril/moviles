@@ -1,6 +1,5 @@
 package com.example.aprobarines.data.sources.remote
 
-import com.apollographql.apollo3.ApolloClient
 import com.example.aprobarines.data.modelo.response.AuthorizacionResponse
 import com.example.aprobarines.data.sources.remote.service.UserService
 import com.example.aprobarines.domain.modelo.User

@@ -18,6 +18,11 @@ fun LoginNavigation() {
         ){
 
         }
+        composable(
+            "registro"
+        ){
+
+        }
     }
 
 
