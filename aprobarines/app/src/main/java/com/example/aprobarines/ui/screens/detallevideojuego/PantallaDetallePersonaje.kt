@@ -15,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.aprobarines.ui.screens.detallevideojuego.PantallaDetallePersonajeEvent
 import com.example.aprobarines.ui.screens.detallevideojuego.PantallaDetallePersonajeState
 import com.example.aprobarines.ui.screens.detallevideojuego.PantallaDetallePersonajeViewModel
 
@@ -25,19 +26,22 @@ fun PantallaDetallePersonaje(
 ) {
 
     val state = viewModel.state.collectAsState()
+    LaunchedEffect(Unit) {
+        viewModel.handleEvent(PantallaDetallePersonajeEvent.GetPersonaje(personajeId))
+    }
 
     PantallaDetallePersonajeInterna(
         state = state.value,
         id = personajeId,
+        handleEvent = viewModel::handleEvent
     )
-
-
 }
 
 @Composable
 fun PantallaDetallePersonajeInterna(
     id: Int,
-    state: PantallaDetallePersonajeState
+    state: PantallaDetallePersonajeState,
+    handleEvent: (PantallaDetallePersonajeEvent) -> Unit
 ) {
 
     val snackbarHostState = remember { SnackbarHostState() }
@@ -61,6 +65,7 @@ fun PantallaDetallePersonajeInterna(
             Row {
                 Text(text = "Hola")
                 Text("Pantalla Detalle Personaje ${id}")
+                Text("Nombre : " + handleEvent(PantallaDetallePersonajeEvent.GetPersonaje(id)))
             }
         }
 

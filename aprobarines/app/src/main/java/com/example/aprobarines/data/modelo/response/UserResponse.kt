@@ -1,4 +1,7 @@
 package com.example.aprobarines.data.modelo.response
 
-class UserResponse {
+data class UserResponse(
+    val user: String,
+    val password: String,
+) {
 }

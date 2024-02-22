@@ -19,7 +19,7 @@
         android:usesCleartextTraffic="true"
         android:enableOnBackInvokedCallback="true">
         <activity
-            android:name=".ui.activities.ListaActivity"
+            android:name=".ui.activities.LoginRegistroActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.App.Starting">
