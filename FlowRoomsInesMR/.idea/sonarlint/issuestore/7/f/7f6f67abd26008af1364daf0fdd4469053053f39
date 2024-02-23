@@ -2,4 +2,6 @@
 ;kotlin:S6310"Avoid hardcoded dispatchers.(Ô¥‚ü8ê¼—ÎÏ1
 ;kotlin:S6310"Avoid hardcoded dispatchers.(Ô¥‚ü8ê¼—ÎÏ1
 ;kotlin:S6310"Avoid hardcoded dispatchers.(Ô¥‚ü8ë¼—ÎÏ1
->kotlin:S1128"Remove this unused import.(ºü®öÿÿÿÿÿ8Üõ‚æÛ1
+pkotlin:S6311"QRemove this dispatcher. It is pointless when used with only suspending functions.(Ô¥‚ü8ç»ø¨Ý1
+pkotlin:S6311"QRemove this dispatcher. It is pointless when used with only suspending functions.(Ô¥‚ü8ç»ø¨Ý1
+pkotlin:S6311"QRemove this dispatcher. It is pointless when used with only suspending functions.(Ô¥‚ü8ç»ø¨Ý1
