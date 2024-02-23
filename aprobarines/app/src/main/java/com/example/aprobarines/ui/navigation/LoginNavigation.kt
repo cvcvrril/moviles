@@ -1,6 +1,5 @@
 package com.example.aprobarines.ui.navigation
 
-import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -13,7 +12,7 @@ fun LoginNavigation() {
     val navController = rememberNavController()
 
     NavHost(navController = navController,
-        startDestination = "registro",
+        startDestination = "login",
         ){
         composable(
             "login"

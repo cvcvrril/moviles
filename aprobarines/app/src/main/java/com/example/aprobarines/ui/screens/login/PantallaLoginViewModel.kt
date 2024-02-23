@@ -1,24 +1,60 @@
 package com.example.aprobarines.ui.screens.login
 
 import androidx.lifecycle.ViewModel
-import com.example.aprobarines.data.repository.UserRepository
+import com.example.aprobarines.domain.modelo.User
 import com.example.aprobarines.domain.usecases.DoLoginUseCase
-import com.example.aprobarines.domain.usecases.DoRegistroUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
-class PantallaLoginViewModel  @Inject constructor(
+class PantallaLoginViewModel @Inject constructor(
     private val doLoginUseCase: DoLoginUseCase,
-): ViewModel(){
+) : ViewModel() {
 
     private val _state = MutableStateFlow(PantallaLoginState())
-    val state : StateFlow<PantallaLoginState> = _state.asStateFlow()
+    val state: StateFlow<PantallaLoginState> = _state.asStateFlow()
 
+    fun handleEvent(event: PantallaLoginEvent) {
+        when (event) {
+            is PantallaLoginEvent.IntroducedPassword -> {
+                introducedPassword(event.password)
+            }
 
+            is PantallaLoginEvent.IntroducedUsername -> {
+                introducedUsername(event.username)
+            }
+
+            is PantallaLoginEvent.doLogin -> {
+                doLogin(event.username, event.password)
+            }
+        }
+    }
+
+    private fun doLogin(usernameLogin: String, passwordLogin: String) {
+
+    }
+
+    private fun introducedUsername(usernameIntroduced: String) {
+        _state.update {
+            it.copy(
+                user = it.user?.copy(username = usernameIntroduced)
+                    ?: User(username = usernameIntroduced)
+            )
+        }
+    }
+
+    private fun introducedPassword(passwordIntroduced: String) {
+        _state.update {
+            it.copy(
+                user = it.user?.copy(password = passwordIntroduced)
+                    ?: User(password = passwordIntroduced)
+            )
+        }
+    }
 
 
 }

@@ -5,6 +5,7 @@ import com.example.aprobarines.domain.modelo.User
 
 data class PantallaLoginState(
     val error: String? = null,
+    val isLoading : Boolean = false,
     val authResponse: AuthorizacionResponse? = null,
     val user: User? = null,
 ) {

@@ -4,7 +4,8 @@ import com.example.aprobarines.domain.modelo.User
 
 data class PantallaRegistroState(
     val error: String? = null,
-    val user: User? = null,
     val isLoading : Boolean = false,
+    val user: User? = null,
+
 ) {
 }

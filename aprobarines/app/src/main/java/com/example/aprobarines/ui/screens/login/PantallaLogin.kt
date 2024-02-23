@@ -1,5 +1,7 @@
 package com.example.aprobarines.ui.screens.login
 
+import android.content.Context
+import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,10 +23,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat.startActivity
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.aprobarines.ui.activities.ListaActivity
+import dagger.hilt.android.qualifiers.ActivityContext
+import kotlin.reflect.KFunction1
 
 
 @Composable
@@ -33,11 +40,14 @@ fun PantallaLogin(
     viewModel: PantallaLoginViewModel = hiltViewModel(),
 ) {
 
+    val context = LocalContext.current
     val state = viewModel.state.collectAsState()
 
     PantallaLoginInterna(
+        context = context,
         navController = navController,
         state = state.value,
+        handleEvent = viewModel::handleEvent,
     )
 
 }
@@ -45,8 +55,10 @@ fun PantallaLogin(
 
 @Composable
 fun PantallaLoginInterna(
+    context: Context,
     navController: NavController,
     state: PantallaLoginState,
+    handleEvent: KFunction1<PantallaLoginEvent, Unit>,
 ){
 
     val snackbarHostState = remember { SnackbarHostState() }
@@ -76,18 +88,20 @@ fun PantallaLoginInterna(
                 placeholder = { Text(text = "Username") },
                 value = state.user?.username ?: "",
                 onValueChange = { valueIntroduced ->
-                    //TODO: handle event del texto introducido (username)
+                    handleEvent(PantallaLoginEvent.IntroducedUsername(valueIntroduced))
                 })
             Spacer(modifier = Modifier.height(30.dp))
             TextField(
                 placeholder = { Text(text = "Password") },
                 value = state.user?.password ?: "",
                 onValueChange = { valueIntroduced ->
-                    //TODO: handle event del texto introducido (password)
+                    handleEvent(PantallaLoginEvent.IntroducedPassword(valueIntroduced))
                 })
             Spacer(modifier = Modifier.height(30.dp))
             Button(
                 onClick = {
+                    val intent = Intent(context, ListaActivity::class.java)
+                    context.startActivity(intent)
                     //TODO: handle event del login
                 }) {
                 Text(text = "Login")
