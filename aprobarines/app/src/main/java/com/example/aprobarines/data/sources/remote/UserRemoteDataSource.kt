@@ -13,15 +13,13 @@ class UserRemoteDataSource @Inject constructor(
 
     suspend fun getLogin(username: String, password: String): NetworkResult<AuthorizacionResponse> {
         try {
-            //val resquest = AuthorizationRequest(username, password)
             val response = service.getLogin(username, password)
             if (response.isSuccessful) {
                 val body = response.body()
                 body?.let {
-                    val accesToken = body.accessToken
+                    val accessToken = body.accessToken
                     val refreshToken = body.refreshToken
-                    if (accesToken != null)
-                        //tokenManager.saveAccessToken(accesToken)
+                    if (accessToken != null)
                     return NetworkResult.Success(body)
                 }
 
