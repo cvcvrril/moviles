@@ -19,8 +19,11 @@ class UserRemoteDataSource @Inject constructor(
                 body?.let {
                     val accessToken = body.accessToken
                     val refreshToken = body.refreshToken
-                    if (accessToken != null)
-                    return NetworkResult.Success(body)
+                    if (accessToken != null){
+                        return NetworkResult.Success(body)
+                    }else{
+                        return NetworkResult.Error("El AccessToken es nulo.")
+                    }
                 }
 
             } else {
