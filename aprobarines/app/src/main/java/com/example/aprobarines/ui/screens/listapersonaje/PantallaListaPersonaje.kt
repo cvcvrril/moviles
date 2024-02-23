@@ -48,12 +48,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.example.aprobarines.domain.modelo.Personaje
 import kotlinx.coroutines.delay
 
 
 @Composable
 fun PantallaListaPersonajes(
+    navController: NavController,
     viewModel: PantallaListaPersonajeViewModel = hiltViewModel(),
     onViewDetalle: (Int) -> Unit,
     bottomNavigationBar: @Composable () -> Unit = {}
@@ -66,6 +68,7 @@ fun PantallaListaPersonajes(
     }
 
     PantallaListaPersonajesInterna(
+        navController = navController,
         state = state.value,
         onViewDetalle = onViewDetalle,
         onDelete = {viewModel.handleEvent(PantallaListaPersonajeEvent.DeletePersonaje(1))},
@@ -76,6 +79,7 @@ fun PantallaListaPersonajes(
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun PantallaListaPersonajesInterna(
+    navController: NavController,
     state: PantallaListaPersonajeState,
     onViewDetalle: (Int) -> Unit,
     onDelete: (Int) -> Unit,
@@ -91,7 +95,7 @@ fun PantallaListaPersonajesInterna(
         snackbarHost = { SnackbarHost(snackbarHostState) },
         bottomBar = bottomNavigationBar,
         floatingActionButton = {
-            Button(onClick = { /*TODO*/ }) {
+            Button(onClick = { navController.navigate("add_personaje") }) {
                 Text("+")
             }
         },

@@ -10,6 +10,7 @@ import com.example.aprobarines.ui.common.BottomBar
 import com.example.aprobarines.ui.screens.listapersonaje.PantallaListaPersonajes
 
 import com.example.aprobarines.ui.screens.detallepersonaje.PantallaDetallePersonaje
+import com.example.aprobarines.ui.screens.pantallaaddpersonaje.PantallaAddPersonaje
 import com.example.composefullequip.ui.screens.detalle.PantallaDetalleVideojuego
 import com.example.composefullequip.ui.screens.lista.PantallaListaVideojuegos
 
@@ -56,7 +57,7 @@ fun Navigation() {
 
             PantallaListaPersonajes(onViewDetalle = { id ->
                 navController.navigate("detalle_personaje/${id}")
-            },
+            }, navController = navController,
                 bottomNavigationBar = {
                     BottomBar(
                         navController = navController,
@@ -77,6 +78,18 @@ fun Navigation() {
             PantallaDetallePersonaje(
                 personajeId = it.arguments?.getString("personajeId")?.toInt() ?: 0,
             )
+        }
+
+        composable(
+            route = "add_personaje",
+            arguments = listOf(
+                navArgument(name = "personajeId") {
+                    type = NavType.StringType
+                    defaultValue = ""
+                }
+            )
+        ) {
+            PantallaAddPersonaje(navController = navController)
         }
     }
 

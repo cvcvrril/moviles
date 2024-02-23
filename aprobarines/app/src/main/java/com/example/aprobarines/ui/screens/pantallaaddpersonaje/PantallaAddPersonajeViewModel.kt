@@ -2,6 +2,8 @@ package com.example.aprobarines.ui.screens.pantallaaddpersonaje
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.aprobarines.domain.modelo.Personaje
+import com.example.aprobarines.domain.modelo.User
 import com.example.aprobarines.domain.usecases.AddPersonajeUseCase
 import com.example.aprobarines.domain.usecases.GetPersonajeUseCase
 import com.example.aprobarines.utils.NetworkResult
@@ -27,8 +29,20 @@ class PantallaAddPersonajeViewModel @Inject constructor(
             PantallaAddPersonajeEvent.ErrorVisto -> {
                 _state.update { it.copy(error = null) }
             }
+
+            is PantallaAddPersonajeEvent.IntroducedNombre -> introducedName(event.nombre)
         }
     }
+
+    private fun introducedName(nameIntroduced: String) {
+        _state.update {
+            it.copy(
+                personaje = it.personaje?.copy(nombre = nameIntroduced)
+                    ?: Personaje(nombre = nameIntroduced)
+            )
+        }
+    }
+
 
     private fun addPersonaje(nombre: String) {
         viewModelScope.launch {
