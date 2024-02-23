@@ -3,6 +3,7 @@ package com.example.aprobarines.data.sources.remote
 import com.apollographql.apollo3.ApolloClient
 import com.example.aprobarines.domain.modelo.Personaje
 import com.example.aprobarines.utils.NetworkResult
+import org.example.videojuegos.DeletePersonajeMutation
 import org.example.videojuegos.GetPersonajeQuery
 import org.example.videojuegos.GetPersonajesQuery
 import javax.inject.Inject
@@ -45,6 +46,19 @@ class PersonajeRemoteDataSource @Inject constructor(
                 } else {
                     return NetworkResult.Success(body)
                 }
+            }
+        }catch (e: Exception) {
+            return NetworkResult.Error(e.message ?: e.toString())
+        }
+    }
+
+    suspend fun deletePersonaje(id: Int): NetworkResult<Unit>{
+        try {
+            val response = apolloClient.mutation(DeletePersonajeMutation(id)).execute()
+            if (response.hasErrors()){
+                return NetworkResult.Error("Error")
+            } else {
+                return NetworkResult.Success(Unit)
             }
         }catch (e: Exception) {
             return NetworkResult.Error(e.message ?: e.toString())

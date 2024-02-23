@@ -29,4 +29,11 @@ class PersonajeRepository @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
+    fun deletePersonaje(id: Int) : Flow<NetworkResult<Unit>>{
+        return flow {
+            emit(NetworkResult.Loading())
+            val result = remoteDataSource.deletePersonaje(id)
+            emit(result)
+        }.flowOn(Dispatchers.IO)
+    }
 }

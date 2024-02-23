@@ -2,6 +2,7 @@ package com.example.aprobarines.ui.screens.listapersonaje
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.aprobarines.domain.usecases.DeletePersonajeUseCase
 import com.example.aprobarines.domain.usecases.GetPersonajesUseCase
 import com.example.aprobarines.utils.NetworkResult
 
@@ -16,6 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PantallaListaPersonajeViewModel @Inject constructor(
     private val getPersonajesUseCase: GetPersonajesUseCase,
+    private val deletePersonajeUseCase: DeletePersonajeUseCase
 ) : ViewModel() {
 
 
@@ -29,7 +31,7 @@ class PantallaListaPersonajeViewModel @Inject constructor(
                 _state.update { it.copy(error = null) }
             }
 
-            else -> {}
+            is PantallaListaPersonajeEvent.DeletePersonaje -> deletePersonaje(event.id)
         }
     }
 
@@ -61,6 +63,29 @@ class PantallaListaPersonajeViewModel @Inject constructor(
                     }
 
                 }
+        }
+    }
+
+    private fun deletePersonaje(id: Int) {
+        viewModelScope.launch{
+            deletePersonajeUseCase.invoke(id).collect{result->
+                when(result){
+                    is NetworkResult.Error -> _state.update {
+                        it.copy(
+                            error = result.message, isLoading = false
+                        )
+                    }
+                    is NetworkResult.Loading -> _state.update {
+                        it.copy(isLoading = false)
+                    }
+                    is NetworkResult.Success -> _state.update {
+                        it.copy(
+                            isLoading = false,
+                            error = "Personajes eliminado",
+                        )
+                    }
+                }
+            }
         }
     }
 

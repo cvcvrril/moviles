@@ -68,7 +68,7 @@ fun PantallaListaPersonajes(
     PantallaListaPersonajesInterna(
         state = state.value,
         onViewDetalle = onViewDetalle,
-        onDelete = {viewModel.handleEvent(PantallaListaPersonajeEvent.DeletePersonaje)},
+        onDelete = {viewModel.handleEvent(PantallaListaPersonajeEvent.DeletePersonaje(1))},
         bottomNavigationBar = bottomNavigationBar,
     )
 }
