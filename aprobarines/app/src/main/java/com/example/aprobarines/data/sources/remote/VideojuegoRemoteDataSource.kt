@@ -1,8 +1,11 @@
 package com.example.aprobarines.data.sources.remote
 
 import com.apollographql.apollo3.ApolloClient
+import com.example.aprobarines.domain.modelo.Personaje
 import com.example.aprobarines.domain.modelo.Videojuego
 import com.example.aprobarines.utils.NetworkResult
+import org.example.videojuegos.GetPersonajeQuery
+import org.example.videojuegos.GetVideojuegoQuery
 import org.example.videojuegos.GetVideojuegosQuery
 
 import javax.inject.Inject
@@ -31,6 +34,25 @@ class VideojuegoRemoteDataSource @Inject constructor(
         }
     }
 
+    suspend fun getPersonaje(id: Int): NetworkResult<Videojuego>{
+        try {
+            val response = apolloClient.query(GetVideojuegoQuery(id)).execute()
+            if (response.hasErrors()) {
+                return NetworkResult.Error("Error")
+            } else {
+                val body = response.data?.getVideojuego?.let {
+                    Videojuego(it.id, it.titulo, it.descripcion)
+                } ?: null
+                if (body == null) {
+                    return NetworkResult.Error("La lista de personajes está vacía.")
+                } else {
+                    return NetworkResult.Success(body)
+                }
+            }
+        }catch (e: Exception) {
+            return NetworkResult.Error(e.message ?: e.toString())
+        }
+    }
 
 
 

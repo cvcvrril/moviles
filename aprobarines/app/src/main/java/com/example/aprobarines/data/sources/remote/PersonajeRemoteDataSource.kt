@@ -33,7 +33,7 @@ class PersonajeRemoteDataSource @Inject constructor(
 
     suspend fun getPersonaje(id: Int): NetworkResult<Personaje>{
         try {
-            val response = apolloClient.query(GetPersonajeQuery()).execute()
+            val response = apolloClient.query(GetPersonajeQuery(id)).execute()
             if (response.hasErrors()) {
                 return NetworkResult.Error("Error")
             } else {

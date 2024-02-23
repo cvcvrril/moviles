@@ -1,5 +1,5 @@
-query GetPersonaje {
-    getPersonaje (id: 1) {
+query GetPersonaje ($id: Int!) {
+    getPersonaje (id: $id) {
         id
         nombre
         descripcion

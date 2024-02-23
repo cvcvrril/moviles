@@ -9,7 +9,7 @@ import androidx.navigation.navArgument
 import com.example.aprobarines.ui.common.BottomBar
 import com.example.aprobarines.ui.screens.listapersonaje.PantallaListaPersonajes
 
-import com.example.composefullequip.ui.screens.detalle.PantallaDetallePersonaje
+import com.example.aprobarines.ui.screens.detallepersonaje.PantallaDetallePersonaje
 import com.example.composefullequip.ui.screens.detalle.PantallaDetalleVideojuego
 import com.example.composefullequip.ui.screens.lista.PantallaListaVideojuegos
 

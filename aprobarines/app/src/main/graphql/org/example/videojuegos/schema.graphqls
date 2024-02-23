@@ -6,6 +6,7 @@ type Videojuego{
     id: Int!
     titulo: String!
     descripcion: String!
+    personaje: Personaje!
 }
 
 type Personaje{
@@ -24,6 +25,7 @@ type Query {
     getPersonajes: [Personaje!]!
     getMapas: [Mapa!]!
     getPersonaje(id:Int) : Personaje!
+    getVideojuego(id:Int) : Videojuego!
 }
 
 type Mutation{

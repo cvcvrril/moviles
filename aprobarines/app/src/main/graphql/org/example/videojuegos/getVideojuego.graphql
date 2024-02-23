@@ -1,0 +1,8 @@
+query GetVideojuego($id: Int!){
+    getVideojuego(id: $id){
+        id
+        titulo
+        descripcion
+    }
+
+}
