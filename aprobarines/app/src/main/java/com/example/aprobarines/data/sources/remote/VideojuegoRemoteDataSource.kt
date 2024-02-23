@@ -3,12 +3,14 @@ package com.example.aprobarines.data.sources.remote
 import com.apollographql.apollo3.ApolloClient
 import com.example.aprobarines.domain.modelo.Personaje
 import com.example.aprobarines.domain.modelo.Videojuego
+import com.example.aprobarines.utils.Constantes
 import com.example.aprobarines.utils.NetworkResult
 import org.example.videojuegos.GetPersonajeQuery
 import org.example.videojuegos.GetVideojuegoQuery
 import org.example.videojuegos.GetVideojuegosQuery
 
 import javax.inject.Inject
+
 
 class VideojuegoRemoteDataSource @Inject constructor(
     private var apolloClient: ApolloClient
@@ -18,13 +20,13 @@ class VideojuegoRemoteDataSource @Inject constructor(
         try {
             val response = apolloClient.query(GetVideojuegosQuery()).execute()
             if (response.hasErrors()) {
-                return NetworkResult.Error("Error")
+                return NetworkResult.Error(Constantes.ERROR)
             } else {
                 val body = response.data?.getVideojuegos?.map {
                     Videojuego(it.id, it.titulo, it.descripcion)
                 } ?: emptyList()
                 if (body.isEmpty()) {
-                    return NetworkResult.Error("La lista de videojuegos está vacía.")
+                    return NetworkResult.Error(Constantes.EMPTY_VIDEOJUEGOS_LIST)
                 } else {
                     return NetworkResult.Success(body)
                 }
@@ -38,13 +40,13 @@ class VideojuegoRemoteDataSource @Inject constructor(
         try {
             val response = apolloClient.query(GetVideojuegoQuery(id)).execute()
             if (response.hasErrors()) {
-                return NetworkResult.Error("Error")
+                return NetworkResult.Error(Constantes.ERROR)
             } else {
                 val body = response.data?.getVideojuego?.let {
                     Videojuego(it.id, it.titulo, it.descripcion)
                 } ?: null
                 if (body == null) {
-                    return NetworkResult.Error("La lista de personajes está vacía.")
+                    return NetworkResult.Error(Constantes.NULL_VIDEOJUEGO)
                 } else {
                     return NetworkResult.Success(body)
                 }

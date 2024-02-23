@@ -4,8 +4,11 @@ import com.example.aprobarines.data.modelo.request.AuthorizationRequest
 import com.example.aprobarines.data.modelo.response.AuthorizacionResponse
 import com.example.aprobarines.data.sources.remote.service.UserService
 import com.example.aprobarines.domain.modelo.User
+import com.example.aprobarines.utils.Constantes
 import com.example.aprobarines.utils.NetworkResult
 import javax.inject.Inject
+
+
 
 class UserRemoteDataSource @Inject constructor(
     private var service: UserService
@@ -22,7 +25,7 @@ class UserRemoteDataSource @Inject constructor(
                     if (accessToken != null){
                         return NetworkResult.Success(body)
                     }else{
-                        return NetworkResult.Error("El AccessToken es nulo.")
+                        return NetworkResult.Error(Constantes.EL_ACCESS_TOKEN_ES_NULO_)
                     }
                 }
 
@@ -32,7 +35,7 @@ class UserRemoteDataSource @Inject constructor(
         } catch (e: Exception) {
             return NetworkResult.Error(e.message ?: e.toString())
         }
-        return NetworkResult.Error("Hubo un problema al iniciar sesión")
+        return NetworkResult.Error(Constantes.ERROR_LOGIN)
     }
 
     suspend fun doRegister(user: User): NetworkResult<Unit> {
