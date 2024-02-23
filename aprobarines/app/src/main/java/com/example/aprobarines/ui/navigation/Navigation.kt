@@ -47,7 +47,7 @@ fun Navigation() {
             )
         ) {
             PantallaDetalleVideojuego(
-                videojuegoId = it.arguments?.getString("personaId") ?: "",
+                videojuegoId = it.arguments?.getString("personaId")?.toInt() ?: 0,
             )
         }
         composable(

@@ -3,6 +3,7 @@ package com.example.aprobarines.data.sources.remote
 import com.apollographql.apollo3.ApolloClient
 import com.example.aprobarines.domain.modelo.Personaje
 import com.example.aprobarines.utils.NetworkResult
+import org.example.videojuegos.AddPersonajeMutation
 import org.example.videojuegos.DeletePersonajeMutation
 import org.example.videojuegos.GetPersonajeQuery
 import org.example.videojuegos.GetPersonajesQuery
@@ -59,6 +60,26 @@ class PersonajeRemoteDataSource @Inject constructor(
                 return NetworkResult.Error("Error")
             } else {
                 return NetworkResult.Success(Unit)
+            }
+        }catch (e: Exception) {
+            return NetworkResult.Error(e.message ?: e.toString())
+        }
+    }
+
+    suspend fun addPersonaje(nombre: String): NetworkResult<Personaje>{
+        try {
+            val response = apolloClient.mutation(AddPersonajeMutation(nombre)).execute()
+            if (response.hasErrors()) {
+                return NetworkResult.Error("Error")
+            } else {
+                val body = response.data?.addPersonaje?.let {
+                    Personaje(0,it.nombre, "")
+                } ?: null
+                if (body == null) {
+                    return NetworkResult.Error("La lista de personajes está vacía.")
+                } else {
+                    return NetworkResult.Success(body)
+                }
             }
         }catch (e: Exception) {
             return NetworkResult.Error(e.message ?: e.toString())

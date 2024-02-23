@@ -1,0 +1,5 @@
+mutation AddPersonaje($nombre: String!){
+    addPersonaje(nombre: $nombre){
+        nombre
+    }
+}

@@ -24,4 +24,12 @@ class VideojuegoRepository @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
+    fun getVideojuego(id: Int): Flow<NetworkResult<Videojuego>>{
+        return flow {
+            emit(NetworkResult.Loading())
+            val result = remoteDataSource.getVideojuego(id)
+            emit(result)
+        }.flowOn(Dispatchers.IO)
+    }
+
 }

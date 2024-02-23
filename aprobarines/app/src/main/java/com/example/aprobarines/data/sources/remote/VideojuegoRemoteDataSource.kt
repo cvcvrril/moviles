@@ -34,7 +34,7 @@ class VideojuegoRemoteDataSource @Inject constructor(
         }
     }
 
-    suspend fun getPersonaje(id: Int): NetworkResult<Videojuego>{
+    suspend fun getVideojuego(id: Int): NetworkResult<Videojuego>{
         try {
             val response = apolloClient.query(GetVideojuegoQuery(id)).execute()
             if (response.hasErrors()) {

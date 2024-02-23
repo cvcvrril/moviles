@@ -70,12 +70,6 @@ fun PantallaListaVideojuegosInterna(
     Scaffold (
         snackbarHost = { SnackbarHost(snackbarHostState) },
         bottomBar = bottomNavigationBar,
-        floatingActionButton = {
-            Button(onClick = { /*TODO*/ }) {
-                Text("+")
-            }
-        },
-        floatingActionButtonPosition = FabPosition.Center
     ) { innerPadding ->
         LaunchedEffect(state.error) {
             state.error?.let {

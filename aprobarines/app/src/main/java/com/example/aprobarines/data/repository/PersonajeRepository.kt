@@ -36,4 +36,12 @@ class PersonajeRepository @Inject constructor(
             emit(result)
         }.flowOn(Dispatchers.IO)
     }
+
+    fun addPersonaje(nombre: String) : Flow<NetworkResult<Personaje>>{
+        return flow {
+            emit(NetworkResult.Loading())
+            val result = remoteDataSource.addPersonaje(nombre)
+            emit(result)
+        }.flowOn(Dispatchers.IO)
+    }
 }
