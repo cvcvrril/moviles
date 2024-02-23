@@ -1,5 +1,6 @@
 package com.example.aprobarines.data.sources.remote
 
+import com.example.aprobarines.data.modelo.request.AuthorizationRequest
 import com.example.aprobarines.data.modelo.response.AuthorizacionResponse
 import com.example.aprobarines.data.sources.remote.service.UserService
 import com.example.aprobarines.domain.modelo.User
@@ -12,7 +13,8 @@ class UserRemoteDataSource @Inject constructor(
 
     suspend fun getLogin(username: String, password: String): NetworkResult<AuthorizacionResponse> {
         try {
-            val response = service.getLogin(username, password)
+            val resquest = AuthorizationRequest(username, password)
+            val response = service.getLogin(resquest)
             if (response.isSuccessful) {
                 val body = response.body()
                 body?.let {

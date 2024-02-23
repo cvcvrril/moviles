@@ -100,9 +100,10 @@ fun PantallaLoginInterna(
             Spacer(modifier = Modifier.height(30.dp))
             Button(
                 onClick = {
-                    val intent = Intent(context, ListaActivity::class.java)
-                    context.startActivity(intent)
-                    //TODO: handle event del login
+                    //TODO: pasar bien los argumentos, dejo esto así para probar
+                    handleEvent(PantallaLoginEvent.doLogin("ines", "ines"))
+                    //val intent = Intent(context, ListaActivity::class.java)
+                    //context.startActivity(intent)
                 }) {
                 Text(text = "Login")
             }
