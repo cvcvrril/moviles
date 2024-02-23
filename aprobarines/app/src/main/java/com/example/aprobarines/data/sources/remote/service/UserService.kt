@@ -6,7 +6,6 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
-import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Query
 
@@ -16,7 +15,7 @@ interface UserService {
     suspend fun getLogin(@Query("username") user:String, @Query("password") password:String): Response<AuthorizacionResponse>
 
     @POST("registro")
-    suspend fun doRegister(@Body credencialResponse: UserResponse) : Response<Unit>
+    suspend fun doRegister(@Body userResponse: UserResponse) : Response<Unit>
 
     @POST("login/forgotPassword")
     suspend fun forgotPassword(@Body credencialResponse: UserResponse) : Response<Unit>
