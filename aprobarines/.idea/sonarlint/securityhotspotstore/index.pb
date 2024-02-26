@@ -141,3 +141,7 @@ Uapp/src/main/java/com/example/aprobarines/data/modelo/request/AuthorizationRequ
 Papp/src/main/java/com/example/aprobarines/domain/usecases/AddPersonajeUseCase.kt,4\2\424789b3100afc63634876fabe5dca7bc28b573c
 m
 =app/src/main/java/com/example/aprobarines/utils/Constantes.kt,2\4\24ae188f957ab879fe43095b9e36d812b5038d34
+e
+5app/src/main/java/com/example/aprobarines/ListaApp.kt,0\c\0c1f01b57d1ebcfe5964bd1723e2272841cc0c16
+”
+dapp/src/main/java/com/example/aprobarines/ui/screens/listavideojuego/PantallaListaVideojuegoEvent.kt,0\1\01b6d61e826dc969a7203a747184882ce0429dda
